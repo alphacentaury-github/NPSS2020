@@ -1,0 +1,1794 @@
+\documentclass[11pt]{article}
+
+\usepackage{kotex} % korean tex
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{color}
+\parindent 10pt\textheight 9in\topmargin -0.4in\textwidth 6in
+\oddsidemargin .25in\evensidemargin 0in
+\def\bm{\boldsymbol}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\no}{\nonumber \\}
+\newcommand{\nnb}{\nonumber}
+\newcommand{\etal}{{\it et al.}~}
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\sll}[1]{#1\hspace{-0.5em}/}
+\newcommand{\del}{\partial}
+ 
+\newcommand{\vh}{{\bm h}}
+\newcommand{\vp}{{\bm p}}
+\newcommand{\vq}{{\bm q}}
+\newcommand{\vk}{{\bm k}}
+\newcommand{\vl}{{\bm l}}
+\newcommand{\vx}{{\bm x}}
+\newcommand{\vy}{{\bm y}}
+\newcommand{\vv}{{\bm v}}
+\newcommand{\vrho}{{\bm \rho}}
+\newcommand{\vr}{{\bm r}}
+\newcommand{\vR}{{\bm R}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\newcommand{\threejsymbol}[6]{\left(\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\end{tabular}\right)}
+\newcommand{\sixjsymbol}[6]{\left\{\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$} \end{tabular}\right\}}
+\newcommand{\ninejsymbol}[9]{\left\{\begin{tabular}{ccc}
+                             {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\\
+                             {$#7$}&{$#8$}&{$#9$}\end{tabular}\right\}}
+
+%%% The "real" document content comes below...
+
+\title{Scattering Theory Note: Three body}
+\author{Young-Ho Song}
+\date{\today}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+Faddeev equation을 공부해보자. 
+
+\section{Jacobi coordinates }
+3-body에서 center of mass motion을 제외한 relative motion을 기술하기 위해서는 
+Jacobi coordinate를 도입하는 것이 편하다. In many case, we assume {\color{blue}equal mass} particles.
+
+It is very important to fix our notation for particular meaning.
+
+Let us first define ket state $|\vx_i \vy_i\ra_j$. This vector means
+in configuration 'j', the distance vector between 
+$i$ pairs is $\vx$ and i-particles distance from $i$-pair is $\vy$.
+The configuration implies not just 3-particles, but interactions and 
+thus channels(like two-particle makes a bound state or three-particle bound state or 
+three particle break up..).
+
+Thus, Jacobi coordinates and three particle coordinates are related 
+as in configuration space, with center of mass ${\bm R}=(\vx_1+\vx_2+\vx_3)/3$
+\bea
+  \left(\begin{array}{c} \vx_1=\vr_2-\vr_3 
+      \\ \vy_1=\vr_1-\frac{1}{2} (\vr_2+\vr_3) 
+  \end{array}\right)
+  ,\quad
+  \left(\begin{array}{c} \vx_2=\vr_3-\vr_1 
+      \\ \vy_2=\vr_2-\frac{1}{2} (\vr_3+\vr_1) 
+  \end{array}\right)
+  ,\quad
+  \left(\begin{array}{c} \vx_3=\vr_1-\vr_2 
+      \\ \vy_3=\vr_3-\frac{1}{2} (\vr_1+\vr_2) 
+  \end{array}\right)
+\eea
+But, they are related with each other( the same configuration can be described in terms of 
+each $(\vx_i,\vy_i)$ pairs. )
+\bea
+  \left(\begin{array}{c}
+  \vx_2=-\frac{1}{2}\vx_1-\vy_1\\
+  \vy_2=\frac{3}{4}\vx_1-\frac{1}{2}\vy_1
+  \end{array}\right),\quad
+  \left(\begin{array}{c}
+  \vx_3=-\frac{1}{2}\vx_1+\vy_1\\ 
+  \vy_3=-\frac{3}{4}\vx_1-\frac{1}{2}\vy_1 
+  \end{array}\right)
+\eea
+In momentum space, with ${\bm K}=(\vk_1+\vk_2+\vk_3)$
+\bea
+  \left(\begin{array}{c} \vp_1=\frac{1}{2}(\vk_2-\vk_3) 
+      \\ \vq_1=\frac{2}{3}[\vk_1-\frac{1}{2} (\vk_2+\vk_3)] 
+  \end{array}\right)
+  ,\quad
+   \left(\begin{array}{c} \vp_2=\frac{1}{2}(\vk_3-\vk_1) 
+      \\ \vq_2=\frac{2}{3}[\vk_2-\frac{1}{2} (\vk_3+\vk_1)] 
+  \end{array}\right)
+  ,\quad
+   \left(\begin{array}{c} \vp_3=\frac{1}{2}(\vk_1-\vk_2) 
+      \\ \vq_3=\frac{2}{3}[\vk_3-\frac{1}{2} (\vk_1+\vk_2)] 
+  \end{array}\right)
+\eea
+Also, each Jacobi momentums are convertible,
+\bea
+  \left(\begin{array}{c}
+  \vp_2=-\frac{1}{2}\vp_1-\frac{3}{4}\vq_1\\
+  \vq_2=\vp_1-\frac{1}{2}\vq_1
+  \end{array}\right),\quad
+  \left(\begin{array}{c}
+  \vp_3=-\frac{1}{2}\vp_1+\frac{3}{4}\vq_1\\ 
+  \vq_3=-\vp_1-\frac{1}{2}\vq_1 
+  \end{array}\right)
+\eea
+
+All state vectors are normalized as
+\bea
+& &\int d\vk_1 d \vk_2 d\vk_3|\vk_1 \vk_2\vk_3\ra\la \vk_1\vk_2\vk_3|=1 \no
+& &\la \vk'_1\vk'_2\vk'_3|\vk_1\vk_2\vk_3\ra
+=\delta^{(3)}(\vk'_1-\vk_1)\delta^{(3)}(\vk'_2-\vk_2)
+ \delta^{(3)}(\vk'_3-\vk_3)\no
+& &\int d\vp_\alpha d\vq_\alpha d{\bm K}
+  |\vp_\alpha \vq_\alpha {\bm K}\ra\la \vp_\alpha \vq_\alpha {\bm K}|=1\no
+& &\la \vp'_\alpha \vq'_\alpha {\bm K}'|\vp_\alpha \vq_\alpha {\bm K}\ra=\delta^{(3)}(\vp'_\alpha-\vp_\alpha) \delta^{(3)}(\vq'_\alpha-\vq_\alpha)\delta^{(3)}({\bm K}'_\alpha-{\bm K}_\alpha) 
+\eea
+
+Asymptotic channel states can be written for 
+channel $\alpha$ as
+\bea
+|\phi_{\vq_\alpha}\ra=|\varphi_\alpha\ra|\vq_\alpha\ra
+\eea
+and break up channel as\footnote{
+It is noted by $(+)$ because in special case, we have to consider 
+pair interaction even in break up channel. }
+\bea
+|\phi_{\alpha}\ra^{(+)}=|\vp_\alpha\ra^{(+)}|\vq_\alpha\ra
+\eea
+
+------------------------- very confusing arguments following--------------------
+
+
+{\color{blue} Three identical boson} particle의 경우에는
+\footnote{We can imagine three particles in space. And name them,
+$(123)$ or $(231)$ or $(312)$. This do not change actual distance 
+between them. Only changes names of them. 
+} 
+\bea
+& &|\vx \vy\ra=|\vx_1 \vy_1\ra_1=|\vx_2\vy_2\ra_2=|\vx_3 \vy_3\ra_3 \no
+& &\Psi(\vx_1,\vy_1)={}_1\la \vx_1 \vy_1|\Psi\ra 
+ ={}_2\la \vx_2 \vy_2|\Psi\ra={}_3\la \vx_3 \vy_3|\Psi\ra
+\eea 
+$|\Psi\ra$는 permutation에 대해 symmetric 해야한다. 
+\bea
+\Psi(\vx_1 \vy_1)&=&{}_1\la \vx_1\vy_1|\Psi\ra={}_1\la \vx_1\vy_1|P_{12}P_{23}|\Psi\ra\no 
+   &=&{}_1\la \vx_1\vy_1|P_{12}P_{23}|\Psi\ra
+\eea 
+
+\bea 
+& &|\vx_1 \vy_1\ra_2=|\vx_2 \vy_2\ra_3=|\vx_3 \vy_3\ra_1 \no
+& &|\vx_1 \vy_1\ra_3=|\vx_2 \vy_2\ra_1=|\vx_3 \vy_3\ra_2
+\eea
+where, $|\vx\vy\ra$ only states that distance 
+between one-pair is $\vx$ and other distance is $\vy$
+without specifying particle index.
+
+
+Permutation operator defined $P^+=P_{12}P_{23}$, $P^{-}=P_{23} P_{12}$
+change these ket vectors. 
+In above convention\footnote{{\bf NOTE:} It is very confusing
+notation and seems contradicting by looking
+$|\vx_2 \vy_2\ra_2 =|\vx_1 \vy_1\ra_2$. I am not sure how to 
+resolve this.
+}
+we have
+$$P^+|\vx\vy\ra_i=|\vx\vy\ra_{i+1} (?)$$,
+where $i+1$ is considered in a cyclic order.
+Thus
+$$P^+|\vx\vy\ra_1=|\vx\vy\ra_2=|\vx_2\vy_2\ra_2=
+|\vx_1 \vy_1\ra_1 (?)$$
+and $\vx_1^{(1)}=\vx_2^{(2)}$, $\vy_1^{(1)}=\vy_2^{(2)}$.
+ 
+According to Glockle,\footnote{In fact, I am not sure
+this convention or relation is correct or not.}
+\bea
+& &P^+|\vx_i \vy_i\ra_{j} =|\vx_i \vy_i\ra_{j+1},\quad 
+  \mbox{in a cyclic notation for $j+1$},\no
+& &P^-|\vx_i \vy_i\ra_{j} =|\vx_i \vy_i\ra_{j-1},\quad
+ \mbox{in a cyclic notation for $j-1$}
+\eea
+And we have relation $(P^+)^\dagger=P^-$ which make it possible to act permutation on bra state.
+
+( For example, 
+$P^+|\vx_1\vy_1\ra_2=|\vx_1\vy_1\ra_3=|\vx_2\vy_2\ra_1$)
+
+We can define full Faddeev state vector $|\Psi\ra$
+as sum of Faddeev components $|\psi\ra_1+|\psi\ra_2+|\psi\ra_3$.
+This full Faddeev wave function is invariant under permutation
+so that
+\bea
+\Psi(\vx_1 \vy_1)=\Psi(\vx_2 \vy_2)=\Psi(\vx_3 \vy_3)
+={}_1\la \vx_1 \vy_1|\Psi\ra
+\eea
+
+We can think permutation acts to Faddeev component as
+ $|\psi\ra_2=P^+|\psi\ra_1$, 
+$|\psi\ra_3=P^-|\psi\ra_1$.
+\footnote{This definition of permutation operator is the same as above defined permutation operator?}
+
+And write projection of Faddeev component on position space as
+\bea
+{}_i\la \vx \vy|\psi\ra_i=\psi_i(\vx,\vy)
+\eea
+We will use wave function form when bra and ket are in the same
+configuration.
+
+
+Then first use permutation acting on bra vector
+and acts on ket
+\bea
+{}_1\la \vx_1 \vy_1|\psi\ra_1={}_2\la \vx_2 \vy_2|\psi\ra_1
+       ={}_3\la \vx_2 \vy_2|P^+|\psi\ra_1
+       ={}_3\la \vx_2 \vy_2|\psi\ra_2
+       ={}_2\la \vx_1 \vy_1|\psi\ra_2      
+\eea
+In terms of wave function, we get
+\bea
+\psi_1(\vx_1,\vy_1)=\psi_2(\vx_1,\vy_1)
+\eea
+And similar method gives also $\psi_1(\vx_1,\vy_1)=\psi_3(\vx_1,\vy_1)$.
+This means that Faddeev wave function have the same functional form.
+
+Some book use notation, 
+\bea
+\psi(\vx_2,\vy_2)=P^+ \psi(\vx_1,\vy_1)
+\eea
+This corresponds to the relation in the notation here,
+\bea
+{}_2\la \vx_2\vy_2|\psi\ra_2
+={}_1\la \vx_1 \vy_1|P^+|\psi\ra_1
+\eea
+
+\footnote{
+{\bf However}, I am confused in the equation 
+\bea
+{}_1\la\vx_1\vy_1|\psi_1\ra={}_2\la \vx_1\vy_1|\psi_2\ra
+\eea
+because 
+$\vx_1$ and $\vy_1$ in left-hand side 
+and right-hand side seems not the same one. Thus
+How can we get the conclusion from following equation?
+\bea
+\psi_1(\vx_1^{(1)},\vy_1^{(1)})=\psi_2(\vx_1^{(2)},\vy_1^{(2)})
+\eea
+
+
+}
+We can also have
+\bea
+{}_1\la \vx_1 \vy_1| P^+|\psi\ra_1
+={}_3\la \vx_1 \vy_1|\psi\ra_1={}_1\la \vx_2 \vy_2|\psi\ra_1
+={}_2\la \vx_2 \vy_2|\psi\ra_2=\psi_2(\vx_2,\vy_2).
+\eea
+
+To reduce confusion, let us use every matrix or element wave 
+function in terms of configuration '1', Faddeev component 
+and coordinates.
+
+\subsection{Jacobi coordinates for unequal mass particles}
+For particles with unequal mass $m_{1,2,3}$ and coordinate $\vr_1{1,2,3}$
+or momentum $\vp_{1,2,3}$, Jacobi coordinate becomes,
+
+
+-----------------------------------------------
+
+\section{Problem in L-S equation for scattering with more than two particles} 
+3개의 입자로 이루어진 시스템을 생각하자. CM motion을 제외하면, 
+시스템 전체의 Hamiltonian은 Jacobi coordinate로 다음과 같이 나타낼 수 있다. 
+\bea 
+H=H_0+V_1+V_2+V_3, 
+\eea 
+여기서, $V_i=V_{jk}$ 는 i 를 제외한 나머지 입자 사이의 interaction을 나타낸다. 
+새로운 notation $V^i=V_{ij}+V_{ik}$를 도입하면, 
+\bea 
+H=H_0+V_\alpha+V^\alpha=H_\alpha+V^\alpha 
+\eea  
+라고 쓸 수 있다. (여기서, $H_0$는 free 3-body term으로 $\frac{p_l^2}{2\mu_l}+\frac{q_l^2}{2M_l}$
+으로 나타낼 수 있다. 
+
+3개의 입자가 만들수 있는 asymptotic configuration은 
+\bea 
+Bd&:&(123),\quad  E_{bd}<0\no  
+1 &:&1,(23),\quad E_1=\epsilon_1+\frac{q_1^2}{2M_1},\quad |\phi_1\ra =|\varphi_1\ra|\vq_1\ra \no 
+2 &:&2,(31),\quad E_2=\epsilon_2+\frac{q_2^2}{2M_2},\quad |\phi_2\ra =|\varphi_2\ra|\vq_2\ra\no 
+3 &:&3,(12),\quad E_3=\epsilon_3+\frac{q_3^2}{2M_3},\quad |\phi_3\ra =|\varphi_3\ra|\vq_3\ra\no 
+0 &:& 1,2,3,\quad E_0=\frac{p_l^2}{2\mu_l}+\frac{q_l^2}{2M_l},
+  \quad |\phi_0\ra=|\vp_l\ra |\vq_l\ra  
+\eea 
+으로 쓸 수 있다. (여기서, $H_i|\varphi_i\ra=\epsilon_i|\varphi_i\ra$는 실제로는 excited state일 수 있다. $\epsilon_i^{(n)}$ )
+우리는 산란에 의해서, 예를 들어 특정 boundary condition의 "free"-state $|\phi_1\ra$ 가 
+scattering state $|\Psi_1^{(+)}\ra$를 unique 하게 결정하기를 원한다. 
+($|\Psi_1^{(+)}\ra$는 다른 channel(2,3)로의 outgoing state를 포함한다.)
+Formal theory of scattering, introduced M\"{o}ller channel operator such that
+\bea 
+& &\lim_{t\to -\infty}||\Psi^{(+)}_\alpha(t)-\phi_\alpha(t)||=0, \no 
+& &|\psi^{(+)}_\alpha(0)\ra=\lim_{t\to -\infty} e^{iHt}e^{-iH_\alpha t}|\phi_{\alpha}(0)\ra,\no 
+& &\Omega_\alpha^{(+)}=\lim_{t\to -\infty} e^{iHt}e^{-iH_\alpha t}
+\eea 
+This can be re-written in $\epsilon$ limit,
+\bea 
+|\Psi_{q_\alpha}^{(+)}\ra=\lim_{\epsilon\to 0}\frac{i\epsilon}{E_{q_\alpha}+i\epsilon-H}|\phi_{q_\alpha}\ra, 
+\eea 
+By defining channel resolvent operators, we get identity
+\bea 
+G_\alpha(z)&=&\frac{1}{z-H_\alpha},\no 
+G(z)&=&G_\alpha(z)+G_\alpha(z)V^\alpha G(z) \no 
+    &=&G_\alpha(z)+G(z)V^\alpha G_\alpha(z)
+\eea 
+Unlike two-body case, we have several ways to write the identity with $\alpha$.
+
+Applying this identity, we get, LS like equations with different $\alpha$ and $\beta$, 
+\bea 
+|\Psi_{q_\alpha}^{(+)}\ra = \lim_{\epsilon\to 0} \frac{i\epsilon}{E_\alpha+i\epsilon-H_\beta}|\phi_{\alpha}\ra 
+ +\lim_{\epsilon\to 0}\frac{1}{E_\alpha+i\epsilon-H_\beta}V^\beta|\Psi^{(+)}_{\alpha}\ra 
+\eea 
+
+From the Lippmann's identity, (증명은 생략)
+\bea 
+\lim_{\epsilon\to 0} \frac{i\epsilon}{E_\alpha+i\epsilon-H_\beta}|\phi_{\alpha}\ra
+ =\delta_{\alpha\beta}|\phi_{\alpha}\ra, 
+\eea 
+We will have three relations for $\alpha=1$,
+\bea 
+\label{eq:triadLS}
+|\Psi_1^{(+)}\ra&=& |\phi_1\ra + \lim_{\epsilon\to 0}\frac{1}{E_1+i\epsilon-H_1}V^1|\Psi^{(+)}_{1}\ra ,\no 
+|\Psi_1^{(+)}\ra&=&  \lim_{\epsilon\to 0}\frac{1}{E_1+i\epsilon-H_2}V^2|\Psi^{(+)}_{1}\ra ,\no 
+|\Psi_1^{(+)}\ra&=&  \lim_{\epsilon\to 0}\frac{1}{E_1+i\epsilon-H_3}V^3|\Psi^{(+)}_{1}\ra.
+\eea 
+이 중에서 첫번째 식이 Lippmann-Schwinger equation이 된다. 
+그러나 문제는 첫번째 식인 LS equation을 푸는 것으로는 $|\Psi^{(+)}_1\ra$의 unique solution 을 
+얻을 수 없다는 것이다. 예를 들어,
+위 식에서 $\alpha=2$인 경우에대해서도 비슷한 식을 얻는다.
+\bea 
+|\Psi_2^{(+)}\ra&=& |\phi_2\ra + \lim_{\epsilon\to 0}\frac{1}{E_2+i\epsilon-H_2}V^2|\Psi^{(+)}_{2}\ra ,\no 
+|\Psi_2^{(+)}\ra&=&  \lim_{\epsilon\to 0}\frac{1}{E_2+i\epsilon-H_1}V^1|\Psi^{(+)}_{2}\ra ,\no 
+|\Psi_2^{(+)}\ra&=&  \lim_{\epsilon\to 0}\frac{1}{E_2+i\epsilon-H_3}V^3|\Psi^{(+)}_{2}\ra.
+\eea 
+이로부터 $|\Psi_2^{(+)}\ra$ 도 $|\Psi_1^{(+)}\ra$ 에 대한 LS equation의 homogeneous part
+에 대한 solution이 됨을 알 수 있다. 즉, $|\Psi_1^{(+)}-N \Psi_2^{(+)}\ra$ 도
+LS equation의 해가 됨을 알 수 있다. 따라서, LS equation 만으로는 $|\Psi_1^{(+)}\ra$ 를 
+unique하게 결정하지 못한다. 
+
+반면, Eq\eqref{eq:triadLS}의 첫번째 식뿐 아니라 나머지 식까지 모두 고려하면 (즉 triad LS equations), 
+$|\Psi_1^{(+)}$를 unique하게 결정할 수 있다. (triad LS 를 모두 고려하면,  
+위의 예에서 $|\Psi_1^{(+)}-N \Psi_2^{(+)}\ra$가 해를 만족하지 않음을 알 수 있다.)
+따라서, 3-body 의 경우에는 LS equation 만을 푸는 것이 아니라, triad LS equations을 
+풀어야 한다. 
+
+이것은 동등하게, Faddeeve equation또는 AGS equation을 푸는 것으로 바꾸어 생각할 수 있다. 
+Resolvent 로부터 우리는 다음과 같은 identity를 얻을 수도 있다.
+\bea 
+G(z)=G_0(z)+G_0(z)VG(z)=G_0(z)+G(z)VG_0(z),\quad G_0(z)=\frac{1}{z-H_0}
+\eea 
+Lippmann identity를 적용하면,
+\bea 
+|\Psi^{(+)}_\alpha\ra =G_0 V|\Psi^{(+)}_\alpha\ra 
+               = \sum_{i=1}^3 G_0 V_i|\Psi^{(+)}_\alpha\ra
+               =\sum_{i=1}^3|\psi_{\alpha,i}\ra 
+\eea  
+여기서,  Fadeeve component를 정의하면,
+\bea 
+|\psi_{\alpha,i}\ra \equiv G_0 V_i|\Psi^{(+)}_\alpha\ra ,
+\quad 
+\eea 
+Then, LS equation을 적용하면, (Use $G_0 V_\alpha G_\alpha=G_\alpha V_\alpha G_0$
+and $G_0V_\beta|\phi_{\beta}\ra=|\phi_{\beta}\ra$),
+\bea 
+|\psi_{\alpha,\alpha}\ra&=&  G_0 V_\alpha (|\phi_{\alpha}\ra +G_\alpha V^\alpha 
+|\Psi_{\alpha}^{(+)}\ra )\no 
+ &=& G_0 V_\alpha |\phi_{\alpha}\ra +G_\alpha V_\alpha (G_0V_\beta+G_0 V_\gamma)|\Psi_{\alpha}^{(+)}\ra \no  
+ &=& |\phi_{\alpha}\ra +G_\alpha V_\alpha (|\psi_{\alpha,\beta}\ra +|\psi_{\alpha,\gamma}\ra),
+ \eea
+ Thus, we get Faddeeve equation, 
+\bea   
+|\psi_{\alpha,\alpha}\ra=&|\phi_{\alpha}\ra + &G_\alpha V_\alpha (|\psi_{\alpha,\beta}\ra +|\psi_{\alpha,\gamma}\ra),\no 
+|\psi_{\alpha,\beta}\ra =&  &G_\beta V_\beta( |\psi_{\alpha,\gamma}\ra +|\psi_{\alpha,\alpha}\ra),
+ \no 
+|\psi_{\alpha,\gamma}\ra =&  &G_\gamma V_\gamma( |\psi_{\alpha,\alpha}\ra +|\psi_{\alpha,\beta}\ra), 
+\eea 
+
+만약 식을 3-body space에서의 transition amplitude 에 관한 식으로 바꾸어 쓰면, AGS
+(Alt-Grassberger-Sandhas) equation이 얻어진다. 
+\bea 
+\la \phi_{\beta}|U_{\beta\alpha}|\phi_{\alpha}\ra 
+\equiv \la \phi_{\alpha} |V^\beta |\Psi_\alpha^{(+)}\ra 
+\eea 
+
+From the triad equation, $|\Psi_1^{(+)}\ra=G_2V^2|\Psi_1^{(+)}\ra=G_2 U_{21}|\phi_1\ra$,
+\bea 
+U_{11}|\phi_1\ra &=& V^1|\Psi_1^{(+)}\ra =(V_2+V_3)|\Psi_1^{(+)}\ra
+                  = V_2 U_{21}|\phi_1\ra +V_3 U_{31}|\phi_1\ra,\no 
+U_{21}|\phi_1\ra&=& V^2|\Psi_1^{(+)}\ra=(V_3+V_1)|\Psi_1^{(+)}\ra
+                =V_3G_3 U_{31}|\phi_1\ra+V_1|\phi_1\ra+V_1G_1 U_{11}|\phi_1\ra,\no 
+U_{31}|\phi_1\ra&=&V^3|\Psi_1^{(+)}\ra=(V_1+V_2)|\Psi_1^{(+)}\ra
+                =V_1|\phi_1\ra+V_1G_1 U_{11}|\phi_1\ra
+                +V_2G_2 U_{21}|\phi_1\ra
+\eea 
+
+Thus, we get AGS equation, from $V_1|\phi_1\ra=(E_1-H_0)|\phi_1\ra=G_0^{-1}|\phi_1\ra$,
+\bea 
+U_{\beta\alpha}=\bar{\delta}_{\alpha\beta} G_0^{-1} +
+  \sum_{\gamma} \bar{\delta}_{\gamma\beta} V_\gamma G_\gamma U_{\gamma\alpha},
+  \quad  \bar{\delta}_{\alpha\beta}=1-\delta_{\alpha\beta} 
+\eea 
+Be careful that the energy in the resolvent are given as $E_1$( $G_i=1/(E_1+i\epsilon-H_i)$)
+for half on-shell U-matrix. 
+
+When all particles are identical, we would have relations for bosons and fermions,
+\bea 
+P_{ij}|\Psi\ra =\pm |\Psi\ra, 
+\eea 
+from the definition of Faddeeve components
+\bea 
+|\psi_2\ra&=&G_0 V_2|\Psi\ra =G_0 V_2 (P_{12}P_{23})^\dagger P_{12}P_{23}|\Psi\ra 
+             =P_{12}P_{23} G_0 V_1|\Psi\ra \no 
+          &=& P_{12}P_{23}|\psi_1\ra , \no 
+|\psi_3\ra&=&P_{23}P_{12}|\psi_1\ra   
+\eea 
+Thus,\footnote{We can verify that this satisfies the 
+condition for both bosons and fermions, $P_{ij}|\Psi\ra =\pm |\Psi\ra$} 
+\bea 
+|\Psi\ra =(1+P^++P^{-})|\psi_1\ra 
+\eea 
+
+
+\section{Derivation of Faddeev equation: Skip}
+3-body system의 wave function or state $|\Psi\ra$ would satisfy Schrodinger equation,
+\bea
+i\frac{\del}{\del t} |\Psi\ra=(H_0+V)|\Psi\ra
+\eea
+Energy eigenstate 라고 생긱하면, LS equation 의 kernel은 
+\bea
+K(z)=G(z)V=G_0(z)V+G_0(z)VG_0(z)V+\dots
+\eea
+으로 마지막 식은 Born series 전개로 생각할 수 있다. 그러나, 이러한 전개는 
+비 실용적이며(Born series가 diverge 할 수도 있다.),
+ Faddeev의 의하면, unique solution 을 주지도 못한다. Three body system의 경우 
+kernel $G_0(z)V$는 $\delta$-function을 momentum space에서 가지게 되어 singular
+하게 된다.
+
+2-body 의 경우는 T-matrix가 바로 scattering amplitude 및 cross section과 연관이 있지만, 
+3-body 에서의  T-matrix는 scattering cross section과 직접 연결되지 못한다.
+\bea
+T(z)=V+VG(z)V
+\eea
+여기서, 3-body T-matrix, $V=V_1+V_2+V_3$, $G(z)=1/(z-H)$.  이식을 LS equation 형식으로 바꾸면,
+\bea
+T(z)=V+VG_0(z)T(z)
+\eea
+그러나, 이 경우도 여전히 singular한 문제가 있다. 만약 bound-state가 있는 경우는 Born-series는 
+올바른 bound-state pole을 주지 못하므로, re-sum을 해야한다.(즉 non-perturvative 하다.)
+
+Faddeev는 $T(z)$를 분해했다.
+\bea
+T(z)&=&T^{(1)}(z)+T^{(2)}(z)+T^{(3)}(z),\no 
+T^{(k)}_{ij}(z)&=&V_{ij}+V_{ij}G_0(z)T_{ij}(z)
+\eea
+이 식을 다시 rearrange하면, 
+\bea
+[1-V_{ij}G_0](z)T^{(k)}(z)=V_{ij}+V_{ij}G_0(z)[T^{(i)}(z)+T^{(j)}(z)]
+\eea 
+이 되고 , $T_{ij}(z)=V_{ij}+V_{ij}G_0(z) T_{ij}(z)$ 를 이용하면(즉,
+$T_{ij}$는 $V_{ij}$ interaction 만이 포함된다. 또한 $T^{(k)}(z)$와 
+$T_{ij}(z)$ 는 다르다. $T_{ij}(z)$는 two-body interaction 만을  포함하는 
+3-body 에서의 two-body sector 인반면에 , $T^{(k)}(z)$ 는 disconneted diagram
+이 포함되지 않는  3-body matrix 이다.
+,
+\bea
+T^{(k)}(z)=T_{ij}(z)+T_{ij}(z)G_0(z)[T^{(i)}(z)+T^{(j)}(z)]
+\eea
+가 얻어진다.
+
+
+정리하면,
+In terms of Faddeev component of wave function, (anti-)symmetrized wave function
+can be represented by
+\bea
+|\Psi\ra_{S,A}=|\Psi\ra_1+|\Psi\ra_2+|\Psi\ra_3
+\eea
+where $\Psi$ represent all physical quantum numbers. This implies that
+all three $|\Psi\ra_i$ have the same quantum numbers and only have 
+different naming for particles. And each $|\Psi\ra_{i;jk}$
+is already (anti-)symmetrized for $jk$ exchange.
+
+$\bullet$ {\bf Bound state} 의 경우:
+Bound state problem 의 경우는 
+\bea
+|\psi^{(k)}\ra=G_0(z)T_{ij}(z)[|\psi^{(i)}\ra+|\psi^{(j)}\ra]
+\eea
+의 homogeneous eq.을 만족시킨다.
+
+$\bullet$ {\bf Scattering}의 경우, 만약 particle 1 scattering on a bound state of 2 and 3,
+\bea
+|\psi^{(1)}\ra&=&\Phi_1+G_0(z)T_{23}(z)[|\psi^{(2)}\ra+|\psi^{(3)}\ra],\no 
+|\psi^{(2)}\ra&=&G_0(z)T_{31}(z)[|\psi^{(3)}\ra+|\psi^{(1)}\ra],\no
+|\psi^{(3)}\ra&=&G_0(z)T_{12}(z)[|\psi^{(1)}\ra+|\psi^{(2)}\ra]
+\eea
+with
+\bea
+T^{(k)}(z)&=&T_{ij}(z)+T_{ij}(z) G_0(z)[T^{(i)}(z)+T^{(j)}(z)],\no
+T_{ij}(z)&=&V_{ij}+V_{ij}G_0(z)T_{ij}(z)
+\eea
+where $z=E\pm i\epsilon$ and $G_0(z)=(z-H_0)^{-1}$. 
+특히 two-body t-matrix in three body space는
+$$G_\alpha V_\alpha=G_0 t_\alpha$$
+를 만족시킨다. 따라서, two-body potential 대신 two-body t-matrix
+를 이용하여 식을 쓸 수도 있다.
+
+ $\bullet$ {\bf  Schrodinger equation form: } bound state나
+ scattering state나 모두
+\bea
+(E-H_0-V_{23})|\psi^{(1)}\ra&=&V_{23}[|\psi^{(2)}\ra+|\psi^{(3)}\ra],\no 
+(E-H_0-V_{31})|\psi^{(2)}\ra&=&V_{31}[|\psi^{(3)}\ra+|\psi^{1)}\ra],\no 
+(E-H_0-V_{12})|\psi^{(3)}\ra&=&V_{12}[|\psi^{(1)}\ra+|\psi^{(2)}\ra]
+\eea
+또는
+\bea
+(E-H_0-V_{i})|\psi^{(i)}\ra&=&V_{i}[|\psi^{(j)}\ra+|\psi^{(k)}\ra]
+\eea
+의 형식이 된다.
+
+
+
+
+\section{Explicit form of Faddeev equation in momentum space
+and configuration space: None partial wave form}
+Faddeev eq.은  momentum space, configuration space 에서
+LS form and Schrodinger form으로 쓸 수 있다. 또한, potential 대신, two-body t-matrix를
+이용하여 식을 쓸 수도 있다.
+또한
+wave function에 대한 식을 푸는 대신 scattering amplitude에 대한 
+식을 풀 수도 있다. 
+
+어떤 경우나 integral equation 형식으로 쓰건, integro differential equation 으로 쓰건, 위 식들을 projection 시키기만 하면
+얻어진다. partial wave state로의 projection은 
+다음 section 에서  살펴보도록 하자. 
+
+$\bullet$ {\bf Momentum space LS form:} 
+momentum space에서는 t-matrix를 이용한 식이 편리하다.
+\bea
+|\psi_i\ra=|\phi_i\ra\delta_{i,1}+G_0 t^{(i)}
+           ( |\psi_j\ra+|\psi_k\ra)
+\eea
+where, I set the asymptotic state is '1' configuration.
+Then, projection to momentum space gives
+\bea
+\la \vp\vq|\psi_i\ra=\la \vp \vq|\psi_i\ra\delta_{i,1}
+       +\int d\vp' d\vq' \la \vp\vq| G_0 t^{(i)}|\vp'\vq'\ra
+        (\la \vp'\vq'|\psi_j\ra+\la\vp'\vq'|\psi_k\ra)     
+\eea
+여기서, 
+\bea
+\la \vp\vq|G_0(E) t^{(i)}(E)|\vp'\vq'\ra
+&=&\frac{1}{E-E_{\vp\vq}+i\epsilon}
+   \la \vp\vq|t^{(i)}|\vp'\vq'\ra \no
+\la \vp\vq|t^{(i)}(E)|\vp'\vq'\ra
+&=&\la \vq\vq|V_i|\vp'\vq'\ra
+  +\la \vp\vq|V G_0 t^{(i)}(E)|\vp'\vq'\ra\no
+&=&\delta^{(3)}(\vq-\vq')\la \vp|V_i|\vp'\ra
+   +\int d^3 p''\la \vp|V|\vp''\ra
+    \frac{1}{E-E_{\vp''\vq''}+i\epsilon}
+     \la \vp'' \vq'|t^{(i)}(E)|\vp'\vq'\ra  
+\eea
+로 쓸 수 있고, 만약 two-body t-matrix in 2-body system 을 아는 경우에는
+해를
+\bea
+{}_i\la \vp \vq|t^{(i)}(E)|\vp\vq\ra_i=\delta^{(3)}(\vq-\vq')
+                                 \la \vp|\hat{t}(E-E_{q'})|\vp'\ra
+\eea
+로 쓸 수 있다.\footnote{예를 들어 하나의 covention 에서 $E_{pq}=\frac{p^2}{m}+\frac{3}{4m}q^2$이다.}
+따라서, Faddeev equation은 
+\bea
+\la \vq\vq|\psi_i\ra=\la\vp\vq|\phi_i\ra\delta_{i,1}
+   +\int d^3\vp' d^3 p'' d^3 q''
+    \frac{1}{E-E_{p'q}+i\epsilon}\la \vp|\hat{t}(E-E_{q})|\vp'\ra
+          \la \vp'\vq|P|\vp''\vq''\ra\la\vp''\vq''|\psi_i\ra                        
+\eea
+Bound state 의 경우는 위식의 free term을 없애면 된다.
+
+$\bullet${\bf Schrodinger form in configuration space:}
+Projecting on configuration space gives, 
+\bea
+(E-H_0)\la \vx\vy|\psi_i\ra=
+\int d^3 \vx' d^3 \vy' d^3 \vx'' d^3 \vy''
+\la \vx\vy|V_i|\vx'\vy'\ra
+                            \la \vx'\vy'|(1+P)|\vx''\vy''\ra
+                            \la \vx''\vy''|\psi_i\ra
+\eea
+If potential is local, we can write 
+\bea
+(E-H_0)\la \vx\vy|\psi_i\ra=
+\int d^3 \vx' d^3 \vy' V_i(\vx)
+                      \la \vx\vy|(1+P)|\vx'\vy'\ra
+                      \la \vx'\vy'|\psi_i\ra
+\eea
+
+\section{Partial wave decomposition of Faddeev component}
+
+Let us write a complete set,
+\bea
+\sum_\alpha \int dx x^2 \int dy y^2 |\alpha x y\ra\la \alpha x y|=1
+\eea
+and define,
+\bea
+\la \vx'\vy'|\alpha x y\ra
+=\frac{\delta(x'-x)}{x'x}\frac{\delta(y'-y)}{y'y}
+ {\cal Y}_{\alpha}(\hat{x}'\hat{y}')
+\eea
+where, ${\cal Y}_\alpha(\hat{x}\hat{y})$ can be thought as
+generalized bipolar spherical Harmonics.
+\footnote{
+Bipolar spherical harmonics is
+\bea
+{\cal Y}_{l_1 l_2}^{LM}(\hat{x}\hat{y})\equiv[Y_{l_1}(\hat{x})\otimes Y_{l_2}(\hat{y)}]_{LM}
+\equiv\sum_{m_1,m_2}\la L M|l_1 m_1,l_2 m_2\ra 
+  Y_{l_1m_1}(\hat{x})Y_{l_2m_2}(\hat{y})
+\eea
+} 
+
+Thus, configuration space representation of state,
+$|\psi\ra=\sum_{\alpha}\int dx x^2 dy y^2
+|\alpha x y\ra \la \alpha xy|\psi\ra$,
+\bea
+\la \vx \vy|\psi\ra=\sum_\alpha \la \vx\vy|\alpha x y\ra 
+                    \la \alpha x y|\psi\ra
+\eea
+and write
+\bea
+\la \alpha x y|\psi\ra &=&\frac{F_\alpha(x,y)}{xy} \no
+\la \vx\vy|\alpha x y\ra&=&{\cal Y}_\alpha(\hat{x}\hat{y})
+=\la \alpha \hat{x}\hat{y}|\alpha\ra
+\eea
+Thus, one component of Faddeev Wave function can be written
+\bea
+\psi^{(k)}(\vx,\vy)&=&\sum_\alpha \frac{F^{(k)}_\alpha(x,y)}{x y}{\cal Y}_\alpha(\hat{x}\hat{y})
+\eea
+From now, let us assume that radial function $F_\alpha(x,y)$ is known.
+\footnote{
+In fact, implicitly there is another index $|\vp,\alpha_i\ra$ for
+incoming states before scattering.
+Thus, we may further decompose
+\bea
+\psi^{(k)}(\vx,\vy)&=&\sum_{\alpha',\alpha} 
+           \frac{F^{(k)}_{\alpha',\alpha}(x,y)}{x y}
+           {\cal Y}_\alpha(\hat{x}\hat{y})
+           \la \alpha,\hat{p}|\vp,\alpha_i\ra
+\eea
+ 
+}
+\subsection{Momentum space in LS form}
+\bea
+\la \alpha p q|\psi_i\ra
+&=&\la \alpha pq|\phi_i\ra\delta_{i1}
+  +\la \alpha p q| G_0 t^{(i)}P|\psi_i\ra 
+\eea
+Using 
+\bea
+\la \alpha p q|G_0(E)|\alpha' p' q'\ra
+&=&\delta_{\alpha\alpha'}\frac{\delta(p-p')}{pp'}\frac{\delta(q-q')}{qq'}\frac{1}{E-\frac{p^2}{m}-\frac{3}{4m}q^2+i\epsilon} \no
+{}_i\la \alpha p q|t^{(i)}(E)|\alpha' p' q'\ra_i
+&=&\frac{\delta(q-q')}{qq'}
+   \delta_{\alpha_y \alpha'_y}
+   \hat{t}_{\alpha_x,\alpha'_x}(p p',E-\frac{3}{4m}q^2)
+\eea
+Thus,
+\bea
+\la \alpha p q|\psi_i\ra
+&=&\la \alpha pq|\phi_i\ra\delta_{i1}
+  +\frac{1}{E-\frac{p^2}{m}-\frac{3}{4m}q^2+i\epsilon}
+  \sum_{\alpha'}\int dp' p^{'2} \delta_{\alpha_y\alpha'_y}
+     \hat{t}_{\alpha_x,\alpha'_x}(p p',E-\frac{3}{4m}q^2)\no
+  & &\qquad\qquad\times 
+  \sum_{\alpha''}\int dp'' p^{''2}\int dq'' q^{''2}    
+  \la \alpha' p' q'| P|\alpha'' p'' q''\ra
+  \la\alpha'' p'' q''|\psi_i\ra 
+\eea
+\subsection{Configuration space in Schrodinger form}
+Projecting $\la \alpha xy|$,
+\bea
+\la \alpha xy|E-H_0-V_i|\psi^i\ra=\la \alpha xy|V_i P|\psi_i\ra \no
+\eea
+If we let 
+$\la xy\alpha |\psi^i\ra\equiv \frac{F^{(i)}_\alpha(x,y)}{xy}$ 
+and if potential does not contain any derivatives,
+\bea
+\la xy\alpha|H_0+V_i|\psi^i\ra = 
+\sum_{\alpha'}
+\frac{1}{xy}[-\Delta^{(\alpha)}(x,y)\delta_{\alpha\alpha'}
+             +\hat{V}_{\alpha\alpha'}(x) ] F^{(i)}_{\alpha'}(x,y)
+\eea
+with
+\footnote{
+For two-body case, Schrodinger equation for full wave
+function is written as
+\bea
+T_l(x)\equiv \frac{-1}{2\mu}\frac{1}{x^2}\frac{d}{dx}(x^2\frac{d}{dx})+\frac{1}{2\mu}\frac{l(l+1)}{x^2} 
+\eea
+And
+\bea
+[T_{l'}(x)-E]\Psi^J_{l's ls}(x)
++\sum_{l''}{\cal V}^J_{l'sl''s}(x)\Psi^J_{l''s ls}(x)=0
+\eea
+with
+\bea
+{\cal V}^J_{l'sl''s}(x)\equiv
+\la {\cal Y}^{JM}_{l's}|V(x)|{\cal Y}^{JM}_{ls}\ra
+\eea
+Using $\Psi^J_{l''s ls}(x)=\frac{u^J_{l's ls}(x)}{x}$,
+above equation can be rewritten as
+\bea
+[\tilde{T}_{l'}(x)-E]u^J_{l's ls}(x)
++\sum_{l''}{\cal V}^J_{l'sl''s}(x)u ^J_{l''s ls}(x)=0
+\eea
+with
+\bea
+\tilde{T}_{l'}(x)=-\frac{1}{2\mu}\frac{d^2}{dx^2}
+\eea
+Be careful that if there was a derivative in the potential
+the last term should written as 
+$x \sum_{l''}{\cal V}^J_{l'sl''s}(x)\frac{u ^J_{l''s ls}(x)}{x}$
+}
+\bea
+\la \alpha x y|H_0|\alpha' x' y'\ra&=&\delta_{\alpha\alpha'}
+                                 \frac{\delta(x-x')}{xx'}
+                                 \frac{\delta(y-y')}{yy'}
+                                 (-\Delta^{(\alpha)}(x,y)) \no
+\la \alpha xy|V_i|\alpha' x' y'\ra&=&
+       \hat{V}_{\alpha\alpha'}(x)
+       \frac{\delta(x-x')}{xx'}\frac{\delta(y-y')}{yy'} 
+       \quad \mbox{ if local potential}                 
+\eea
+Thus,
+\bea
+\frac{1}{xy}\sum_{\alpha'}
+[(E+\Delta^{(\alpha)}(x,y))\delta_{\alpha\alpha'}
+ -\hat{V}_{\alpha\alpha'}(x)]F^{(i)}_{\alpha'}(x,y)
+=\sum_{\alpha'} \hat{V}_{\alpha\alpha'}(x)
+ \sum_{\alpha''}\int dx' x'^2 dy' y'^2 
+   \la \alpha' x y|P|\alpha'' x' y'\ra 
+   \frac{F^{(i)}_{\alpha''}(x',y')}{x' y'}  
+\eea
+If using the $h$ function in the following section,
+we can write
+\bea
+\sum_{\alpha'}
+[(E+\Delta^{(\alpha)}(x,y))\delta_{\alpha\alpha'}
+ -\hat{V}_{\alpha\alpha'}(x)]F^{(i)}_{\alpha'}(x,y)
+=2\sum_{\alpha'} \hat{V}_{\alpha\alpha'}(x)
+ \sum_{\alpha''}\int dz\hat{h}_{\alpha'\alpha''}(x,y,z)  
+  F^{(i)}_{\alpha''}(x',y')  
+\eea
+\section{Permutation}
+The representation of permutation operator is in the heart of three body calculation.
+Permutation operator gives
+\bea
+{}_1\la x y\alpha| P_{12}P_{23}+P_{13}P_{23}|x' y' \alpha'\ra_1
+={}_1\la xy \alpha|x' y'\alpha'\ra_2+{}_1\la xy \alpha|x' y'\alpha'\ra_3
+\eea
+where, the meaning of above amplitude is that
+overlap matrix element betwen the state with
+relative position is $x, y$ and quantum numbers $\alpha$ 
+in $1(23)$ configuration and 
+the state with relative position $x',y'$ and quantum numbers
+$\alpha'$ in $2(31)$ or $3(12)$ configuration. 
+
+By using $P_{13}P_{23}=P_{23}P_{12}P_{23}P_{23}$ and 
+\bea
+{}_1\la x y \alpha|x' y' \alpha'\ra_3
+={}_1\la x y \alpha|P_{13}P_{23}|x' y' \alpha'\ra_1
+=(-1)^{l+s+t}(-1)^{l'+s'+t'}{}_1\la x y\alpha|P_{12}P_{23}|x'y'\alpha'\ra_1
+={}_1\la x y \alpha|x' y'\alpha'\ra_2
+\eea
+where we use $(-1)^{l+s+t}=-1$ from the anti-symmetrization of $(23)$ pair
+in $|x y\alpha\ra_1$. Thus, we only have to 
+consider ${}_1\la x y \alpha|x' y'\alpha'\ra_2$.
+
+\subsection{Explicit form of permutation operator}
+There are different representation of permutation
+operator. Here, let us use $h_{\alpha\alpha'}$ form.
+Assume that
+\bea
+\left(\begin{array}{c} \vx' \\ \vy'\end{array}\right)
+=\left(\begin{array}{cc} c_1 & s_1 \\ s_2 &c_2\end{array}\right)
+ \left(\begin{array}{c} \vx \\ \vy\end{array}\right)
+\eea
+Thus,
+\bea
+{}_1\la \vx_1 \vy_1|P^{\pm}|\vx'_1\vy'_1\ra_1
+=\delta^{(3)}(\vx'_1-c_1\vx_1-s_1\vy_1)
+ \delta^{(3)}(\vy'_1-s_2\vx_1-c_2\vy_1)
+\eea
+
+Thus finally we have
+\bea 
+& &{}_1\la x y (l_x l_y)L M| x' y'(l'_xl'_y)L M \ra_2
+={}_1\la x y (l_x l_y)L M|P^+| x' y'(l'_xl'_y)L M \ra_1
+\no
+&\equiv&\int_{-1}^1 dz \delta(x'-|x'_1|)\delta(y'-|y'_1|) 
+    \hat{h}^{LM}_{l_xl_y,l'_x l'_y}(x,y,z)\frac{1}{ x y x' y'}
+\eea
+where,
+\bea
+|x'_1|&=&\sqrt{(c_1 x)^2+(s_1 y)^2+2 c_1 s_1 x y z} \no
+|y'_1|&=&\sqrt{(s_2 x)^2+(c_2 y)^2+2 s_2 c_2 x y z}
+\eea
+with
+\bea
+\hat{h}^{LM}_{l_xl_y,l'_xl'_y}(x,y,z)
+&=&\sum_k \frac{\hat{k}\sqrt{\hat{l}_x\hat{l}_y\hat{l}'_x\hat{l}'_y}}{2}
+        P_k(z)
+ \sum_{l_1+l_2=l'_x}\sum_{l_3+l_4=l'_y}
+ \sqrt{\frac{(2l'_x+1)!(2l'_y+1)!}{(2l_1)!(2l_2)!(2l_3)!(2l_4)!}}
+ \no
+& &\times\frac{x^{l_1+l_3+1}y^{l_2+l_4+1}}{(x')^{l'_x+1}(y')^{l'_y+1}}
+ c_1^{l_1}c_2^{l_4}s_1^{l_2}s_2^{l_3}
+ \sum_{l_5}\hat{l}_5\threejsymbol{k}{l_x}{l_5}{0}{0}{0}
+  \threejsymbol{l_1}{l_3}{l_5}{0}{0}{0}
+  \no & &\times
+  \sum_{l_6}\hat{l}_6(-1)^{l_6+l_x+L}
+  \threejsymbol{k}{l_y}{l_6}{0}{0}{0}
+  \threejsymbol{l_2}{l_4}{l_6}{0}{0}{0}
+  \sixjsymbol{l_x}{l_y}{L}{l_6}{l_5}{k}
+  \no & &\times
+  \ninejsymbol{l_1}{l_3}{l_5}{l_2}{l_4}{l_6}{l'_x}{l'_y}{L}          
+\eea
+form is useful to obtain full wave function
+in a form
+\footnote{
+We may think
+\bea
+(xy)\la \alpha xy|P^+|\psi\ra_1
+=\sum_{\alpha'}\int_{-1}^{+1} du \hat{h}_{\alpha\alpha'}(x,y,u)F_{\alpha'}(x',y')
+\eea
+}
+\bea
+(x y){}_1\la \alpha x y|(1+P)|\psi\ra_1
+&=&(x y){}_1\la \alpha x y|\psi\ra_1+2(xy){}_1\la \alpha x y|P^+|\psi\ra_1 \no
+&=&
+F_\alpha^1(x,y)
++2\sum_{\alpha'}\int_{-1}^1 dz \hat{h}_{\alpha\alpha'}(x,y,z)
+ F^1_{\alpha'}(x',y')
+\eea
+
+\bea
+\int \int d\hat{x} d\hat{y} {\cal Y}^*_{\alpha}(\hat{x}\hat{y})
+     \frac{xy}{x'y'}F_{\alpha'}(x', y')
+      {\cal Y}_{\alpha'}(\hat{x}',\hat{y}')
+ =\int^{+1}_{-1} du \hat{h}_{\alpha\alpha'}(x,y,u)F_{\alpha'}(x',y')     
+\eea
+
+\section{Numerical realization of the Faddeev equation}
+The first thing to do is to make the equation discrete.
+Let us use spline interpolation.
+\bea
+F_\alpha(x,y)=\sum_{m_x,m_y} C^\alpha_{m_x,m_y} 
+             S^x_{m_x}(x) S^y_{m_y}(y)
+\eea  
+
+We can choose collocation point's such that the same $m_x$
+and $m_y$ index can be used also for collocation points.
+Then, we can represent wave function at collocation
+points by indexes $n=(\alpha,m_x,m_y)$, $n'=(\alpha',m'_x,m'_y)$.
+This makes,
+\bea
+F_{\alpha}(x_{m_x},y_{m_x})\to F_{n}
+      =\sum_{n'}[B]_{nn'} C_{n'} 
+\eea 
+with
+\bea
+[B]_{nn'}
+=\delta_{\alpha\alpha'}S^x_{m'_x}(x_{m_x})S^y_{m'_y}(y_{m_y})
+\eea
+
+$\bullet$ {\bf identity:}
+Then, we can convert
+\bea
+E\delta_{\alpha\alpha'} F_{\alpha'}(x_{m_x},y_{m_x})
+\to E[B]_{nn'}C_{n'}
+\eea
+$\bullet$ {\bf potential:}
+\bea
+V_{\alpha,\alpha'}F_{\alpha'}(x_{m_x},y_{m_x})
+\to [V]_{nn'} C_{n'}=([\tilde{V}][B])_{nn'}C_{n'}
+\eea
+where,
+\bea
+[V]_{nn'}&=&V_{\alpha\alpha'}(x_{m_x})
+          S^x_{m'_x}(x_{m_x})S^y_{m'_y}(y_{m_y})
+          =([\tilde{V}][B])_{nn'}\no
+\left[\tilde{V}\right]_{nn'}&=&
+          V_{\alpha\alpha'}(x_{m_x})
+          \delta_{m_x,m'_x}\delta_{m_y,m'_y}
+\eea
+$\bullet$ {\bf kinetic term:}
+\bea
+\Delta^{\alpha}(x,y)\delta_{\alpha\alpha'}F_{\alpha}(x,y)
+\to [\Delta]_{nn'} C_{n'}
+\eea
+where,
+\bea
+[\Delta]_{nn'}&=&\delta_{\alpha\alpha'}
+                 \frac{1}{m}
+             \left[S^{''x}_{m'_x}(x_{m_x})S^y_{m'_y}(x_{m_y})
+            -\frac{l_x(l_x+1)}{x_{m_x}^2}
+              S^{x}_{m'_x}(x_{m_x})S^y_{m'_y}(y_{m_y})\right.
+              \no & &\qquad \left.
+            +S^{x}_{m'_x}(x_{m_x})S^{''y}_{m'_y}(x_{m_y})
+            -\frac{l_y(l_y+1)}{y_{m_y}^2}
+              S^{x}_{m'_x}(x_{m_x})S^y_{m'_y}(y_{m_y}) 
+             \right]     
+\eea
+$\bullet$ {\bf Integral operators}
+For integration, we can use Gaussian quadrature
+\bea
+\int dz F(z)\simeq \sum_{i} w_i F(z_i)
+\eea
+Then, integral part of the equation become
+\bea
+& &2\sum_{\tilde{\alpha}}\hat{V}_{\alpha\tilde{\alpha}}(x)
+\sum_{\alpha'}
+\int dz h_{\tilde{\alpha}\alpha'}(x,y,z)F_{\alpha'}(x',y')\no
+&\to& 2\sum_{\tilde{\alpha}}\hat{V}_{\alpha\tilde{\alpha}}(x)
+\sum_{\alpha'}
+\sum_{i_z} w_{i_z} h_{\tilde{\alpha}\alpha'}(x,y,z_i)
+                   F_{\alpha'}(x',y')\no
+&\to&2\sum_{\tilde{\alpha}}\hat{V}_{\alpha\tilde{\alpha}}(x)
+\sum_{\alpha'}
+\sum_{i_z} w_{i_z} h_{\tilde{\alpha}\alpha'}(x,y,z_i)
+            \sum_{n''} \delta_{\alpha'\alpha''}
+            S_{m''_x}(x')S_{m''_y}(y')C_{n''}   \no
+&\to&2\sum_{n''}
+\sum_{\tilde{\alpha}}\hat{V}_{\alpha\tilde{\alpha}}(x)
+\sum_{i_z} w_{i_z} h_{\tilde{\alpha}\alpha''}(x,y,z_i)             
+            S_{m''_x}(x')S_{m''_y}(y')C_{n''}   \no            
+&=&2\sum_{n''}[H]_{n n''}C_{n''}    
+\eea
+where, $[H]_{n n''}$ can be written as
+\bea
+[H]_{nn''}=\sum_{\tilde{\alpha}}\hat{V}_{\alpha\tilde{\alpha}}(x_{m_x})
+\sum_{i_z} w_{i_z} h_{\tilde{\alpha}\alpha''}(x_{m_x},y_{m_y},z_i) 
+            S_{m''_x}(x';m_x,m_y,z_i)S_{m''_y}(y';m_x,m_y,z_i)
+\eea
+for given $n=(\alpha,m_x,m_y)$, $n''=(\alpha'',m''_x,m''_y)$.
+and $x'$ and $y'$ are function of $m_x,m_y,z_i$.
+We can separate $[H]_{n n'}=\sum_{\tilde{n}}
+[\tilde{V}]_{n\tilde{n}}[\tilde{H}]_{\tilde{n}n'}$
+with
+\bea
+[\tilde{H}]_{\tilde{n}n''}
+=\sum_{i_z}w_{i_z} 
+ h_{\tilde{\alpha}\alpha''}(x_{\tilde{m}_x},y_{\tilde{m}_y},z_i)
+ S^x_{m''_x}(x^h(m_x,m_y,z_i))
+ S^y_{m''_y}(y^h(m_x,m_y,z_i))
+\eea
+$\bullet$ {\bf Faddeev equation for bound state:} In abstract matrix notation we have
+\bea
+(E[B]+[\Delta]-[V])[C]=2[H][C]
+\to [A][C]=([V]-[\Delta]+2[H])[C]=E[B][C]
+\eea
+Though the whole equation is to be $k(N+1)$ dimension 
+for each coordinate, bound state vanishes at large separation,
+thus, in actual calculation we only need $kN$ dimension.
+
+$\bullet$ {\bf scattering state:}
+Scattering problem is different in the fact that the wave function
+does not vanish at large separation.
+Thus, if we want to express the equation in $kN$ dimension,
+there is a term coming from boundary condition.
+Let us say the wave function as
+\bea
+F_\alpha(x,y)&=&\sum_{m'_x=0}^{k (N_x+1)-1}
+              \sum_{m'_y=0}^{k (N_y+1)-1}  
+              C_{\alpha,m'_x,m'_y} S_{m'_x}(x)S_{m'_y}(y)\no
+             &=& \sum_{m'_x=1}^{k N_x}
+              \sum_{m'_y=1}^{k N_y}  
+              C_{\alpha,m'_x,m'_y} S_{m'_x}(x)S_{m'_y}(y)
+             + \sum_{m'_x=1}^{k (N_x+1)-1}
+              \sum_{m'_y=k N_y+1}^{k (N_y+1)-1}  
+              C_{\alpha,m'_x,m'_y} S_{m'_x}(x)S_{m'_y}(y)
+\eea
+If $C_{\alpha, m'_x,m'_y}$ outside of the boundary 
+is known by the boundary condition,  then
+acting $\hat{L}$ makes the first term as
+the same form as Faddeev equation of bound state
+and remaining terms as additional terms.
+
+For example, if $k=2$ and boundary condition was
+$C_{m_x,m_y=2N_y}=1$. Then , by renaming last two spine 
+function and its coefficient as $2N_y+1\leftrightarrow 2N_y$
+makes,
+\bea
+F_\alpha(x,y)&=& \sum_{m'_x=1}^{2 N_x}
+              \sum_{m'_y=1}^{2 N_y}  
+              C_{\alpha,m'_x,m'_y} S_{m'_x}(x)S_{m'_y}(y)
+             +\sum_{m'_x=1}^{2 N_x} 
+              C_{\alpha,m'_x} C^y_{\alpha,m'_y=2N_y+1} 
+              S_{m'_x}(x)S_{2N_y+1}(y)
+\eea
+where $C_\alpha,m_x$ is a spline coefficients 
+of asymptotic 2-body bound state wave function
+and the last spline index for $y$ is actually
+for $S_{2N_y}(y)$. Then applying $\hat{L}$ gives
+usual Faddeev equation of form $[A]C$ and
+additional boundary condition term
+\bea
+[b]_n=\sum_{m'_x=1}^{2 N_x} 
+              C_{\alpha,m'_x} C^y_{\alpha,m'_y=2N_y+1} 
+              \hat{L} S_{m'_x}(x_{m_x})S_{2N_y+1}(y_{m_y})
+\eea
+For example, explicit form of $[b]$ term gives
+\bea
+b_n&=&\sum_{\alpha' j'_x}C_{\alpha'j'_x}
+    \left[(E-V_{\alpha\alpha'}(x_{j_x}))
+    S^x_{j'_x}(x_{j_x})S^y_{2N_y+1}(y_{j_y})\right.\no & &
+    -\frac{\hbar^2}{m}\delta_{\alpha\alpha'}
+    \left( S''_{j'_x}(x_{j_x})S_{2N_y+1}(y_{j_y})
+           -\frac{l_x(l_x+1)}{x_{j_x}^2}
+           S_{j'_x}(x_{j_x})S_{2N_y+1}(y_{j_y})
+         \right.\no & &\left.  
+         + S_{j'_x}(x_{j_x})S''_{2N_y+1}(y_{j_y})
+           -\frac{l_y(l_y+1)}{y_{j_y}^2}
+           S_{j'_x}(x_{j_x})S_{2N_y+1}(y_{j_y})   
+    \right)\no & &
+    +V_{\alpha\alpha'}(x_{j_x})
+    \sum_{i_u=1}^{N_u}\dots
+\eea
+
+Thus, equation looks like, $[A] c=b$.
+\bea
+([V]-[\Delta]-E[B]+[H])[C]=[b]
+\eea
+
+\section{Linear Algebra in numerical method}
+The problem is now to solve linear algebra problem
+of either $[A]c=E[B]c$ or $[A]c=b$. However, because of the
+large dimension of matrix $[A]$, we cannot use direct
+inversion of matrix $[A]$. We need some iterative 
+algorithm to solve this problem.
+
+\subsection{Bound state problem}
+According to Rimas, there is two iterative algorithm to solve
+$[A]x=E[B]x$ type equation. Both are some variation of
+Lanczo's algorithm using eq. of form $[B]^{-1}[A]x=E x$.
+
+(1) Inverse iteration method using equation of form
+\bea
+(E_0-[B]^{-1}[A])\psi=(E_0-E)\psi
+\eea
+(2) Power method using equation of form
+\bea
+([V]-[\Delta]+[H])\psi=E[B]\psi\to 
+(E_0[B]-[V]+[\Delta])^{-1}[H]\psi=\lambda(E_0)\psi
+\eea
+\subsection{Scattering problem}
+For $Ax=b$ type equation can be solves by
+
+(1) GMRES algorithm
+
+(2) BICGSTAB algorithm
+
+These method requires good preconditioning $M$ such that
+\bea
+M^{-1}Ax=M^{-1}b,\quad\mbox{ or }, A M^{-1}x=M^{-1}b
+\eea
+
+\subsection{TENSOR inversion trick}
+Thus, we need either $[B]^{-1}[A]$ or
+$(E_0[B]-[V]+[\Delta])^{-1}[H]$ for bound state problem and
+also they an be used as a preconditioning for scattering problem.
+Because of the block diagonal property of matrix,
+we may use $[L][U]$ factorization for 
+each block diagonal matrices to obtain inverse of a matrix.
+However, it is not effective. Thus, we need to use
+tensor inversion trick
+which uses the tensor structure of matrices.
+
+Matrix $[M]=(E_0[B]-[V]+[\Delta])$ can be grouped as follows:
+\bea
+[M]_{n,n'}&=&\delta_{\alpha,\alpha'}
+     \left( \left[(E_0-V_{\alpha,\alpha'}
+     -\frac{\hbar^2}{m}\frac{l_x(l_x+1)}{x_{j_x}^2}) 
+     S_{j'_x}(x_{j_x})
+     +\frac{\hbar^2}{m}S''_{j'_x}(x_{j_x})\right] 
+     S^y_{j'_y}(y_{j_y}) \right.\no & &\left.
+     +S^x_{j'_x}(x_{j_x})
+     \left[-\frac{\hbar^2}{m}\frac{l_y(l_y+1)}{y_{j_y}^2})
+     S_{j'_y}(y_{j_y})
+     +\frac{\hbar^2}{m}S''_{j'_y}(y_{j_y})\right]
+     \right)
+\eea
+{\bf 이 식은 central potential 인 경우에만 성립한다.} 
+$[V]$는 partial wave 에 대해서,
+일반적으로 diagonal 이 아니므로, 그 경우에는
+완전한 tensor decomposition 은 불가능하다. 
+
+Introducing matrices
+\begin{align}
+&[1^\alpha]_{\alpha,\alpha'} 
+&=&\delta_{\alpha,\alpha'} 
+&\mbox{(of dimension $N_\alpha\times N_\alpha$)} \no
+&[\delta^a_{\alpha_0}]_{\alpha,\alpha'}
+&=&\delta_{\alpha_0,\alpha}\delta_{a,\alpha'}
+&\mbox{(of dimension $N_\alpha\times N_\alpha$)}\no
+& & & &\mbox{$N_\alpha$ distinct matrices} \no
+&[N^X]_{j_x,j'_x}
+&=& S^x_{j'_x}(x_{j_x})
+&\mbox{(of dimension $k_x N_x \times k_x N_x$)}\no
+&[N^Y]_{j_y,j'_y}
+&=& S^y_{j'_y}(y_{j_y})
+&\mbox{(of dimension $k_y N_y \times k_y N_y$)}\no
+&[D^X_{\alpha_0}]_{j_x,j'_x}
+&=& \left( E_0-V_{\alpha_0,\alpha_0}(x_{j_x})
+          -\frac{\hbar^2}{m}\frac{l_x(l_x+1)}{x_{j_x}^2}
+          \right) S_{j'_x}(x_{j_x})
+          +\frac{\hbar^2}{m}S''_{j'_x}(x_{j_x})
+&\mbox{(of dimension $k_x N_x\times k_y N_y$)}\no
+& & & &\mbox{$N_\alpha$ distinct matrices} \no 
+&[D^Y]_{j_x,j'_x}
+&=& -\frac{\hbar^2}{m}\frac{l_x(l_x+1)}{x_{j_x}^2}
+          S_{j'_x}(x_{j_x})
+          +\frac{\hbar^2}{m}S''_{j'_x}(x_{j_x})
+&\mbox{(of dimension $k_x N_x\times k_y N_y$)}
+\end{align}
+In terms of these matrices, which decomposes
+partial wave state, x-space and y-space,
+$[B]$ becomes,
+\bea
+\left[B\right]_{nn'}=[[1^\alpha]_{\alpha\alpha'}\otimes
+           [N^X]_{j_x,j'_x}\otimes 
+           [N^Y]_{j_y,j'_y}]
+\eea
+and its inversion
+\bea
+[B]^{-1}=[[1^\alpha]\otimes[N^X]^{-1}\otimes [N^Y]^{-1}]
+\eea
+where, $[N^X]^{-1}$, $[N^Y]^{-1}$ can be obtained by
+direct methods.
+We can have
+\bea
+\delta_{\alpha,\alpha'}
+\left[(E_0-V_{\alpha,\alpha'}
+     -\frac{\hbar^2}{m}\frac{l_x(l_x+1)}{x_{j_x}^2}) 
+     S_{j'_x}(x_{j_x})
+     +\frac{\hbar^2}{m}S''_{j'_x}(x_{j_x})\right]
+\to \sum_{\alpha_0}[\delta_{\alpha_0}]_{\alpha\alpha'}
+            \otimes [D^X_{\alpha_0}]_{j_x,j'_x}  
+\eea
+Then,
+\bea
+[M]=\left[\sum_{\alpha_0}
+    [\delta_{\alpha_0}]_{\alpha\alpha'}\otimes
+    [D_{\alpha_0}^X]_{j_x j'_x}\otimes [N^Y]_{j_y j'_y}\right]
+    +\left[[1]_{\alpha\alpha'}\otimes[N^X]_{j_x j'_x}
+     \otimes [D^Y]_{j_y j'_y}\right]
+\eea
+Matrix inversion of $[M]$ can be done
+if we factor out interpolation matrix $[B]$
+and introduce diagonal matrices by similarity transformation,
+\bea
+\left[N^X\right]^{-1}[D^X_{\alpha_0}]
+&=&[U^X_{\alpha_0}][d^X_{\alpha_0}][U^X_{\alpha_0}]^{-1}\no
+\left[N^Y\right]^{-1}[D^Y]
+&=&[U^Y][d^Y][U^Y]^{-1}
+\eea
+\bea
+[M]&=&[B]\left[\sum_{\alpha_0}[1^\alpha]\otimes[U^X_\alpha]^{-1}
+             \otimes [U^Y]^{-1}\right]    
+    \left(\left[\sum_{\alpha_0}
+    [\delta_{\alpha_0}]\otimes
+    [d_{\alpha_0}^X]\otimes [1^Y]\right]
+    +\left[[1]\otimes[1^X]
+     \otimes [d^Y]\right] \right)\no & &
+     \left[\sum_{\alpha_0}[1^\alpha]\otimes[U^X_\alpha]
+             \otimes [U^Y]\right] \no
+\left[M\right]^{-1}&=&\left[\sum_{\alpha_0}[1^\alpha]\otimes[U^X_\alpha]
+             \otimes [U^Y]\right]^{-1}
+           \left(\left[\sum_{\alpha_0}
+    [\delta_{\alpha_0}]\otimes
+    [d_{\alpha_0}^X]\otimes [1^Y]\right]
+    +\left[[1]\otimes[1^X]
+     \otimes [d^Y]\right] \right)^{-1}  \no & &
+     \left[\sum_{\alpha_0}[1^\alpha]\otimes[U^X_\alpha]^{-1}
+             \otimes [U^Y]^{-1}\right]^{-1}
+     [B]^{-1}        
+\eea
+
+\section{Krylov space technique: Iterative Orthonormal Vectors}
+Suppose we change the bound state equation into a coupled equations as
+\bea 
+K(-E_b)|\psi\ra=|\psi\ra  
+\eea 
+This equation holds only when energy is at the correct value.
+In most case, we don't know $E_b$ and try to find the $E_b$ by 
+trial of various $E$. Then, for a given trial energy $E$, 
+the trial equation becomes
+\bea 
+K(E)|\psi\ra=\lambda(E)|\psi\ra,  
+\eea 
+so that the $\lambda(E)$ eigenvalues will be different from 1 in most case. 
+Only at the correct energy, $\lambda$ becomes 1. 
+Problem is that even for the trial equation is too large in dimension. 
+(For example, 3-body problem will have dimension 
+$$N=N_\alpha\times N_p\times N_q ,$$
+where $N_\alpha$ is total number of partial waves, $N_p$ and $N_q$ are
+number of mesh in momentum $p$ and $q$)
+Thus, we need a different way to solve trial equation to obtain 
+eigenvalue $\lambda$ and find a value of E such that largest eigenvalue becomes 1.
+
+One idea is to use some basis functions up to ${\cal N}\ll N$ such that 
+the eigenvalue problem can be solved by using standard method. 
+How can find such basis functions? 
+
+Suppose we can write states in terms of orthonormal basis functions,
+\bea 
+|\psi\ra =\sum_{i=0}^{\cal N} c_i |\bar{\varphi}_i\ra 
+\eea 
+Then, the original problem changes into  ${\cal N}$-dimensional matrix equation ,
+\bea 
+\sum_{j=0}^{\cal N} B_{ij}(E) c_j=\lambda(E) c_i,
+\eea 
+where
+\bea 
+B_{ij}=\la \bar{\varphi}_i|K|\bar{\varphi}_j\ra 
+\eea 
+
+If most of eigenvalues are smaller than 1, then the state $K^n|\phi_0\ra $
+which is a combination of all basis states, but only the dominant state contribution
+will be important as increasing $n$. Thus, if we make a basis functions
+in terms of $K^n|\phi_0\ra$, only first small n basis functions will be enough
+to describe the largest eigenvalue states.
+
+(a) start from arbitrary normalized state vector $|\bar{\varphi}_0\ra$. 
+    generate state $|{\varphi}_1\ra$ by,
+    \bea 
+    |{\varphi}_1\ra=K|\bar{\varphi}_0\ra
+    \eea 
+(b) After Orthogonalization and normalization, we get $|\tilde{\varphi}_1\ra$ 
+  and $|\bar{\varphi}_1\ra  $
+  \bea 
+  |\tilde{\varphi}_1\ra&=&|\varphi_1\ra -|\bar{\varphi}_0\ra \la \bar{\varphi}_0|\varphi_1\ra,\no  
+  |\bar{\varphi}_1\ra&=&\frac{|\tilde{\varphi}_1\ra}{||\tilde{\varphi}_1||}
+  \eea 
+  Note that $|\tilde{\varphi}_1\ra$ and $|\bar{\varphi}_1\ra$ are orthogonal to $|\bar{\varphi}_0\ra$.
+(c) repeat (a) and (b). Then, in each time, we generate
+  \bea 
+  |\varphi_{i+1}\ra &=& K|\bar{\varphi}_{i}\ra,\no 
+  |\tilde{\varphi}_{i+1}\ra&=&|\varphi_{i+1}\ra
+                             -\sum_{n=0}^{i} |\bar{\varphi}_n\ra \la \bar{\varphi}_n|\varphi_{i+1}\ra,\no 
+  |\bar{\varphi}_{i+1}\ra&=&\frac{|\tilde{\varphi}_{i+1}\ra}{||\tilde{\varphi}_{i+1}||}.
+  \eea   
+  Note that $|\tilde{\varphi}_{i+1}\ra$ and $|\bar{\varphi}_{i+1}\ra$  are
+  orthogonal to all $|\bar{\varphi}_{n}\ra $ with $n\le i$.
+  And we can express state vector
+  \bea 
+  |\varphi_{i+1}\ra=\sum_{n=0}^{i+1} |\bar{\varphi}_n\ra \la \bar{\varphi}_n|\varphi_{i+1}\ra,
+  \quad \la \bar{\varphi}_{i+1}|\varphi_{i+1}\ra=||\tilde{\varphi}_{i+1}||. 
+  \eea 
+(d) The matrix element $B_{ij}$ can be computed as
+  \bea 
+  B_{ij}&=&\la \bar{\varphi}_i|K|\bar{\varphi}_j\ra=\la \bar{\varphi}_i|{\varphi}_{j+1}\ra \no 
+        &=& 0\quad \mbox{for } i> j+1 \no 
+        &=&  ||\tilde{\varphi}_{j+1}||\quad \mbox{for } i= j+1 \no 
+        &=& \la \bar{\varphi}_i|\varphi_{j+1}\ra\quad \mbox{for } i< j+1 \no 
+  \eea 
+  
+  If kernel K is a hermitian, we may get
+  \bea 
+  B_{ij}&=&\la \bar{\varphi}_i|K|\bar{\varphi}_j\ra=\la{\varphi}_{i+1}|\bar{\varphi}_{j}\ra \no 
+        &=& 0 \quad \mbox{ for } j > i+1  
+  \eea 
+  In this case, the matrix $B$ will be block-diagonal(?) form.
+  
+(e) Now use the standard numerical methods to solve the matrix eigenvalue equation,
+  \bea 
+  B c=\lambda c
+  \eea 
+  since ${\cal N}\ll N$.
+  
+In practice, the ${\cal N}$ is not known a priori. Thus, we need to check convergence
+of the eigenvalue by increasing ${\cal N}$ values. (i.e. compare the eigenvalue 
+$\lambda^{(n)}$ and $\lambda^{(n+1)}$ by increasing $n$ until no eigenvalue change occurs.) 
+In fact, we also need to test convergence of $\lambda$ to 1 by changing trial energy $E$.
+
+This is similar to the Lanczos method for
+\bea 
+A x= B x, \to A x= \lambda B x \to A^{-1} B x=\frac{1}{\lambda} x
+ \to H x=\Lambda x
+\eea 
+where $\Lambda=1/\lambda\to 1$ for correct energy. (Also, $\Lambda=1$ will be
+the largest eigenvalue for the equation $H x=\Lambda x$. 
+
+In case of scattering problem, the matrix equation of form $A\cdot x=b$ have to be
+solved. 
+
+For example, 2-body T-matrix equation basically looks like
+\bea 
+t(k,k_0;E)=V(k,k_0)+\int K(k,k';E)t(k',k_0;E)
+\eea 
+For given half-on-shell momentum $k_0$, we can expand in terms of orthonormal basis functions
+(similarily for potential and kernel),
+\footnote{We may consider, 
+$$\la k|W\ra= \la k|\hat{t}(E)|k_0\ra = \sum_{i=0}^{\cal N} c_i \bar{\varphi}_i(k) $$
+} 
+\bea 
+|W\ra &=& \hat{t}(E)|\phi_0\ra =\sum_{i=0}^{\cal N} c_i |\bar{\varphi}_i\ra 
+\eea 
+\bea 
+\la \bar{\varphi}_i|W\ra = c_i 
+ = \la \bar{\varphi}_i|V(E)|\phi_0\ra 
+   +\sum_{j=0}^{\cal N} \la \bar{\varphi}_i|K(E)|\bar{\varphi}_j\ra 
+   c_j 
+\eea 
+We may set starting vector $|\tilde{\varphi}_0\ra=V(E)|\phi_0\ra$ and define normalized vector
+\footnote{
+In practice, we would need partial wave expression for each state vectors. 
+For a case $|\phi_0\ra$ is a $|^1S_0;k_0\ra$ state case, its partial wave 
+expression will be
+$\alpha, k_i|\phi_0\ra =\delta_{\alpha, ^1S_0}\delta_{k_i,k_0}$. And,
+$\la \alpha,k_i|\tilde{\phi}_0\ra = \sum_{\beta}\sum_j w_{\beta,j} \la \alpha k_i|V|\beta k_j \ra
+   \la \beta k_j|\phi_0\ra $
+} 
+\bea 
+|\bar{\varphi}_0\ra =\frac{|\tilde{\varphi}_0\ra}{||\tilde{\varphi}_0||}.
+\eea 
+Then, 
+\bea 
+c_i&=& \la \bar{\varphi}_i|\bar{\varphi}_0\ra ||\tilde{\varphi}_0||
+    +\sum_{j=0}^{\cal N} B_{ij} c_j \no 
+   &=& \delta_{i0} ||\tilde{\varphi}_0||+ \sum_{j=0}^{\cal N} B_{ij} c_j
+\eea 
+We get the matrix equation ,
+\bea 
+& &\sum_{j=0}^{\cal N} A_{ij} c_j = f_i ,
+\eea 
+where
+\bea  
+& & A_{ij}=\delta_{ij}-B_{ij},\no 
+& & f_i=\delta_{i0} ||\tilde{\varphi}_0||.
+\eea 
+The procedure to obtain orthonormal vectors are the same as previous case,
+
+(a) get $|\bar{\varphi}_0\ra $
+
+(b) get $|\varphi_1\ra$,$|\tilde{\varphi}_1\ra$,$|\bar{\varphi}_1\ra$,
+   \bea 
+   |\varphi_1\ra&=&K|\bar{\varphi}_0\ra \no 
+   |\tilde{\varphi}_1\ra &=&|\varphi_1\ra-|\bar{\varphi}_0\ra\la \bar{\varphi}_0|\varphi_1\ra
+    =|\bar{\varphi}_1\ra  ||\tilde{\varphi}_1||
+   \eea   
+
+(c) repeat to get $|\varphi_{i+1}\ra$,$|\tilde{\varphi}_{i+1}\ra$,$|\bar{\varphi}_{i+1}\ra$,
+   \bea 
+      |\varphi_{i+1}\ra&=&K|\bar{\varphi}_{i}\ra \no 
+      |\tilde{\varphi}_{i+1}\ra
+      &=&|\varphi_{i+1}\ra-\sum_{n=0}^{i} |\bar{\varphi}_{n}\ra\la \bar{\varphi}_n|\varphi_{i+1}\ra
+      \no 
+      |\bar{\varphi}_{i+1}\ra&=&\frac{|\tilde{\varphi}_{i+1}\ra}{ ||\tilde{\varphi}_{i+1}|| }\no 
+   \eea 
+
+(d) solve $\sum_{j=0}^{\cal N} A_{ij} c_j = f_i$ for $c_{j}$
+
+(e) Convergence test as increasing ${\cal N}$:
+   first check $|c_{\cal N}|$ is small enough. 
+    And then, test for the original integral equation, 
+    $$\epsilon=\max(|\la k_{i}|W\ra -\la k_{i}|\tilde{\varphi}_0\ra 
+                                     -\la k_{i}|K|W\ra |), \quad \mbox{ for } i=1,\dots, N
+    $$
+   momentum quadrature may be chosen such that $k_{N}=k_0$ on-shell momentum. 
+   
+ {\bf Note:} Notation $|k_i\ra$ in fact includes all momentum mesh points and partial wave indices. For example, 
+
+
+\subsection{Another explanation}
+General eigenvalue problem,
+\bea 
+A\cdot v = \lambda \cdot v, 
+\eea 
+with $A$ is a $n\times n$ matrix. Eigen vector $v$ can be rewritten in the basis
+of the power-iterated subspace, $\{q, Aq, A^2q, A^3 q,\cdots  \}$. Then
+one could use a finite number of m vectors to orthogonally transform the matrix A into 
+a Hessenberg matrix $H_m$, from which the eigenvalues and vectors are calculated faster than a 
+general matrix. (Hessenberg matrix have matrix elements zero for upper or lower part.)
+After orthogonalization, basis is given by $p_1,\cdots,p_m$ and applied to the general matrix A,
+we get the $m\times m$ Hessenberg matrix,
+\begin{equation} 
+H_m =\left(\begin{array}{cccc} 
+            h_{1,1} & h_{1,2} & \dots & h_{1,m} \\
+            h_{2,1} & h_{2,2} & \dots & h_{2,m} \\
+            0       & h_{3,2} & \dots & h_{3,m} \\
+            0       &  0      & \dots & h_{4,m} \\
+                    &         & \dots &         \\
+                    &         & \dots & h_{m,m} \\ 
+           \end{array} \right) 
+\end{equation} 
+Now the equation becomes something like $H_{m} \cdot p = \lambda p$ and can be solved 
+fast. 
+\section{RGM and GCM}
+Reference: Microscopic Cluster Models by P. Descouvemont and M. Dufour.
+
+Cluster Model은 핵을 일종의 클러스터들의 합으로 생각하여 문제를 단순화 시킨다. 당연히, 이때 사용되는 
+클러스터들 간의 힘은 유효핵력이 된다. miscroscopic 방법은 클러스터의 내부 구조까지 고려하여, anti-symmetrization을 
+생각한다.  단, 같은 핵이라고 해도, 핵의 상태에 따라 서로 다른 클러스터링으로 취급하는 것이 좋을 수 있다. 
+
+Resonating group method(RGM) wave function for two-cluster 는  
+\bea 
+\Psi={\cal A} \phi_1 \phi_2 g({\bm \rho})
+\eea 
+where, ${\cal A}$ is an anti-symmetrization operator including the internal degree of freedom
+in clusters and $g({\bm \rho})$ is unknown relative wave function which should be obtained by 
+cluster Schrodinger equation. 
+
+Basically, Generator coordinate method(GCM)은 RGM과 같지만, relative wave function을 
+Gaussian basis function으로 expand 하는 것이다. 일반적으로는 total wave function에 여러가지 종류의 
+clustering 이 포함된다.
+
+RGM, GCM의 microscopic 계산에는 계산의 편리함때문에 보통   Volkov, Minesotta 타입의 단순화된 핵력을 이용한다. 
+
+\subsection{RGM equation}
+Let us consider two cluster system. 
+Coordinates of clusters are defined as
+\bea 
+\vR_{cm,1}=\frac{1}{A_1}\sum_{i=1}^{A_1} \vr_i,\quad 
+ \vR_{cm,2}=\frac{1}{A_2}\sum_{i=A_1+1}^{A} \vr_i
+\eea 
+\bea 
+\vR_{cm}=\frac{1}{A}(A_1\vR_{cm,1}+A_2\vR_{cm,2}),
+\quad \vrho=\vR_{cm,2}-\vR_{cm,1}.
+\eea 
+각각의 클러스터의 wave function은 $\phi_1(\xi_{1i})$ 와 
+$\phi_2(\xi_{2i})$ 로 나타내진다. 
+\bea 
+\xi_{1,i}=\vr_i-\vR_{cm,1}, \quad 
+\xi_{2,i}=\vr_i-\vR_{cm,2}.
+\eea 
+But, note that not all $\xi_{i}$ are independent.
+\bea 
+\sum_{i=1}^{A_1}\xi_{1i}=\sum_{i=A_i+1}^{A}\xi_{2i}=0.
+\eea 
+RGM wavf function,
+\bea 
+\Psi(\xi_{1i},\xi_{2i},\vrho)
+={\cal A}\phi_1(\xi_{1i})\phi_2(\xi_{2i})g(\vrho)
+\eea 
+where, anti-symmetrization operator is 
+with Permutation operator $P_{p}$,
+\bea 
+{\cal A}=\sum_{p=1}^{A!}\epsilon_p P_{p}
+\eea    
+Note that ${\cal A}$ is not a projector,
+\bea 
+{\cal A}^2=A!{\cal A}
+\eea 
+
+Re-writing,
+\bea 
+\Psi={\cal A}\phi_1\phi_2 g(\vrho)
+    =\int d\vr {\cal A}\phi_1\phi_2 \delta(\vrho-\vr)g(\vr)  
+\eea 
+The Schr\"odinger equation in CM coordinate,(CM motion is removed) 
+\bea 
+& & (H - E_{T})\Psi =0
+ \to \int d\vrho' \left[ {\cal H}(\vrho,\vrho')
+  -E_T {\cal N}(\vrho,\vrho') \right]g(\vrho') \no 
+& & {\cal N}(\vrho,\vrho')
+    =\la \phi_1 \phi_2 \delta(\vrho-\vr)| 1| {\cal A}   \phi_1 \phi_2 \delta(\vrho'-\vr)\ra ,\no 
+& & {\cal H}(\vrho,\vrho')
+=\la \phi_1 \phi_2 \delta(\vrho-\vr)| H | {\cal A}   \phi_1 \phi_2 \delta(\vrho'-\vr)\ra .  
+\eea 
+where integration over internal coordinates $\xi$ 
+and relative coordinates $\vr$ are implied. 
+One can simplify the equation by writing,
+\bea 
+{\cal A}&=& 1+{\cal A}' ,\no 
+H&=& H_1+H_2+H_{rel}.
+\eea 
+여기서, ${\cal A}'$은 다른 클러스터 사이에서의 exchange terms 만,
+$H_i$는 internal Hamiltonians of the clusters,
+\bea 
+H_{rel}&=&-\frac{\hbar^2}{2\mu}\Delta_\rho
+   +\sum_{i=1}^{A_1}\sum_{j=A_1+1}^{A} v_{ij},
+   \quad \mu=\mu_0 m_N, \quad \mu_0=\frac{A_1A_2}{A_1+A_2},\no 
+E_i&=&   \la \phi_i|H_i|\phi_i\ra,\no 
+E_{rel}&=&E_T-E_1-E_2.
+\eea 
+(각 cluster wavr function의 antisymmetrization은 ?
+이미 wave function에 고려되어 있기 때문에 쓰지 않는다인가?)
+Now non-local Kernels are
+\bea 
+{\cal N}(\vrho,\vrho')
+&=&\delta(\vrho-\vrho')+{\cal N}_E(\vrho,\vrho'),\no 
+{\cal N}_E(\vrho,\vrho')
+&=& \la \phi_1\phi_2\delta(\vrho-\vr)|{\cal A}'\phi_1\phi_2\delta(\vrho'-\vr)\ra, \no 
+{\cal H}(\vrho,\vrho')
+&=& (E_1+E_2)\delta(\vrho-\vrho') \no & &
++\la \phi_1\phi_2 \delta(\vrho-\vr)|H'|\phi_1\phi_2 \delta(\vrho'-\vr)\ra 
++\la \phi_1\phi_2 \delta(\vrho-\vr)|H'|{\cal A}'\phi_1\phi_2 \delta(\vrho'-\vr)\ra \no 
+&=&
+\left(-\frac{\hbar^2}{2\mu}\Delta_\rho+ V_D(\vrho) 
+   +E_1+E_2\right) \delta(\vrho-\vrho')
+   +{\cal H}_{E}(\vrho,\vrho'),
+\eea 
+\bea 
+V_D(\vrho)=\la \phi_1 \phi_2|\sum_{i=1}^{A_1}\sum_{j=A_1+1}^{A}
+                 v_{ij}|\phi_1 \phi_2\ra 
+\eea 
+Thus RGM equation is 
+\bea 
+\left(-\frac{\hbar^2}{2\mu}\Delta_\rho+ V_D(\vrho) \right)g(\vrho)
++\int K(\vrho,\vrho')g(\vrho') d\vrho'
+= E g(\vrho),
+\eea 
+with 
+\bea 
+K(\vrho,\vrho')={\cal H}_{E}(\vrho,\vrho')-E_T {\cal N}_{E}(\vrho,\vrho').
+\eea 
+따라서, 일단 Kernel이 준비되면, RGM equation을 통해 
+$g(\vrho)$ 를 얻을 수 있다. 
+RGM에서 어려운 부분은 이러한 overlap과 Hamiltonian
+을 준비하는 것이다.
+
+\subsubsection{Example, $\alpha+n$ system}
+Suppose $\alpha$ and neutron system,
+\bea 
+\phi_1&=&\Phi_\alpha(\xi_1,\xi_2,\xi_3)|n_1\downarrow n_1\uparrow
+  p_1 \downarrow p_1 \uparrow\ra ,\no 
+\phi_2&=&|n_2 \downarrow  \ra, 
+\eea 
+여기서, $n_1,p_1$ 은 1st cluster 에 속한다는 것을 나타낸다. 
+($\phi_{1,2}$는 이미 antisymmetrization이 이루어져 있다고 볼 수 있다.)
+Simple approximation,
+\bea 
+\Phi_\alpha(\xi_1,\xi_2,\xi_3)
+ =\frac{1}{N}\exp(-\nu \sum_{i=1}^4 \xi_i^2)
+\eea  
+with normalization 
+\bea 
+\la \Phi_\alpha|\Phi_\alpha\ra 
+=1=\frac{1}{N^2}(\frac{\pi^3}{32\nu^3})^{3/2}.
+\eea 
+The only exchange operator $P_{15}$ 
+contribute to the antisymmetrization. 
+(Because external neutron is spin down. 허어??)
+
+Note that in CM coordinate,
+\bea 
+\vr_{i=1,2,3,4}=-\frac{1}{5}\vrho+\xi_i,\quad 
+\vr_5=\frac{4}{5}\vrho.  
+\eea 
+From
+\bea 
+P_{15}\xi_1&=& P_{15}
+  \left(\vr_1-\frac{1}{4}\sum_{i=1}^4\vr_i \right) 
+ =\vr_5-\frac{1}{4}(\vr_5+\vr_2+\vr_3+vr_4)
+ =\frac{3}{4}\vrho+\frac{1}{4}\xi_1,\no 
+ P_{15}\xi_2&=& -\frac{1}{4}\vrho+\frac{1}{4}\xi_1+\xi_2,\no 
+ P_{15}\xi_3&=& -\frac{1}{4}\vrho+\frac{1}{4}\xi_1+\xi_3,\no 
+ P_{15}\vrho&=&-\frac{1}{4}\vrho+\frac{5}{4}\xi_1,
+\eea 
+we get 
+\bea 
+P_{15}\Phi_\alpha\delta(\vrho-\vr)
+=\Phi_\alpha\exp\left[-\frac{4\nu}{5}(r^2-(P_{15}\vrho)^2)   \right]\delta(P_{15}\vrho-\vr)
+\eea 
+By using 
+\bea 
+\int |\Phi_\alpha(\xi_1,\xi_2,\xi3)|^2d\xi_2 d\xi_3=
+\left(\frac{\sqrt{3}\pi}{6\nu}\right)^3 \exp(-\frac{8\nu}{3}\xi_1^2),
+\eea 
+
+\bea 
+{\cal N}_{E}(\vrho,\vrho')
+&=&-\int d\vr d\xi_1 d\xi_2 d\xi_3 \Phi_\alpha(\xi_1,\xi_2,\xi_3)
+\delta(\vrho-\vr) P_{15}\Phi_\alpha(\xi_1,\xi_2,\xi_3)
+\delta(\vrho'-\vr) \no 
+&=&-(\frac{4}{5})^3(\frac{8\nu}{3\pi})^{3/2}
+ \exp\left[ -\frac{4\nu}{75}(17\rho^2+17\rho^{'2}+16\vrho\cdot\vrho')
+ \right].  
+\eea 
+
+\subsubsection{Generator Coordinate Method}
+Expand the radial function $g(\vrho)$ over Gaussian
+functions centered at different locations,
+called the {\bf generator coordinates}.
+
+Let us define one-center Slater determinant,
+\bea 
+\Phi_1(\vr_1\cdots \vr_{A_1}; {\bm S}_1)
+=\frac{1}{\sqrt{A_1!}} \det \{\hat{\varphi}({\bm S}_1) \dots
+  \hat{\varphi}({\bm S}_1) \},
+\eea 
+where 
+\bea 
+\hat{\varphi}_i({\bm S})&=&\varphi_i(\vr,{\bm S})|m_{s_i}\ra 
+  |m_{t_i}\ra,\no 
+ \varphi_i(\vr,{\bm S})
+ &=& \varphi_{0s}(\vr,{\bm S})=(\pi b^2)^{-3/4}
+  \exp(- \frac{(\vr-{\bm S})^2}{2b^2} ) \mbox{ for s-orbital},\no 
+ &=& \varphi_{1p\mu}(\vr,{\bm S})
+    =\frac{\sqrt{2}}{b}(\vr_\mu-{\bm S}_\mu)\varphi_{0s}(\vr,{\bm S})  \mbox{ for p-orbital}
+\eea 
+By using translation invariant determinant, $\phi_1$
+\bea 
+\phi_1(\xi_{1i}) ,\quad \xi_{1i}=\vr_i-{\vR}_{cm,1}.
+\eea 
+We may express, one-center Slater determinant as
+\footnote{
+One can simply show this by 
+\bea 
+ \sum_{i}\frac{(\vr_i-{\bm S})^2}{2b^2}
+=\sum_{i}\frac{(\xi_{1,i}+{\bm S}-\vR_{cm,1})^2}{2b^2}
+=\left(\sum_{i}\frac{\xi_{1,i}^2}{2b^2} \right) 
+ +\frac{A_1}{2b^2} ({\bm S}-\vR_{cm,1})^2
+\eea 
+} 
+\bea 
+\Phi(\vr_{i};{\bm S} )
+=\exp\left(-\frac{A_1}{2b^2}(\vR_{cm,1}-{\bm S})^2\right) \phi_1(\xi_{1i}) 
+\eea 
+
+We may express full $A-$body Slater determinant 
+by using two kinds of basis functions with different center,
+$\varphi_i(\vr,{\bm S}_1)$ and $\varphi_i(\vr,{\bm S}_2)$.
+We may set the origin 
+along the $\vR={\bm S}_2-{\bm S}_1$.  
+In other words, we can choose coordinates as
+${\bm S}_1=-\lambda \vR$, ${\bm S}_2=(1-\lambda) \vR$.
+However, note that ${\bm S}_i$ does not necessarily the 
+same as the center of mass of each cluster $\vR_i$. 
+
+Define two-cluster Slater determinant as
+\bea 
+\Phi(\vr_{i};\vR)
+&=&\frac{1}{\sqrt{A!}}\det \{ 
+  \hat{\varphi}(\vr_1,-\lambda\vR)\dots 
+  \hat{\varphi}(\vr_{A_1},-\lambda\vR) 
+  \dots \hat{\varphi}(\vr_{A},(1-\lambda)\vR) \} \no 
+ &=&\frac{1}{\sqrt{N_0}}{\cal A} \Phi_1(\vr_i; -\lambda \vR)
+   \Phi_2(\vr_i; (1-\lambda) \vR), \quad N_0=\frac{A!}{A_1!A_2!}
+\eea 
+This can be rewritten as 
+\bea 
+\Phi(\vr_{i};\vR)
+=\frac{1}{\sqrt{N_0}}\Phi_{cm}(\vR_{cm};\vR)
+ {\cal A} \phi_1(\xi_{1i})\phi_2(\xi_{2i})
+ \Gamma(\rho,\vR)
+\eea 
+where\footnote{
+This can be shown from
+\bea 
+& &A_1(\vR_{cm,1}-(-\lambda \vR))^2+A_2(\vR_{cm,2}-(1-\lambda) \vR)^2 \no 
+&=& A_1(\vR_{cm,1}+\vR(\lambda-\frac{A_2}{A})+\frac{A_2}{A}(\vR-\vrho)  )^2
++A_2(\vR_{cm,1}+\vR(\lambda-\frac{A_2}{A})-\frac{A_1}{A}(\vR-\vrho) )^2
+\eea 
+} 
+\bea 
+\Phi_{cm}(\vR_{cm};\vR)
+&=& (\frac{A}{\pi b^2})^{3/4}\exp\left( 
+    -\frac{A}{2b^2}[\vR_{cm}+\vR(\lambda-\frac{A_2}{A})]^2 \right) ,
+    \no 
+\Gamma(\rho,\vR)&=& (\frac{\mu_0}{\pi b^2})^{3/4}
+ \exp(-\frac{\mu_0}{2b^2}(\rho-\vR)^2).    
+\eea 
+This expression makes the c.m. and radial coordinates uncoupled. In other words, the two-cluster Slater determinant 
+can be treated separately for the c.m. and radial part
+though the wave function itself is not translation invariant. 
+Then, two-cluster Slater determinant is 
+\bea 
+\Phi(\vr_i;\vR)=\Phi_{cm}\bar{\Phi}(\xi;\vR),
+\eea 
+where $\bar{\Phi}(\xi,\vR)$ is independent of c.m. coordinate. 
+Note that $\Phi(\vr_i;\vR)$ is good for numerical
+calculation because it is a Slater determinant.
+The overlap of Slater determinant is 
+\bea 
+\la \Phi(\vR)|\Phi(\vR')\ra 
+&=&\la \Phi_{cm}|\Phi_{cm}\ra 
+ \la \bar{\Phi}(\vR)|\bar{\Phi}(\vR)\ra ,\no 
+\la \Phi_{cm}|\Phi_{cm}\ra
+&=& \exp\left( -\frac{A(\lambda-A_2/A)^2}{4b^2}(\vR-\vR')^2\right) . 	
+\eea 
+In other words, one can obtain overlap between
+basis functions $\bar{\Phi}(\vR) $ .
+
+We may consider $\frac{1}{\Phi_{cm}}\Phi(\vr_i;\vR)$
+as a kind of basis function for the radial function 
+of RGM.  In other words,
+\bea 
+\Psi =\Phi_{cm}^{-1}\int f(\vR)\Phi(\vR) d\vR 
+\eea 
+where $\Psi$ is invariant under translation
+and generator function is to be determined from Hamiltonian. 
+
+중요: Actually, the difference between $\Psi$ and $\Phi$ is the main
+message from GCM. While $\Psi$ is the RGM wave function which describes internal 
+structure of a nuclei, it is difficult to use because of the complication 
+from anti-symmetrization operator. On the other hand, $\Phi$ is easier to manipulate and
+make calculation, while it contains additional center of mass motion. 
+By using GCM, one can separate internal degrees of freedom and the center of mass
+from Slater determinant. 
+
+This can be expressed as 
+\bea 
+\Psi={\cal A}\phi_1 \phi_2 g(\rho),
+\eea 
+with 
+\bea 
+g(\rho)=\int f(\vR)\Gamma(\rho,\vR) d\vR. 
+\eea 
+
+Generally speaking A-body Slater determinant wave function made from s.p. wave functions are not translation invariant. 
+However, by using the GCM basis with c.m. correction, 
+we may express,
+\bea 
+\Phi(\vr_i)\simeq \sum_{\vR_n} f(\vR_n) \Phi_{cm}(\vR_n) \bar{\Phi}(\vR_n) 
+\eea 
+where $\bar{\Phi}(\vR_n) $ is translation invariant.
+
+The generator function $f(\vR)$ can be obtained by solving 
+\bea 
+\int [H(\vR,\vR')-E_T N(\vR,\vR')]f(\vR')d\vR'=0,
+\eea 
+where GCM kernels are
+\bea 
+N(\vR,\vR')&=&\la \bar{\Phi}(\vR)|\bar{\Phi}(\vR')\ra ,\no 
+H(\vR,\vR')&=&\la \bar{\Phi}(\vR)|H|\bar{\Phi}(\vR')\ra.
+\eea 
+Note that one can use the Slater determinant wave functions
+to compute the matrix elements with cm correction.
+For example, overlap kernel can be computed as
+$\la \bar{\Phi}(\vR)|\bar{\Phi}(\vR')\ra/\la \Phi_{cm}|\Phi_{cm}\ra $.
+Thus, GCM simplifies the calculation of Kernels
+and by discretization 
+\bea 
+g(\rho)\simeq \sum_{n}  f(\vR_n)\Gamma(\rho,\vR_n)
+\eea 
+the equation for generator function becomes a diagonalization
+of a matrix. 
+\end{document}

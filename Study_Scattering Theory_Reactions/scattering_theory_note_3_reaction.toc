@@ -1,0 +1,166 @@
+\contentsline {chapter}{\numberline {1}Direct Reaction theory}{7}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Reaction의 종류}{7}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}핵반응에서 측정하는 물리량}{12}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Conservation laws in nuclear reaction}{12}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Reaction Theory 기본 용어}{12}{section.1.4}% 
+\contentsline {section}{\numberline {1.5}Direct Reaction channel}{13}{section.1.5}% 
+\contentsline {subsection}{\numberline {1.5.1}Wave functions}{15}{subsection.1.5.1}% 
+\contentsline {subsection}{\numberline {1.5.2}Optical Model}{15}{subsection.1.5.2}% 
+\contentsline {subsection}{\numberline {1.5.3}Cross section}{15}{subsection.1.5.3}% 
+\contentsline {subsubsection}{Additional terms}{17}{section*.6}% 
+\contentsline {subsection}{\numberline {1.5.4}Fraunhoffer and Fresnel diffraction}{20}{subsection.1.5.4}% 
+\contentsline {chapter}{\numberline {2}Coupled Channel equations}{23}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Terms}{23}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}In one convention}{26}{subsection.2.1.1}% 
+\contentsline {section}{\numberline {2.2}Model space wave function}{27}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Coupled channel equations}{28}{section.2.3}% 
+\contentsline {chapter}{\numberline {3}Couplings, Interactions}{31}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Multipole expansion of interaction}{31}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Double folding model}{32}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}density matrix}{33}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Double Folding using Fourier Transformation}{33}{subsection.3.2.2}% 
+\contentsline {subsubsection}{consistency check}{36}{section*.9}% 
+\contentsline {subsection}{\numberline {3.2.3}Spin/Isospin dependent folding potential}{36}{subsection.3.2.3}% 
+\contentsline {section}{\numberline {3.3}Exchange term of Double folding potential}{37}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}M3Y potential}{41}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Folding of DDM3Y}{43}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}Parametrization of density,potential and F.T.}{47}{subsection.3.3.3}% 
+\contentsline {section}{\numberline {3.4}Sao-Paulo potential}{48}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}DWBA matrix element}{48}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Coupled equation sets}{51}{section.3.6}% 
+\contentsline {subsection}{\numberline {3.6.1}Coupled equations in partial wave form}{54}{subsection.3.6.1}% 
+\contentsline {section}{\numberline {3.7}Optical Potential: Feschbach P}{55}{section.3.7}% 
+\contentsline {subsection}{\numberline {3.7.1} a model }{57}{subsection.3.7.1}% 
+\contentsline {section}{\numberline {3.8}Appendix: Dispersion relation}{60}{section.3.8}% 
+\contentsline {subsection}{\numberline {3.8.1}Kramers-Kronig relation}{60}{subsection.3.8.1}% 
+\contentsline {subsection}{\numberline {3.8.2}In response}{60}{subsection.3.8.2}% 
+\contentsline {subsection}{\numberline {3.8.3}In optical potential}{61}{subsection.3.8.3}% 
+\contentsline {chapter}{\numberline {4}DWBA}{63}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}DWBA expression from B.T.Kim's lecture}{63}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}DWBA in Fresco}{63}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}DWBA in other book...}{63}{section.4.3}% 
+\contentsline {chapter}{\numberline {5}Couplings, Interactions}{65}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Typical Form of optical potential}{65}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Single Nucleon binding potential}{68}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Multipole expansion of interaction}{68}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}FRESCO potentials}{69}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}Transition potential}{69}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}General Spin transfer coupling}{70}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}Inelastic couplings}{71}{section.5.7}% 
+\contentsline {section}{\numberline {5.8}Collective Model}{72}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Coulomb deformation}{73}{section.5.9}% 
+\contentsline {section}{\numberline {5.10}Inelastic couplings: simple rotor model}{75}{section.5.10}% 
+\contentsline {subsection}{\numberline {5.10.1}Deformation of potential}{79}{subsection.5.10.1}% 
+\contentsline {section}{\numberline {5.11}Another attempt}{81}{section.5.11}% 
+\contentsline {subsection}{\numberline {5.11.1}rotational excitation}{82}{subsection.5.11.1}% 
+\contentsline {subsection}{\numberline {5.11.2}Vibrational excitation}{83}{subsection.5.11.2}% 
+\contentsline {subsection}{\numberline {5.11.3}Coulomb polarization potential}{84}{subsection.5.11.3}% 
+\contentsline {subsection}{\numberline {5.11.4}Nuclear Moments}{85}{subsection.5.11.4}% 
+\contentsline {subsection}{\numberline {5.11.5}Fresco: deformation}{86}{subsection.5.11.5}% 
+\contentsline {subsection}{\numberline {5.11.6}Inelastic scattering: single particle excitation}{87}{subsection.5.11.6}% 
+\contentsline {section}{\numberline {5.12}single particle transfer}{87}{section.5.12}% 
+\contentsline {subsubsection}{Details on the calculation}{88}{section*.12}% 
+\contentsline {subsubsection}{overlap}{88}{section*.13}% 
+\contentsline {subsection}{\numberline {5.12.1}Cluster Wave function: two particle}{90}{subsection.5.12.1}% 
+\contentsline {subsection}{\numberline {5.12.2}Knockout reactions}{91}{subsection.5.12.2}% 
+\contentsline {subsection}{\numberline {5.12.3}Continuum: Break up }{91}{subsection.5.12.3}% 
+\contentsline {subsection}{\numberline {5.12.4}Capture}{91}{subsection.5.12.4}% 
+\contentsline {subsection}{\numberline {5.12.5}Charge exchange reactions}{91}{subsection.5.12.5}% 
+\contentsline {subsection}{\numberline {5.12.6}Photo-nuclear couplings}{92}{subsection.5.12.6}% 
+\contentsline {section}{\numberline {5.13}Structure Models}{92}{section.5.13}% 
+\contentsline {subsection}{\numberline {5.13.1}Shell Model}{92}{subsection.5.13.1}% 
+\contentsline {subsection}{\numberline {5.13.2}Cluster Models}{92}{subsection.5.13.2}% 
+\contentsline {subsection}{\numberline {5.13.3}Mean Field Models}{92}{subsection.5.13.3}% 
+\contentsline {subsection}{\numberline {5.13.4}Collective nuclear-matter description}{92}{subsection.5.13.4}% 
+\contentsline {section}{\numberline {5.14}Overlap functions}{93}{section.5.14}% 
+\contentsline {subsection}{\numberline {5.14.1}Non-antisymmetrized theory: Pauli principle이 무시되는 경우}{93}{subsection.5.14.1}% 
+\contentsline {subsection}{\numberline {5.14.2}Antisymmetrized theory}{95}{subsection.5.14.2}% 
+\contentsline {subsubsection}{CFP}{96}{section*.14}% 
+\contentsline {subsubsection}{Spectroscopic factor}{96}{section*.15}% 
+\contentsline {section}{\numberline {5.15}Cluster overlaps}{97}{section.5.15}% 
+\contentsline {section}{\numberline {5.16}One photon coupling}{98}{section.5.16}% 
+\contentsline {subsection}{\numberline {5.16.1}vector potential}{98}{subsection.5.16.1}% 
+\contentsline {subsection}{\numberline {5.16.2}Photon Cross section}{100}{subsection.5.16.2}% 
+\contentsline {section}{\numberline {5.17}Appendix: Watanabe potential and JS adiabatic potential}{101}{section.5.17}% 
+\contentsline {chapter}{\numberline {6}Inelastic Excitations}{105}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Collective excitation}{105}{section.6.1}% 
+\contentsline {subsection}{\numberline {6.1.1}Vibrational excitation}{106}{subsection.6.1.1}% 
+\contentsline {subsection}{\numberline {6.1.2}Rotational excitation}{107}{subsection.6.1.2}% 
+\contentsline {subsubsection}{Matrix element}{108}{section*.16}% 
+\contentsline {section}{\numberline {6.2}Microscopic single particle excitation}{108}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Microscopic multi-particle excitation?}{108}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Transfer reaction}{109}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Projectile stripping}{109}{section.7.1}% 
+\contentsline {subsection}{\numberline {7.1.1}Classical picture}{109}{subsection.7.1.1}% 
+\contentsline {section}{\numberline {7.2}Projectile pickup (or target stripping)}{109}{section.7.2}% 
+\contentsline {section}{\numberline {7.3}Knock out reaction}{109}{section.7.3}% 
+\contentsline {chapter}{\numberline {8}R-matrix methods and Compound Nucleus Reaction}{111}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Very simple model}{111}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}Compound Nucleus Reaction}{113}{section.8.2}% 
+\contentsline {section}{\numberline {8.3}Convention}{115}{section.8.3}% 
+\contentsline {section}{\numberline {8.4}One-channel R-matrix method}{116}{section.8.4}% 
+\contentsline {subsection}{\numberline {8.4.1}potential scattering and resonance scattering}{120}{subsection.8.4.1}% 
+\contentsline {subsection}{\numberline {8.4.2}Gaussian basis}{120}{subsection.8.4.2}% 
+\contentsline {subsection}{\numberline {8.4.3}Lagrange function basis}{121}{subsection.8.4.3}% 
+\contentsline {section}{\numberline {8.5}Phenomenology}{122}{section.8.5}% 
+\contentsline {subsection}{\numberline {8.5.1}single channel isolated resonance}{123}{subsection.8.5.1}% 
+\contentsline {section}{\numberline {8.6}Multichannel R matrix}{123}{section.8.6}% 
+\contentsline {section}{\numberline {8.7}Short summary for multilevel multichannel R-matrix}{124}{section.8.7}% 
+\contentsline {section}{\numberline {8.8}Relation to cross section}{126}{section.8.8}% 
+\contentsline {section}{\numberline {8.9}Compound nuclear reaction}{126}{section.8.9}% 
+\contentsline {chapter}{\numberline {9}Resonating Group Method(RGM) and Generator Coordinate Method(GCM)}{129}{chapter.9}% 
+\contentsline {chapter}{\numberline {10}Approximations}{131}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}General}{131}{section.10.1}% 
+\contentsline {section}{\numberline {10.2}Adiabatic methods}{132}{section.10.2}% 
+\contentsline {subsection}{\numberline {10.2.1}Johnson Soper approximation for transfer}{133}{subsection.10.2.1}% 
+\contentsline {section}{\numberline {10.3}Eikonal methods}{134}{section.10.3}% 
+\contentsline {section}{\numberline {10.4}Eikonal Knockout code : momdis}{136}{section.10.4}% 
+\contentsline {chapter}{\numberline {11}Fusion and Fission}{139}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Icoming Wave Boundary condition: CCFULL case}{140}{section.11.1}% 
+\contentsline {subsection}{\numberline {11.1.1}Semi-classical (above barrier) }{141}{subsection.11.1.1}% 
+\contentsline {subsection}{\numberline {11.1.2}Parabolic Approximation (tunneling below barrier)}{141}{subsection.11.1.2}% 
+\contentsline {section}{\numberline {11.2}Simple fission Liquid drop model}{143}{section.11.2}% 
+\contentsline {chapter}{\numberline {12}FRESCO Examples}{145}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Elastic Scattering :(M) 4He+58Ni}{145}{section.12.1}% 
+\contentsline {subsection}{\numberline {12.1.1}test potential READ IN}{146}{subsection.12.1.1}% 
+\contentsline {section}{\numberline {12.2}Inelastic scattering(Rotor Model): (B) 12C$(\alpha ,\alpha )$12C$(2^+)$ }{146}{section.12.2}% 
+\contentsline {section}{\numberline {12.3}Inelastic scattering: (M)$^{16}{\rm O}+^{208}{\rm Pb}$ (Projectile and Taget Excitation) }{148}{section.12.3}% 
+\contentsline {subsection}{\numberline {12.3.1}Another example for $^8Li$ excitation}{151}{subsection.12.3.1}% 
+\contentsline {subsection}{\numberline {12.3.2}Inelastic scattering: (T) 11Be+197Au}{154}{subsection.12.3.2}% 
+\contentsline {subsection}{\numberline {12.3.3}Inelastic scattering: (T) alpha+20Ne}{154}{subsection.12.3.3}% 
+\contentsline {subsection}{\numberline {12.3.4}Inelastic scattering: (T) 16O+58Ni}{154}{subsection.12.3.4}% 
+\contentsline {section}{\numberline {12.4}Inelastic scattering(Cluster Model): (M) $^{28}{\rm Si}({}^{19}{\rm F},{}^{19}{\rm F}^*)^{28}{\rm Si}$ at 60 MeV}{155}{section.12.4}% 
+\contentsline {section}{\numberline {12.5}Breakup (CDCC) : (B) $^8B+^{208}Pb$}{158}{section.12.5}% 
+\contentsline {subsection}{\numberline {12.5.1}CDCC : (T) 11Be+4He}{161}{subsection.12.5.1}% 
+\contentsline {subsection}{\numberline {12.5.2}1-DWDCC: (T) 8B + 58Ni}{162}{subsection.12.5.2}% 
+\contentsline {section}{\numberline {12.6}Adiabatic CDCC:(T) $d+^{208}Pb$}{162}{section.12.6}% 
+\contentsline {subsection}{\numberline {12.6.1}Adiabatic, R-matrix solution: (T) d+208Pb}{163}{subsection.12.6.1}% 
+\contentsline {section}{\numberline {12.7}1 nucleon Transfer reaction: (B) ${}^{14}{\rm N}(^{17}{\rm F},^{18}{\rm Ne})^{13}{\rm C}$}{164}{section.12.7}% 
+\contentsline {section}{\numberline {12.8}Transfer: (T) 136Xe(t,$\alpha $)135I in ZR approximation}{166}{section.12.8}% 
+\contentsline {section}{\numberline {12.9}Transfer CCBA: (T) $^{28}Si(^{19}F,^{16}O)^{31}P$}{167}{section.12.9}% 
+\contentsline {section}{\numberline {12.10}Two Neutron Transfer: (T) 9Li(t,p)11Li}{168}{section.12.10}% 
+\contentsline {subsection}{\numberline {12.10.1}Another two neutron transfer example}{172}{subsection.12.10.1}% 
+\contentsline {section}{\numberline {12.11}CRC : (T) 16O+208Pb 80 MeV multi-channel path}{176}{section.12.11}% 
+\contentsline {section}{\numberline {12.12}Capture : (B) $^{14}C(n,\gamma )^{15}C$}{180}{section.12.12}% 
+\contentsline {section}{\numberline {12.13}Exchange transfer: $^7Li(^8Li,^7Li)^8Li$}{181}{section.12.13}% 
+\contentsline {section}{\numberline {12.14}Sfresco: (B) p+112Cd elastic scattering}{183}{section.12.14}% 
+\contentsline {section}{\numberline {12.15}Deuteron overlap using Reid potential}{184}{section.12.15}% 
+\contentsline {section}{\numberline {12.16}Runtime Error}{185}{section.12.16}% 
+\contentsline {section}{\numberline {12.17}Charge Exchange}{185}{section.12.17}% 
+\contentsline {chapter}{\numberline {13}Appendix}{187}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Center of mass correction}{187}{section.13.1}% 
+\contentsline {chapter}{\numberline {14}FRESCO INPUT CARDS}{189}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Definition Cards or \&FRESCO }{189}{section.14.1}% 
+\contentsline {subsection}{\numberline {14.1.1}Card 0}{189}{subsection.14.1.1}% 
+\contentsline {subsection}{\numberline {14.1.2}Card 1}{189}{subsection.14.1.2}% 
+\contentsline {subsection}{\numberline {14.1.3}Card 1a : In case of Rmatch$<0$}{190}{subsection.14.1.3}% 
+\contentsline {subsection}{\numberline {14.1.4}Card 2}{190}{subsection.14.1.4}% 
+\contentsline {subsection}{\numberline {14.1.5}Card 3}{190}{subsection.14.1.5}% 
+\contentsline {subsection}{\numberline {14.1.6}Card 4}{191}{subsection.14.1.6}% 
+\contentsline {subsection}{\numberline {14.1.7}Card 4.5: If IBLOCK$<$0, then read:}{192}{subsection.14.1.7}% 
+\contentsline {subsection}{\numberline {14.1.8}Card 5}{193}{subsection.14.1.8}% 
+\contentsline {section}{\numberline {14.2}Potentials}{197}{section.14.2}% 
+\contentsline {subsection}{\numberline {14.2.1}Card 9: Coulomb potential}{197}{subsection.14.2.1}% 
+\contentsline {subsection}{\numberline {14.2.2}Card 10}{197}{subsection.14.2.2}% 
+\contentsline {subsection}{\numberline {14.2.3}Card 11: For TYPEs 12-13 or TYPE=10-13 with SHAPE=7,8,9 (\&STEP) }{197}{subsection.14.2.3}% 
+\contentsline {subsection}{\numberline {14.2.4}Card 12: Blank card for indication of end of potential}{197}{subsection.14.2.4}% 

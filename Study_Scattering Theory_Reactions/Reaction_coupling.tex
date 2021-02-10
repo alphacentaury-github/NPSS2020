@@ -1,0 +1,442 @@
+\documentclass[11pt]{book}
+
+\usepackage{kotex} % korean tex
+\usepackage{float}
+\usepackage{longtable}
+\usepackage[bookmarks]{hyperref}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{listings}
+\lstset{language=[90]Fortran,
+  basicstyle=\ttfamily,  
+  %basicstyle=\small,
+  keywordstyle=\color{red},
+  commentstyle=\color{green},
+  morecomment=[l]{!\ }% Comment only with space after !
+}
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{color}
+\parindent 10pt\textheight 9in\topmargin -0.4in\textwidth 6in
+\oddsidemargin .25in\evensidemargin 0in
+\def\bm{\boldsymbol}
+\def\vh{{\bm h}}
+\def\vp{{\bm p}}
+\def\vq{{\bm q}}
+\def\vk{{\bm k}}
+\def\vl{{\bm l}}
+\def\vx{{\bm x}}
+\def\vy{{\bm y}}
+\def\vv{{\bm v}}
+\def\vr{{\bm r}}
+\def\vR{{\bm R}}
+\def\la{\langle}
+\def\ra{\rangle}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\no}{\nonumber \\}
+\newcommand{\nnb}{\nonumber}
+\newcommand{\etal}{{\it et al.}~}
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\sll}[1]{#1\hspace{-0.5em}/}
+\newcommand{\del}{\partial}
+\newcommand{\threejsymbol}[6]{\left(\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\end{tabular}\right)}
+\newcommand{\sixjsymbol}[6]{\left\{\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$} \end{tabular}\right\}}
+\newcommand{\ninejsymbol}[9]{\left\{\begin{tabular}{ccc}
+                             {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\\
+                             {$#7$}&{$#8$}&{$#9$}\end{tabular}\right\}}
+
+%%% The "real" document content comes below...
+
+\title{Couplings in coupled channel calculation(FRESCO)}
+\author{Young-Ho Song}
+\date{\today}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\chapter{Coupled Channel equations} 
+
+\section{Model space wave function}
+Let us denote the model space wave function of scattering system as
+\bea 
+|\Psi\ra =\sum_\alpha |\phi_\alpha\ra \psi_\alpha(R_\alpha)
+\eea 
+where $\alpha$ includes quantum numbers of partitions,
+$|\alpha\ra\equiv |x p t; (L I_p)J_p ,I_t; J_{tot} M_{tot}\ra $
+where $(x p t)$ represents partition of projectile and target, $L$ is a orbital angular momentum 
+between projectile and target, $I_p$ is a spin of projectile, ${\bm J}_p={\bm L}+{\bm I}_p$,
+$I_t$ is a spin of target, $J_{tot} M_{tot}$ is a total angular momentum of system and its projection
+and $R_\alpha$ is a coordinates between projectile and target.
+
+In other words, more explicit form of $|\phi_\alpha\ra$ is
+\footnote{This expression follows the convention in Thompson's textbook.}    
+\bea 
+|\phi_\alpha\ra &=&  \left[ \left[i^{L} Y_{L}(\hat{R}_x)\otimes \phi^{xp}_{I_p}(\xi_p)\right]_{J_p} 
+\otimes \phi^{xt}_{I_t}(\xi_t)\right]_{J_{tot}M_{tot}},
+\eea 
+where $\phi^{xp}_{I_p}(\xi_p)$ and $\phi^{xt}_{I_t}(\xi_t)$ are bound state wave functions of 
+projectile and target with $\xi_p$ and $\xi_t$ as internal coordinates of projectile and target.
+
+
+\begin{itemize} 
+\item For a system with specific total angular momentum, wave function becomes
+\bea 
+\Psi_{x,J_{tot}}^{M_{tot}}(R_x,\xi_p,\xi_t)
+&=&\sum_{\alpha} \left[ 
+    \left[i^{L} Y_{L}(\hat{R}_x)\otimes \phi^{xp}_{I_p}(\xi_p)\right]_{J_p} 
+    \otimes \phi^{xt}_{I_t}(\xi_t)\right]_{J_{tot}M_{tot}}
+    \frac{1}{R_x}f_{\alpha}^{J_{tot}}(R_x) \no 
+&=&\sum_{\alpha} |xpt:(L I_p) J_p,I_t;J_{tot} M_{tot}\ra 
+    \frac{f_{\alpha}^{J_{tot}}(R_x) }{R_x} \no 
+&=&\sum_{\alpha} |\alpha; J_{tot} M_{tot}\ra \frac{f_{\alpha}^{J_{tot}}(R_x) }{R_x}
+\eea 
+where $\alpha=(x,p,t,L,I_p,J_p,I_t)$.
+ 
+\item For a wave function from initial plane wave with momentum $\vk_i$ and spin projections of
+    $\mu_{p_i}$ and $\mu_{t_i}$ can be written as 
+\bea 
+\Psi_{x_ip_it_i}^{\mu_{p_i}\mu_{t_i}}(R_x,\xi_p,\xi_t; \vk_i)
+=\sum_{J_{tot}M_{tot}}\sum_{\alpha \alpha_i}
+  |\alpha;J_{tot}M_{tot}\ra 
+   \frac{f^{J_{tot}}_{\alpha \alpha_i}(R_x)  }{R_x} 
+   A^{J_{tot} M_{tot}}_{\mu_{p_i}\mu_{t_i}}(\alpha_i,\vk_i)
+\eea  
+where, "incoming coefficient" is defined as
+\bea 
+A^{J_{tot} M_{tot}}_{\mu_{p_i}\mu_{t_i}}(\alpha_i,\vk_i)
+=\frac{4\pi}{k_i}\sum_{M_i m_i} Y^*_{L_iM_i}(\vk_i)
+  \la L_iM_i,I_{p_i} \mu_{p_i}| J_{p_i} m_i\ra 
+  \la J_{p_i} m_i,I_{t_i}\mu_{t_i}|J_{tot} M_{tot}\ra. 
+\eea  
+with asymptotic normalization is 
+\bea 
+f_{\alpha\alpha_i}(R_x)\to 
+\frac{i}{2}[H_\alpha^{(-)}(\eta_\alpha,k_\alpha R_\alpha)\delta_{\alpha\alpha_i}
+           -S_{\alpha\alpha_i}(k_\alpha) H_\alpha^{(+)}(\eta_\alpha,k_\alpha R_\alpha)]
+\eea 
+
+\end{itemize}
+
+where $H^{\pm}$ are Coulomb Hankel functions.
+
+\section{Coupled channel equations}
+
+One can group full Hamiltonian as
+\bea
+H= H_{xt}({\bm \xi}_t)+H_{xp}({\bm \xi}_p)+\hat{T}_x({\bm R}_x)+{\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p).
+\eea 
+where 
+\bea 
+H_{xp}({\bm \xi}_p) \phi^{xp}_{I_p}({\bm \xi}_p)&=&\epsilon_{xp}\phi_{I_p}^{xp}({\bm \xi}_p),\no 
+H_{xt}({\bm \xi}_t) \phi^{xt}_{I_t}({\bm \xi}_t)&=&\epsilon_{xt}\phi_{I_t}^{xt}({\bm \xi}_t),
+\eea 
+relative kinetic term and interaction between target and projectile becomes 
+\bea 
+\hat{T}_x({\bm R}_x)&=&-\frac{\hbar^2}{2\mu_x}\nabla_{R_x}^2,\no 
+{\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)&=&\sum_{i\in p, j\in t} V_{ij}(\vr_i-\vr_j).
+\eea 
+with reduced mass $\mu_x=\frac{m_{xp}m_{xt}}{m_{xp}+m_{xt}}$.
+
+Assume the Model space Wave function $\Psi$ satisfies,
+\bea 
+0&=&[{\cal H}-E]|\Psi\ra 
+  =[{\cal H}-E]|\phi_i\ra \psi_i +
+    [{\cal H}-E]\sum_{j\neq i}|\phi_j\ra \psi_j
+\eea 
+If we multiply $\la \phi_i|$ on the left hand side, for each channel $i$, 
+\bea 
+\la \phi_i|E-{\cal H}|\phi_i\ra \psi_i
+= -\sum_{j\neq i}\la \phi_i|E-{\cal H}|\phi_j\ra \psi_j.
+\eea 
+The left hand side can be simplified by
+\bea 
+\la \phi_i|E-{\cal H}|\phi_i\ra \psi_i
+&=&\la \phi_i|[E-H_i^{bd}-T_i-V_i]|\phi_i\ra \psi_i
+=\la \phi_i|[E_i-T_i-V_i]|\phi_i\ra \psi_i \no 
+&=&(E_i-T_i(R_i)-\la\phi_i|V_i|\phi_i\ra(R_i))\psi_i(R_i)
+\eea 
+where $V_i={\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)$ ,
+$\la\phi_i|V_i|\phi_i\ra(R_i)$ implies integration over projectile and target bound state internal coordinates $\xi_p,\xi_t$.
+
+For the right-hand side, we may use two different ways, in post form
+\bea
+-\la \phi_i|E-{\cal H}|\phi_j\ra \psi_j
+&=& \la \phi_i|T_i-E_i+V_i|\phi_j\ra \psi_j 
+   = (T_i-E_i) \la \phi_i|\phi_j\ra\psi_j
+     +\la \phi_i|V_i|\phi_j\ra \psi_j  
+\eea 
+or in prior form
+\bea 
+-\la \phi_i|E-{\cal H}|\phi_j\ra \psi_j
+&=& \la \phi_i|T_j-E_j+V_j|\phi_j\ra \psi_j 
+   =  \la \phi_i|\phi_j\ra (T_j-E_j)\psi_j
+     +\la \phi_i|V_j|\phi_j\ra \psi_j  
+\eea 
+
+For the same partition, $x'=x$, we may normalize 
+$\hat{N}_{\alpha'\alpha}=\la \phi_{\alpha'}|\phi_{\alpha}\ra=\delta_{\alpha'\alpha}$.
+However, in general $\la \phi_i|\phi_j\ra$ are non-orthogonal and may not commute with  $(T_i-E_i)$.
+
+Thus, we get 
+\bea 
+(E_i-T_i(R_i)-\la\phi_i|V_i|\phi_i\ra(R_i))\psi_i(R_i)
+&=&\sum_{j\neq i}\left[ (T_i-E_i) \la \phi_i|\phi_j\ra\psi_j
+     +\la \phi_i|V_i|\phi_j\ra \psi_j \right] ,\no 
+&=&\sum_{j\neq i} \left[ \la \phi_i|\phi_j\ra (T_j-E_j)\psi_j
+     +\la \phi_i|V_j|\phi_j\ra \psi_j\right]       
+\eea 
+
+If we introduce auxiliary optical potential $U_i$, we may rearrange in "post form"
+\bea 
+(E_i-T_i-U_i)\psi_i
+&=& \left( \sum_{j\neq i} \la \phi_i|V_i|\phi_j\ra \psi_j \right)
+   +\left( [\la\phi_i|V_i|\phi_i\ra-U_i]\psi_i \right) \no & &
+   +\left( \sum_{j\neq i}  (T_j-E_j)\la \phi_i|\phi_j\ra \psi_j \right)
+\eea 
+Or, in "prior form",
+\bea     
+(E_i-T_i-U_i)\psi_i
+&=& \left( \sum_{j\neq i} \la \phi_i|V_j|\phi_j\ra \psi_j \right)
+   +\left( [\la\phi_i|V_i|\phi_i\ra(R_i)-U_i]\psi_i \right) 
+   \no & & 
+   +\left( \sum_{j\neq i}  \la \phi_i|\phi_j\ra  (T_j-E_j)\psi_j \right) ,\no   
+\eea 
+Let us denote 
+\bea 
+V^{prior}(R_i,R_j)&=&\la \phi_i|V_j|\phi_j\ra,\quad 
+V^{post}(R_i,R_j)=\la \phi_i|V_i|\phi_j\ra,
+\eea 
+If we define $U_i(R_i)=\la \phi_i|V_i|\phi_i\ra$, 
+diagonal term in the right hand side would vanish. 
+
+For radial wave function $\psi_\alpha=f_\alpha/R$ in a prior form for rearrangement, 
+while separating inelastic scattering and rearrangements counplings,
+\footnote{Compared to the coupled channel equation given in FRESCO document,
+(1) we have additional non-orthogonal terms (2) diagonal term in the right side can be
+ignored (3) We have not expanded in multipole of couplings yet (4) $i^{L-L'}$ factor 
+are hidden in the definition of $|\phi_\alpha\ra$. 	
+
+}   
+\bea 
+& &(E_{xpt}-T_{xL}(R_x)-U_x(R_x))f_\alpha(R_x) \no 
+& &\quad =\la \phi_\alpha| V_x-U_x|\phi_\alpha\ra(R_x) f_\alpha(R_x) 
++\left( \sum_{\alpha'\neq \alpha} V_{\alpha \alpha'}(R_x)f_{\alpha'}(R_x)\right) 
+\no 
+& &\quad  +\left(\sum_{x\neq x',\alpha' }\int dR_{x'}  V^{prior}_{\alpha\alpha'}(R_x,R_{x'})
+               f_{\alpha'}(R_{x'})\right) 
+\no & &\quad               
+          +\left( \sum_{\alpha\neq \alpha'}\int dR_{x'} N_{\alpha\alpha'}(T_{x'L'}-E_{x'p't'})f_{\alpha'}(R_{x'})\right)    
+\eea 
+where
+\bea 
+T_{xL}(R)&=&-\frac{\hbar^2}{2\mu_x}\left( \frac{d^2}{dR^2}-\frac{L(L+1)}{R^2}\right),\no 
+V_{\alpha\alpha'}(R_x)&=&\la \phi_\alpha|V_x(R_x,\xi)|\phi_{\alpha'}\ra ,\no 
+V^{prior}_{\alpha\alpha'}(R_x,R_{x'})&=& R_{x}
+                     \la \phi_\alpha|V^{prior}(R_{x'},\xi)|\phi_{\alpha'}\ra\frac{1}{R_{x'}},\no 
+N_{\alpha\alpha'}(R_x,R_{x'})&=& R_x\la \phi_\alpha|\phi_{\alpha'}\ra \frac{1}{R_{x'}}.                     
+\eea 
+
+The actual form of couplings requires explicit form of potentials in a certain model.
+For example, inelastic channel coupling which have the same partition, 
+\bea 
+V_{\alpha\alpha'}(R_x)=\int d\xi_p d\xi_t \la i^{L} [Y_L(\hat{R}_x)\otimes \phi_p(\xi_p)]\phi_t(\xi_t)|
+    V_x(R_x,\xi_p,\xi_t)|i^{L'} 
+    [Y_{L'}(\hat{R}_{x})\otimes \phi_{p'}(\xi_{p'})]\phi_{t'}(\xi_{t'})\ra 
+\eea 
+can be described as an collective model or single particle excitation models
+for the integration over internal coordinates. 
+
+Also, one may further multipole expand the couplings in terms of transferred angular momentums,
+$\Delta L,\Delta S,\Delta J$. 
+
+
+\chapter{Couplings, Interactions}
+
+\section{Multipole expansion of interaction}
+In general, the reaction occurs through the interaction between target and projectile,
+\bea 
+{\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)&=&\sum_{i\in p, j\in t} V_{ij}(\vr_i-\vr_j).
+\eea 
+In coupled reaction channel calculation, we need to compute (if there is no rearrangement), 
+\bea 
+V_{\alpha,\alpha'}(R_x)=\la \alpha| {\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)|\alpha'\ra 
+\eea 
+where integration over internal coordinates and angular integration of ${\bm R}_x$
+is implied. 
+By factoring out factor $i^{L-L'}$, we can write 
+\bea 
+V_{\alpha\alpha'}(R_x)=\int d\Omega_{R} d\xi_p d\xi_t 
+\left \la [Y_L(\hat{R}_x)\otimes \phi_p(\xi_p)]_{J_p}\otimes \phi_t(\xi_t)\right|
+V_x({\bm R}_x,\xi_p,\xi_t)\left| 
+[Y_{L'}(\hat{R}_{x})\otimes \phi_{p'}(\xi_{p'})]\otimes \phi_{t'}(\xi_{t'})\right\ra 
+\eea 
+
+By tensor decompose of the potential, we may write\footnote{I suppose
+one would have $T_{\lambda -\mu}(R,{\bm \xi}_t,{\bm \xi}_p)$ in general,
+instead of  $V_\lambda(R)T_{\lambda -\mu}({\bm \xi}_t,{\bm \xi}_p)$.
+ }
+\bea 
+{\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)
+=\sqrt{4\pi} \sum_{\lambda\mu} V_\lambda(R) Y_{\lambda\mu}(\hat{R}) T_{\lambda -\mu}({\bm \xi}_t,{\bm \xi}_p)
+\eea 
+Then, the matrix elements for states $\la \alpha'|$ and $|\alpha\ra$
+can be expressed in terms of the product of form factor and reduced matrix elements
+, $V_\lambda(R)\la \alpha||T_{\lambda}({\bm \xi}_t,{\bm \xi}_p)||\alpha'\ra $, and 
+other all coefficients related with shuffling states and tensor decomposition of  
+potential. 
+
+In FRESCO, 
+the potential operators are decomposed into multipoles and the matrix elements related with
+orbital angular momentums are computed by FRESCO so that one only have to give inputs for 
+reduced matrix elements and form factors of the coupling $V_\lambda(R)\la \alpha||T_{\lambda}({\bm \xi}_t,{\bm \xi}_p)||\alpha'\ra $. In some special model, even the reduced matrix elements or
+form factors will be computed automatically.   
+
+This is explained in the manual of FRESCO and the textbook of I.J. Thompson.
+However, there is some convention difference between two. 
+
+
+
+\section{Example of double folding model}
+{\bf From now on, I am going to describe how to obtain coupling interaction 
+but exact factors should be checked carefully later. (Thus, this is just for rough idea).}
+
+Suppose we have a scalar folding potential $v(\vr_i-\vr_j)$, and full interaction between
+projectile and target becomes\footnote{We assumed simple separation of wave function 
+	into projectile, target and orbital while ignoring anti-symmetrization of full wave function
+of the system.
+} 
+\bea 
+{\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)&=&\sum_{i\in p, j\in t} v({\bm R}+\vr_i-\vr_j) \no 
+ &=& \int d{\bm r}_t d{\bm r}_p   v({\bm R}+\vr_p-\vr_t) 
+      \sum_{i\in p, j\in t} \delta^{(3)}(\vr_p-\vr_i)\delta^{(3)}(\vr_t-\vr_j)     .
+\eea 
+We can decompose the channel state as 
+\bea 
+\left| [Y_{L'}(\hat{R}_{x})\otimes \phi_{p'}(\xi_{p'})]\otimes \phi_{t'}(\xi_{t'})\right\ra
+= \sum_{M} C_{\alpha,M} Y_{L'}(\hat{R}) \phi_{I_p}(\xi_p)\phi_{I_t}(\xi_t)
+\eea 
+where $C_{\alpha,M}$ is a collection of Wigner coefficients with projections $M=\{L_z,I_{pz},I_{tz}, J_z\}$.
+Then,
+\bea 
+V_{\alpha,\alpha'}(R)&=& \la \alpha| {\cal V}_{xtp}({\bm R}_x,{\bm \xi}_t,{\bm \xi}_p)|\alpha'\ra \no 
+ &=& \sum_{M,M'} C_{\alpha,M}C_{\alpha',M'} 
+  \int d{\bm r}_t d{\bm r}_p   \la Y_{L'}(\hat{R})| v({\bm R}+\vr_p-\vr_t) |Y_L(\hat{R})\ra
+  \no & &  \quad \times  
+   \la \phi_{I_p}|\sum_{i}  \delta^{(3)}(\vr_p-\vr_i) |\phi_{I'_p}\ra 
+   \la \phi_{I_t}|\sum_{j}  \delta^{(3)}(\vr_t-\vr_j) |\phi_{I'_t}\ra    
+\eea 
+Suppose we can obtain the density (or transition density) from 
+\bea 
+\rho_{I I'}(\vr) =\la \phi_{I}|\sum_{i}  \delta^{(3)}(\vr-\vr_i) |\phi_{I'}\ra.
+\eea  
+It will corresponds to density for elastic process if $I=I'$, or  
+to transition density for inelastic process if $I\neq I'$.
+
+We may use Fourier transformation for $v(\vr)$,
+\bea 
+v(\vr)=\frac{1}{(2\pi)^{3}}\int d^3 k e^{i\vk\cdot \vr} \tilde{v}(\vk),
+\eea 
+then,
+\bea 
+V_{\alpha,\alpha'}(R)&=&\sum_{M,M'} C_{\alpha,M}C_{\alpha',M'} 
+   \int d{\bm r}_t d{\bm r}_p \la Y_{L'}(\hat{R})| v({\bm R}+\vr_p-\vr_t) |Y_L(\hat{R})\ra
+   \rho_{I_p I'_p}(\vr_p)\rho_{I_t I'_t}(\vr_t) \no 
+   &=& \sum_{M,M'} C_{\alpha,M}C_{\alpha',M'} \int d{\bm r}_t d{\bm r}_p
+    \frac{1}{(2\pi)^{3}}\int d^3 k \la Y_{L'}(\hat{R})| \tilde{v}(\vk) e^{i\vk\cdot(\vR+\vr_p-\vr_t) } |Y_L(\hat{R})\ra \rho_{I_p I'_p}(\vr_p)\rho_{I_t I'_t}(\vr_t) \no 
+   &=&  \sum_{M,M'} C_{\alpha,M}C_{\alpha',M'}\frac{1}{(2\pi)^{3}}
+   \int d^3 k \la Y_{L'}(\hat{R})|  e^{i\vk\cdot \vR } |Y_L(\hat{R})\ra \times 
+   \tilde{v}(\vk) \tilde{\rho}_{I_p I'_p}(-\vk)\tilde{\rho}_{I_t I'_t}(\vk)
+\eea 
+where the Fourier transformation of density are introduced. 
+Then, by the partial wave expansion of plane wave, we get 
+\bea 
+V_{\alpha,\alpha'}(R)&=& \sum_{\Delta L} \sum_{M,M'}\sum_{L_z}
+  C_{\alpha,M}C_{\alpha',M'}\frac{\sqrt{4\pi}}{(2\pi)^{3}} i^{\Delta L}
+  \int d k k^2 j_{\Delta L}(k R) \times 
+  \la Y_{L'}|  Y_{\Delta L}(\hat{R}) |Y_L\ra 
+  \no & &  \times \int d\Omega_{k} \left( \tilde{v}(\vk) \tilde{\rho}_{I_p I'_p}(-\vk)\tilde{\rho}_{I_t I'_t}(\vk) Y_{\Delta L}^*(\hat{k}) \right) \no 
+  &=& \sum_{\Delta L} \sum_{M,M'}\sum_{L_z} 
+    C_{\alpha,M}C_{\alpha',M'} V_{\alpha,\alpha'}^{\Delta L}(R) \la Y_{L'}|  Y_{\Delta L}(\hat{R}) |Y_L\ra
+\eea 
+In the last line, we defined a coupling Form factor  $V_{\alpha,\alpha'}^{\Delta L}(R)$
+which includes all integration over internal degrees of freedom. 
+
+By comparing this equation with the expression for the general spin transfer coupling in FRESCO manual
+will gives us the exact expression for the input to the FRESCO. 
+
+{\bf More careful analysis of the equation would be necessary.}
+
+\subsection{Spin/Isospin dependent folding potential}
+If the folding potential have additional dependence on spin or isospin,
+\bea 
+v_{12}=v_0(r_{12})+v_1(r_{12})\tau_1\cdot\tau_2+v_2(r_{12})\sigma_1\cdot\sigma_2+\cdots 
+\eea  
+If the isospin does not change during the process we can simply replace, 
+$\tau_1\cdot\tau_2\to \tau_1^z \tau_2^z$ and 
+\bea 
+\la \phi_{I}|\sum_{i}  \delta^{(3)}(\vr-\vr_i)\tau_i^z |\phi_{I'}\ra
+= \rho^p_{II'}(\vr)-\rho^n_{II'}(\vr).
+\eea  
+In a very special case, $\rho_n=\frac{N}{Z}\rho_p=\frac{N}{A}\rho$, this corresponds to 
+\bea 
+\la \phi_{I}|\sum_{i}  \delta^{(3)}(\vr-\vr_i)\tau_i^z |\phi_{I'}\ra =\frac{Z-N}{A}\rho(\vr)
+\eea 
+
+
+For spin, we would get vector spin density 
+\bea 
+\la \phi_{I}|\sum_{i}  \delta^{(3)}(\vr-\vr_i){\bm \sigma}_i|\phi_{I'}\ra
+={\vec \rho}_{II'}(\vr)
+\eea 
+
+\end{document}
+
+

@@ -1,0 +1,25 @@
+208.0  82.0   1.00   1.00   10.0   
+0.0    0.1          
+  101    3         
+*****************
+0.0    0.01                       #? 
+  101    3                        #?  
+*****************
+
+
+#(line 1) TMAS, ZZT, PMAS, ZZP, ELAB
+TMAS    MT , mass of the target.
+ZZT     ZT , charge of the target.
+PMAS    MP , mass of the projectile.
+ZZP     ZP , charge of the projectile.
+ELAB    incident energy in the lab.
+#(line 2) XMIN, XSTEP
+XMIN    Minimum radial distance
+XSTEP   radial distance step
+#(line 3) NMAX, MAXL
+NMAX    Number of radial points
+MAXL    Maximum value of l
+
+
+
+

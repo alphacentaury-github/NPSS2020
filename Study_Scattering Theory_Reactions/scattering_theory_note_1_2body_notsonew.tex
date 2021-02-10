@@ -1,0 +1,1709 @@
+\documentclass[10pt]{book}
+\usepackage[bookmarks]{hyperref}
+\usepackage{kotex} % korean tex
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins 
+%to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs 
+%with an empty line rather than an indent
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists 
+%(eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting 
+% out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include 
+%more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class 
+%to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set 
+% AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+% (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} 
+% Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} 
+% Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{empheq}
+% make possible to box equations, For example
+%\begin{empheq}[box=\fbox]{align*}
+%a&=b \tag{test}\\
+%E&=mc^2 + \int_a^a x\, dx
+%\end{empheq}
+
+
+\parindent 10pt\textheight 9in\topmargin -0.4in\textwidth 6in
+\oddsidemargin .25in\evensidemargin 0in
+\def\bm{\boldsymbol}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\no}{\nonumber \\}
+\newcommand{\nnb}{\nonumber}
+\newcommand{\etal}{{\it et al.}~}
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\sll}[1]{#1\hspace{-0.5em}/}
+\newcommand{\del}{\partial}
+\def\vs{{\bm \sigma}}
+\def\vh{{\bm h}}
+\def\vp{{\bm p}}
+\def\vq{{\bm q}}
+\def\vk{{\bm k}}
+\def\vl{{\bm l}}
+\def\vx{{\bm x}}
+\def\vy{{\bm y}}
+\def\vv{{\bm v}}
+\def\vr{{\bm r}}
+\def\vR{{\bm R}}
+\def\la{\langle}
+\def\ra{\rangle}
+\newcommand{\threejsymbol}[6]
+{\left(\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\end{tabular}\right)}
+\newcommand{\sixjsymbol}[6]
+{\left\{\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$} \end{tabular}\right\}}
+
+
+%%% The "real" document content comes below...
+
+\title{Scattering Theory Note: Two body}
+\author{Young-Ho Song}
+\date{\today}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\chapter{Basic Conventions}
+%===============KINEMATICS==================================
+
+\section{Kinematics}
+\label{sec:1}
+\begin{itemize}
+\item 일반적인 two-body problem can be decomposed as 
+center of mass kinetic energy and two-body relative 
+motion.
+\bea
+\la \vr_1 \vr_2|H|\vr'_1\vr'_2\ra
+=\la \vR \vr|H|\vR' \vr'\ra
+=\delta^{(3)}(\vR-\vR')
+ \left[
+ \delta^{(3)}(\vr-\vr')\left(-\frac{\nabla^2_R}{2M_{tot}}
+                       -\frac{\nabla_r^2}{2\mu}\right)
+ +V(\vr,\vr')\right]                      
+\eea
+
+C.M. frame 에서,
+scattering 에너지는 two-body 의 relative kinetic energy 이고,
+$E=\frac{\vk^2}{2\mu}$ with reduced mass 
+$\mu=\frac{m_1m_2}{m_1+m_2}$로 나타내진다. 
+\footnote{
+주의: $\vk_{rel}\equiv \mu v_{rel} \neq \vp_1-\vp_2$.}
+\footnote{
+{\bf 주의: state나 matrix element를 나타낼 때,
+$|\vk\ra$, $|k, \alpha\ra$, $|\alpha\ra$ 는 각각
+다른 의미를 가진다. $|\vk\ra$는 plane wave, $|k,\alpha\ra$ 는
+partial wave with radial wave function, $|\alpha\ra$는 
+angular part without radial wave function.}
+}
+
+In c.m. frame $E_k=\frac{\vk^2}{2\mu}$
+with $\vk=\mu {\bm v}_{rel}$ relative momentum
+between two cluster, $\mu$ reduced mass.
+
+\item Non-relativistic kinematics: 
+
+$m_1$ and $m_2$ particles in c.m. frame and
+$m_2$ is rest in lab frame.
+In relativistic expression,
+\bea
+(m_2+\sqrt{m_1^2+\vp_1^2})^2-\vp_1^2 
+       =(\sqrt{m_1^2+\vp_c^2}+\sqrt{m_2^2+\vp_c^2})^2,
+\eea
+where $\vp_{1}$ is momentum in Lab. frame, $\vp_c$ is momentum in
+C.M. frame. Solving this equation gives a relation between,
+$\vp_1$ and $\vp_c$. In terms of kinetic energy,
+\bea
+(m_1+m_2+T^L)^2-(T^L+m_1)^2+m_1^2
+=(m_1+m_2+T^C)^2,
+\eea
+gives the relation between $T^L$ and $T^C$.
+\footnote{In case $m_1=m_2$, $T^L=2 T^C+\frac{(T^{C})^2}{2m}$}
+
+Relative momentum $\vk_{rel}=\mu{\bf v}_{rel}$ 
+is given in non-relativistic expression,
+$\frac{\vk_{rel}}{\mu}=\frac{\vp_1}{m_1}$ in lab frame
+and 
+$\vk_{rel}=\mu(\frac{\vp_c}{m_1}-\frac{-\vp_c}{m_2})=\vp_c$
+in c.m. frame, 
+In non-relativistic approximation,
+\bea
+& &T^L=\frac{\hbar^2}{2m_1}\vp^2,\quad T^C=\frac{\hbar^2}{2\mu}\vk^2,
+\quad \mu=\frac{m_1 m_2}{m_1+m_2},\no
+& & \hbar\vk=\mu{\bm v}_{rel}=m_1{\bm v}_{1c}=-m_2{\bm v}_{2c},
+\quad {\bm v}_{rel}={\bm v}_1-{\bm v}_2,\no 
+& &\hbar{\vp}_1=m_1{\bm v}_{rel}=\frac{m_1}{\mu}\vk_{rel} ,
+\no
+& &
+ T^L=\frac{m_1}{2}{\bm v}_{rel}^2=\frac{m_1}{\mu}T^c
+\eea
+
+Let us always use only $\mbox{fm}$ as a fundamental units.
+Other quantities are always converted by using
+$\hbar=c=1$ and $\hbar c=1=197 \mbox{MeV}.\mbox{fm}$.
+
+\item 
+{\bf In non-relativistic} inelastic scattering, $A(projectile)+B(target)\to C+D$,
+the angle of particle C from the lab. frame and C.M. frame is related by
+\bea
+\tan\theta_{lab}&=&\frac{\sin\theta_{cm}}{\rho+\cos\theta_{cm}},\no
+\rho&=&\left(\frac{m_A m_C}{m_B m_D}\frac{E}{Q+E}\right)^{\frac{1}{2}}
+\eea
+where, $Q+E_A+E_B=E_C+E_D$ in C.M. frame
+with $E$ is the relative energy in the incident channel.
+Q is the internal energy released in the reaction.
+Q is $Q>0$
+(means final states have more kinetic energy than initial) 
+for exothermic(발열) reaction and
+$Q<0$ for endorthermic reaction.
+ 
+For non-relativistic and elastic scattering case, 
+$Q=0$,$A=C$ and $B=D$, thus
+$\rho=m_A/m_B$.
+\end{itemize}
+
+\subsection{Differential cross section between c.m. frame and lab. frame}
+
+Basic principle is that the number of particles 
+into certain solid angle does not change from reference frame.
+Total cross sections, as ratios of fluxes, are not changed by Lorentz transformation.
+However, differential cross section can change by Lorentz transformation.
+
+Thus,
+\bea
+\left(\frac{d\sigma}{d\Omega}\right)' d\Omega'
+=\left(\frac{d\sigma}{d\Omega}\right) d\Omega,\quad
+\left(\frac{d\sigma}{d\Omega}\right)'=\left(\frac{d\sigma}{d\Omega}\right)
+ \left(\frac{d\Omega}{d\Omega'}\right)
+\eea
+In non-relativistic kinematics,
+\bea
+\left(\frac{d\sigma}{d\Omega_1}\right)_{Lab}
+&=&\left(\frac{d\sigma}{d\Omega}\right)_{cm}
+    \frac{d\cos\theta_{C}}{d\cos\theta_{1L}}
+  \simeq \left(\frac{d\sigma}{d\Omega}\right)_{cm} 
+  \frac{(1+2\lambda \cos\theta_{cm}+\lambda^2)^{\frac{3}{2}}}
+   {|1+\lambda \cos\theta_{cm}|}
+\eea
+where, $\lambda=m_1/m_2$.
+\bea
+\left(\frac{d\sigma}{d\Omega_2}\right)_{Lab}
+&\simeq&4\sin(\frac{\theta_C}{2})\left(\frac{d\sigma}{d\Omega_2}\right)_{cm}
+\eea
+
+For inelastic reaction, we replace $\lambda$ by
+$\rho$. 
+
+
+\section{Normalization convention}
+앞으로 bra-ket notation을 도입할 때는 언제나 
+normalization에 주의해야한다.
+\bea 
+\la \vk|\vk'\ra ={\cal N}\delta^{(3)}(\vk-\vk'),\quad
+\la \vx|\vx'\ra =\delta^{(3)}(\vx-\vx')
+\eea 
+Sakurai book, Rimas 논문, Glockle 의 책은 다음 convention을 사용한다.
+\bea
+\la \vx|\vk\ra&\equiv&\frac{1}{(2\pi)^\frac{3}{2}}e^{i\vk\cdot\vx}
+\no
+\int d\vk |\vk\ra \la \vk|&=&1, \quad \la \vk'|\vk\ra=\delta^{(3)}(\vk-\vk')
+\eea
+
+반면에, Another popular convention 
+$\la \vk|\vk'\ra=(2\pi)^3\delta^3(\vk-\vk')$ 으로 정의할 경우엔 
+\bea
+\la \vx|\vk\ra&=&e^{i\vk\cdot\vx},\no 
+\int \frac{d\vk}{(2\pi)^3} |\vk\ra \la \vk|&=&1, 
+\quad \la \vk'|\vk\ra=(2\pi)^3 \delta^{3}(\vk-\vk')
+\eea
+이 된다. 이 노트에서는 앞의 normalization 즉, $\la \vk'|\vk\ra=\delta^3(\vk-\vk')$을
+사용하기로 하자.
+\footnote{ high energy 에서는 state를 4-vector로
+생각하고,
+\bea
+\la k^\mu | k^{'\mu}\ra=(2\pi)^4(2E_k)\delta^{(4)}(k-k')
+\eea
+로 정하는 것이 편리하고, 이 때는 energy conservation을
+$(2\pi)\delta(k^0-k^{'0})$로 뽑아내는 것이 편리하다. }
+
+%===============FORMAL SCATTERING============================
+\chapter{Formal scattering theory: In momentum space  }
+
+\section{Formal scattering theory: In-, Out- state and Moller operator}
+Scattering 은 흔히 free incoming state 로부터 
+free outgoing state 로의 변화를 나타낸다.
+따라서, 이 둘을 연결시켜 주는 S operator(scattering operator)를 
+\bea
+|\psi_{out}\ra=S|\psi_{in}\ra
+\eea
+을 생각할 수 있다. 
+
+We can consider $|\psi_{in}\ra$ state such that 
+time evolution of $|\psi\ra$ at $t=0$ state becomes
+
+\bea
+& &U(t)|\psi\ra \to_{t\to -\infty}  U^0(t)|\psi_{in}\ra ,\no
+& &U(t)|\psi\ra \to_{t\to +\infty}  U^0(t)|\psi_{out}\ra.
+\eea
+where $U(t)=e^{-iH t}$ and $U_0(t)=e^{-iH_0 t}$. Thus,
+
+M\"{o}ller operator $\Omega_{\pm}$ 를 다음과 같이 정의할 수 있다.
+\bea
+\Omega_{\pm}&\equiv&\lim_{t\to \mp\infty} U(t)^\dagger U_0(t),\no
+|\psi\ra&=&\Omega_{+}|\psi_{in}\ra=\Omega_{-}|\psi_{out}\ra
+\eea
+
+  
+\begin{equation}
+\boxed{
+\begin{array}{ccccc}
+\mbox{in asymptote} & \rightarrow^{\Omega_+} & \mbox{actual state at t=0}
+                    & \leftarrow^{\Omega_-}  & \mbox{ out asymptote}\\
+|\psi_{in}\ra       & \rightarrow            & |\psi\ra 
+                    &\leftarrow              & |\psi_{out}\ra\\
+|\phi\ra            &\rightarrow             &|\phi+\ra
+                    &                        &  \\
+                    &                        & |\chi-\ra
+                    & \leftarrow             & |\chi\ra\\       
+\end{array}
+}
+\end{equation}
+where, $|\phi+\ra$ means the actual state of the system at $t=0$
+{\it if the in asymptote was $|\phi_{in}\ra=|\phi\ra$}.
+(It does not mean state at $t\to +\infty$.)
+\footnote{$\Omega_{+}|\phi\ra\equiv |\phi+\ra$,
+$\Omega_{-}|\chi\ra\equiv |\chi-\ra$.}
+
+
+S-matrix는  
+\bea
+S=\Omega^\dagger_{-}\Omega_{+}=1+R \mbox{ or } 1-R
+\eea
+로 정의 될 수 있고, Unitary 임을 알 수 있다. 
+Probability is related with
+\bea
+w(\chi\leftarrow \phi)=|\la\chi|S|\phi\ra|^2.
+\eea
+
+앞으로 
+$|\vk\ra$와 $|\vk\ra^{(\pm)}$는 free LS equation과 
+full LS equation의 solution이다. 즉,
+\bea
+H_0|\vk\ra&=&E_k|\vk\ra\no
+H|\vk\ra^{(\pm)}&=&(H_0+V)|\vk\ra^{(\pm)}=E_k|\vk\ra^{(\pm)}.
+\eea
+여기서, $\pm$는 서로 다른 boundary condition을 만족하는 해 임을 
+나타낸다.
+
+\section{LS equation for scattering}
+\begin{itemize}
+\item
+From the Shrodinger equation for scattering wave function,
+\bea
+& &H_0|\vk\ra=E_k|\vk\ra,\no
+& &H|\vk\ra^{(\pm)}=(H_0+V)|\vk\ra^{(\pm)} = E_k |\vk\ra^{(\pm)}
+\eea
+위 식은 LS eq.으로 바꿔 쓸 수 있다. 단, $\frac{1}{E-H_0}$는 
+real axis 에서 잘 정의 되는 함수가 아니므로, $\pm i\epsilon$
+을 도입하여,
+\bea
+\boxed{
+|\vk\ra^{(\pm)}=|\vk\ra+\frac{1}{E-H_0\pm i\epsilon}V|\vk\ra^{(\pm)},}
+\eea
+이고, $\pm$는 각각 서로 다른 boundary consition을 준다.
+이 식에서  
+$H_0$ 는 free particle state $|\vk\ra$에 작용할 때,  $E_k=\frac{\vk^2}{2\mu}$ 이고, 
+$E$ is an energy of $|\vk\ra^+$ which 
+need not necessarily  be $H_0=\frac{\vk^2}{2\mu}$ 
+for relative two-body. However, elastic scattering case, $E_k$ will be the same as $H_0$.
+
+\item Green's function or resolvant : Green function( free resolvant or free propagator) is defined as
+\bea
+G(z)\equiv\frac{1}{z-H},\quad
+G_0(z)\equiv\frac{1}{z-H_0}
+\eea
+This satisfies (LS equation for Green function) 
+\bea
+G(z)=G_0(z)+G_0(z)VG(z)
+\eea
+for $z=E\pm i\epsilon$. Or we can define,
+\bea
+G^{\pm}(E)=G(E\pm i\epsilon)
+\eea
+\item {\bf LS equation for scattering state} From above Green's functions,  we obtain $LS$ equation,
+\bea
+|\vk\ra^{(\pm)}&=&\lim_{\epsilon\to 0} 
+       \pm i\epsilon[G_0(E\pm i\epsilon)
+                             +G_0(E\pm i\epsilon)V G(E\pm i\epsilon)]|\vk\ra\no 
+       &=&|\vk\ra+G_0(E\pm i\epsilon)V|\vk\ra^{(\pm)}
+\eea
+where, 
+\bea
+|\vk\ra&=&\lim_{\epsilon\to 0}\frac{\pm i\epsilon}{E_k\pm i\epsilon-H_0}|\vk\ra ,\quad \mbox{Because $H_0|\vk\ra=E_k|\vk\ra$,}\no 
+|\vk\ra^{(\pm)}&=&\lim_{\epsilon\to 0}\frac{\pm i\epsilon}{E_k\pm i\epsilon-H}|\vk\ra=(1+\lim_{\epsilon\to 0}\frac{1}{E_k\pm i\epsilon-H} V)|\vk\ra\no
+   &=&\lim_{\epsilon\to 0} (\pm i\epsilon) G(E+i\epsilon)|\vk\ra
+\eea
+are used. 여기서, 
+$H_0|\vk\ra=E_k|\vk\ra$, $H|\vk'\ra^{(\pm)}=E_{k'}|\vk'\ra^{(\pm)}$, but 
+$H|\vk\ra$ need not be $E_k|\vk\ra $임에 주의.
+
+
+\item 
+위 식에서는 Schrodinger eq으로 부터 시작하였지만, 
+Moller operator를 이용하여, 같은 결과를 얻을 수 있다.
+\bea
+|\vk\ra^{(\pm)}&=&\Omega_{\pm}|\vk\ra
+       =\lim_{t\to \mp\infty} U(t)^\dagger U_0(t)|\vk\ra\no 
+       &=&\lim_{\epsilon\to 0}\pm\frac{\epsilon}{\hbar}
+       \int^0_{\mp\infty} dt
+       e^{\pm\frac{\epsilon}{\hbar}t}U(t)^\dagger U_0(t)|\vk\ra\no 
+      &=&\lim_{\epsilon\to 0}\frac{\pm i\epsilon}{E_k\pm i\epsilon-H}|\vk\ra
+\eea
+where $E_k$ is an energy of $|\vk\ra^{(\pm)}$ state.
+
+\item {\bf S-matrix:}  
+\bea
+\la \vk|\hat{S}|\vk'\ra
+&=&{}^{(-)}\la\vk|\vk'\ra^{(+)}
+=\la \vk|\vk'\ra^{(+)}
+ +\lim_{\epsilon\to 0} \la \vk|V \frac{1}{E_k+ i\epsilon-H}|\vk'\ra^{(+)}\no
+&=&\la \vk|\vk'\ra
+ +\lim_{\epsilon\to 0} \la \vk|V \frac{1}{E_k+ i\epsilon-H}|\vk'\ra^{(+)}
+ +\lim_{\epsilon\to 0} \la \vk|\frac{1}{E_k'+ i\epsilon-H_0}V|\vk'\ra^{(+)}\no
+&=&\la \vk|\vk'\ra
+ +\lim_{\epsilon\to 0}\frac{\la \vk|V |\vk'\ra^{(+)}}
+                           {E_k+ i\epsilon-E_{k'}} 
+ +\lim_{\epsilon\to 0}\frac{\la \vk|V|\vk'\ra^{(+)}}
+                           {E_k'+ i\epsilon-E_k}   
+\no
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+\eea
+The final expression
+\bea
+\boxed{
+\la \vk|\hat{S}|\vk'\ra=\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+}
+\eea
+is independent of convention. 
+
+\item {\bf T-matrix:} 위 식으로 부터 on-shell T-matrix 를 
+\bea
+t(\vk\leftarrow\vk')\equiv \la \vk|V|\vk'\ra^{(+)}
+\eea
+으로 정의 할 수 있다. 하지만, convention 에 따라서
+t-matrix의 정의는 달라질 수 있다. 또한 partial wave convention에 따라서도 달라질 수 있음에 주의.
+
+보통은 S-matrix 식에서 에너지 보존 delta function을 빼내고,
+\bea
+\hat{S}=1-i(factor)\hat{T}
+\eea
+와 같은 식으로 나타낼 수도 있다. 
+그러나, factor는  convention에 따라서 
+달라짐에 주의. 
+예를 들어, 
+\bea
+\la\vk|\hat{S}|\vk'\ra=\delta(E_k-E_{k'})s_{\vk,\vk'},
+\quad
+\la\vk|\hat{T}|\vk'\ra=\delta(E_k-E_{k'})t_{\vk,\vk'}
+                 =\frac{\mu}{k}\delta(k-k')t_{\vk,\vk'}
+\eea
+와 같이 정의하는 것이 하나의 convention 이다.
+
+위의 T-matrix의 정의, 
+\bea
+\boxed{
+\la \vk'|V|\vk\ra^{(+)} \equiv \la \vk'|T|\vk\ra,\mbox{ or } 
+   V|\vk\ra^{(+)}= T|\vk\ra}
+\eea
+와 LS equation을 이용하면\footnote{
+{\bf 주의} 할 것은 $T=V+VG^{+}_0T$ 나 $V|\vk\ra^{+}=T|\vk\ra$
+와 같이 쓸 때의 T는 사실 $\hat{T}$가 아니라, 
+위 식에서의 $t_{\vk,\vk'}=\la \vk|t|\vk'\ra$와 같이 쓸 때의
+t-matrix에 해당한다는 것이다.
+}
+\bea
+T|\vp\ra&=&V|\psi_p\ra^{(+)}=V|\vp\ra+VG_0^+ V|\psi_p\ra^{(+)}\no
+              &=&V|\vp\ra+V G_0^{(+)} T|\vp\ra
+\eea 
+이므로, formal하게 T-matrix의 LS eq.이 얻어진다. 
+\bea
+T(E)&=&V+VG_0(E) T(E) \no 
+ &=&V+VG_0V+VG_0VG_0V+\dots 
+\eea
+
+또는 momentum space에서 by inserting
+$\int d^3\vk |\vk\ra \la \vk|=1$,
+다음과 같이 쓸 수 있다.
+\footnote{
+This expression depends on the convention. 
+
+In $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$ normalization,
+\bea
+\la\vk'|V|\vk\ra^{(+)}
+=\la \vk'|V|\vk\ra
++\int \frac{d\tilde{\vk}}{(2\pi)^3}
+\la \vk'|V|\tilde{\vk}\ra
+\frac{1}{E_\vk-E_{\tilde{\vk}}+i\epsilon}
+\la\tilde{\vk}|V|\vk\ra^{(+)}. 
+\eea
+
+이 때,
+만약, $T(\vk',\vk)=\frac{1}{(2\pi)^3}\la \vk'|V|\vk\ra^{(+)}$ 로 정의할 경우,
+\bea
+T(\vk',\vk)=\frac{V(\vk',\vk)}{(2\pi)^3}
+           +\int d^3{\tilde\vk}
+           \frac{V(\vk',{\tilde\vk})}{(2\pi)^3}
+           \frac{2\mu}{k^2-\tilde{k}^2+i\epsilon}
+           T(\vk',\vk)
+\eea
+가 된다. 
+
+}
+\bea
+\boxed{
+\la\vk'|V|\vk\ra^{(+)}
+=\la \vk'|V|\vk\ra
++\int d\tilde{\vk}
+\la \vk'|V|\tilde{\vk}\ra
+\frac{1}{E_\vk-E_{\tilde{\vk}}+i\epsilon}
+\la\tilde{\vk}|V|\vk\ra^{(+)} 
+}
+\eea
+
+\item {\bf Free Green's function:} in configuration space
+\bea
+\la \vx|G_0(E+i\epsilon)|\vx'\ra
+&=&\int d^3 p \la \vx|\vp\ra\frac{1}{E+i\epsilon-p^2/2\mu}\la \vp|\vx'\ra\no 
+&=&\frac{1}{(2\pi)^3}\int d^3 p e^{i\vp\cdot(\vx-\vx')}
+\frac{1}{E+i\epsilon-p^2/{2\mu}}\no
+&=&\frac{1}{(2\pi)^3}(4\pi)\int_0^\infty d p p^2 j_0(p|\vx-\vx'|)
+     \frac{1}{E+i\epsilon-p^2/2\mu}\no
+&=&-\frac{\mu}{2\pi\hbar^2}
+     \frac{e^{i k|\vx-\vx'|}}{|\vx-\vx'|}
+\eea
+여기서, $\mu=\frac{m}{2}$로 two nucleon reduced mass
+and $E=k^2/(2\mu)$. Final expression is independent of normalization
+convention. Note another common definition of Green's function is
+\bea
+(\nabla^2+k^2)G^0_{\pm}(\vx,\vx')&=&\delta^{(3)}(\vx-\vx'),\no
+G^0_{\pm}(\vx,\vx')&=&
+\frac{\hbar^2}{2\mu}\la \vx|\frac{1}{E-H_0\pm i\epsilon}|\vx\ra 
+                  =-\frac{1}{4\pi}\frac{e^{\pm ik|\vx-\vx'|}}{|\vx-\vx'|}
+\eea
+
+\item {\bf scattering amplitude:} In configuration space, LS equation become
+\bea
+\la\vr|\vk\ra^{(+)}
+&=&\la \vr|\vk\ra+\int d^3\vr' \la \vr|G_0(E+i\epsilon)|\vr' \ra
+ \la\vr'|V|\vk\ra^{(+)} \no 
+&=&\la \vr|\vk\ra- \int d^3\vr'\frac{\mu}{2\pi\hbar^2}
+   \frac{e^{ik|\vr'-\vr|}}{|\vr'-\vr|}\la \vr'|V|\vk\ra^{(+)}
+\eea
+By using
+\bea
+\la \vr'|G_0(E\pm i\epsilon)|\vr \ra&=&-\frac{\mu}{2\pi\hbar^2}
+              \frac{e^{\pm i k|\vr'-\vr|}}{|\vr-\vr'|},\no 
+|\vr-\vr'|&=& r-r' {\hat \vr}\cdot{\hat \vr'}+\dots,\no 
+\lim_{\vr\to \infty}\la \vr'|G_0(E\pm i\epsilon)|\vr \ra
+   &\to& -\frac{\mu}{2\pi\hbar^2}
+   \frac{e^{\pm i(kr-ikr'\hat{\vr}\cdot{\hat\vr}')}}{r}
+   = -\frac{e^{\pm ikr}}{r}\frac{\mu}{2\pi\hbar^2}e^{\mp i\vk' \cdot{\vr}'}
+\eea
+where we defined $\vk'=k\hat{\vr}$. 여기에서 Greens function에 있는 
+$i\epsilon$ 의 의미가 분명해진다. $\pm i\epsilon $ gives each outgoing and
+ingoing waves or gives boundary conditions.
+
+따라서, 
+\bea
+\la\vr|\vk\ra^{(+)}
+&\to&\la \vr|\vk\ra- \frac{\mu}{2\pi\hbar^2}\frac{e^{ikr}}{r}\la \vk'|V|\vk\ra^{(+)}
+\eea
+
+we can define scattering amplitude asymptotically
+\bea
+\boxed{
+\psi_{out}(\vr)\to_{\vr\to \infty} \frac{1}{(2\pi)^{\frac{3}{2}}}
+     \left(e^{i\vk\cdot\vr}+f(\vk',\vk)\frac{e^{ikr}}{r}\right).}
+\eea
+where
+\bea
+f(\vk',\vk)&=&-\frac{(2\pi)^{\frac{3}{2}}\mu}{2\pi\hbar^2} 
+                    \int d^3\vr' e^{-i\vk'\cdot\vr'}
+                    \la \vr'|V|\vk\ra^{(+)}
+\eea
+scattering matrix $\hat{f}$를 scattering amplitude로 부터 정의하면,
+\bea
+\boxed{
+\la \vk'|\hat{f}|\vk\ra\equiv f(\vk',\vk)
+=-\frac{(2\pi)^3\mu}{2\pi\hbar^2}\la \vk'|V|\vk\ra^{(+)}
+}
+\eea
+으로 formal 하게 쓸 수 있다.
+\footnote{ Normalization convention에 따라서,
+\bea 
+\hat{f}=-\frac{(2\pi)^3}{\cal N}\frac{\mu}{2\pi\hbar}\hat{V}.
+\eea 
+ 
+In  $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+normalization, $f(\vk,\vk')=-\frac{\mu}{2\pi\hbar^2}\la \vk'|V|\vk\ra^{(+)}$.
+}
+From the definition T-matrix, 
+$\la \vk'|V|\vk\ra^{(+)}=\la \vk' |T|\vk\ra $,
+즉 $V|\vk\ra^{(+)}=T|\vk\ra$, 
+then we get
+\bea
+f(\vk',\vk) &=&-\frac{(2\pi)^3\mu}{2\pi\hbar^2}\la\vk'|V|\vk\ra^{(+)}
+            =-\frac{(2\pi)^2\mu}{\hbar^2}\la\vk'|T|\vk\ra
+\eea
+
+
+만약, Coulomb interaction과 같은 long range interaction이 있는 경우에는 
+asymptotic wave 로 plane wave 를 사용할 수 없기 때문에,
+scattering amplitude를 다르게 정의 해야한다. 단, 이 때, differential cross section은 잘 정의되더라도, 
+total cross ssection은 diverge 한다.
+
+
+\item relation between S-, T-, R- matrix and scattering amplitude
+and potential.
+\bea
+\hat{R}& \equiv& \hat{1}-\hat{S} ,\quad \mbox{ or sometimes } \hat{S}-1\no
+\la \vk|\hat{T}|\vk'\ra &\equiv& \la \vk|V|\vk'\ra^{(+)} \no
+\la \vk|\hat{S}|\vk'\ra
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+\no
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|T|\vk'\ra \no
+&=&\la \vk|\vk'\ra
+   +\frac{1}{2\pi\mu} i\delta(E_k-E_{k'}) f(\vk',\vk)
+\eea
+
+In $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention,
+$$\la \vk|\hat{S}|\vk'\ra
+=\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+=\la \vk|\vk'\ra+\frac{(2\pi)^2}{\mu} i\delta(E_k-E_{k'})
+  f(\vk',\vk).$$
+
+\item factoring Energy conservation : In case of elastic scattering,
+     we can factor out energy conservation part and only consider 
+     matrix elements for angles,
+\bea
+& &\la \vk|\vk'\ra={\cal N}\delta^{(3)}(\vk-\vk')
+  ={\cal N}\frac{\delta(k-k')}{k k'}\delta^{(2)}(\hat{\vk}-\hat{\vk}')\no
+& &\delta(E_k-E_{k'})=\frac{\mu}{k}\delta(k-k'),
+  \mbox{ in case $E_k=\frac{k^2}{2\mu}$.} 
+\eea
+\bea
+\la \vk|\hat{S}|\vk'\ra
+&\equiv&  {\cal N}\frac{\delta(k-k')}{k k'}\la\hat{\vk}|\hat{S}(k)|\hat{\vk}'\ra \no
+&=&{\cal N}\frac{\delta(k-k')}{k k'}\left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   -\frac{2\pi i \mu k}{\cal N} 
+   \la \vk| T|\vk'\ra \right) \no
+&=&{\cal N}\frac{\delta(k-k')}{k k'}\left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   +\frac{i k}{2\pi}  f(\vk',\vk)\right) 
+\eea
+따라서,
+\bea
+\boxed{ 
+\hat{S}(k)=1-\frac{1}{\cal N}2\pi i \mu k \hat{T}(k)=1+\frac{ik}{2\pi}f(\vk',\vk)
+}
+\eea
+와 같이 나타낼 수 있다. 단, 이 경우, $k=k'$ is already implied and
+only consider angles for S-matrix.
+\footnote{ 
+If $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention used,
+\bea
+\hat{S}=1- i \frac{\mu k}{(2\pi)^2} \hat{T}
+  =1+\frac{ik}{2\pi}f(\vk',\vk)
+\eea
+}
+\end{itemize}
+
+\subsection{Examples}
+\subsubsection{Example: Born approximation}
+Let us consider the case of scattering by weak local potential $V(\vx)$.
+If the potential is weak enough we may approximate $|\psi\ra^{(+)}\simeq |\phi\ra +\dots$.
+Then, by the first-order Born approximation,
+\bea
+f^{(1)}(\vk,\vk')=-\frac{1}{4\pi}\frac{2\mu}{\hbar^2}\int d^3 x' e^{i(\vk-\vk')\cdot\vx'} V(\vx')
+\eea 
+For the case of Yukawa potential,
+\bea
+V(r)&=&V_0\frac{e^{-m r}}{m r},\no 
+f^{(1)}(\theta)&=& -\frac{2\mu V_0}{m\hbar^2 }\frac{1}{q^2+m^2},\quad
+  q=|\vk-\vk'|=4k^2 \sin^2\frac{\theta}{2},\no   
+|f^{(1)}(\theta)|^2&=& \left(\frac{2\mu V_0}{m\hbar^2 }\right)^2 \frac{1}{(q^2+m^2)^2}
+\eea 
+$m\to 0$ limit gives Rutherford scattering.
+
+\subsubsection{Example: Eikonal approximation}
+If potential $V(\vx)$ varies very slowly compared to the wave length $\lambda$(which is small),
+we may approximate the wave function as semi-classical wave function, $E=\frac{\hbar^2 k^2}{2\mu}$
+\bea 
+\psi^{(+)}&\sim& e^{i S(\vx)/\hbar}, \no 
+\frac{\hbar^2 k^2}{2\mu}&=&\frac{(\nabla S)^2}{2\mu}+V, \quad \mbox{Hamilton-Jacobi equation}. 
+\eea 
+With further assumption that the classical trajectory is just a straight line path, we have
+\bea 
+\frac{S(\vx={\bm b}+z\hat{z})}{\hbar}&=& kz+\int_{-\infty}^z d z' \left[\sqrt{k^2-\frac{2\mu}{\hbar^2} V(\sqrt{b^2+z'^2})}-k\right]\no  
+      &\simeq & kz -\frac{\mu}{\hbar^2 k}\int_{-\infty}^z d z' V(\sqrt{b^2+z'^2})
+\eea 
+This means that the particle wave function only changes
+the phase during inside the scattering region.
+We may obtain scattering amplitude by putting $\psi^{(+)}\sim e^{i S(\vx)/\hbar}$
+to $\la \vk'|V|\vk\ra^{(+)}\simeq \la \vk'|V|\vk\ra_{eik}$.
+By using 
+\bea 
+\int_0^{2\pi} d\phi_b e^{-ikb\theta \cos\phi_b }=2\pi J_0(kb\theta),
+\eea  
+the final result
+\bea 
+f(\vk',\vk)&=&-ik\int_0^\infty db b J_0(kb\theta)[e^{2i\Delta(b)}-1],\no 
+\Delta(b)&=& -\frac{\mu}{2k\hbar^2}\int_{-\infty}^{\infty} V(\sqrt{b^2+z^2}) dz
+\eea 
+
+
+\subsection{LS equation for bound state}
+Bound state 의 경우는 
+\bea
+(H_0+V)|\psi_b\ra&=&E_b|\psi_b\ra, \quad E=E_b<0,\no
+(H_0-E_b)|\psi_b\ra&=&-V|\psi_b\ra  
+\eea
+여기서, $H_0>0$이고, $E_b<0$ 이므로, 
+homogeneous LS equation
+\bea
+|\psi_b\ra=\frac{1}{E_b-H_0}V|\psi_b\ra
+\eea
+가 얻어진다. boundstate 의 경우는 $E_b-H_0$ cannot give pole 이므로
+$i\epsilon$ 을 Green function에 포함하지 않아도 되고,
+free solution $|\psi\ra$,(such that $(H_0-E_b)|\phi\ra=0$), 를 
+포함하지 않아도 된다는 점에 주의. 
+
+위 식을 configuration space 에서 쓰면, $|E_b|=\frac{\kappa^2}{2\mu}$ or 
+$k=i\kappa $ 일 때, 
+\bea
+\la \vx|\psi_b\ra=\psi_b(\vx)=-\frac{\mu}{2\pi\hbar^2}\int d^3x'
+                  \frac{e^{-\kappa|\vx-\vx'|}}{|\vx-\vx'|}V(\vx')\psi_b(\vx') 
+\eea
+이 되어 large r 에서 exponential fall-off 형태가 됨을 알 수 있다.
+
+\subsection{Bound-state 와 scattering state 의 관계.}
+이미 보았듯이 bound state 와 scattering state가 만족하는 식은 약간 다르다.
+\bea
+|\Psi_b\ra&=&G_0(E_b)V|\Psi_b\ra, \quad E=E_b<0,\no
+t(E)&=&V+V G_0(E+i\epsilon) t(E),\quad E>0
+\eea
+여기서, transition operator 의 E를 $E_b$로 continuation 시키면 어떻게 될까?
+Formally, we can express t-matrix as sum of series
+\bea
+t(E)=(1-V G_0(E))^{-1} V
+\eea
+Expanding in $VG_0(E)$
+\bea
+t(E)&=&(1+VG_0+VG_0VG_0+\dots)V=V(1+G_0V+G_0V G_0V+\dots)
+\eea
+then,
+\bea
+t(E_b)|\Psi_b\ra=V(1+1+1+\dots)|\Psi_b\ra
+\eea
+bound state 에 대한  관계식으로부터 $t(E_b<0)$는 diverging 하는 것을
+알 수 있다. 즉 bound state에 대해 $T(E=-E_b)$ 는 pole을 가진다.
+
+또는 약간 다르게,
+\bea
+t(E)&=&[(G_0^{-1}-V)G_0]^{-1}V=G_0^{-1}\frac{1}{E-H_0-V}V\no 
+     &=&G_0^{-1}\frac{1}{E-H}V=G_0^{-1} G^{-1} V
+\eea
+로 바꿔 쓴다음 complete set을 넣으면,
+\bea
+|\Psi_b\ra\la\Psi_b|+\int d^3 p |\Psi_p^{+}\ra\la\Psi_p^{+}|=1 
+\eea
+\bea
+t(E)&=&(E-H_0)|\Psi_b\ra\frac{1}{E-E_b}\la \Psi_b|V
+        +\int d^3p (E-H_0)|\vp\ra^+ \frac{1}{E-\vp^2/m}\la \vp^{+}| V \no
+      &=&V|\Psi_b\ra\frac{1}{E-E_b}\la\Psi_b|V
+         +\int d^3p V|\vp\ra^+ \frac{1}{E-\vp^2/m}\la \vp^{+}| V 
+\eea
+가 되고, $E\to E_b$ 일 때, pole을 가지는 것을 볼 수 있다.
+\bea
+t(E)\to V|\Psi_b\ra\frac{1}{E-E_b}\la\Psi_b|V, \quad E\to E_b
+\eea
+
+또는 , scattering wave의 asymptotic form으로 부터 $E_b=-\kappa^2/(2\mu)$,
+\bea
+\bar{u}(r,k)\simeq 
+  [s(k) e^{ik r}- e^{-ik r}]
+\to [s(\pm i\kappa) e^{\mp \kappa r}- e^{\pm \kappa r}]
+\eea
+인데, 여기서 물리적으로 중요한 것은 ratio between incoming and outgoing wave, 즉 S 이다. 
+Bound state는 outgoing wave without incoming wave라고 생각할 수 있고,
+따라서 ratio가 infinite여야한다. 이경우, $k=i\kappa$ 에서 $S(k=i\kappa)$ 
+가 pole을 가지는 것이 
+correct bound state solution을 줌을 알 수 있다. 단지, $S(E)$ 의 negative 
+energy axis 에서의 pole은 $\pm i\kappa$ 를 모두 의미하므로, 적합하지 않고,
+$S(k)$ 가 positive imaginary axis 에서 pole을 가져야 함을 알 수 있다.
+
+
+%===============Partial Wave decomposition
+
+\chapter{Partial wave decomposition}
+
+\section{Basic relations}
+In general, any function of angle between two vector $\cos\theta=\hat{\vr}_1\cdot\hat{\vr}_2$
+can be expanded in terms of Legendre Polynomial and
+more generally by spherical harmonics.
+\begin{itemize}
+\item delta function expansion is
+\bea
+\boxed{
+\delta^{(3)}(\vr_1-\vr_2)=
+ \frac{\delta(r_1-r_2)}{r_1 r_2}\delta^{(2)}(\hat{r}_1-\hat{r}_2)
+ = 
+ \frac{\delta(r_1-r_2)}{r_1 r_2}
+ \sum_{lm} Y_{lm}(\hat{r}_1)Y^*_{lm}(\hat{r}_2) }
+\eea
+Or,
+\bea
+\la \hat{r}_1|\hat{r}_2\ra=\delta^{(2)}(\hat{r}_1-\hat{r}_2)
+ =\delta(\phi_1-\phi_2)\delta(\cos\theta_1-\cos\theta_2)
+=\sum_{lm} Y_{lm}(\hat{r}_1)Y^*_{lm}(\hat{r}_2)
+\eea 
+\item Useful relation for spherical harmonics:
+\bea
+\sum_{m} Y_{lm}^*(\hat{r}_1) Y_{lm}(\hat{r}_2)&=&
+\frac{(2l+1)}{4\pi }P_l(\hat{r}_1\cdot\hat{r}_2),
+ \quad \mbox{ addition theorem} \no   
+Y_{lm}(\hat{z})&=&\sqrt{\frac{2l+1}{4\pi}}\delta_{m0}
+       \quad \mbox{ if $\hat{p}=\hat{z}$},\no 
+Y_{l0}(\hat{r})&=&\sqrt{\frac{2l+1}{4\pi}} P_l(\cos\theta)
+       \quad \mbox{ if $m=0$}
+\eea
+
+\item  Completeness relation from spherical bessel functions,
+\bea
+\boxed{
+\int_0^\infty x^2 j_n(a x) j_n(b x)dx
+=\frac{\pi}{2}\frac{\delta(a-b)}{ab}}
+\eea
+
+\bea 
+j_l(kr)=\frac{1}{2i^l}\int_{-1}^{+1} e^{ikr\cos\theta} P_l(\cos\theta)d\cos\theta 
+\eea 
+
+\end{itemize}
+
+\section{Partial wave expansion of plane wave}
+Plane wave $e^{i\vk\cdot\vr}$ in partial waves as
+\bea
+\boxed{e^{i\vp\cdot\vr}
+=4\pi \sum_{lm} j_l(pr) i^l Y_{lm}(\hat{r})Y^*_{lm}(\hat{p})
+=\sum_l j_l(pr)i^l (2l+1) P_l(\cos\theta)
+\mbox{ if } \hat{p}=\hat{z} }
+\eea
+In $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention, $\la \vr|\vp\ra=e^{i\vp\cdot\vr}$.
+
+In normalization $\la \vk|\vk'\ra=\delta^{(3)}(\vk-\vk') $,
+\bea
+\la \vr|\vp\ra=\frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vp\cdot\vr}
+&=& \sum_{lm} \sqrt{\frac{2}{\pi}} j_l(pr) i^l Y_{lm}(\hat{r})Y^*_{lm}(\hat{p}) \no
+&=& \frac{1}{(2\pi)^{\frac{3}{2}}}
+\sum_{l}j_l(pr) i^l(2l+1) P_{l}(\cos\theta) 
+\mbox{ if $\hat{p}=\hat{z}$}
+\eea
+
+\subsection{Bra-Ket representation in partial wave expansion}
+\begin{itemize}
+\item Formally previous expansion can be easily expressed by introducing 
+      partial wave expansion of Bra $\la \vx|$ and Ket $|\vp\ra $states.
+      However, normalization and convention of this expansion is not unique.
+      
+      Usual normalization convention of states are
+      \bea 
+      \la \vx'|\vx\ra &=&\delta^{(3)}(\vx-\vx'),\quad 
+      \int d^3x |\vx\ra \la \vx| =1,\no 
+      \la \vp|\vp'\ra &=&{\cal N} \delta^{(3)}(\vp-\vp'),\quad 
+      \int \frac{d^3p}{{\cal N}}|\vp\ra \la \vp| =1,\no 
+      \la \vx|\vp\ra &=& \sqrt{\frac{{\cal N}}{(2\pi)^3}} e^{i\vp\cdot\vx}
+      \eea 
+\item Position state expansion: $\la \vx|\vx'\ra=\delta^{(3)}(\vx-\vx')$ can be rewritten as
+partial expansion of $|\vx\ra$, by introducing $|xlm\ra$ and $\la \hat{x}|xlm\ra $
+\bea
+\boxed{ 
+|\vx\ra=\sum_{lm}|x lm\ra\la x lm|\hat{x}\ra}
+\eea
+such that 
+\bea
+\la x lm|x' l' m'\ra=\frac{\delta(x-x')}{xx'}\delta_{ll'}\delta_{mm'},
+\quad
+\sum_{lm}\int dx x^2 |x lm\ra\la x lm|=1.
+\eea
+We have two choices for the definition of $\la \hat{x}|xlm\ra $:
+\bea 
+\la\hat{x}| x lm\ra&\equiv& Y_{lm}(\hat{x}),\quad 
+   \mbox{{\bf spherical harmonics convention} },\no 
+\la\hat{x}| x lm\ra&\equiv& i^l Y_{lm}(\hat{x}),\quad
+  \mbox{{\bf modified spherical harmonics convention} }.
+\eea 
+
+\item Momentum state expansion: Though
+ angular part $\la \hat{p}|p lm\ra=Y_{lm}(\hat{p})$ is almost universal,
+ definition of radial component varies according to convention. 
+ Let us define expansion as 
+ \bea 
+ \boxed{ 
+ |\vp\ra =\sum_{lm} C_{pl} |plm\ra \la plm|\hat{p}\ra  }
+ \eea 
+ such that,
+ \bea 
+  |C_{pl}|^2 \la plm|p' lm\ra ={\cal N}\frac{\delta(p-p')}{pp'}\delta_{ll'}\delta_{mm'},\quad 
+  \sum_{lm} \int \frac{dp p^2}{{\cal N}}|C_{pl}|^2 |p lm\ra \la p' lm|=1.
+ \eea 
+ By using the partial wave expansion of plane wave,
+ \bea 
+ \la \vx|\vp\ra &=&\sqrt{\frac{\cal N}{(2\pi)^{3}}} e^{i\vp\cdot\vx } \no 
+                &=&\sqrt{\frac{\cal N}{(2\pi)^{3}}} 4\pi \sum_{lm} j_l(pr) i^l Y_{lm}(\hat{r})Y^*_{lm}(\hat{p}) \no 
+                &=&\sum_{lm,l'm'} C_{pl} \la xlm|p l'm'\ra \la \hat{x}|xlm\ra \la pl'm'| \hat{p}\ra 
+ \eea 
+ If we use spherical harmonics convention, $\la \hat{x}|xlm\ra=Y_{lm}(\hat{x})$,
+ We have relation 
+ \bea 
+ C_{pl} \la xlm|p l'm'\ra=\sqrt{\frac{\cal N}{(2\pi)^{3}}} 4\pi j_{l}(pr) i^l \delta_{ll'}\delta_{mm'}
+ \eea 
+ On the other hand, if we use modified spherical harmonics convention, 
+ $\la \hat{x}|xlm\ra=i^l Y_{lm}(\hat{x})$, 
+ \bea 
+  C_{pl} \la xlm|p l'm'\ra=\sqrt{\frac{\cal N}{(2\pi)^{3}}} 4\pi j_{l}(pr)\delta_{ll'}\delta_{mm'}
+ \eea 
+ 
+  We have many choices: $C_{pl}=1$, $C_{pl}=i^l$, $C_{pl}=4\pi$
+  and so on. This fixes the normalization of $\la xlm|p l'm'\ra$ too.
+
+\item Whether to include $i^l$ factor to 
+the definition of $\la \hat{x}|xlm\ra$ or $\la xlm|plm\ra $ or treat them explicitly
+for the expansion are convention dependent. 
+Personally I prefer to use modified spherical harmonics convention with 
+$\la \hat{x}|xlm\ra =i^l Y_{lm}(\hat{x})$, 
+$C_{pl}=1$, 
+${\cal N}=1$ , $\la xlm|plm\ra =\sqrt{\frac{2}{\pi} }j_l(px)$.
+
+\item If we fix the normalization of $|p lm\ra $ as
+      $\la x lm|p j_{lm}\ra=j_l(px)$, then, up to $i^{l}$ factors,
+      \bea 
+      C_{pl}=\sqrt{\frac{\cal N}{(2\pi)^3}}4\pi&\to& \sqrt{\frac{2}{\pi}}
+                                     \mbox{ or } 4\pi 
+      \eea 
+      But, be careful that
+      \bea 
+      \la p j_{lm}|p' j_{lm}\ra =\frac{\pi}{2}\frac{\delta(p-p')}{pp'}
+                        =\int dx x^2 j_l(px) j_l(p'x) 
+      \eea 
+\item expansion of momentum function: Any function depends on momentum chould be partial wave expanded.
+      Common definition of partial wave component $f_l(p)$ and $f_{\alpha\beta}(p,p')$ are
+      \bea 
+      f(\vp)&=&\sum_{\alpha} f_{\alpha}(p) (2l+1) P_l(\cos\theta) ,\no
+      f(\vp,\vp')&=&\sum_{\alpha,\beta} f_{\alpha,\beta}(p,p') Y_\alpha(\hat{p}) Y^*_\beta(\hat{p}')   
+      \eea 
+      However, if we represent them as matrix elements of operators $\hat{f}$, 
+      the relation between $f_{\alpha}$, $f_{\alpha,\beta}$ and $\la p,\alpha|\hat{f}|p,\beta\ra $
+      depends on conventions.
+      \bea 
+      \la \vp'|\hat{f}|\vp\ra 
+      &=&\sum_{\alpha,\beta} C^*_{p'\alpha} C_{p\beta}\la \hat{p}'|p',\alpha\ra\la p',\alpha|
+                           \hat{f}|p,\beta\ra \la p,\beta|\hat{p}\ra \no 
+      &=&\sum_{\alpha,\beta} \la p',\alpha|
+                                 \hat{f}|p,\beta\ra 
+                                C^*_{p'\alpha} C_{p\beta} 
+                          Y_\alpha(\hat{p}') Y^*_{\beta}(\hat{p})\no
+      &=&\sum_{\alpha,\beta} \la p',\alpha|
+                                 \hat{f}|p,\beta\ra 
+                                C^*_{p'\alpha} C_{p\beta} 
+                          \sqrt{\frac{(2l_\alpha+1)(2l_\beta+1)}{(4\pi)^2}}
+                          P_\alpha(\cos\theta),\quad \mbox{if }\hat{p}=\hat{z}
+      \eea 
+      Uncoupled case can be considered for the case $\vp=\vp'$, $\alpha=\beta$.
+      Thus, if we had $|C_{pl}|^2=1$, 
+      $\frac{f_{\alpha\alpha}(p,p)}{4\pi}\leftrightarrow f_\alpha(p)$.
+      
+      \item For S-matrix and scattering amplitudes, usual convention is to relate them by
+      \bea 
+      f_{\alpha,\beta}(p)=\left(\frac{S-1}{2ip}\right)_{\alpha\beta}
+      \eea 
+      To be consistent with the normalization of S-matrix $S_{\alpha\beta}=\delta_{\alpha\beta}+\dots$,
+      \bea 
+      f(\vp, \vp')=\sum_{\alpha\beta} 4\pi
+       \left(\frac{S-1}{2ip}\right)_{\alpha\beta}
+      i^{-\alpha+\beta}
+      Y_{\alpha}(\hat{p})Y_{\beta}^*(\hat{p}')
+      \eea 
+      we get,
+      \bea 
+      \frac{\cal N}{(2\pi)^3} 4\pi \la p \alpha |\hat{f}|p \beta \ra 
+      =f_{\alpha,\beta}(p)=\left(\frac{S-1}{2ip}\right)_{\alpha\beta}
+      \eea 
+      and treating
+      \bea 
+      \hat{f}=-\frac{(2\pi)^3}{\cal N}\frac{\mu}{2\pi\hbar}\hat{V}
+      \quad\to\quad 
+      \left(\frac{S-1}{2ip}\right)_{\alpha\beta}= -2\mu \la j_\alpha|\hat{V}|j_\beta\ra^{(+)} 
+      \eea 
+      
+      \item 때로는 $|p,lm\ra$ 이외에 $|E,lm\ra$ state를 정의하여 사용하기도 한다.
+      $E=p^2/(2\mu)$ 인 경우에는
+      \bea
+      |E,lm\ra&=&\sqrt{\mu p}|p lm\ra,\quad  
+      \la E' l' m'|E l m\ra=\delta(E-E')\delta_{l'l}\delta_{m'm}\no
+      \la \vx| E lm\ra&=& i^l\sqrt{\frac{2}{\pi}}\sqrt{\mu p} j_l(pr)Y_{lm}(\hat{x}),\quad
+      \la \vp| E lm\ra=
+      \frac{1}{\sqrt{\mu p}}\delta(E_p-E) Y_{lm}(\hat{p})
+      \eea
+\end{itemize}
+\subsubsection{Time reversal invariance and the choice of convention}
+\begin{itemize} 
+\item Under time reversal $\Theta$,
+\bea 
+\Theta\vx\Theta^{-1}=\vx, \quad \Theta\vp\Theta^{-1}=-\vp 
+\eea 
+From the fundamental commutation relation, $[x_i,p_j]=i\hbar\delta_{ij}$, 
+\bea 
+\Theta [x_i,p_j]\Theta^{-1}=[x_i,(-)p_j]
+=\Theta i\hbar \delta_{ij} \Theta^{-1}=-i\hbar\delta_{ij}
+\eea 
+We can know that $\Theta$ is an anti-unitary operator.
+And,
+\bea 
+\Theta {\bm J}\Theta^{-1}=-{\bm J},
+\quad \mbox{from } [J_i,J_j]=i\hbar\epsilon_{ijk}J_k
+\eea 
+For spatial wave,
+\bea 
+\Theta Y_{lm}(\theta,\phi)\Theta^{-1}
+&=&Y_{lm}^*(\theta,\phi)
+    =(-1)^m Y_{l-m}(\theta,\phi),\no  
+\Theta|l,m\ra &=& (-1)^m|l,-m\ra     
+\eea 
+For spinor, $\Theta=\eta U K $, with $\eta$ is an intrinsic
+phase factor, $U$ is unitary, $K$ is complex conjugation operator,
+\bea 
+\Theta= \eta e^{-i\frac{\pi}{\hbar} J_y} K
+\eea  
+We may choose convention of $\eta$ such that
+\bea 
+\Theta |S,m\ra =(-1)^{S-m}|j,-m\ra 
+\eea 
+
+\item time-reversal 을 생각할 때는 
+$\la \hat{x}| lm\ra=i^l Y_{lm}(\hat{x})$, modified spherical harmonics convention
+로 정의하는 것이 편리하다. 
+Then,  모든 $|j m\ra$ 상태에 대해
+\bea
+{\cal T}|j m\ra^{\pm}&=&(-1)^{j-m}|j -m\ra^{(\mp)},\no
+{\cal T}|(j_1 j_2) j m\ra^{\pm}&=&(-1)^{j-m}|(j_1 j_2) j -m\ra^{(\mp)}
+\eea
+가 성립한다. $i^l$ factor가 없으면, 
+\bea
+{\cal T}|(l s) j m\ra^{\pm}=
+(-1)^{l+j-m}|(l s) j -m\ra^{\mp}
+\eea
+가 되어, orbital angular momentum 에 대해서는 특별히 다르게 취급해야한다. 하지만,
+어느 경우에나,
+\bea
+|\vx\ra&=&\sum_{lm} |x lm\ra \la x lm|\hat{x}\ra\no
+|\vp\ra&=&\sum_{lm} |p lm\ra \la p lm|\hat{p}\ra
+\eea
+로 나타내어 지는 것은 같다. \footnote{
+특별히, $\la \vp|\vp'\ra=(2\pi)^3\delta^{3}(\vp-\vp')$
+and $\la x l| p l\ra=j_l(px)$ 의 convention을 사용할 경우는
+expansion을
+\bea
+|\vx\ra=\sum_{lm}|x lm\ra \la x lm|\hat{x}\ra,\quad 
+|\vp\ra=\sum_{lm} (4\pi) i^l |p lm\ra \la plm|\hat{p}\ra
+\eea
+임에 유의.
+}
+\end{itemize}
+-------------------------------------------------------------------------------------------
+Following pages require rewritings... 
+
+\subsection{Partial wave decomposition convention }
+\begin{itemize}
+
+\item general partial wave expansion: 
+For general case of many body scattering and 
+non-conservation of angular momentum, let us
+denote $\alpha$ as general
+'angular-spin' quantum numbers. 
+Let us distinguish
+$|k,\alpha\ra$ with $|\alpha\ra$, where the first includes
+radial wave function while the second only contains 
+'angular' quantum numbers, thus is dimensionless. 
+
+Define
+\bea
+Y_{\alpha}(\hat{k})&\equiv&\la \hat{k}|k \alpha\ra,\no
+\la \hat{k}|\hat{k}'\ra&=&\delta^{(2)}(\hat{k}-\hat{k}')
+ =\sum_{\alpha\beta}\delta_{\alpha\beta} 
+  Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')
+\eea
+For each convention
+\bea
+|\vk\ra&=&
+\sum_\alpha |k, \alpha\ra_{sp}  
+                i^\alpha \la \alpha|\hat{k}\ra_{sp}
+                =
+\sum_\alpha |k, \alpha\ra_{ms}  
+            \la \alpha|\hat{k}\ra_{ms}.
+\eea
+\bea
+|\vx\ra&=&\sum_{\alpha} |x,\alpha\ra_{sp} 
+           \la x,\alpha|\hat{x}\ra_{sp}
+       =\sum_{\alpha} |x,\alpha\ra_{ms} 
+           \la x,\alpha|\hat{x}\ra_{ms}
+\eea
+with $\la \hat{x}|x,\alpha \ra_{sp}=Y_{\alpha}(\hat{x})$
+and $\la \hat{x}|x,\alpha \ra_{ms}=i^\alpha Y_{\alpha}(\hat{x})$
+
+\item partial wave expansion of scattering amplitude
+\bea
+f(\vk,\vk')&=&-(2\pi)^2\mu \la \vk|V|\vk'\ra^{(+)}\no
+           &=&-(2\pi)^2\mu \sum_{\alpha\beta} 
+        \la k,\alpha|V| k,\beta\ra^{(+)}_{sp}
+        i^{-\alpha+\beta}
+        Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') \no
+        &=&-(2\pi)^2\mu \sum_{\alpha\beta} 
+        \la k,\alpha|V| k,\beta\ra^{(+)}_{ms}
+        Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')  
+\eea
+where, $i^{-\alpha+\beta}$ factor can be absorbed to the defnition of $|k,\alpha\ra $
+and $|k,\beta\ra $
+
+Thus, we can define $S_{\alpha\beta}$, $f_{\alpha\beta}$ and
+$T_{\alpha\beta}$ as,
+\bea
+\la \hat{k}|\hat{S}(k)|\hat{k}'\ra&\equiv&
+      \sum_{\alpha\beta} i^{-\alpha+\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') S_{\alpha\beta}(k)
+      \mbox{ in sp convention}
+      ,\no
+      &\equiv&
+      \sum_{\alpha\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') S_{\alpha\beta}(k)
+      \mbox{ in ms convention}
+\eea
+Similar relation holds for $T$ and $f$.
+
+Regardless of convention,  we can write 
+\begin{equation}
+\boxed{
+\begin{array}{ccl}
+S_{\alpha\beta}(k)
+&=&\delta_{\alpha\beta}-(2\pi)i \mu k 
+        \la k,\alpha| V| k,\beta\ra^{(+)},\\
+&=&\delta_{\alpha\beta} -(2\pi)i \mu k T_{\alpha\beta}(k),\\
+&=&\delta_{\alpha\beta}+ i\frac{k}{2\pi} f_{\alpha\beta}(k)
+\end{array}
+}
+\end{equation}
+However, $S_{\alpha\beta}^{(ms)}$
+and $S_{\alpha\beta}^{(sp)}$ is different.
+And the definition of T-matrix can be different by factor $(2\pi)^3$.
+
+the relation between potential matrix
+element with $f_{\alpha\beta}$ depends on the convention,
+\bea
+\boxed{
+\begin{array}{cl}
+f_{\alpha\beta}^{(ms)}(k)
+&=-(2\pi)^2\mu \la k,\alpha|V|k,\beta\ra^{(+)}_{ms} \\
+f_{\alpha\beta}^{(sp)}(k)
+&=-(2\pi)^2\mu \la k,\alpha|V|k,\beta\ra^{(+)}_{sp}
+\end{array}
+}
+\eea
+Thus,
+\bea
+S_{\alpha\beta}^{(ms)}(k)
+&=&\delta_{\alpha\beta}
+  -i2\pi \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{ms}\no
+&=&\delta_{\alpha\beta}
+  -i4 \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{ms'}\no
+S_{\alpha\beta}^{(sp)}(k)&=&\delta_{\alpha\beta}
+  -4 i \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{sp'} 
+\eea
+
+
+
+\item In general scattered state does not have the same
+quantum numbers with asymptotic state.
+Thus, let us further expands scattered state as
+\bea
+\la \vx |\Psi_\alpha(k)\ra^{(+)}_{sp}
+&=&\sum_{\alpha'} 
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{sp}
+Y_{\alpha'}(\hat{x}),\no
+\la \vx |\Psi_\alpha(k)\ra^{(+)}_{ms}
+&=&\sum_{\alpha'} 
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{ms}
+i^{\alpha'}Y_{\alpha'}(\hat{x})
+\eea
+where,
+\bea
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{sp}
+\equiv \Psi^{(+)}_{\alpha',\alpha}(k,x)
+\eea
+is radial wave function solution 
+of the scattering with 
+boundary condition,
+\bea
+\la x \alpha'|\Psi_{\alpha',\alpha}(k)\ra^{(+)}_{sp}
+&=&\sqrt{\frac{2}{\pi}}\frac{i}{2}
+                  [h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(sp)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}
+\eea
+
+In modified spherical harmonics convention,
+\bea
+\la x \alpha'|\Psi_{\alpha'\alpha}\ra^{(+)}_{ms}
+&=&\sqrt{\frac{2}{\pi}}
+    \frac{i}{2}[h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(ms)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}\no
+&=&\sqrt{\frac{2}{\pi}}
+   i^{-\alpha'+\alpha} \frac{i}{2}
+                  [h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(sp)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}\no
+&=&i^{-\alpha'+\alpha}\la x \alpha'|\Psi_{\alpha'\alpha}\ra^{(+)}_{sp}
+\eea
+Thus, we can write, in both primed conventions,
+\bea
+S_{\alpha\beta}(k)=\delta_{\alpha\beta}-4i\mu k
+ \sum_{\beta'}\la k, \alpha|V|\Psi^{(+)}_{\beta',\beta}(k),\beta'\ra
+\eea
+
+We may consider it as, because wave function 
+$\la\vx|\vp\ra^{(+)}$ is written before any convention,
+\bea
+\la \vx|\vp\ra^{(+)}&=&\sum_{l}\la \hat{x}|x,\alpha\ra_{sp}
+                     \la x,\alpha|p,\alpha'\ra^{(+)}_{sp}
+                     \la p,\alpha'|\hat{p}\ra_{sp} i^{\alpha'}\no
+                    &=&\sum_{l}\la \hat{x}|x,\alpha\ra_{ms}
+                     \la x,\alpha|p,\alpha'\ra^{(+)}_{ms}
+                     \la p,\alpha'|\hat{p}\ra_{ms}  
+\eea
+Thus, we should have a relation,
+\bea
+\la x,\alpha|p,\alpha'\ra^{(+)}_{sp}i^{\alpha'}
+&=& i^{\alpha}\la x,\alpha|p,\alpha'\ra^{(+)}_{ms}.
+\eea
+
+
+
+\subsection{Partial wave expressions}
+We can define partial wave matrix elements 
+of potential such that
+\bea 
+V_{\alpha\beta}(x',x )
+=\la x',\alpha|\hat{V}|x, \beta \ra
+=\int d\Omega'\int d\Omega 
+ {\cal Y}^*_{\alpha}(\hat{x}')V(\vx',\vx)
+ {\cal Y}_{\beta}(\hat{x}) 
+\eea 
+In momentum space,
+\bea 
+V_{\alpha\beta}(p',p)
+=\la p',\alpha|\hat{V}|p,\beta\ra 
+=\frac{2}{\pi}\int d x' dx x^{'2} \int dx x^2
+ j_{l'}(p' x') V_{\alpha,\beta }(x',x)
+ j_{l}(px) 
+\eea 
+
+t-matrix 에 대한 LS equation을 partial wave basis 에서 나타내면, 
+\bea
+t_{\alpha ',\alpha}(E,p' p)
+&=&V_{\alpha',\alpha}(p'p)
++\sum_{\tilde{\alpha}}\int d\tilde{p}\tilde{p}^2
+ V_{\alpha',\tilde{\alpha}}(p'\tilde{p})
+\frac{1}{E-\tilde{p}^2/(2\mu)+i\epsilon}
+ t_{\tilde{\alpha},\alpha}(\tilde{p},p)
+\eea
+where,
+\bea 
+[t\mbox{ or } V]_{\alpha ',\alpha}(E,p' p)\equiv
+\la p',\alpha'|(T\mbox{ or } V)|p,\alpha\ra
+\eea
+여기서 V가 rotationally invariant 라면, 
+partial wave component $t_l(p'p)$와 $V_l(p'p)$를 다음과 같이 정의할 수 있다.,
+\bea
+\la p' l' m'|t(E)\mbox{, or }V |p l m\ra
+&=&[t_l(p'p)\mbox{, or }V_l(p'p)]\delta_{l'l}\delta_{m'm}
+\eea
+\bea
+t_l(p'p)&=&V_l(p'p)+\int_0^\infty dp'' p^{''2} V_l(p'p'')\frac{1}{E+i\epsilon-p''^2/2\mu}t_l(p''p)
+\eea
+
+따라서 , local potential 의 partial wave representation 은 
+\bea
+V_l(p'p)&=&\la p' lm|V|p lm\ra
+         =\int d\hat{p}' Y^*_{lm}(\hat{p}')
+          \int d\hat{p} Y_{lm}(\hat{p})
+          \la p' \hat{p}'|V|p\hat{p}\ra\no
+           &=&\frac{2}{\pi}
+           \int_0^\infty dr r^2\int_0^\infty dr' r^{'2} j_l(p'r')\frac{\delta(r-r')}{rr'}V(r) j_l(pr)\no
+           &=&\frac{2}{\pi}\int_0^\infty dr r^2 j_l(p'r)V(r) j_l(pr)
+           \no
+\eea
+이 된다. 또는 local potential 의 경우
+\bea
+\la \vq|V|\vq'\ra&=&\tilde{V}(|\vq-\vq'|)
+                 =\frac{4\pi}{(2\pi)^3}
+                 \int dr r^2 j_0(|\vq-\vq'|r) V(r)
+\no
+V_{l}(p'p)&=&2\pi\int_{-1}^1 dx P_l(x)\tilde{V}(\sqrt{p^2+p'^2-2pp' x})
+\eea
+
+주의할 것은 $\la plm|V|plm\ra$ 이 radial function
+$\sqrt{\frac{2}{\pi}}j_l(pr)$을 포함한다는 것이다. 만약 partial
+wave representation을 정의할 때, $\la j_l lm|V|j_l lm\ra$
+과 같이 정의하면, 이 둘 사이엔
+\bea
+&\la p'lm|V|plm\ra &=\frac{2}{\pi}\la j_l(p'r) lm|V|j_l(pr) lm\ra,\mbox{ OR}\no
+&\la p'lm|V|plm\ra^{(+)} &=\frac{2}{\pi}\la j_l(p'r) lm|V|\psi_l(pr) lm\ra
+\eea 
+인 관계가 있게 된다.\footnote{
+따라서, 다음과 같이 쓸 수도 있다.
+\bea
+\la j_{l'}(p') l'| T| j_{l}(p) l\ra
+&=&\la j_{l'}(p') l'| V| j_{l}(p) l\ra
++\frac{2}{\pi}\sum_{\tilde{l}}\int d\tilde{p}\tilde{p}^2
+ \la j_{l'}(p') l'| V| j_{\tilde{l}}(\tilde{p}) \tilde{l}\ra
+\frac{1}{E-\tilde{p}^2/(2\mu)+i\epsilon}
+ \la j_{\tilde{l}}(\tilde{p}) \tilde{l}| T|j_{l}(p) l \ra
+\eea
+}
+
+어느 operator 의 partial wave matrix element를 나타 낼 때, position space에서의 representation
+이 필요한 경우에는 언제나 $i^l$ factor에 유의해야하지만, momentum space나 spin, isospin space에 작용하는  operator의 경우에는 어느 경우나 같다. 
+
+S-matrix, T-matrix의 on-energy-shell element 는 
+\bea
+\la \vk|S|\vk'\ra& \equiv& 
+\frac{\delta(k-k')}{k k'} \la k,\hat{k}|S| k,\hat{k}'\ra
+=\frac{\delta(k-k')}{k k'} \hat{S}_{\hat{k}\hat{k}'}(k)\ra,\no
+\hat{S}_{\hat{k}\hat{k}'}(k)&=&\delta_{\hat{k}\hat{k}'}
+               -2\pi i \mu k \hat{t}_{\hat{k}\hat{k}'}(k)\no
+            &=&\delta_{\hat{k}\hat{k}'}
+               +i\frac{k}{2\pi}\hat{f}_{\hat{k}\hat{k}'}(k)   
+\eea
+마찬가지로 
+\bea
+\hat{S}_{\alpha\beta}^J(p)=
+\delta_{\alpha\beta}-2\pi i \mu k t^J_{\alpha\beta}(p)
+=\delta_{\alpha\beta}+i\frac{p}{2\pi} f^J_{\alpha\beta}(p)
+\eea
+로 나타낼 수 있다.
+\footnote{
+$R$-matrix is defined as $\hat{R}=\hat{1}-\hat{S}$.
+
+In different normalization convention, we have
+\bea
+\la \vk|S|\vk'\ra
+=(2\pi)^3\frac{\delta(k-k')}{k k'}\delta_{\hat{k}\hat{k}'}
+-2\pi i\frac{\mu}{k}\delta(k-k') t_{\hat{k}\hat{k}'}(k) 
+\eea
+and factoring $(2\pi)^3\frac{\delta(k-k')}{k^2}$, 
+and replacing $f=-\frac{\mu}{2\pi} t$, then
+\bea
+\hat{S}_{\hat{k}\hat{k}'}=\delta_{\hat{k}\hat{k}'}
+                        +i\frac{k}{2\pi} f_{\hat{k}\hat{k}'}(k)
+\eea
+}
+여기서, $S_{\alpha\beta}$ 와 $f_{\alpha\beta}$는 
+radial wave function의 normalization까지 모두 포함한 것이다.
+\bea
+S^J_{\alpha\beta}=\delta_{\alpha\beta}-4i\mu q\sum_{\gamma}
+\la {\cal Y}_\alpha, j_{\alpha}|V|{\cal Y}_{\gamma},\Psi_{\gamma\beta}\ra
+=\delta_{\alpha\beta}-4i\mu q {\rm t}^J_{\alpha\beta}
+\eea
+와 같이 정의 할 수도 있다. 이 때, 
+${\rm t}^J_{\alpha\beta}\equiv \sum_{\gamma}
+\la {\cal Y}_\alpha, j_{\alpha}|V|{\cal Y}_{\gamma},\Psi_{\gamma\beta}\ra$ 이고,
+$t^J_{\alpha\beta}=\la p,\alpha|V|p,\beta\ra^{(+)}$ 는 다르다.
+
+\end{itemize}
+
+\begin{itemize}
+\item partial wave expansion: denoting $\alpha$ as
+'angular-spin' quantum numbers and let us separate pure angular part
+and radial part for convenience,
+\bea
+|\vk\ra&=&\sum_\alpha |k, \alpha\ra  
+                \la \alpha|\hat{k}\ra
+,\quad 
+|\hat{k}\ra = \sum_{\alpha}|\alpha\ra \la \alpha|\hat{k}\ra,\no
+\la \hat{k}|\hat{k}'\ra&=&\delta^{(2)}(\hat{k}-\hat{k}')
+ =\sum_{\alpha\beta}\delta_{\alpha\beta} 
+  Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')
+\eea
+where $|k,\alpha\ra$ contains 'radial' wave function
+and spherical harmonics 
+thus have dimension,
+while $|\alpha\ra$ only contains 'angular' part
+and dimensionless.
+Note that the $|k,\alpha\ra$ in this definition 
+have to include $i^\alpha$ factor from
+$\la \vx|k,\alpha\ra= i^\alpha f_\alpha(k,x) Y_\alpha(\hat{x})$.
+
+
+\item partial wave expansion of scattering amplitude
+\bea
+f(\vk,\vk')&=&-(2\pi)^2\mu \la \vk|V|\vk'\ra^{(+)}\no
+           &=&-(2\pi)^2\mu \sum_{\alpha\beta} 
+        \la k,\alpha| V| k,\beta\ra^{(+)}
+        Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')   
+\eea
+Thus, if we define $S_{\alpha\beta}$, $f_{\alpha\beta}$ and
+$T_{\alpha\beta}$ as
+\bea
+\la \hat{k}|
+[\hat{S}\mbox{ or }\hat{T}]   |\hat{k}'\ra&\equiv&\sum_{\alpha\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') 
+      [S\mbox{ or } T]_{\alpha\beta}(k),\no
+f(\vk,\vk')&\equiv&\sum_{\alpha\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') f_{\alpha\beta}(k),\no
+S_{\alpha\beta}(k)
+&=&\delta_{\alpha\beta}-(2\pi)i \mu k 
+        \la k,\alpha| V| k,\beta\ra^{(+)},\no
+&=&\delta_{\alpha\beta} -(2\pi)i \mu k T_{\alpha\beta}(k),\no
+&=&\delta_{\alpha\beta}+ i\frac{k}{2\pi} f_{\alpha\beta}(k)             
+\eea
+
+\item Special case : angular momentum conserved case.
+ $\la pl|V|pl'\ra^{(+)}=t(p)\delta_{ll'}$
+
+Usual definition of $f_l(E)$ is
+\bea
+f(E,\theta)\equiv\sum_{l}(2l+1)f_l(E)P_l(\cos\theta)
+\eea
+Comparing this with previous expansion,
+\bea
+f(\vk,\vk'=k \hat{z}) &=&\sum_{lm, l' m'} 
+         Y_{lm}(\hat{k})Y^*_{l'm'}(\hat{k}')
+         f_{l l'}(k)\no
+    &=&\sum_{ll'} \delta_{ll'} f_{ll}(k)
+           \frac{2l+1}{4\pi}P_l(\cos\theta)
+\eea
+Thus, $f_l(E)=\frac{f_{l,l}(k)}{4\pi}$ and $S_{ll'}(k)=\delta_{ll'}s_l(k)$,
+\bea
+s_l(k)=1+2ik f_l(k), \quad f_l(k)=\frac{s_l(k)-1}{2ik}
+\eea
+
+By using 
+\bea
+\int d\Omega P_l(\cos\theta)P_{l'}(\cos\theta)=\frac{4\pi}{2l+1}\delta_{ll'}
+\eea
+We get
+\bea
+\sigma_{tot}=\frac{4\pi}{k^2}\sum_l (2l+1)\sin^2\delta_l
+\eea
+\end{itemize}
+\subsection{Integral representation of scattering amplitudes}
+When angular momentum is conserved, we can write
+\bea
+\la \vx|\vp\ra^{(+)}&=&
+\sum_{l' m'}\la x l' m' | pl'm'\ra^{(+)} \la\hat{x}|xl'm'\ra
+                               \la p l'm' |\hat{p}\ra \no
+&=&\sum_{l 'm '}\la x l' m' | pl'm'\ra^{(+)} i^l Y_{l' m'}(\hat{x})
+                               Y^*_{l' m'}(\hat{p})   
+\eea
+With
+\bea
+\la x l' m' | pl'm'\ra^{(+)}\to \sqrt{\frac{2}{\pi}}j_l(pr)
+\mbox{ free limit} 
+\eea
+But, if angular momentum is not conserved, then
+we have to consider something like
+\bea
+\la \vx|\vp\ra^{(+)}
+=\sum_{l'm', lm}\la x l' m'|p l m\ra^{(+)}
+                 \la \hat{x}|x l' m'\ra \la p l m|\hat{p}\ra 
+\eea
+where
+\bea
+\la x l'm'|p l m\ra^{(+)} 
+&=& \sqrt{\frac{2}{\pi}}\psi_{l'l}(x,p)
+\no
+&\to& \sqrt{\frac{2}{\pi}}j_l(pr)\delta_{l' l} 
+ \mbox{ without interaction} \no
+&\to& \sqrt{\frac{2}{\pi}}
+      \frac{1}{2}[\delta_{l'l}h_{l'}^{(-)}(px)
+                 +S_{l'l} h_{l'}^{(+)}(px)]
+ \mbox{ asymptotically}                      
+\eea
+where, $h^{(\pm)}_l(px)\equiv j_l(px)\pm i y_l(px)$
+and 
+\bea
+S_{l' l}(q)=\delta_{l'l}-4i\mu q\sum_{l''}
+         \la j_{l'} , l'| V| l'', \psi_{l'',l}\ra  
+\eea
+OR we can write,
+\bea
+S_{\alpha\beta}(k)
+&=&\delta_{\alpha\beta}-(2\pi)i \mu k 
+        \la k,\alpha| V| k,\beta\ra^{(+)},\no
+&=&\delta_{\alpha,\beta}-4 i \mu k \sum_{\beta'}
+       \la j_{\alpha}(k),\alpha|V|\psi^{(+)}_{\beta'\beta},\beta'\ra
+\eea
+such that,
+\bea
+|k,\alpha\ra&=&\sqrt{\frac{2}{\pi}}|j_{\alpha}(k),\alpha\ra \no
+|k,\beta\ra^{(+)}&=&\sqrt{\frac{2}{\pi}}
+                    \sum_{\beta'}|\psi_{\beta'\beta},\beta'\ra
+\eea
+We may define partial-wave projected T-matrix element by
+\bea
+T^J_{\alpha',\alpha}&\equiv&\sum_{\beta} 
+    \la j_{\alpha'},\alpha'|V|\beta,\Psi^{(+)}_{\beta\alpha}\ra\no
+S_{\alpha\beta}(k)&=&\delta_{\alpha\beta}-4i\mu k T^J_{\alpha\beta}    
+\eea
+
+$\bullet$ total cross section in partial wave:
+Total cross section can be written in terms of S-matrix as
+\footnote{
+I am not sure about $i^{-l_\alpha+l_\beta}$ factor.
+Is it correct? It seems to be....
+}
+\bea
+\sigma_{tot}=\frac{4\pi}{k}{\rm Im}\sum_{\alpha\beta}i^{-l_\alpha+l_\beta}\sqrt{(2l_\alpha+1)(2l_\beta+1)}
+\left(\frac{S_{\alpha\beta}-\delta_{\alpha\beta}}{2i k}\right)
+\eea
+{\bf Note} when we use above equation,
+we have to be careful because $\alpha,\beta$ represent
+all possible quantum numbers including polarizations.
+Thus, unpolarized total cross section requires average 
+over polarization. 
+For example, 
+$\frac{1}{(2j_1+1)(2j_2+1)}\sum_{m_1 m_2} M_{m_1m_2,m_1m_2}$.
+If two particle were spin $\frac{1}{2}$, it will be
+$\frac{1}{4}[M^{J=0}+3 M^{J=1}]$ and if two particle were
+spin $1$ and $\frac{1}{2}$,
+$\frac{1}{6}[2 M^{J=\frac{1}{2}}+4 M^{J=\frac{3}{2}}]$.
+Thus, n-d scattering case,
+\bea
+\sigma_{tot}=\frac{2\pi}{k^2}{\mathcal Im}(\frac{1}{3}[S^{J=1/2}_{00}-1]
++\frac{2}{3}[S^{J=3/2}_{00}-1]).
+\eea 
+
+
+
+\section{Cross section}
+\subsection{Differential cross section, total cross section and
+ Optical theorem}
+\begin{itemize}
+\item Asymptotic wave \footnote{
+For long range scattering case, the asymptotic wave should be
+distorted. Thus, we need to include logarithmic phase factor
+in asymptotic form. In case of long range force,
+total cross section becomes infinite, because
+total number of particle incident are infinite for
+plane waves and they all have to scatter.
+}
+\bea
+\psi\to e^{ik_i z}+f(\theta)\frac{e^{ik_f r}}{r}
+\eea
+gives flux $j_{inc}=\frac{k_i}{\mu}$, 
+$j_{scatt}=\frac{k_f}{\mu}\frac{|f(\theta)|^2}{r^2}$
+into area $\Delta A=r^2 d\Omega$.\footnote{
+This simply corresponds to $j=v|A e^{ikx}|^2$.
+}. Here we consider the case of in-elastic scattering.
+In-elastic scattering case, one of the particle changes
+its internal structure(or excited), and thus $k_f\neq k_i$.
+
+\item The differential cross section is defined as
+\bea
+\frac{dN}{dt}=j_i n\Delta\Omega\sigma(\theta,\phi)
+\eea
+with $\sigma(\theta,\phi)$ is the number of particles scattered 
+per unit time per unit scattering center and per unit incident flux
+into a unit solid angle. units are usually, $mb/sr$. $10\ mb=1\ fm^2$
+
+If we only consider $n=1$ scattering center,
+\bea
+d\sigma
+=\frac{\mbox{(\# of particles scattered)/sec}}
+    {\mbox{(\# of particles incident)/area/sec}}
+=\frac{|j_{scatt}| r^2 d \Omega}{|j_{inc}|}    
+\eea
+
+\item differential cross section and scattering amplitude:
+Thus,
+differential cross section becomes 
+\footnote{
+이 관계는 normalization convention 과 무관하며
+단지, differntial cross section과 potential 또는 t-matrix와의
+관계는 normlaization convention 에 따라 식이 달라진다.}\bea
+\frac{d\sigma}{d\Omega_k}=|f(\vk,\vk')|^2
+\eea
+
+In general including in-elastic scattering, $v_i\neq v_f$, asymptotic wave
+\bea
+\psi^{asym}=A[e^{ikz}+f(\theta,\phi)\frac{e^{ik_f r}}{r}],
+\eea
+implies
+\bea
+\sigma(\theta,\phi)=\frac{v_f}{v_i}|f(\theta,\phi)|^2.
+\eea
+Sometimes the flux factor $v_f/v_i$ can be absorbed to 
+the definition of scattering amplitudes, $\tilde{f}=\sqrt{v_f/v_i} f$.
+
+\item 위 계산에서 scattering cross section을 계산할 때, scattered wave function part만을 고려하였지만,
+      실제로 입자를 발견할 확율은 전체 wave function을 이용해야 구해야 한다. 
+      This is usually not a problem as long as the
+      incident beam is localized enough. 
+      We can neglect interference between incident wave and scattered wave. 하지만, 
+      forward scattering 의 경우에는 이야기가 달라진다. 이 영역에서는 incident beam과 scattered beam
+      이 함께 존재하므로, interference를 반드시 고려해야한다. 다르게 말하면, forward 영역에서 
+      입자를 발견되는 입자의 수는 incident beam flux보다 작아야하므로, 이 곳에서는 desturctive 
+      interference가 일어나야 한다. 이 것이 Optical theorem 과 관련된다.  
+      
+\item Optical throem: 
+Let us derive optical theorem, from the definition,
+$V|\psi\ra^{(+)}=T|\vk\ra$,
+\bea
+{\rm Im}\la \vk|V|\psi\ra^+={\rm Im}\left[
+\left({}^+\la\psi|-{}^+\la\psi|V\frac{1}{E-H_0-i\epsilon}\right)V|\psi\ra
+\right]
+\eea
+에서 imaginary part는 $i\epsilon$ 으로 부터 온다. 따라서,
+\bea
+\frac{1}{E-H_0-i\epsilon}=\frac{P}{E-H_0}+i\pi\delta(E-H_0)
+\eea 
+를 이용하면,
+\bea
+{\rm Im}\la \vk|V|\psi\ra^+
+&=&-\pi{}\la\psi^{(+)}|V\delta(E-H_0)V|\psi\ra^{(+)},\no
+{\rm Im}\la \vk|T|\vk\ra
+&=&-\pi\la\psi|V\delta(E-H_0)V|\psi\ra
+   =-\pi\la\vk|T^\dagger\delta(E-H_0)T|\vk\ra
+\eea
+plane wave의 complete set을 넣으면,
+$\la \vk|\vk'\ra=\delta^{(3)}(\vk-\vk')$ convention
+
+\bea
+{\rm Im}\la \vk|T|\vk\ra
+&=&-\pi\la\vk|T^\dagger\delta(E-H_0)T|\vk\ra\no
+&=&-\pi\int d^3k'\la \vk|T^\dagger|\vk'\ra 
+                     \la \vk'|T|\vk\ra
+                  \delta(E-\frac{\hbar^2 k'^2}{2\mu})\no 
+ &=&-\pi\int d\Omega' 
+    \frac{\mu k}{\hbar^2}|\la \vk'|T|\vk\ra|^2
+\eea
+이 되고, 이것을 scattering amplitude의 식으로 바꾸면,
+$f=-(2\pi)^2\mu t$,
+\bea
+{\rm Im}\la \vk|f|\vk\ra
+=\frac{k}{4\pi\hbar^2}\int d\Omega'
+ |\la \vk'|f|\vk\ra|^2 
+= \frac{k}{4\pi\hbar^2} \sigma_{tot}
+\eea
+따라서, 잘 알려진 optical theorem 이 만족된다.
+\bea
+\boxed{
+{\rm Im}f(\theta=0)=\frac{k}{4\pi}\sigma_{tot}}
+\eea
+주의, 만약 다른 normalization convention을 사용하는 경우
+$f=-\mu/(2\pi) t$ 이고, 또한 completeness relation changes
+as $\int d^3 k/(2\pi)^3 |\vk\ra\la \vk|=1$ 이 된다.
+따라서, optical relation 식은 convention independent이다.
+
+\item Incoming wave and outgoing wave:
+Asymptotically we may write
+\bea 
+j_l(kr)\to \frac{1}{2ikr}[ e^{i(kr-l\pi/2)}-e^{-i(kr-l\pi/2)}]   
+          = i^{-l}\frac{1}{2ikr}[ e^{ikr}-e^{-i(kr-l\pi)} ], \quad \mbox{using } i^l=e^{i l\pi /2}
+\eea 
+Thus, plane wave is a sum of spherically outgoing wave $e^{ikr}/r$
+and spherically incoming wave $-e^{-i(kr-l\pi)}/r$. 
+From asymptotic form of wave function in potential,
+\bea 
+\psi^{(+)}(\vx)
+\to \frac{1}{(2\pi)^{3/2}}\sum_l (2l+1) \frac{1}{2ik}\left[ 
+       \left(1+2ik f_l(k) \right) \frac{e^{ikr}}{r}- \frac{e^{-i(kr-l\pi) }}{r}\right]
+       P_l(\cos\theta)
+\eea 
+where, $f_l$ is defined through
+\bea 
+f(\vk',\vk)=\sum_l (2l+1) f_l P_l(\cos\theta )
+\eea 
+The potential scattering changes
+outgoing wave as
+\bea
+1\to 1+2ik f_l(k)=s_l(k).
+\eea 
+the incoming wave is completely unaffected.
+
+\end{itemize}
+%===============NN Potential
+\chapter{NN potential}
+%==============================================================
+\chapter{{NN Phase shifts}}
+%==============================================================
+\chapter{Numerical methods}
+%========================APPENDIX: SUPPLEMENTS=======================================================================================
+\chapter{Supplements}
+
+\subsection{Common special functions}
+\subsubsection{Coulomb functions}
+\subsubsection{Spherical Bessel functions}
+\subsubsection{Spherical Harmonics and Legendre Polynomial}
+
+\end{document}

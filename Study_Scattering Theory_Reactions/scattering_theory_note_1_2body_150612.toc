@@ -1,0 +1,147 @@
+\contentsline {chapter}{\numberline {1}Basic Conventions}{7}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Box normalization}{7}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Normalization convention of bra-ket}{9}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Note: Resolution}{9}{section.1.3}% 
+\contentsline {chapter}{\numberline {2}Kinematics}{11}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Laboratory frame}{11}{section.2.1}% 
+\contentsline {section}{\numberline {2.2} Lab frame and CM frame}{13}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Differential cross section between c.m. frame and lab. frame}{17}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Inverse kinematics}{18}{subsection.2.2.2}% 
+\contentsline {chapter}{\numberline {3}Formal scattering theory: In momentum space }{21}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Formal scattering theory: In-, Out- state and Moller operator}{21}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}LS equation for scattering}{23}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Examples}{29}{subsection.3.2.1}% 
+\contentsline {subsubsection}{Example: Born approximation}{29}{section*.4}% 
+\contentsline {subsubsection}{Example: Eikonal approximation}{30}{section*.5}% 
+\contentsline {subsection}{\numberline {3.2.2}Differential cross section, total cross section and Optical theorem}{30}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}cross section again: relativistic}{34}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}LS equation for bound state}{35}{subsection.3.2.4}% 
+\contentsline {subsection}{\numberline {3.2.5}Bound-state 와 scattering state 의 관계.}{36}{subsection.3.2.5}% 
+\contentsline {subsection}{\numberline {3.2.6}$\chi ^{(-)}(R)$?}{37}{subsection.3.2.6}% 
+\contentsline {chapter}{\numberline {4}Partial wave decomposition}{39}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Basic relations}{39}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Partial wave expansion of plane wave}{41}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Scattering wave for short range interaction}{43}{section.4.3}% 
+\contentsline {subsubsection}{Convention의 차이?}{44}{section*.6}% 
+\contentsline {subsection}{\numberline {4.3.1}How to get the phase shift from the Schr\"{o}dinger equation}{45}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Phase shift and potential}{46}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Resonance}{47}{subsection.4.3.3}% 
+\contentsline {subsection}{\numberline {4.3.4}Bra-Ket representation in partial wave expansion}{48}{subsection.4.3.4}% 
+\contentsline {section}{\numberline {4.4}Time reversal invariance and the choice of convention}{51}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Relation between incoming and outgoing boundary condition wave function.}{52}{subsection.4.4.1}% 
+\contentsline {section}{\numberline {4.5}Partial wave Decomposition}{54}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Partial wave decomposition convention }{54}{subsection.4.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}Partial wave expressions}{57}{subsection.4.5.2}% 
+\contentsline {subsection}{\numberline {4.5.3}Partial wave decomposition of LS equation and convention dependence }{60}{subsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.5.4}Relation between T-matrix and K-matrix}{63}{subsection.4.5.4}% 
+\contentsline {subsection}{\numberline {4.5.5}Integral representation of scattering amplitudes}{64}{subsection.4.5.5}% 
+\contentsline {section}{\numberline {4.6}Optical potential case:}{65}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}$s=0$ case}{65}{subsection.4.6.1}% 
+\contentsline {subsection}{\numberline {4.6.2}$s=\frac {1}{2}$ case}{66}{subsection.4.6.2}% 
+\contentsline {subsection}{\numberline {4.6.3}$s=1$ case}{66}{subsection.4.6.3}% 
+\contentsline {chapter}{\numberline {5}Distorted Wave Born Approximation}{67}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Derivation of DWBA}{67}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Green's function method in DWBA}{67}{subsection.5.1.1}% 
+\contentsline {section}{\numberline {5.2}Two potential formula and DWBA}{68}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}derivation of DWBA for 2-body scattering: method 1}{68}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}derivation of DWBA for 2-body scattering: method 2}{70}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Watson's series}{71}{section.5.3}% 
+\contentsline {chapter}{\numberline {6}NN potential}{73}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}NN potential}{73}{section.6.1}% 
+\contentsline {subsection}{\numberline {6.1.1}spin and isospin}{73}{subsection.6.1.1}% 
+\contentsline {subsection}{\numberline {6.1.2}Isospin structures}{74}{subsection.6.1.2}% 
+\contentsline {subsection}{\numberline {6.1.3}Operators}{74}{subsection.6.1.3}% 
+\contentsline {subsection}{\numberline {6.1.4}Partial wave decomposition of two-body potential in momentum space}{74}{subsection.6.1.4}% 
+\contentsline {subsection}{\numberline {6.1.5}Partial wave matrix elements in coordinate space}{75}{subsection.6.1.5}% 
+\contentsline {subsection}{\numberline {6.1.6}Separable potential solution}{76}{subsection.6.1.6}% 
+\contentsline {section}{\numberline {6.2}Bethe-Salpeter equation: Relativistic scattering amplitude}{78}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Meson exchange potential}{78}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}NN phase shift}{79}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}NN phase shift}{79}{section.7.1}% 
+\contentsline {subsection}{\numberline {7.1.1}Effective Range Theory}{79}{subsection.7.1.1}% 
+\contentsline {subsection}{\numberline {7.1.2}Levinson's theorem }{82}{subsection.7.1.2}% 
+\contentsline {subsection}{\numberline {7.1.3}Unitarity and parametrization of S-matrix }{82}{subsection.7.1.3}% 
+\contentsline {subsection}{\numberline {7.1.4}Uncoupled channel}{83}{subsection.7.1.4}% 
+\contentsline {subsection}{\numberline {7.1.5}Stapp parametrization or bar parametrization}{84}{subsection.7.1.5}% 
+\contentsline {subsection}{\numberline {7.1.6}Blatt parametrization}{85}{subsection.7.1.6}% 
+\contentsline {subsubsection}{Transform between LS basis and JJ basis}{85}{section*.8}% 
+\contentsline {subsubsection}{Example of scattering phase shift in Nd scattering}{86}{section*.9}% 
+\contentsline {subsection}{\numberline {7.1.7}Analytic property}{86}{subsection.7.1.7}% 
+\contentsline {subsection}{\numberline {7.1.8}Jost function}{88}{subsection.7.1.8}% 
+\contentsline {subsection}{\numberline {7.1.9}In K-matrix}{88}{subsection.7.1.9}% 
+\contentsline {subsubsection}{In S-matrix}{89}{section*.10}% 
+\contentsline {subsection}{\numberline {7.1.10}Effective range function}{90}{subsection.7.1.10}% 
+\contentsline {subsection}{\numberline {7.1.11}partial wave decompose for s-matrix, scattering amplitude}{91}{subsection.7.1.11}% 
+\contentsline {subsection}{\numberline {7.1.12}Differential equation}{92}{subsection.7.1.12}% 
+\contentsline {subsection}{\numberline {7.1.13}K-matrix equation}{93}{subsection.7.1.13}% 
+\contentsline {section}{\numberline {7.2}Asymptotic form of scattering wave}{94}{section.7.2}% 
+\contentsline {subsection}{\numberline {7.2.1}cross section}{95}{subsection.7.2.1}% 
+\contentsline {subsubsection}{Hard sphere scattering Example}{98}{section*.11}% 
+\contentsline {subsubsection}{Mean free path}{99}{section*.12}% 
+\contentsline {subsection}{\numberline {7.2.2}Coupled equations}{99}{subsection.7.2.2}% 
+\contentsline {subsection}{\numberline {7.2.3}Deuteron 의 경우}{100}{subsection.7.2.3}% 
+\contentsline {section}{\numberline {7.3}Electromagnetic Interaction between nucleon}{101}{section.7.3}% 
+\contentsline {section}{\numberline {7.4}Coulomb scattering}{102}{section.7.4}% 
+\contentsline {subsection}{\numberline {7.4.1}Classical Mechanics}{102}{subsection.7.4.1}% 
+\contentsline {subsection}{\numberline {7.4.2}Full Solution: Parabolic Coordinate}{104}{subsection.7.4.2}% 
+\contentsline {subsubsection}{Appendix: Confluent hypergeometric function}{107}{section*.13}% 
+\contentsline {subsection}{\numberline {7.4.3}Coulomb wave function: Spherical Coordinates, partial wave}{107}{subsection.7.4.3}% 
+\contentsline {subsubsection}{Coulomb function $F_L(\eta ,\rho )$}{108}{section*.14}% 
+\contentsline {subsubsection}{Partial wave expansion: method 1}{108}{section*.15}% 
+\contentsline {subsubsection}{Partial wave expansion: method 2}{109}{section*.16}% 
+\contentsline {subsubsection}{Coulomb functions}{109}{section*.17}% 
+\contentsline {subsection}{\numberline {7.4.4}Partial Wave expansion}{110}{subsection.7.4.4}% 
+\contentsline {subsubsection}{Asymptotic form of wave function}{112}{section*.18}% 
+\contentsline {subsection}{\numberline {7.4.5}Screening}{113}{subsection.7.4.5}% 
+\contentsline {subsection}{\numberline {7.4.6}Strong interaction+Coulomb}{114}{subsection.7.4.6}% 
+\contentsline {subsubsection}{Conventions}{115}{section*.19}% 
+\contentsline {subsection}{\numberline {7.4.7}Differential Cross Section}{115}{subsection.7.4.7}% 
+\contentsline {subsection}{\numberline {7.4.8}Identical particle scattering}{116}{subsection.7.4.8}% 
+\contentsline {subsection}{\numberline {7.4.9}identical fermion with spin scattering }{117}{subsection.7.4.9}% 
+\contentsline {chapter}{\numberline {8}Cross Section}{119}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}S-matrix phase shift parametrization}{119}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}S-matrix and scattering amplitude}{119}{section.8.2}% 
+\contentsline {section}{\numberline {8.3}pp scattering case}{120}{section.8.3}% 
+\contentsline {section}{\numberline {8.4}total cross section}{121}{section.8.4}% 
+\contentsline {section}{\numberline {8.5}N-D scattering case}{121}{section.8.5}% 
+\contentsline {chapter}{\numberline {9}Numerical Method}{123}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}Numerical method}{123}{section.9.1}% 
+\contentsline {subsection}{\numberline {9.1.1}Configuration space}{123}{subsection.9.1.1}% 
+\contentsline {subsection}{\numberline {9.1.2}How to solve differential equation: Homogeneous equation }{125}{subsection.9.1.2}% 
+\contentsline {subsection}{\numberline {9.1.3}How to solve differential equation: Inhomogeneous equation }{126}{subsection.9.1.3}% 
+\contentsline {subsection}{\numberline {9.1.4}Coupled Equation}{127}{subsection.9.1.4}% 
+\contentsline {subsubsection}{K-matrix}{128}{section*.21}% 
+\contentsline {subsubsection}{ Very low energy limit }{129}{section*.22}% 
+\contentsline {subsection}{\numberline {9.1.5}Bound state case}{131}{subsection.9.1.5}% 
+\contentsline {subsection}{\numberline {9.1.6}Coupled channel bound state in reaction theory}{131}{subsection.9.1.6}% 
+\contentsline {subsection}{\numberline {9.1.7}Numerov method}{133}{subsection.9.1.7}% 
+\contentsline {subsection}{\numberline {9.1.8}Short distance behavior in Schrodinger equation }{135}{subsection.9.1.8}% 
+\contentsline {section}{\numberline {9.2}Momentum space calculation}{136}{section.9.2}% 
+\contentsline {subsection}{\numberline {9.2.1}Momentum space LS equation}{137}{subsection.9.2.1}% 
+\contentsline {subsubsection}{Kowalski-Noyes method }{138}{section*.23}% 
+\contentsline {subsubsection}{Numerical method in momentum space}{138}{section*.24}% 
+\contentsline {subsubsection}{Bound state problem in momentum space}{140}{section*.25}% 
+\contentsline {section}{\numberline {9.3}BHF(Bruckner Hartree-Fock) calculation for nuclear matter}{141}{section.9.3}% 
+\contentsline {section}{\numberline {9.4}Identical particles scattering}{142}{section.9.4}% 
+\contentsline {section}{\numberline {9.5}Spline method}{146}{section.9.5}% 
+\contentsline {subsection}{\numberline {9.5.1}Cubic Hermite spline}{146}{subsection.9.5.1}% 
+\contentsline {subsection}{\numberline {9.5.2}Discretizing Differential equation}{147}{subsection.9.5.2}% 
+\contentsline {subsubsection}{Converting collocation point values to spline coefficient}{149}{section*.27}% 
+\contentsline {subsubsection}{예}{149}{section*.28}% 
+\contentsline {subsection}{\numberline {9.5.3}Explicit form of matrix equation}{150}{subsection.9.5.3}% 
+\contentsline {subsection}{\numberline {9.5.4}Special case: perturbation}{152}{subsection.9.5.4}% 
+\contentsline {subsection}{\numberline {9.5.5}Practical implementation }{153}{subsection.9.5.5}% 
+\contentsline {subsection}{\numberline {9.5.6}Lanczos method: iteration method}{154}{subsection.9.5.6}% 
+\contentsline {section}{\numberline {9.6}T-amplitude with two different potential (Alternate derivation of DWBA) }{155}{section.9.6}% 
+\contentsline {section}{\numberline {9.7}Chiral EFT potential up to NLO}{156}{section.9.7}% 
+\contentsline {chapter}{\numberline {10}Semi-classical scattering}{159}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Classical scattering}{159}{section.10.1}% 
+\contentsline {subsection}{\numberline {10.1.1}deflection function}{159}{subsection.10.1.1}% 
+\contentsline {subsubsection}{Rutherford scattering}{160}{section*.30}% 
+\contentsline {subsubsection}{attraction and repulsion}{160}{section*.31}% 
+\contentsline {section}{\numberline {10.2}Semiclassical (WKB)}{161}{section.10.2}% 
+\contentsline {chapter}{\numberline {11}Supplements}{163}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Common special functions}{163}{section.11.1}% 
+\contentsline {subsection}{\numberline {11.1.1}Coulomb functions}{163}{subsection.11.1.1}% 
+\contentsline {subsection}{\numberline {11.1.2}Spherical Bessel functions}{164}{subsection.11.1.2}% 
+\contentsline {subsection}{\numberline {11.1.3}Spherical Harmonics and Legendre Polynomial}{164}{subsection.11.1.3}% 

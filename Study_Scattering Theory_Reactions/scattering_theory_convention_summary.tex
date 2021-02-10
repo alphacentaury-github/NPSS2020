@@ -1,0 +1,792 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins 
+%to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs 
+%with an empty line rather than an indent
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists 
+%(eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting 
+% out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include 
+%more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class 
+%to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set 
+% AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+% (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} 
+% Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} 
+% Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{color}
+
+\usepackage{empheq}
+% make possible to box equations, For example
+%\begin{empheq}[box=\fbox]{align*}
+%a&=b \tag{test}\\
+%E&=mc^2 + \int_a^a x\, dx
+%\end{empheq}
+
+\parindent 10pt\textheight 9in\topmargin -0.4in\textwidth 6in
+\oddsidemargin .25in\evensidemargin 0in
+\def\bm{\boldsymbol}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\no}{\nonumber \\}
+\newcommand{\nnb}{\nonumber}
+\newcommand{\etal}{{\it et al.}~}
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\sll}[1]{#1\hspace{-0.5em}/}
+\newcommand{\del}{\partial}
+\def\vh{{\bm h}}
+\def\vp{{\bm p}}
+\def\vq{{\bm q}}
+\def\vk{{\bm k}}
+\def\vl{{\bm l}}
+\def\vx{{\bm x}}
+\def\vy{{\bm y}}
+\def\vv{{\bm v}}
+\def\vr{{\bm r}}
+\def\vR{{\bm R}}
+\def\la{\langle}
+\def\ra{\rangle}
+\newcommand{\threejsymbol}[6]
+{\left(\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$}\end{tabular}\right)}
+\newcommand{\sixjsymbol}[6]
+{\left\{\begin{tabular}{ccc} {$#1$}&{$#2$}&{$#3$}\\
+                             {$#4$}&{$#5$}&{$#6$} \end{tabular}\right\}}
+
+
+%%% The "real" document content comes below...
+
+\title{Conventions and equations for scattering}
+\author{Young-Ho Song}
+\date{\today}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{S-matrix}
+\begin{itemize}
+
+\item units: Let us always use only $\mbox{fm}$ as a fundamental units. Other quantities are always converted by using
+$\hbar=c=1$ and $\hbar c=1=197 \mbox{MeV}.\mbox{fm}$.
+\item normalization of $|\vk\ra$ and $|\vx\ra$.
+
+\bea
+\la \vx|\vk\ra&\equiv&\frac{1}{(2\pi)^\frac{3}{2}}e^{i\vk\cdot\vx}
+\no
+\int d\vx |\vx\ra \la \vx|&=&1, \quad \la \vx|\vx'\ra
+=\delta^{3}(\vx-\vx'),\no 
+\int d\vk |\vk\ra \la \vk|&=&1, \quad \la \vk'|\vk\ra=\delta^{3}(\vk-\vk')
+\eea
+
+$|\vk\ra$ is a solution of $H_0|\vk\ra=E_k|\vk\ra$.
+$|\vk\ra^{(\pm)}$ are solution of $(H_0+V)|\vk\ra^{(\pm)}=E_k|\vk\ra^{(\pm)}$.
+
+In c.m. frame $E_k=\frac{\vk^2}{2\mu}$
+with $\vk=\mu {\bm v}_{rel}$ relative momentum
+between two cluster, $\mu$ reduced mass.
+
+
+\item S-matrix
+\bea
+\la \vk|\hat{S}|\vk'\ra
+&=&{}^{(-)}\la\vk|\vk'\ra^{(+)}
+=\la \vk|\vk'\ra^{(+)}
+ +\lim_{\epsilon\to 0} \la \vk|V \frac{1}{E_k+ i\epsilon-H}|\vk'\ra^{(+)}\no
+&=&\la \vk|\vk'\ra
+ +\lim_{\epsilon\to 0} \la \vk|V \frac{1}{E_k+ i\epsilon-H}|\vk'\ra^{(+)}
+ +\lim_{\epsilon\to 0} \la \vk|\frac{1}{E_k'+ i\epsilon-H_0}V|\vk'\ra^{(+)}\no
+&=&\la \vk|\vk'\ra
+ +\lim_{\epsilon\to 0}\frac{\la \vk|V |\vk'\ra^{(+)}}
+                           {E_k+ i\epsilon-E_{k'}} 
+ +\lim_{\epsilon\to 0}\frac{\la \vk|V|\vk'\ra^{(+)}}
+                           {E_k'+ i\epsilon-E_k}   
+\no
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+\eea
+i.e.
+\bea
+\boxed{
+\la \vk|\hat{S}|\vk'\ra=\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+}
+\eea
+
+This expression is convention independent
+
+\item scattering amplitude
+From LS equation,
+\bea
+\la\vr|\vk\ra^{+}
+&=&\la \vr|\vk\ra+\int d^3\vr' \la \vr|G_0(E+i\epsilon)|\vr' \ra
+ \la\vr'|V|\vk\ra^{+} \no 
+&=&\la \vr|\vk\ra- \int d^3\vr'\frac{\mu}{2\pi\hbar^2}
+   \frac{e^{ik|\vr'-\vr|}}{|\vr'-\vr|}\la \vr'|V|\vk\ra^+
+\eea
+By using
+\bea
+\la \vr'|G_0(E\pm i\epsilon)|\vr \ra&=&-\frac{\mu}{2\pi\hbar^2}
+              \frac{e^{\pm i k|\vr'-\vr|}}{|\vr-\vr'|},\no 
+|\vr-\vr'|&=& r-r' {\hat \vr}\cdot{\hat \vr'}+\dots,\no 
+\lim_{\vr\to \infty}\la \vr'|G_0(E\pm i\epsilon)|\vr \ra
+   &\to& -\frac{\mu}{2\pi\hbar^2}
+   \frac{e^{ikr-ikr'\hat{\vr}\cdot{\hat\vr}'}}{r}
+   = -\frac{e^{ikr}}{r}\frac{\mu}{2\pi\hbar^2}e^{-i\vk' \cdot{\vr}'}
+\eea
+where we defined $\vk'=k\hat{\vr}$.
+We can define scattering amplitude asymptotically
+\bea
+\psi_{out}(\vr)\to_{\vr\to \infty} \frac{1}{(2\pi)^{\frac{3}{2}}}
+     \left(e^{i\vk\cdot\vr}+f(\vk',\vk)\frac{e^{ikr}}{r}\right).
+\eea
+where
+\bea
+\boxed{
+f(\vk',\vk)=-\frac{(2\pi)^{\frac{3}{2}}\mu}{2\pi\hbar^2} 
+                    \int d^3\vr' e^{-i\vk'\cdot\vr'}
+                    \la \vr'|V|\vk\ra^{(+)}
+            =-\frac{(2\pi)^3\mu}{2\pi\hbar^2}\la \vk'|V|\vk\ra^{(+)}
+            }
+\eea
+
+If convention, $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+was used, $f(\vk,\vk')=-\frac{\mu}{2\pi\hbar^2}\la \vk'|V|\vk\ra^{(+)}$
+ 
+\item cross section
+\bea
+\frac{d\sigma}{d\Omega_k}&=&|f(\vk,\vk')|^2 \no
+\sigma&=&\int d\Omega_k |f(\vk,\vk')|^2 
+       =\frac{4\pi}{k}{\rm Im}f(\vk,\vk')
+\eea
+
+\item relation between S-, T-, R- matrix and scattering amplitude
+and potential.
+\bea
+\hat{R}& \equiv& \hat{1}-\hat{S} \no
+\la \vk|\hat{T}|\vk'\ra &\equiv& \la \vk|V|\vk'\ra^{(+)} \no
+\la \vk|\hat{S}|\vk'\ra
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+\no
+&=&\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|T|\vk'\ra \no
+&=&\la \vk|\vk'\ra
+   +\frac{1}{2\pi\mu} i\delta(E_k-E_{k'}) f(\vk',\vk)
+\eea
+
+If $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention used,
+$$\la \vk|\hat{S}|\vk'\ra
+=\la \vk|\vk'\ra-2\pi i\delta(E_k-E_{k'})\la \vk|V|\vk'\ra^{(+)}
+=\la \vk|\vk'\ra+\frac{(2\pi)^2}{\mu} i\delta(E_k-E_{k'})
+  f(\vk',\vk).$$
+
+\item Energy conservation
+\bea
+& &\la \vk|\vk'\ra=\delta^{(3)}(\vk-\vk')
+  =\frac{\delta(k-k')}{k k'}\delta^{(2)}(\hat{\vk}-\hat{\vk}')\no
+& &\delta(E_k-E_{k'})=\frac{\mu}{k}\delta(k-k') 
+\eea
+\bea
+\la \vk|\hat{S}|\vk'\ra
+&\equiv&  \frac{\delta(k-k')}{k k'}\la\hat{\vk}|\hat{S}(k)|\hat{\vk}'\ra \no
+&=&\frac{\delta(k-k')}{k k'}\left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   -2\pi i \mu k \la \vk| T|\vk'\ra \right) \no
+&=&\frac{\delta(k-k')}{k k'}\left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   +\frac{i k}{2\pi}  f(\vk',\vk)\right) 
+\eea
+
+If $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention used,
+\bea
+\la \vk|\hat{S}|\vk\ra
+&=&(2\pi)^3\frac{\delta(k-k')}{k k'}\left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   -i \frac{\mu k}{(2\pi)^2}  \la \vk| V|\vk'\ra \right) \no
+&=&(2\pi)^3\frac{\delta(k-k')}{k k'}
+    \left(\delta^{(2)}(\hat{\vk}-\hat{\vk}')
+   +\frac{i k}{2\pi}  f(\vk',\vk)\right)  
+\eea
+\end{itemize}
+
+\section{Partial wave decomposition}
+\begin{itemize}
+\item partial wave expansion of plane wave
+\bea
+\la \vr|\vp\ra=\frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vp\cdot\vr}
+&=& \sum_{lm} \la r lm| p lm\ra \la \hat{r}|r lm\ra 
+                                \la p lm |\hat{p}\ra    
+\no
+&=& \sum_{lm} \sqrt{\frac{2}{\pi}} j_l(pr) i^l Y_{lm}(\hat{r})Y^*_{lm}(\hat{p}) \no
+&=& \sum_{l}\sqrt{\frac{2}{\pi}} j_l(pr) i^l Y_{l0}(\hat{r})\sqrt{\frac{2l+1}{4\pi}} 
+\mbox{ if $\hat{p}=\hat{z}$}\no
+&=& \frac{1}{(2\pi)^{\frac{3}{2}}}
+\sum_{l}j_l(pr) i^l(2l+1) P_{l}(\cos\theta) 
+\mbox{ if $\hat{p}=\hat{z}$}\no
+\eea
+
+If $\la \vk|\vk'\ra=(2\pi)^3\delta^{(3)}(\vk-\vk')$
+convention is used, it is convenient to normalize,
+\bea
+\la \vr|\vp\ra=e^{i\vp\cdot\vr}
+=\sqrt{4\pi}\sum_{lm} j_l(pr) i^l Y_{lm}(\hat{r})Y^*_{lm}(\hat{p})
+=\sum_l j_l(pr)i^l (2l+1) P_l(\cos\theta)
+\mbox{ if } \hat{p}=\hat{z}
+\eea
+
+\item Conventions: From partial wave expansion of
+plane wave, we have several possible conventions to 
+define $\la r lm|plm\ra$, $\la \hat{r}| r lm\ra$,
+and $\la \hat{p}|p lm\ra$. Possible choices are
+
+\begin{itemize}
+\item Convention 1:
+\bea
+\la r lm|p lm\ra \equiv\sqrt{\frac{2}{\pi}}j_l(pr) i^l,\quad
+\la \hat{r}| r lm\ra \equiv Y_{lm}(\hat{x}),\quad
+\la \hat{p}|p lm\ra\equiv Y_{lm}(\hat{p})
+\eea
+\item Convention 2:
+\bea
+\la r lm|p lm\ra \equiv\sqrt{\frac{2}{\pi}}j_l(pr),\quad
+\la \hat{r}| r lm\ra \equiv i^l Y_{lm}(\hat{x}),\quad
+\la \hat{p}|p lm\ra \equiv Y_{lm}(\hat{p})
+\eea
+\item Convention 3:
+\bea
+\la r lm|p lm\ra \equiv \sqrt{\frac{2}{\pi}}j_l(pr),\quad
+\la \hat{r}| r lm\ra \equiv Y_{lm}(\hat{x}),\quad 
+\la \hat{p}|p lm\ra \equiv i^{-l} Y_{lm}(\hat{p})
+\eea
+\item Convention 4:
+\bea
+\la r lm|p lm\ra \equiv\sqrt{\frac{2}{\pi}}j_l(pr),\quad
+\la \hat{r}| r lm\ra \equiv Y_{lm}(\hat{x}),\quad 
+\la \hat{p}|p lm\ra \equiv Y_{lm}(\hat{p})
+\eea
+\end{itemize}
+Actually, we may also introduce different normalization
+such that $\la r lm|plm\ra =j_{l}(pr)$. Let us call this 
+conventions as $1',2',3',4'$. Among them, let us compare
+conventions 2 which will be called as modified spherical 
+harmonics convention(ms) and 4 which will be denoted
+by spherical harmonics convention(sp).
+
+{\bf Note}: In convention 4, because there is no $i^l$
+appears in state vectors, we have to explicitly include
+$i^l$ in the partial wave expansion.
+
+\item Momentum space expansion: completeness relation becomes
+\bea
+\la \vp'|p l m\ra\equiv \frac{\delta(p'-p)}{p p'}Y_{lm}(\hat{\vp}'),
+\quad \la p lm |p'l'm'\ra=\frac{\delta(p'-p)}{p p'}\delta_{ll'}\delta_{mm'}
+\eea
+Thus, in spherical Harmonics convention, we 
+can write
+\bea
+|\vp\ra&=&\sum_{lm} |p lm\ra_{sp} i^l \la plm|\hat{p}\ra_{sp}
+\eea
+and in modified spherical harmonics convention
+\bea
+|\vp\ra&=&\sum_{lm} |p lm\ra_{ms} \la plm|\hat{p}\ra_{ms}
+\eea
+We have completeness relation in (ms) convention 
+\bea
+\sum_{lm}\int dp p^2 |p lm\ra \la p lm|
+=1
+\eea
+
+\item Configuration space
+In spherical harmonics convention,
+\bea
+\la \vx| r l m\ra_{sp}\equiv 
+\frac{\delta(x-r)}{xr} Y_{lm}(\hat{x})
+\eea
+In modified spherical harmonics convention,
+\bea
+\la \vx| r l m\ra_{ms}\equiv 
+\frac{\delta(x-r)}{xr} i^l Y_{lm}(\hat{x})
+\eea
+
+\bea
+& &\sum_{lm}\int dx x^2 | xlm\ra \la x lm|=1 \no
+& &\la x' l' m'| x lm\ra=\frac{\delta(x'-x)}{xx'}\delta_{ll'}\delta_{mm'}
+\eea
+In both spherical harmonics convention and 
+modified spherical harmonics convention
+\bea
+|\vx\ra=\sum_{lm} |x lm\ra_{sp} \la x lm|\hat{x}\ra_{sp}
+=\sum_{lm} |x lm\ra_{ms} \la x lm|\hat{x}\ra_{ms}         
+\eea
+
+\item general partial wave expansion: 
+For general case of many body scattering and 
+non-conservation of angular momentum, let us
+denote $\alpha$ as general
+'angular-spin' quantum numbers. 
+Let us distinguish
+$|k,\alpha\ra$ with $|\alpha\ra$, where the first includes
+radial wave function while the second only contains 
+'angular' quantum numbers, thus is dimensionless. 
+
+Define
+\bea
+Y_{\alpha}(\hat{k})&\equiv&\la \hat{k}|k \alpha\ra,\no
+\la \hat{k}|\hat{k}'\ra&=&\delta^{(2)}(\hat{k}-\hat{k}')
+ =\sum_{\alpha\beta}\delta_{\alpha\beta} 
+  Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')
+\eea
+For each convention
+\bea
+|\vk\ra&=&
+\sum_\alpha |k, \alpha\ra_{sp}  
+                i^\alpha \la \alpha|\hat{k}\ra_{sp}\no
+&=&
+\sum_\alpha |k, \alpha\ra_{ms}  
+            \la \alpha|\hat{k}\ra_{ms}.
+\eea
+\bea
+|\vx\ra&=&\sum_{\alpha} |x,\alpha\ra_{sp} 
+           \la x,\alpha|\hat{x}\ra_{sp},\no
+       &=&\sum_{\alpha} |x,\alpha\ra_{ms} 
+           \la x,\alpha|\hat{x}\ra_{ms}
+\eea
+with $\la \hat{x}|x,\alpha \ra_{sp}=Y_{\alpha}(\hat{x})$
+and $\la \hat{x}|x,\alpha \ra_{ms}=i^\alpha Y_{\alpha}(\hat{x})$
+
+\item partial wave expansion of scattering amplitude
+\bea
+f(\vk,\vk')&=&-(2\pi)^2\mu \la \vk|V|\vk'\ra^{(+)}\no
+           &=&-(2\pi)^2\mu \sum_{\alpha\beta} 
+        \la k,\alpha|V| k,\beta\ra^{(+)}_{sp}
+        i^{-\alpha+\beta}
+        Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') \no
+        &=&-(2\pi)^2\mu \sum_{\alpha\beta} 
+        \la k,\alpha|V| k,\beta\ra^{(+)}_{ms}
+        Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}')  
+\eea
+
+How can we define $S_{\alpha,\beta}(k)$( $f_{\alpha\beta}(k)$
+and $T_{\alpha,\beta}(k)$) from $\la \vk| S|\vk' \ra$ ?
+
+
+Thus, if we define $S_{\alpha\beta}$, $f_{\alpha\beta}$ and
+$T_{\alpha\beta}$ as, we have
+\bea
+\la \hat{k}|\hat{S}(k)|\hat{k}'\ra&\equiv&
+      \sum_{\alpha\beta} i^{-\alpha+\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') S_{\alpha\beta}(k)
+      \mbox{ in sp convention}
+      ,\no
+      &\equiv&
+      \sum_{\alpha\beta}
+      Y_{\alpha}(\hat{k})Y_{\beta}^*(\hat{k}') S_{\alpha\beta}(k)
+      \mbox{ in ms convention}
+\eea
+Similar relation holds for $T$ and $f$.
+
+Regardless of convention,  we can write 
+\begin{equation}
+\boxed{
+\begin{array}{ccl}
+S_{\alpha\beta}(k)
+&=&\delta_{\alpha\beta}-(2\pi)i \mu k 
+        \la k,\alpha| V| k,\beta\ra^{(+)},\\
+&=&\delta_{\alpha\beta} -(2\pi)i \mu k T_{\alpha\beta}(k),\\
+&=&\delta_{\alpha\beta}+ i\frac{k}{2\pi} f_{\alpha\beta}(k)
+\end{array}
+}
+\end{equation}
+However, the meaning state vector depends on which
+convention we are using and $S_{\alpha\beta}^{(ms)}$
+and $S_{\alpha\beta}^{(sp)}$ is different.
+
+the relation between potential matrix
+element with $f_{\alpha\beta}$ depends on the convention,
+\bea
+\boxed{
+\begin{array}{cl}
+f_{\alpha\beta}^{(ms)}(k)
+&=-(2\pi)^2\mu \la k,\alpha|V|k,\beta\ra^{(+)}_{ms} \\
+f_{\alpha\beta}^{(sp)}(k)
+&=-(2\pi)^2\mu \la k,\alpha|V|k,\beta\ra^{(+)}_{sp}
+\end{array}
+}
+\eea
+Thus,
+\bea
+S_{\alpha\beta}^{(ms)}(k)
+&=&\delta_{\alpha\beta}
+  -i2\pi \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{ms}\no
+&=&\delta_{\alpha\beta}
+  -i4 \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{ms'}\no
+S_{\alpha\beta}^{(sp)}(k)&=&\delta_{\alpha\beta}
+  -4 i \mu k \la k,\alpha|V|k,\beta\ra^{(+)}_{sp'} 
+\eea
+
+
+
+\item In general scattered state does not have the same
+quantum numbers with asymptotic state.
+Thus, let us further expands scattered state as
+\bea
+\la \vx |\Psi_\alpha(k)\ra^{(+)}_{sp}
+&=&\sum_{\alpha'} 
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{sp}
+Y_{\alpha'}(\hat{x}),\no
+\la \vx |\Psi_\alpha(k)\ra^{(+)}_{ms}
+&=&\sum_{\alpha'} 
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{ms}
+i^{\alpha'}Y_{\alpha'}(\hat{x})
+\eea
+where,
+\bea
+\la x,\alpha'|\Psi^{(+)}_{\alpha',\alpha}(k)\ra_{sp}
+\equiv \Psi^{(+)}_{\alpha',\alpha}(k,x)
+\eea
+is radial wave function solution 
+of the scattering with 
+boundary condition,
+\bea
+\la x \alpha'|\Psi_{\alpha',\alpha}(k)\ra^{(+)}_{sp}
+&=&\sqrt{\frac{2}{\pi}}\frac{i}{2}
+                  [h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(sp)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}
+\eea
+
+In modified spherical harmonics convention,
+\bea
+\la x \alpha'|\Psi_{\alpha'\alpha}\ra^{(+)}_{ms}
+&=&\sqrt{\frac{2}{\pi}}
+    \frac{i}{2}[h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(ms)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}\no
+&=&\sqrt{\frac{2}{\pi}}
+   i^{-\alpha'+\alpha} \frac{i}{2}
+                  [h^{(2)}_{l'}(pr)\delta_{\alpha'\alpha}
+                      -S^{J,(sp)}_{\alpha'\alpha} 
+                      h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}\no
+&=&i^{-\alpha'+\alpha}\la x \alpha'|\Psi_{\alpha'\alpha}\ra^{(+)}_{sp}
+\eea
+Thus, we can write, in both primed conventions,
+\bea
+S_{\alpha\beta}(k)=\delta_{\alpha\beta}-4i\mu k
+ \sum_{\beta'}\la k, \alpha|V|\Psi^{(+)}_{\beta',\beta}(k),\beta'\ra
+\eea
+
+We may consider it as, because wave function 
+$\la\vx|\vp\ra^{(+)}$ is written before any convention,
+\bea
+\la \vx|\vp\ra^{(+)}&=&\sum_{l}\la \hat{x}|x,\alpha\ra_{sp}
+                     \la x,\alpha|p,\alpha'\ra^{(+)}_{sp}
+                     \la p,\alpha'|\hat{p}\ra_{sp} i^{\alpha'}\no
+                    &=&\sum_{l}\la \hat{x}|x,\alpha\ra_{ms}
+                     \la x,\alpha|p,\alpha'\ra^{(+)}_{ms}
+                     \la p,\alpha'|\hat{p}\ra_{ms}  
+\eea
+Thus, we should have a relation,
+\bea
+\la x,\alpha|p,\alpha'\ra^{(+)}_{sp}i^{\alpha'}
+&=& i^{\alpha}\la x,\alpha|p,\alpha'\ra^{(+)}_{ms}.
+\eea
+
+\item Special case : angular momentum conserved case.
+
+Usual definition of $f_l(E)$ is
+\bea
+f(E,\theta)\equiv\sum_{l}(2l+1)f_l(E)P_l(\cos\theta)
+\eea
+Comparing this with previous expansion,
+\bea
+f(\vk,\vk'=k \hat{z}) &=&\sum_{lm, l' m'} 
+         Y_{lm}(\hat{k})Y^*_{l'm'}(\hat{k}')
+         f_{l l'}(k)\no
+    &=&\sum_{ll'} \delta_{ll'} f_{ll}(k)
+           \frac{2l+1}{4\pi}P_l(\cos\theta)
+\eea
+Thus, $f_l(E)=\frac{f_{l,l}(k)}{4\pi}$ and $S_{ll'}(k)=\delta_{ll'}s_l(k)$,
+\bea
+s_l(k)=1+2ik f_l(k)
+\eea
+
+\end{itemize}
+
+\section{spin rotation}
+\bea
+|m_n,m_d\ra
+=\sum_{l_y,j_y,J}
+  |[1\otimes(l_y \frac{1}{2})_{j_y}]_J\ra
+  C_{l_y 0,\frac{1}{2}m_n}^{j_y m_n}
+  C_{1m_d, j_y m_n}^{J m_n+m_d}Y_{l_y 0}(0)   
+  \mbox{with }Y_{l_y 0}(0)=\sqrt{\frac{2l_y+1}{4\pi}}
+\eea
+
+\begin{itemize}
+\item Equation from Rimas's note:  this is written in modified
+spherical harmonics convention or its state vectors
+contains $i^l$ factors in itself.
+\begin{align*}
+f_{m_{n}m_{d},m_{n}m_{d}}(0)  & =%
+%TCIMACRO{\dsum \limits_{j_{y}j_{y}^{\prime}l_{y}l_{y}^{\prime}J}}%
+%BeginExpansion
+{\displaystyle\sum\limits_{j_{y}j_{y}^{\prime}l_{y}l_{y}^{\prime}J}}
+%EndExpansion
+\frac{\sqrt{\pi\widehat{l_{y}}}}{ip}C_{l_{y}0,\frac{1}{2}m_{n}}^{j_{y}m_{n}%
+}C_{1m_{d},j_{y}m_{n}}^{Jm_{n}+m_{d}}C_{l_{y}^{\prime}0,\frac{1}{2}m_{n}%
+}^{j_{y}^{\prime}m_{n}}C_{1m_{d},j_{y}^{\prime}m_{n}}^{Jm_{n}+m_{d}%
+}\left\langle l_{y}^{\prime}j_{y}^{\prime}\right\vert S^{J}-1\left\vert
+l_{y}j_{y}\right\rangle Y_{l_{y}^{\prime}0}(0)\\
+& =%
+%TCIMACRO{\dsum \limits_{j_{y}j_{y}^{\prime}l_{y}l_{y}^{\prime}J}}%
+%BeginExpansion
+{\displaystyle\sum\limits_{j_{y}j_{y}^{\prime}l_{y}l_{y}^{\prime}J}}
+%EndExpansion
+\frac{\sqrt{\widehat{l_{y}^{\prime}}\widehat{l_{y}}}}{2ip}C_{l_{y}0,\frac
+{1}{2}m_{n}}^{j_{y}m_{n}}C_{1m_{d},j_{y}m_{n}}^{Jm_{n}+m_{d}}C_{l_{y}^{\prime
+}0,\frac{1}{2}m_{n}}^{j_{y}^{\prime}m_{n}}C_{1m_{d},j_{y}^{\prime}m_{n}%
+}^{Jm_{n}+m_{d}}\left\langle l_{y}^{\prime}j_{y}^{\prime}\right\vert
+S^{J}-1\left\vert l_{y}j_{y}\right\rangle
+\end{align*}
+
+Then,
+\bea
+{\rm Re}\sum_{m_d}[f_{\frac{1}{2}m_d,\frac{1}{2}m_d}
+            -f_{-\frac{1}{2}m_d,-\frac{1}{2}m_d}]
+&=&{\rm Re}\frac{2i}{p}\left[\la 1\frac{1}{2}|S^{\frac{1}{2}}-1|0\frac{1}{2}\ra+2\la 1\frac{1}{2}|S^{\frac{3}{2}}-1|0\frac{1}{2}\ra\right]
+\eea
+Thus,
+\bea
+\frac{1}{N}\frac{d\phi}{dz}
+&=&-\frac{2\pi}{p}\frac{1}{3}{\rm Re}\sum_{m_d}[f_{\frac{1}{2}m_d,\frac{1}{2}m_d}
+            -f_{-\frac{1}{2}m_d,-\frac{1}{2}m_d}]\no
+&=&\frac{4\pi}{3p^2}{\rm Im}\left[\la 1\frac{1}{2}|S^{\frac{1}{2}}-1|0\frac{1}{2}\ra+2\la 1\frac{1}{2}|S^{\frac{3}{2}}-1|0\frac{1}{2}\ra\right]
+\eea
+where basis are $|l_y j_y\ra$.
+
+If we convert it to $|l_y S\ra$ basis, we get
+\bea
+\frac{1}{N}\frac{d\phi}{dz}
+&=&-\frac{4\pi}{9p^2}{\rm Im}\left[
+\la 1\frac{1}{2}|S^{\frac{1}{2}}-1|0\frac{1}{2}\ra
+-2\sqrt{2}\la 1\frac{3}{2}|S^{\frac{1}{2}}-1|0\frac{1}{2}\ra
+ \right.\no & &\left.
++4\la 1\frac{1}{2}|S^{\frac{3}{2}}-1|0\frac{3}{2}\ra
+-2\sqrt{5}\la 1\frac{3}{2}|S^{\frac{3}{2}}-1|0\frac{3}{2}
+\ra\right]
+\eea
+where basis are $|l_y S\ra$.
+
+\item 
+First the relation with S-matrix with scattering amplitude.
+\bea
+\la \alpha|S-1|\beta\ra=\frac{ ip}{2\pi}f_{\alpha\beta}
+\eea
+Then,
+\bea
+\la \alpha|S^J-1|\beta\ra=\frac{ip}{2\pi} f_{\alpha\beta}(p)
+=-\frac{ip}{2\pi}(4\pi^2\mu)\la p,\alpha|V|p,\beta\ra^{(+)}
+=-i(2\pi \mu p)\la p,\alpha|V|p,\beta\ra^{(+)}
+\eea
+Then,
+\bea
+\frac{1}{N}\frac{d\phi}{dz}
+=-\frac{8\pi^2\mu}{3p}{\rm Re}\left[
+ \la p,(1\frac{1}{2})\frac{1}{2}|V|p,(0\frac{1}{2})\frac{1}{2}\ra^{(+)}
+ +2 \la p,(1\frac{1}{2})\frac{3}{2}|V|p,(0\frac{1}{2})\frac{3}{2}\ra^{(+)}\right]
+\eea
+in $|p,(l_y j_y) J\ra$ basis.
+\item in $|p,(l_y {\cal S}) J\ra$ basis :
+\bea
+\frac{1}{N}\frac{d\phi}{dz}
+&=&\frac{8\pi^2\mu}{9p}{\rm Re}\left[
+ \la p,(1\frac{1}{2})\frac{1}{2}|V|p,(0\frac{1}{2})\frac{1}{2}\ra^{(+)}
+ -2\sqrt{2}\la p,(1\frac{3}{2})\frac{1}{2}|V|p,(0\frac{1}{2})\frac{1}{2}\ra^{(+)}
+ \right.\no & &\left. 
+ +4\la p,(1\frac{1}{2})\frac{3}{2}|V|p,(0\frac{1}{2})\frac{3}{2}\ra^{(+)}
+ -2\sqrt{5}\la p,(1\frac{3}{2})\frac{3}{2}|V|p,(0\frac{3}{2})\frac{3}{2}\ra^{(+)}
+ \right]
+\eea
+in $|p,(l_y {\cal S}) J\ra$ basis.
+
+\item 
+Until now I used $|p,\alpha\ra$ to be normalized such as
+$\sqrt{\frac{2}{\pi}}j_\alpha(pr)$. However, if matrix elements
+were calculate in basis $|\alpha\ra\to j_\alpha(pr)$, then
+the relation between S-matrix and potential becomes
+(You can find the same equation at Glockle's book.)
+\bea
+S_{l'S,lS}
+&=&\delta_{l'S,lS}-4i \mu p\sum_{l''}
+                   \la {\cal Y}^{JM}_{l'S} j_{l'}|V|
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J\ra
+\eea
+where, 
+\bea
+\Psi_{l'S,lS}^J(r)\to -\frac{1}{2i}[h^{(2)}_{l'}(pr)\delta_{ll'}
+                      -S^J_{l'l} h^{(1)}_{l'}(pr)] 
+                      \mbox{ at large r}.
+\eea
+Note that the radial integration will involve 
+$\int dr r^2 j_{l'}(pr)*V_{l'l'}*\Psi_{l'',l}(pr)$.
+
+Thus, expression for K-matrix becomes                   
+\bea
+K_{l' l}\simeq -2\mu p \sum_{l''} 
+               \la {\cal Y}^{JM}_{l'S} j_{l'}|V|
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J\ra     
+\eea
+
+If we replace $\mu\to \frac{m_N}{2}$ for 
+2-nucleon scattering, you have
+\bea
+K_{l'l}\simeq -m_N p \sum_{l''} 
+               \la {\cal Y}^{JM}_{l'S} j_{l'}|V|
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J\ra     
+\eea 
+
+For n-d scattering, we have $\mu=2/3 m_N$ and $q=\sqrt{3/4} p$.
+\bea
+K_{l'l}\simeq -2\mu p \sum_{l''} 
+               \la {\cal Y}^{JM}_{l'S} j_{l'}|V|
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J\ra     
+           =-\frac{4}{3}\sqrt{\frac{4}{3}} m_N q
+            \sum_{l''} 
+               \la {\cal Y}^{JM}_{l'S} j_{l'}|V|
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J\ra         
+\eea 
+Thus, 
+However, if the wave function and integration was done as
+$\int dy y^2 j_{l'}(qy)*V_{l'l'}*\Psi_{l'',l}(qy)$,
+\bea
+K_{l'l}&\simeq& -2\mu p \sum_{l''} 
+               \int dr r^2 {\cal Y}^{*JM}_{l'S} j_{l'}(pr) V(r)
+                   {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J(pr)
+              \no
+              &\simeq& -m_N q \sum_{l''} \int dy y^2 
+               {\cal Y}^{* JM}_{l'S} j_{l'}(qy) V(r)
+               {\cal Y}^{JM}_{l'' S} \Psi_{l''S,lS}^J(qy)   
+\eea
+
+\item Matrix elements from the code calculates,
+\bea
+\mbox{(code result)}=\int dx x^2 dy y^2 \frac{f(x,y)}{xy} V_{pv}
+                                        \frac{f(x,y)}{xy}   
+\eea
+with normalization,
+\bea
+\frac{f(x,y)}{xy}\to \frac{1}{q^{l_y}}\frac{F(x,y)}{xy} 
+\to \frac{1}{q^{l_y}} j_{l_y}(q y)\phi(x)
+\eea  
+And because $q=\sqrt{\frac{3}{4}}p$, $y=\sqrt{\frac{4}{3}}r$,
+\bea
+\mbox{(code result)}&\to& 
+\frac{1}{q}(\sqrt{\frac{4}{3}})^3
+\int dx x^2 dr r^2 j_1( pr)\phi(x) V_{pv} j_0(pr)\phi(x)\no
+&\to& (\sqrt{\frac{4}{3}})^4 \frac{1}{p}
+    \la j_1(pr)|V|j_0(pr)\ra
+\eea 
+Thus, finally we have a relation
+between the potential matrix element appears in 
+Schiavilla's paper and code results,
+\bea
+\frac{1}{p}\la \mbox{P-wave}|V_{pv}|\mbox{S-wave}\ra
+=(\frac{3}{4})^2 \mbox{(my code result)}
+=(-i)(\frac{3}{4})^2 \mbox{(Rimas code result)}
+\eea
+
+\item total cross section.
+According to Rimas's code We have ${\rm Re}[S]$ matrix as
+$0.999747$ for $ly=0,j_y=\frac{1}{2},J=\frac{1}{2}$,
+$0.974371$ for $ly=0,j_y=\frac{1}{2},J=\frac{3}{2}$.
+Other matrix elements are negligible.
+Total cross section can be written in terms of S-matrix as
+\bea
+\sigma_{tot}=\frac{2\pi}{k^2}{\rm Im}\sum_{\alpha\beta}i^{-l_\alpha+l_\beta-1}\sqrt{(2l_\alpha+1)(2l_\beta+1)}[S_{\alpha\beta}-\delta_{\alpha\beta}]
+\eea
+For $E_{lab}=15$ keV, $k_{lab}=0.0179 fm^{-1}$, experimental result
+corresponds to $3.35$ b. {\bf Note} when we use above equation,
+we have to be careful because $\alpha,\beta$ represent
+all possible quantum numbers including polarizations.
+Thus, unpolarized total cross section requires average 
+over polarization. 
+For example, 
+$\frac{1}{(2j_1+1)(2j_2+1)}\sum_{m_1 m_2} M_{m_1m_2,m_1m_2}$.
+If two particle were spin $\frac{1}{2}$, it will be
+$\frac{1}{4}[M^{J=0}+3 M^{J=1}]$ and if two particle were
+spin $1$ and $\frac{1}{2}$,
+$\frac{1}{6}[2 M^{J=\frac{1}{2}}+4 M^{J=\frac{3}{2}}]$.
+Thus, n-d scattering case,
+\bea
+\sigma_{tot}=\frac{2\pi}{k^2}(\frac{1}{3}[S^{J=1/2}_{00}-1]
++\frac{2}{3}[S^{J=3/2}_{00}-1]).
+\eea 
+This gives $335.548 fm^2=3.35b$. 
+
+In other words, 
+\bea
+\sigma_{tot}
+&=&\frac{1}{2}(\sigma_{+}+\sigma_{-})
+=\frac{1}{2}\frac{4\pi}{p}{\rm Im}[f_{+}+f_{-}]\no
+&=&\frac{1}{2}\frac{1}{3}\frac{1}{4\pi}2
+   \frac{4\pi}{p}{\rm Im}  
+   \left[
+   \la 0\frac{1}{2}|f^{1/2}|0\frac{1}{2}\ra
+   +\la 1\frac{1}{2}|f^{1/2}|1\frac{1}{2}\ra
+    +\la 1\frac{3}{2}|f^{1/2}|1\frac{3}{2}\ra
+\right. \no 
+& &\left.+2\la 0\frac{3}{2}|f^{3/2}|0\frac{3}{2}\ra
+     +2\la 1\frac{1}{2}|f^{3/2}|1\frac{1}{2}\ra
+     +2\la 1\frac{3}{2}|f^{3/2}|1\frac{3}{2}\ra   \right]\no
+&\simeq&\frac{1}{3 p}{\rm Im}  
+   \left[
+   \la 0\frac{1}{2}|f^{1/2}|0\frac{1}{2}\ra
+   +2\la 0\frac{3}{2}|f^{3/2}|0\frac{3}{2}\ra\right]\no
+   &=&\frac{2\pi}{p^2}{\rm Re}  
+   \left[
+   \frac{1}{3}\la 0\frac{1}{2}|R^{1/2}|0\frac{1}{2}\ra
+   +\frac{2}{3}\la 0\frac{3}{2}|R^{3/2}|0\frac{3}{2}\ra\right]
+\eea
+
+
+\end{itemize}
+\end{document}

@@ -1,0 +1,205 @@
+1                                                 ********************
+
+
+                                   EXACT FINITE RANGE DISTORTED WAVE BORN CALCULATION
+
+
+                           FOR NI( 64)( O( 16), N( 15))CU( 65)-REACTION AT ELAB= 56.000-MEV
+                                0  (+)( 0  (+), 1/2(-)) 1/2(-)          Q VALUE= -5.447 MEV
+
+
+
+                                                  ********************
+
+
+ 
+                         FORM FACTORS HAVE (2J,2L,2S)=( 1 2 1) ( 1 0 1) (
+                         TOTAL MESH POINTS=150
+
+                         KTRLCB=    0    0    0    0    0    0    0    1    0    0
+                         KOUTCB=    0    0    0    0    0    0    0    0    0    0
+                         KEXTCB=   50    0    0    0    0    0    0    0    0    0
+
+
+                    *****BOUND STATE PARAMETERS
+        SYSTEM,   (N,L,J)  BINDING ENERGY       VSX     VSOR    DFNR    DFNSO   RZR     RZSO    RZC      XMES
+          1     ( 1 1 1)       6.679         64.289   7.000   0.650   0.650   1.200   1.200   1.200   0.100
+          2     ( 0 1 1)      12.126         61.238   7.000   0.650   0.650   1.200   1.200   1.200   0.100
+
+
+                    *****FORM FACTOR PARAMETERS
+
+        EXACT FINITE RANGE FORM FACTORS READ IN FROM TAPE12
+        NATOTL,NBTOTL,MESFCA,MESFCB,LBSTTL,NBREAD=   15   18    1   10    2   18
+1                                        (INCIDENT CHANNEL)     ELAB= 56.000
+
+                     VSX,WSX,WSF               = 100.000  25.812   0.000
+                     DFN,DFNW,DFNS             =   0.500   0.500   0.500
+                     RZERO,RZEROW,RZEROS,RZEROC=   1.223   1.223   1.223   1.223
+
+ KTRL     0   0   0   1   0   0   0   0   0   0   0   0   0   0   0
+ KEXCOM   0   0   0   0   0   0   0   0   0   0   0   0   0  61   0
+ KTLOUT   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ XMES1=0.01250    XMES2=0.10000
+ ECM,WN,WNINI,ETA,SIGMO=    0.44800E+02    0.52373E+01    0.94157E+01    0.18852E+02    0.58755E+01
+ KEX14,NXMAX,NXPOT=   61  200  200 XMAX,XBAR=  0.2000000E+02  0.7973767E+01
+0IN FLGL NNN=1
+1                                        (EXIT CHANNEL)     ELAB= 48.434
+
+                     VSX,WSX,WSF               = 100.000  25.812   0.000
+                     DFN,DFNW,DFNS             =   0.600   0.600   0.600
+                     RZERO,RZEROW,RZEROS,RZEROC=   1.223   1.223   1.223   1.223
+
+ KTRL     0   0   0   1   0   0   0   0   0   0   0   0   0   0   0
+ KEXCOM   0   0   0   0   0   0   0   0   0   0   0   0   0  61   0
+ KTLOUT   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ XMES1=0.01250    XMES2=0.10000
+ ECM,WN,WNINI,ETA,SIGMO=    0.39353E+02    0.47897E+01    0.90132E+01    0.17788E+02    0.27789E+01
+ KEX14,NXMAX,NXPOT=   61  200  200 XMAX,XBAR=  0.2000000E+02  0.7933526E+01
+0IN FLGL NNN=1
+1
+                 ELASTIC SCATTERING CROSS SECTION IN CHANNEL  1
+                 WITH (A,Z) = ( 64, 28) + ( 16,  8)AT ELAB= 56.000 MEV
+
+
+    THETA      SIGMA      SIGMA/SRGUTH      THETA      SIGMA      SIGMA/SRGUTH
+
+     5.00 NaN           NaN                 95.00 NaN           NaN          
+    10.00 NaN           NaN                100.00 NaN           NaN          
+    15.00 NaN           NaN                105.00 NaN           NaN          
+    20.00 NaN           NaN                110.00 NaN           NaN          
+    25.00 NaN           NaN                115.00 NaN           NaN          
+    30.00 NaN           NaN                120.00 NaN           NaN          
+    35.00 NaN           NaN                125.00 NaN           NaN          
+    40.00 NaN           NaN                130.00 NaN           NaN          
+    45.00 NaN           NaN                135.00 NaN           NaN          
+    50.00 NaN           NaN                140.00 NaN           NaN          
+    55.00 NaN           NaN                145.00 NaN           NaN          
+    60.00 NaN           NaN                150.00 NaN           NaN          
+    65.00 NaN           NaN                155.00 NaN           NaN          
+    70.00 NaN           NaN                160.00 NaN           NaN          
+    75.00 NaN           NaN                165.00 NaN           NaN          
+    80.00 NaN           NaN                170.00 NaN           NaN          
+    85.00 NaN           NaN                175.00 NaN           NaN          
+    90.00 NaN           NaN                180.00 NaN           NaN          
+
+
+
+                      SCATTERING C-MATRIX
+ ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) (
+1
+                 ELASTIC SCATTERING CROSS SECTION IN CHANNEL  2
+                 WITH (A,Z) = ( 65, 29) + ( 15,  7)AT ELAB= 48.434 MEV
+
+
+    THETA      SIGMA      SIGMA/SRGUTH      THETA      SIGMA      SIGMA/SRGUTH
+
+     5.00 NaN           NaN                 95.00 NaN           NaN          
+    10.00 NaN           NaN                100.00 NaN           NaN          
+    15.00 NaN           NaN                105.00 NaN           NaN          
+    20.00 NaN           NaN                110.00 NaN           NaN          
+    25.00 NaN           NaN                115.00 NaN           NaN          
+    30.00 NaN           NaN                120.00 NaN           NaN          
+    35.00 NaN           NaN                125.00 NaN           NaN          
+    40.00 NaN           NaN                130.00 NaN           NaN          
+    45.00 NaN           NaN                135.00 NaN           NaN          
+    50.00 NaN           NaN                140.00 NaN           NaN          
+    55.00 NaN           NaN                145.00 NaN           NaN          
+    60.00 NaN           NaN                150.00 NaN           NaN          
+    65.00 NaN           NaN                155.00 NaN           NaN          
+    70.00 NaN           NaN                160.00 NaN           NaN          
+    75.00 NaN           NaN                165.00 NaN           NaN          
+    80.00 NaN           NaN                170.00 NaN           NaN          
+    85.00 NaN           NaN                175.00 NaN           NaN          
+    90.00 NaN           NaN                180.00 NaN           NaN          
+
+
+
+                      SCATTERING C-MATRIX
+ ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) ( NaN    NaN   ) 
+( NaN    NaN   ) (
+1
+ EFR DWBA FOR  NI( 64)( O( 16), N( 15))CU( 65)-REACTION AT ELAB= 56.000-MEV
+                0  (+)( 0  (+), 1/2(-)) 1/2(-)          Q VALUE= -5.447 MEV
+
+ FORM FACTOR HAVE (2J,2L,2S)=( 1 2 1) ( 1 0 1) (
+ LDW MAX=   61   LDW CUT OFF=    0   LDW STEP=    1
+ MES MAX=  200   MES CUT OFF=   50   MES STEP= 0.10
+ NATOTL =   15   MESFCA     =    1   MESFCB  =   10
+
+ SYSTEM  (N,L,J)   B.E.   VSX   VSOR  DFNR  DFNSO  RZR   RZSO  RZC   XMES
+     1  ( 1 1 1)  6.679 64.289  7.000 0.650 0.650 1.200 1.200 1.200 0.100
+     2  ( 0 1 1) 12.126 61.238  7.000 0.650 0.650 1.200 1.200 1.200 0.100
+
+ CHANNEL  VSX    WSX    WSF    DFN  DFNW  DFNS  RZRO  RZRW  RZRS  RZRC
+ IN     100.000 25.812  0.000 0.500 0.500 0.500 1.223 1.223 1.223 1.223
+ OUT    100.000 25.812  0.000 0.600 0.600 0.600 1.223 1.223 1.223 1.223
+ ALSJ USED IS     1.00000
+
+  ANGLE     SUM        L=1        L=0        L=
+   5.00 NaN        NaN        NaN       
+  10.00 NaN        NaN        NaN       
+  15.00 NaN        NaN        NaN       
+  20.00 NaN        NaN        NaN       
+  25.00 NaN        NaN        NaN       
+
+  30.00 NaN        NaN        NaN       
+  35.00 NaN        NaN        NaN       
+  40.00 NaN        NaN        NaN       
+  45.00 NaN        NaN        NaN       
+  50.00 NaN        NaN        NaN       
+
+  55.00 NaN        NaN        NaN       
+  60.00 NaN        NaN        NaN       
+  65.00 NaN        NaN        NaN       
+  70.00 NaN        NaN        NaN       
+  75.00 NaN        NaN        NaN       
+
+  80.00 NaN        NaN        NaN       
+  85.00 NaN        NaN        NaN       
+  90.00 NaN        NaN        NaN       
+  95.00 NaN        NaN        NaN       
+ 100.00 NaN        NaN        NaN       
+
+ 105.00 NaN        NaN        NaN       
+ 110.00 NaN        NaN        NaN       
+ 115.00 NaN        NaN        NaN       
+ 120.00 NaN        NaN        NaN       
+ 125.00 NaN        NaN        NaN       
+
+ 130.00 NaN        NaN        NaN       
+ 135.00 NaN        NaN        NaN       
+ 140.00 NaN        NaN        NaN       
+ 145.00 NaN        NaN        NaN       
+ 150.00 NaN        NaN        NaN       
+
+ 155.00 NaN        NaN        NaN       
+ 160.00 NaN        NaN        NaN       
+ 165.00 NaN        NaN        NaN       
+ 170.00 NaN        NaN        NaN       
+ 175.00 NaN        NaN        NaN       
+
+ 180.00 NaN        NaN        NaN       

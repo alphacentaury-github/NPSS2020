@@ -1,0 +1,24 @@
+                                                                                
+ 64 28  0  0 65 29  1  1 16  8  0  0 15  7  1  1                                
+  2  1  2  1  1  0  1                                                           
+   15    4   21    1   10    3   61                                             
+1.0    0.1                                                                      
+    1    0    2    0  300  100    1    1    1    1   15    0                    
+  6.679  64.00  1.000  28.00  1.000  0.100  .0001                               
+  60.00  7.000  0.650  0.650  1.200  1.200  1.200                               
+    1    0    3    0  300  100    0    1    1    1   15    0                    
+ 12.126  15.00  1.000  7.000  1.000  0.100  .0001                               
+  60.00  7.000  0.650  0.650  1.200  1.200  1.200                               
+   ABOVE DATA FOR EXACT FINITE RANGE CALCULATION.                 H+2                                                           
+      NNX=NNX+1                                                                 
+      IF(NX.NE.7) GO TO 570                                                     
+      UR1M=UR(1)                                                                
+  570 IF(ND.NE.1) GO TO 580                                                     
+      IF(NX.LE.4) GO TO 585                                                     
+  580 DO 583 NQ=1,4                                                             
+  583 FPRER(NQ)=FPRER(NQ+1)                                                     
+  585 IF(KEX40.EQ.1) GO TO 700                                                  
+      IF(UR(1)*UR(2).LT.0.0  ) NODCAL=NODCAL+1                                  
+  700 CONTINUE                                                                  
+  730 CONTINUE                                                                  
+CCCCCC  ******      CALCULATE LOGA
