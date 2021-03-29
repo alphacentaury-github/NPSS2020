@@ -219,8 +219,7 @@ def Talmi_integral(potential,p,b,Rmax=1000.):
     try: # for special cases 
         if (potential=='coulomb'):
             talmi = 1.43996/(np.sqrt(2)*b)*gamma(p+1)/gamma(p+3/2)
-            return talmi
-        
+            return talmi        
     except:
         pass
     
@@ -232,7 +231,8 @@ def Talmi_integral(potential,p,b,Rmax=1000.):
     term2 = quad(integrand,0,Rmax)[0]
     #print(' radial integration is done')
     return term1*term2    
-    
+
+@lru_cache(maxsize=None)
 def TBME(a,b,c,d,J,T,potential=None,b_HO=None):
     """
     compute 2-body matrix elements of 
