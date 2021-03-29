@@ -232,7 +232,7 @@ def Talmi_integral(potential,p,b,Rmax=1000.):
     #print(' radial integration is done')
     return term1*term2    
 
-@lru_cache(maxsize=None)
+#-->one cannot use lru_cashe for non-hashable type. 
 def TBME(a,b,c,d,J,T,potential=None,b_HO=None):
     """
     compute 2-body matrix elements of 

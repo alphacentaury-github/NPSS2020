@@ -51,6 +51,7 @@ def b_HO3D(omega):
 def RacahW(j1,j2,j1p,j2p,J,k):
     return (-1)**(j1+j2+j1p+j2p)*float(wigner_6j(j1,j2,J,j2p,j1p,k,prec=64))
     
+#   Moshinsky Bracket of n1=n2=0  
 def Mosh_Afac(l1,l,l2,L,x):
     """ A(l_1,l,l_2,L,x) of eq.(64) in Moshinsky paper. 
         input arguments are all integers.
@@ -99,6 +100,7 @@ def Mosh_B00(l1,l2,lam,n,l,N,L):
         sums = sums +(2*x+1)*Mosh_Afac(l1,l,l2,L,x)*RacahW(l,L,l1,l2,lam,x) 
     return norm*sums 
 
+## Moshinsky Bracket for non-zero n using Recurrence relation
 def ME_negrsqr(n,l,N,L,lam,np,lp,Np,Lp,opt):
     """
     matrix element of 
@@ -217,8 +219,7 @@ def Talmi_integral(potential,p,b,Rmax=1000.):
     try: # for special cases 
         if (potential=='coulomb'):
             talmi = 1.43996/(np.sqrt(2)*b)*gamma(p+1)/gamma(p+3/2)
-            return talmi
-        
+            return talmi        
     except:
         pass
     
@@ -230,7 +231,8 @@ def Talmi_integral(potential,p,b,Rmax=1000.):
     term2 = quad(integrand,0,Rmax)[0]
     #print(' radial integration is done')
     return term1*term2    
-    
+
+#-->one cannot use lru_cashe for non-hashable type. 
 def TBME(a,b,c,d,J,T,potential=None,b_HO=None):
     """
     compute 2-body matrix elements of 
@@ -435,6 +437,6 @@ def RadialIntegral(n,l,npp,lpp, pot=None,b_HO=None):
     potname=pot['potname'] # external function 
     for p in range(p_min,p_max+1):
         coef = BMT_coef(n,l,npp,lpp,p)
-        talmi = Talmi_integral(potname,p,b_HO)
+        talmi = Talmi_integral(potname,p,b_HO) # "coulomb" is treated in special way. 
         sums = sums +coef*talmi 
     return sums     
