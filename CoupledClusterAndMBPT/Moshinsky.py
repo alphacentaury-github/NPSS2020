@@ -392,11 +392,12 @@ def RadialIntegral(n,l,npp,lpp, pot=None,b_HO=None):
     sums = 0.0 
     p_min = int( (l+lpp)/2 ) # integer because l and lp have same parity
     p_max = p_min + n + npp
-    #----special case of delta potential 
-    # originally the angular part 1/(4 pi) should be part of TBME_rel as a factor
-    # but is included here
+    
     try:
         if (pot['potname']=='delta'):
+            #----special case of delta potential 
+            # originally the angular part 1/(4 pi) should be part of TBME_rel as a factor
+            # but is included here
             factor=pot['parameter']
             if (p_min==0): # ie. l=lp=0
                 temp1=1./(4*np.pi)
@@ -406,13 +407,13 @@ def RadialIntegral(n,l,npp,lpp, pot=None,b_HO=None):
             else:
                 return 0.0   
         if (pot['potname']=='Hrel'):
-            # this case results are in units of (2 hbar omega/A) ?
+            # this case results are in units of (2 hbar omega/A) 
             out=0.0
             if (n==npp and l==lpp):
                 out = (2*n+l+1.5)
-            return out/2  # overall 1/A factor?
+            return out/2  # overall 1/A factor
         if (pot['potname']=='Trel'):
-            # in units of (hbar omega/A) ?
+            # in units of (hbar omega/A) 
             out=0.0
             if ((n,l)==(npp,lpp)):
                 out = (2*n+l+1.5)
@@ -430,7 +431,7 @@ def RadialIntegral(n,l,npp,lpp, pot=None,b_HO=None):
                 out = np.sqrt((npp+1)*(npp+lpp+1.5))
             if (npp==n+1 and l==lpp):
                 out = np.sqrt((n+1)*(n+l+1.5))
-            return out/2 # overall 1/A factor ?   
+            return out/2 # overall 1/A factor    
     except:
         pass
     #----end special case 
