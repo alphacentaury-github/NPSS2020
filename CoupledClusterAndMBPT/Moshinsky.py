@@ -441,3 +441,44 @@ def RadialIntegral(n,l,npp,lpp, pot=None,b_HO=None):
         talmi = Talmi_integral(potname,p,b_HO) # "coulomb" is treated in special way. 
         sums = sums +coef*talmi 
     return sums     
+
+def coulomb(x):
+    """
+    Coulomb interaction e^2/r in MeV unit(r in fm unit)
+    """
+    return 1.43996/x 
+
+if __name__ == "__main__" :
+    # MFDn sp levels 
+    st1 = (0,0,0.5)
+    st2 = (0,1,0.5)
+    st3 = (0,1,1.5)
+    st4 = (1,0,0.5)
+    st5 = (0,2,1.5)
+    st6 = (0,2,2.5)
+    st7 = (1,1,0.5)
+    st8 = (1,1,1.5)
+    # TBME of 
+    # Hrel = (p1-p2)^2/m +0.5*(m/2)*w^2*(r1-r2)^2 --> (2*n+l+1.5) in units of (2 hbar omega/A)
+    # Trel =  (p1-p2)^2/m  in unit of hbar*Omega/A  
+    Trel_pot={'SE': {'potname':'Trel'},
+          'SO': {'potname':'Trel'},
+          'TE': {'potname':'Trel'},
+          'TO': {'potname':'Trel'}}
+    Hrel_pot={'SE': {'potname':'Hrel'},
+          'SO': {'potname':'Hrel'},
+          'TE': {'potname':'Hrel'},
+          'TO': {'potname':'Hrel'}}
+    Coulomb_pot={'SE':{'potname':coulomb}, 
+             'SO':{'potname':coulomb}, # ?
+             'TE':{'potname':coulomb}, # ? 
+             'TO':{'potname':coulomb} } # only for T=1
+
+    print( TBME(st1,st4,st1,st4,0,0,potential=Trel_pot,b_HO=b_HO3D(15.0)) 
+      , TBME(st1,st4,st1,st4,0,0,potential=Hrel_pot,b_HO=b_HO3D(15.0))
+      , TBME(st1,st4,st1,st4,0,0,potential=Coulomb_pot,b_HO=b_HO3D(15.0))   )
+    print( TBME(st1,st4,st2,st7,0,0,potential=Trel_pot,b_HO=b_HO3D(15.0)) 
+      , TBME(st1,st4,st2,st7,0,0,potential=Hrel_pot,b_HO=b_HO3D(15.0)) )
+    print( TBME(st1,st4,st3,st8,0,0,potential=Trel_pot,b_HO=b_HO3D(15.0)) 
+      , TBME(st1,st4,st3,st8,0,0,potential=Hrel_pot,b_HO=b_HO3D(15.0)))
+    
