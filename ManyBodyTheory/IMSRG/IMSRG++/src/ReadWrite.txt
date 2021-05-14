@@ -1,0 +1,7 @@
+
+
+
+In Navratil format , TBME are given for Trel and vpp, vpn, vnn 
+where Trel = hw*2/A* < ab;J,T |(p1-p2)^2/(4m)|cd;J,T>
+      vpp,vpn,vnn  =         < ab;J,T | V_{12}|cd ;J,T>   
+In other words, there is no one-body operator in Navratil's convention. 

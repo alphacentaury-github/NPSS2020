@@ -1,0 +1,295 @@
+\hypertarget{classTwoBodyME}{}\section{Two\+Body\+ME Class Reference}
+\label{classTwoBodyME}\index{Two\+Body\+ME@{Two\+Body\+ME}}
+
+
+{\ttfamily \#include $<$Two\+Body\+M\+E.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ab83ecb946db481f645f203e76ea3db52}\label{classTwoBodyME_ab83ecb946db481f645f203e76ea3db52}} 
+{\bfseries Two\+Body\+ME} (\hyperlink{classModelSpace}{Model\+Space} $\ast$)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a059914b2a21bac504d566540b611fe37}\label{classTwoBodyME_a059914b2a21bac504d566540b611fe37}} 
+{\bfseries Two\+Body\+ME} (Two\+Body\+M\+E\+\_\+ph \&)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a493598d48d18fdd38c056ebf89376dc9}\label{classTwoBodyME_a493598d48d18fdd38c056ebf89376dc9}} 
+{\bfseries Two\+Body\+ME} (\hyperlink{classModelSpace}{Model\+Space} $\ast$ms, int rankJ, int rankT, int parity)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a0e511eefd39cdf5112d86bc4a0a0414a}\label{classTwoBodyME_a0e511eefd39cdf5112d86bc4a0a0414a}} 
+\hyperlink{classTwoBodyME}{Two\+Body\+ME} \& {\bfseries operator$\ast$=} (const double)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_acad0fc7cee36df621b8c4be14b3d5505}\label{classTwoBodyME_acad0fc7cee36df621b8c4be14b3d5505}} 
+\hyperlink{classTwoBodyME}{Two\+Body\+ME} \& {\bfseries operator+=} (const \hyperlink{classTwoBodyME}{Two\+Body\+ME} \&)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a6922afa4634c683b899dd99a3d49f913}\label{classTwoBodyME_a6922afa4634c683b899dd99a3d49f913}} 
+\hyperlink{classTwoBodyME}{Two\+Body\+ME} \& {\bfseries operator-\/=} (const \hyperlink{classTwoBodyME}{Two\+Body\+ME} \&)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a27ad6f262c2371d2f8eab3747af594ad}\label{classTwoBodyME_a27ad6f262c2371d2f8eab3747af594ad}} 
+void {\bfseries Allocate} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a822e0bdd66bc67532f6e244eb496ff20}\label{classTwoBodyME_a822e0bdd66bc67532f6e244eb496ff20}} 
+bool {\bfseries Is\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aee424b280d0cdfb44fecbf5b0ec5c23d}\label{classTwoBodyME_aee424b280d0cdfb44fecbf5b0ec5c23d}} 
+bool {\bfseries Is\+Anti\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af3a2034735ce16504ca51459e29932e7}\label{classTwoBodyME_af3a2034735ce16504ca51459e29932e7}} 
+bool {\bfseries Is\+Non\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ae3d48007a67b3ab8e97232fd84812dce}\label{classTwoBodyME_ae3d48007a67b3ab8e97232fd84812dce}} 
+void {\bfseries Set\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ab782a80a918095a69189a0f9d2e43e44}\label{classTwoBodyME_ab782a80a918095a69189a0f9d2e43e44}} 
+void {\bfseries Set\+Anti\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af71f00cd1035917147f048156ee20072}\label{classTwoBodyME_af71f00cd1035917147f048156ee20072}} 
+void {\bfseries Set\+Non\+Hermitian} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a76241fa6336d763b47f3619e5c4b2963}\label{classTwoBodyME_a76241fa6336d763b47f3619e5c4b2963}} 
+arma\+::mat \& {\bfseries Get\+Matrix} (int chbra, int chket)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_abba656ff6b5773a16424b71fe6f3c73f}\label{classTwoBodyME_abba656ff6b5773a16424b71fe6f3c73f}} 
+arma\+::mat \& {\bfseries Get\+Matrix} (int ch)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a676e0c9ef53e7ad937713b0bb518f94b}\label{classTwoBodyME_a676e0c9ef53e7ad937713b0bb518f94b}} 
+arma\+::mat \& {\bfseries Get\+Matrix} (std\+::array$<$ int, 2 $>$ a)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aa2ed0dcf17e0eb7dd38a0c7bf2df8562}\label{classTwoBodyME_aa2ed0dcf17e0eb7dd38a0c7bf2df8562}} 
+const arma\+::mat \& {\bfseries Get\+Matrix} (int chbra, int chket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a209a1bcc3286c165b426e33845b1455d}\label{classTwoBodyME_a209a1bcc3286c165b426e33845b1455d}} 
+const arma\+::mat \& {\bfseries Get\+Matrix} (int ch) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a86c81a876ec642f8a28750df4d0c1907}\label{classTwoBodyME_a86c81a876ec642f8a28750df4d0c1907}} 
+double \hyperlink{classTwoBodyME_a86c81a876ec642f8a28750df4d0c1907}{Get\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, int a, int b, int c, int d) const
+\begin{DoxyCompactList}\small\item\em This returns the matrix element times a factor $ \sqrt{(1+\delta_{ij})(1+\delta_{kl})} $. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTwoBodyME_a26ca6f74a4815c5b23c82fe2c29f8f36}\label{classTwoBodyME_a26ca6f74a4815c5b23c82fe2c29f8f36}} 
+double \hyperlink{classTwoBodyME_a26ca6f74a4815c5b23c82fe2c29f8f36}{Get\+T\+B\+M\+E\+\_\+norm} (int ch\+\_\+bra, int ch\+\_\+ket, int a, int b, int c, int d) const
+\begin{DoxyCompactList}\small\item\em This returns the normalized matrix element. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTwoBodyME_a361aa001f5e09b6a906bbd0504582e2b}\label{classTwoBodyME_a361aa001f5e09b6a906bbd0504582e2b}} 
+void {\bfseries Set\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af5c7ce4cf4638b7946db6aa01b502455}\label{classTwoBodyME_af5c7ce4cf4638b7946db6aa01b502455}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a5e6112c43feadffc5b5eb0c01aaa0f7c}\label{classTwoBodyME_a5e6112c43feadffc5b5eb0c01aaa0f7c}} 
+double {\bfseries Get\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a3c217bf0da82dd9a4bfbe364852af672}\label{classTwoBodyME_a3c217bf0da82dd9a4bfbe364852af672}} 
+void {\bfseries Set\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a314e2a6279e88c00c8ae5a2f12a73a59}\label{classTwoBodyME_a314e2a6279e88c00c8ae5a2f12a73a59}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a1fd7f49611b96d44705684b63480e5ff}\label{classTwoBodyME_a1fd7f49611b96d44705684b63480e5ff}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+norm} (int ch\+\_\+bra, int ch\+\_\+ket, int ibra, int iket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a70964978f2900035b751b152f69dece1}\label{classTwoBodyME_a70964978f2900035b751b152f69dece1}} 
+void {\bfseries Set\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, int ibra, int iket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a6191d7b60382fe36cf323a63386fb032}\label{classTwoBodyME_a6191d7b60382fe36cf323a63386fb032}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch\+\_\+bra, int ch\+\_\+ket, int ibra, int iket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a2c073e3f4daed440609d8f7a45a8cf53}\label{classTwoBodyME_a2c073e3f4daed440609d8f7a45a8cf53}} 
+double {\bfseries Get\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af3441f4f28102dd66c31ad5d67bba5c4}\label{classTwoBodyME_af3441f4f28102dd66c31ad5d67bba5c4}} 
+void {\bfseries Set\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af3d13a2434e9614de1a40a78c0c16ba1}\label{classTwoBodyME_af3d13a2434e9614de1a40a78c0c16ba1}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aac838c8a4fbff88efd7c7ba70cf80873}\label{classTwoBodyME_aac838c8a4fbff88efd7c7ba70cf80873}} 
+double {\bfseries Get\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_abea5301c27dd939a7e5269405aaf9291}\label{classTwoBodyME_abea5301c27dd939a7e5269405aaf9291}} 
+void {\bfseries Set\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ae29ace6699855265f35a5c5d8b4a4baf}\label{classTwoBodyME_ae29ace6699855265f35a5c5d8b4a4baf}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int j\+\_\+bra, int p\+\_\+bra, int t\+\_\+bra, int j\+\_\+ket, int p\+\_\+ket, int t\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a385455012cf6f22fb94a218c70ce25e8}\label{classTwoBodyME_a385455012cf6f22fb94a218c70ce25e8}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+J} (int j\+\_\+bra, int j\+\_\+ket, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a5f3f5cff3f7908b53d280a3e3c6d335c}\label{classTwoBodyME_a5f3f5cff3f7908b53d280a3e3c6d335c}} 
+void {\bfseries Set\+T\+B\+M\+E\+\_\+J} (int j\+\_\+bra, int j\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a99e7650830fdc19a7d7fef5d0be8d7f2}\label{classTwoBodyME_a99e7650830fdc19a7d7fef5d0be8d7f2}} 
+void {\bfseries Add\+To\+T\+B\+M\+E\+\_\+J} (int j\+\_\+bra, int j\+\_\+ket, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ab5df6a8eca64b0e88ebcff3b1a1d04e3}\label{classTwoBodyME_ab5df6a8eca64b0e88ebcff3b1a1d04e3}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+\+J\+\_\+norm} (int j\+\_\+bra, int j\+\_\+ket, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a04aa5b2c179869ec42d8b7b554db58bd}\label{classTwoBodyME_a04aa5b2c179869ec42d8b7b554db58bd}} 
+double {\bfseries Get\+T\+B\+ME} (int ch, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a722a433a9f256ea269e6c827f185926b}\label{classTwoBodyME_a722a433a9f256ea269e6c827f185926b}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+norm} (int ch, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a255f61e91a2cee85cd34714bc5132221}\label{classTwoBodyME_a255f61e91a2cee85cd34714bc5132221}} 
+void {\bfseries Set\+T\+B\+ME} (int ch, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a202536f8f9cb8c74f1976d9bbafdaaf8}\label{classTwoBodyME_a202536f8f9cb8c74f1976d9bbafdaaf8}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aae40b7e6005d6afe4ed69a7ff8a201cb}\label{classTwoBodyME_aae40b7e6005d6afe4ed69a7ff8a201cb}} 
+double {\bfseries Get\+T\+B\+ME} (int ch, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a57db036e0c5c13219339d9e6b775a3c0}\label{classTwoBodyME_a57db036e0c5c13219339d9e6b775a3c0}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+norm} (int ch, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a8b42151c12ae112e507e1ab9b1053427}\label{classTwoBodyME_a8b42151c12ae112e507e1ab9b1053427}} 
+void {\bfseries Set\+T\+B\+ME} (int ch, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a0e92d946139161a62151508fd82b545f}\label{classTwoBodyME_a0e92d946139161a62151508fd82b545f}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a5a27797e50e4203c678a812b061d0d9e}\label{classTwoBodyME_a5a27797e50e4203c678a812b061d0d9e}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+norm} (int ch, int ibra, int iket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a194371fee0b854e0c7342943a41aa28e}\label{classTwoBodyME_a194371fee0b854e0c7342943a41aa28e}} 
+void {\bfseries Set\+T\+B\+ME} (int ch, int ibra, int iket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a97d624575ad1eb7704d5b46fead19b20}\label{classTwoBodyME_a97d624575ad1eb7704d5b46fead19b20}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int ch, int ibra, int iket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_afbdedfaf6ae67aa7b151fded81113bd2}\label{classTwoBodyME_afbdedfaf6ae67aa7b151fded81113bd2}} 
+double {\bfseries Get\+T\+B\+ME} (int j, int p, int t, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a68578ba3df3f1b511d295d48071886ee}\label{classTwoBodyME_a68578ba3df3f1b511d295d48071886ee}} 
+void {\bfseries Set\+T\+B\+ME} (int j, int p, int t, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_afab3a9c6c8bdca85fba816a94b326217}\label{classTwoBodyME_afab3a9c6c8bdca85fba816a94b326217}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int j, int p, int t, \hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a39ae626faf77c3548479226897482706}\label{classTwoBodyME_a39ae626faf77c3548479226897482706}} 
+double {\bfseries Get\+T\+B\+ME} (int j, int p, int t, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af7a447f398390e3f536a22fcece3b677}\label{classTwoBodyME_af7a447f398390e3f536a22fcece3b677}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+norm} (int j, int p, int t, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a5e7801ffab553d88ff8e2ef6e706e013}\label{classTwoBodyME_a5e7801ffab553d88ff8e2ef6e706e013}} 
+void {\bfseries Set\+T\+B\+ME} (int j, int p, int t, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a0c87a5d98d044af0cd9995653264b5a9}\label{classTwoBodyME_a0c87a5d98d044af0cd9995653264b5a9}} 
+void {\bfseries Add\+To\+T\+B\+ME} (int j, int p, int t, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aa2da878a0a9a14d9e37ebc2e8bfcfb3a}\label{classTwoBodyME_aa2da878a0a9a14d9e37ebc2e8bfcfb3a}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+J} (int j, int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a796ab8b1112f1acc7eb5d6b886fa9865}\label{classTwoBodyME_a796ab8b1112f1acc7eb5d6b886fa9865}} 
+void {\bfseries Set\+T\+B\+M\+E\+\_\+J} (int j, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ad2fed429571805bd4d8aa07a5d3903f1}\label{classTwoBodyME_ad2fed429571805bd4d8aa07a5d3903f1}} 
+void {\bfseries Add\+To\+T\+B\+M\+E\+\_\+J} (int j, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a2e9eb9c3f053e26e88fe8cda70ed0a21}\label{classTwoBodyME_a2e9eb9c3f053e26e88fe8cda70ed0a21}} 
+double {\bfseries Get\+T\+B\+M\+E\+\_\+\+J\+\_\+norm} (int j, int a, int b, int c, int d) const
+\item 
+void \hyperlink{classTwoBodyME_adc76bb65d2b3bc2006a70fb2a61464c9}{Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso} (int j, int T, int tz, int a, int b, int c, int d, double tbme)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a98aa9dc5ab0e1d66be59e4266e4000d2}\label{classTwoBodyME_a98aa9dc5ab0e1d66be59e4266e4000d2}} 
+double {\bfseries Get\+\_\+iso\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+pn} (int j, int T, int tz, int a, int b, int c, int d)
+\item 
+double \hyperlink{classTwoBodyME_a41e1d7a520f31b57283b7817a35bceb7}{Get\+T\+B\+M\+Emonopole} (int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a4ae220acdb84f7b77e96304224fda0ba}\label{classTwoBodyME_a4ae220acdb84f7b77e96304224fda0ba}} 
+double {\bfseries Get\+T\+B\+M\+Emonopole\+\_\+norm} (int a, int b, int c, int d) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a5d53d53d4ba757974c2ffe6ebabd4911}\label{classTwoBodyME_a5d53d53d4ba757974c2ffe6ebabd4911}} 
+double {\bfseries Get\+T\+B\+M\+Emonopole} (\hyperlink{classKet}{Ket} \&bra, \hyperlink{classKet}{Ket} \&ket) const
+\item 
+void \hyperlink{classTwoBodyME_acd6f31eaef7652136740204ce5c4d226}{Erase} ()
+\begin{DoxyCompactList}\small\item\em Take a matrix element expressed in relative/\+CM frame, and add it to the lab frame T\+B\+ME. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTwoBodyME_a5084b43918669e7876887ed44a145f3b}\label{classTwoBodyME_a5084b43918669e7876887ed44a145f3b}} 
+void {\bfseries Scale} (double)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a3fa4bbb2ab3359aa9d0d9035659c839b}\label{classTwoBodyME_a3fa4bbb2ab3359aa9d0d9035659c839b}} 
+double {\bfseries Norm} () const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aefe69c49a0fd79f35b9541539b1767ce}\label{classTwoBodyME_aefe69c49a0fd79f35b9541539b1767ce}} 
+void {\bfseries Symmetrize} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a30f4d86bda647d3688b1b0aaa20efb2d}\label{classTwoBodyME_a30f4d86bda647d3688b1b0aaa20efb2d}} 
+void {\bfseries Anti\+Symmetrize} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a3e5d862e3471a5090d3498cf0103d07c}\label{classTwoBodyME_a3e5d862e3471a5090d3498cf0103d07c}} 
+void {\bfseries Eye} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aad1e0f5311c52fa7caf07694ead3a949}\label{classTwoBodyME_aad1e0f5311c52fa7caf07694ead3a949}} 
+void {\bfseries Print\+Matrix} (int chbra, int chket) const
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a51cc0901f3bab4c288a2be006f72513a}\label{classTwoBodyME_a51cc0901f3bab4c288a2be006f72513a}} 
+int {\bfseries Dimension} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ab13203f1f3d383fd241650f175cf5bb5}\label{classTwoBodyME_ab13203f1f3d383fd241650f175cf5bb5}} 
+int {\bfseries size} ()
+\item 
+\mbox{\Hypertarget{classTwoBodyME_adb64bdb222c28be1b32467681111b1ec}\label{classTwoBodyME_adb64bdb222c28be1b32467681111b1ec}} 
+void {\bfseries Write\+Binary} (std\+::ofstream \&)
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a97fb923863bbaf7464115040e4e3cc3d}\label{classTwoBodyME_a97fb923863bbaf7464115040e4e3cc3d}} 
+void {\bfseries Read\+Binary} (std\+::ifstream \&)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af80319b759d9f0a1409e429def4dfbd7}\label{classTwoBodyME_af80319b759d9f0a1409e429def4dfbd7}} 
+\hyperlink{classModelSpace}{Model\+Space} $\ast$ {\bfseries modelspace}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a3d9a200451347886bd72b94e47b30750}\label{classTwoBodyME_a3d9a200451347886bd72b94e47b30750}} 
+std\+::map$<$ std\+::array$<$ int, 2 $>$, arma\+::mat $>$ {\bfseries Mat\+El}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_aa389c365fc444a554a4e253df10f14c9}\label{classTwoBodyME_aa389c365fc444a554a4e253df10f14c9}} 
+int {\bfseries n\+Channels}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_ad29c6a4d543d73f008503312ac4184bf}\label{classTwoBodyME_ad29c6a4d543d73f008503312ac4184bf}} 
+bool {\bfseries hermitian}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a1483d9997eee9c3b9aff840488ebb09a}\label{classTwoBodyME_a1483d9997eee9c3b9aff840488ebb09a}} 
+bool {\bfseries antihermitian}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a2582cd10bbc17baf24dae2d8a25e78da}\label{classTwoBodyME_a2582cd10bbc17baf24dae2d8a25e78da}} 
+int {\bfseries rank\+\_\+J}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_a1f82dd6078226acd0afbe3b510b7098a}\label{classTwoBodyME_a1f82dd6078226acd0afbe3b510b7098a}} 
+int {\bfseries rank\+\_\+T}
+\item 
+\mbox{\Hypertarget{classTwoBodyME_af4dc0e00484359f1f880e07ecc599cae}\label{classTwoBodyME_af4dc0e00484359f1f880e07ecc599cae}} 
+int {\bfseries parity}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The two-\/body piece of the operator, stored in a vector of maps of of armadillo matrices. The index of the vector indicates the J-\/coupled two-\/body channel of the ket state, while the map key is the two-\/body channel of the bra state. This is done to allow for tensor operators which connect different two-\/body channels without having to store all possible combinations. In the case of a scalar operator, there is only one map key for the bra state, corresponding to that of the ket state. The normalized J-\/coupled T\+B\+ME\textquotesingle{}s are stored in the matrices. However, when the T\+B\+ME\textquotesingle{}s are accessed by \hyperlink{classTwoBodyME_a86c81a876ec642f8a28750df4d0c1907}{Get\+T\+B\+M\+E()}, they are returned as $ \tilde{\Gamma}_{ijkl} \equiv \sqrt{(1+\delta_{ij})(1+\delta_{kl})} \Gamma_{ijkl} $ because the flow equations are derived in terms of $ \tilde{\Gamma} $. For efficiency, only matrix elements with $ i\leq j $ and $ k\leq l $ are stored. When performing sums that can be cast as matrix multiplication, we have something of the form \[ \tilde{Z}_{ijkl} \sim \frac{1}{2} \sum_{ab}\tilde{X}_{ijab} \tilde{Y}_{abkl} \] which may be rewritten as a restricted sum, or matrix multiplication \[ Z_{ijkl} \sim \sum_{a\leq b} X_{ijab} Y_{abkl} = \left( X\cdot Y \right)_{ijkl} \] 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTwoBodyME_acd6f31eaef7652136740204ce5c4d226}\label{classTwoBodyME_acd6f31eaef7652136740204ce5c4d226}} 
+\index{Two\+Body\+ME@{Two\+Body\+ME}!Erase@{Erase}}
+\index{Erase@{Erase}!Two\+Body\+ME@{Two\+Body\+ME}}
+\subsubsection{\texorpdfstring{Erase()}{Erase()}}
+{\footnotesize\ttfamily void Two\+Body\+M\+E\+::\+Erase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Take a matrix element expressed in relative/\+CM frame, and add it to the lab frame T\+B\+ME. 
+
+For a given ket expressed in relative/\+CM coordinates, return the indices of all the lab frame kets with non-\/zero overlap, as well as the overlap \mbox{\Hypertarget{classTwoBodyME_a41e1d7a520f31b57283b7817a35bceb7}\label{classTwoBodyME_a41e1d7a520f31b57283b7817a35bceb7}} 
+\index{Two\+Body\+ME@{Two\+Body\+ME}!Get\+T\+B\+M\+Emonopole@{Get\+T\+B\+M\+Emonopole}}
+\index{Get\+T\+B\+M\+Emonopole@{Get\+T\+B\+M\+Emonopole}!Two\+Body\+ME@{Two\+Body\+ME}}
+\subsubsection{\texorpdfstring{Get\+T\+B\+M\+Emonopole()}{GetTBMEmonopole()}}
+{\footnotesize\ttfamily double Two\+Body\+M\+E\+::\+Get\+T\+B\+M\+Emonopole (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c,  }\item[{int}]{d }\end{DoxyParamCaption}) const}
+
+Returns an unnormalized monopole-\/like (angle-\/averaged) term \[ \bar{V}_{ijkl} = \sqrt{(1+\delta_{ij})(1+\delta_{kl})} \frac{\sum_{J}(2J+1) V_{ijkl}^J}{(2j_i+1)(2j_j+1)} \] \mbox{\Hypertarget{classTwoBodyME_adc76bb65d2b3bc2006a70fb2a61464c9}\label{classTwoBodyME_adc76bb65d2b3bc2006a70fb2a61464c9}} 
+\index{Two\+Body\+ME@{Two\+Body\+ME}!Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso@{Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso}}
+\index{Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso@{Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso}!Two\+Body\+ME@{Two\+Body\+ME}}
+\subsubsection{\texorpdfstring{Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso()}{Set\_pn\_TBME\_from\_iso()}}
+{\footnotesize\ttfamily void Two\+Body\+M\+E\+::\+Set\+\_\+pn\+\_\+\+T\+B\+M\+E\+\_\+from\+\_\+iso (\begin{DoxyParamCaption}\item[{int}]{j,  }\item[{int}]{T,  }\item[{int}]{tz,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c,  }\item[{int}]{d,  }\item[{double}]{tbme }\end{DoxyParamCaption})}
+
+Useful for reading in files in isospin formalism \[ \left\langle ab | V | cd \right\rangle_{pnpn} = \frac{\sqrt{(1+\delta_{ab})(1+\delta_{cd})}}{2} \left( \left\langle ab | V | cd \right\rangle_{10} + \left\langle ab | V | cd \right\rangle_{00} \right) \] \[ \left\langle ab | V | cd \right\rangle_{pnnp} = \frac{\sqrt{(1+\delta_{ab})(1+\delta_{cd})}}{2} \left( \left\langle ab | V | cd \right\rangle_{10} - \left\langle ab | V | cd \right\rangle_{00} \right) \] 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Two\+Body\+M\+E.\+hh\item 
+Two\+Body\+M\+E.\+cc\end{DoxyCompactItemize}

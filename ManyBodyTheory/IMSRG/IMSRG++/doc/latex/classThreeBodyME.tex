@@ -1,0 +1,155 @@
+\hypertarget{classThreeBodyME}{}\section{Three\+Body\+ME Class Reference}
+\label{classThreeBodyME}\index{Three\+Body\+ME@{Three\+Body\+ME}}
+
+
+{\ttfamily \#include $<$Three\+Body\+M\+E.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_aa172dc884e26dbb562ed525805565600}\label{classThreeBodyME_aa172dc884e26dbb562ed525805565600}} 
+{\bfseries Three\+Body\+ME} (\hyperlink{classModelSpace}{Model\+Space} $\ast$)
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a721d1713ef6d4e536090ec5dee898ff6}\label{classThreeBodyME_a721d1713ef6d4e536090ec5dee898ff6}} 
+{\bfseries Three\+Body\+ME} (\hyperlink{classModelSpace}{Model\+Space} $\ast$ms, int e3max)
+\item 
+size\+\_\+t \hyperlink{classThreeBodyME_a2e6c6bd8f5e5b4b07b74e6c643039cf7}{Key\+Hash} (size\+\_\+t, size\+\_\+t, size\+\_\+t, size\+\_\+t, size\+\_\+t, size\+\_\+t) const
+\item 
+\mbox{\Hypertarget{classThreeBodyME_abf95672312aa4443d344cecd9e03dfb0}\label{classThreeBodyME_abf95672312aa4443d344cecd9e03dfb0}} 
+void {\bfseries Allocate} ()
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a39846d400a5d63f70f79e14ebfb6c69c}\label{classThreeBodyME_a39846d400a5d63f70f79e14ebfb6c69c}} 
+void {\bfseries Set\+Model\+Space} (\hyperlink{classModelSpace}{Model\+Space} $\ast$ms)
+\item 
+std\+::vector$<$ std\+::pair$<$ size\+\_\+t, double $>$ $>$ \hyperlink{classThreeBodyME_a682fbbfd17bc166f16f8361190ca27d4}{Access\+ME} (int Jab\+\_\+in, int Jde\+\_\+in, int J2, int tab\+\_\+in, int tde\+\_\+in, int T2, int i, int j, int k, int l, int m, int n) const
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a721b094496ab307b22d3a494557116ea}\label{classThreeBodyME_a721b094496ab307b22d3a494557116ea}} 
+Three\+B\+M\+E\+\_\+type {\bfseries Add\+To\+ME} (int Jab\+\_\+in, int Jde\+\_\+in, int J2, int tab\+\_\+in, int tde\+\_\+in, int T2, int i, int j, int k, int l, int m, int n, Three\+B\+M\+E\+\_\+type V)
+\item 
+void \hyperlink{classThreeBodyME_ad316c3872bdd9f08e0ccc1efda8bb93b}{Set\+ME} (int Jab\+\_\+in, int Jde\+\_\+in, int J2, int tab\+\_\+in, int tde\+\_\+in, int T2, int i, int j, int k, int l, int m, int n, Three\+B\+M\+E\+\_\+type V)
+\item 
+Three\+B\+M\+E\+\_\+type \hyperlink{classThreeBodyME_abd4f77aa9d0981c3ad1a61c2b2c54246}{Get\+ME} (int Jab\+\_\+in, int Jde\+\_\+in, int J2, int tab\+\_\+in, int tde\+\_\+in, int T2, int i, int j, int k, int l, int m, int n) const
+\item 
+Three\+B\+M\+E\+\_\+type \hyperlink{classThreeBodyME_a366e6d2a60c1ec6187b57e80b9efc5e3}{Get\+M\+E\+\_\+pn} (int Jab\+\_\+in, int Jde\+\_\+in, int J2, int i, int j, int k, int l, int m, int n) const
+\item 
+int \hyperlink{classThreeBodyME_a010cb75dc914b87796422d5f462d866d}{Sort\+Orbits} (int a\+\_\+in, int b\+\_\+in, int c\+\_\+in, int \&a, int \&b, int \&c) const
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a3d0c0bce680bd29077c3ec35871f1753}\label{classThreeBodyME_a3d0c0bce680bd29077c3ec35871f1753}} 
+double \hyperlink{classThreeBodyME_a3d0c0bce680bd29077c3ec35871f1753}{Recoupling\+Coefficient} (int recoupling\+\_\+case, double ja, double jb, double jc, int Jab\+\_\+in, int Jab, int J) const
+\begin{DoxyCompactList}\small\item\em Coefficients for recoupling three body matrix elements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThreeBodyME_a53bc2c2f32e80e6cbd4098e5785520d9}\label{classThreeBodyME_a53bc2c2f32e80e6cbd4098e5785520d9}} 
+void {\bfseries Set\+E3max} (int e)
+\item 
+\mbox{\Hypertarget{classThreeBodyME_abd3a778ed4cb554160163bed8b44ec01}\label{classThreeBodyME_abd3a778ed4cb554160163bed8b44ec01}} 
+int {\bfseries Get\+E3max} ()
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a9542aab705a2a418e81681ef37c3306f}\label{classThreeBodyME_a9542aab705a2a418e81681ef37c3306f}} 
+void {\bfseries Erase} ()
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a2f61d6489e4213d8e8921017f6584b38}\label{classThreeBodyME_a2f61d6489e4213d8e8921017f6584b38}} 
+void \hyperlink{classThreeBodyME_a2f61d6489e4213d8e8921017f6584b38}{Deallocate} ()
+\begin{DoxyCompactList}\small\item\em Free up the memory used for the matrix elements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThreeBodyME_acb7ea7455c5cb240ef4baf22c23a5834}\label{classThreeBodyME_acb7ea7455c5cb240ef4baf22c23a5834}} 
+size\+\_\+t {\bfseries size} ()
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a30115e30bd48e9de874033df24203e36}\label{classThreeBodyME_a30115e30bd48e9de874033df24203e36}} 
+void {\bfseries Write\+Binary} (std\+::ofstream \&)
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a10cc65d3be1c15effeff46f163b6db5b}\label{classThreeBodyME_a10cc65d3be1c15effeff46f163b6db5b}} 
+void {\bfseries Read\+Binary} (std\+::ifstream \&)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_ac6db5f87e03146d866b1be5d48c2b391}\label{classThreeBodyME_ac6db5f87e03146d866b1be5d48c2b391}} 
+\hyperlink{classModelSpace}{Model\+Space} $\ast$ {\bfseries modelspace}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a2d0f23edcc175927a678c1f80e27be32}\label{classThreeBodyME_a2d0f23edcc175927a678c1f80e27be32}} 
+std\+::vector$<$ Three\+B\+M\+E\+\_\+type $>$ {\bfseries Mat\+El}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a3b5d0ab1ec432b5b25a57dc7bce9f69c}\label{classThreeBodyME_a3b5d0ab1ec432b5b25a57dc7bce9f69c}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, size\+\_\+t $>$ {\bfseries Orbit\+Index\+Hash}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a7dc605c3634b1346686ab1c89f1d6d81}\label{classThreeBodyME_a7dc605c3634b1346686ab1c89f1d6d81}} 
+int {\bfseries E3max}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a97b27671aabccbab071a653ac1112b86}\label{classThreeBodyME_a97b27671aabccbab071a653ac1112b86}} 
+size\+\_\+t {\bfseries total\+\_\+dimension}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a3401531854606f2b356cdbf97804a9f6}\label{classThreeBodyME_a3401531854606f2b356cdbf97804a9f6}} 
+static const int {\bfseries A\+BC} = 0
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a57df3dacbddf285f492d990af6bf1cb0}\label{classThreeBodyME_a57df3dacbddf285f492d990af6bf1cb0}} 
+static const int {\bfseries B\+CA} = 1
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a3c3c9f20ec16cda131c0b0ef8650c001}\label{classThreeBodyME_a3c3c9f20ec16cda131c0b0ef8650c001}} 
+static const int {\bfseries C\+AB} = 2
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a47c82cf88b9a62c580a067c8988e4788}\label{classThreeBodyME_a47c82cf88b9a62c580a067c8988e4788}} 
+static const int {\bfseries A\+CB} = 3
+\item 
+\mbox{\Hypertarget{classThreeBodyME_afc5c6d62cda9ccbaa806f93fe3c72930}\label{classThreeBodyME_afc5c6d62cda9ccbaa806f93fe3c72930}} 
+static const int {\bfseries B\+AC} = 4
+\item 
+\mbox{\Hypertarget{classThreeBodyME_a5456e8ec32778c76f5b3a1ef3db6edb3}\label{classThreeBodyME_a5456e8ec32778c76f5b3a1ef3db6edb3}} 
+static const int {\bfseries C\+BA} = 5
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The three-\/body piece of an operator, stored in nested vectors. The 3\+B\+M\+Es are stored in unnormalized JT coupled form $ \langle (abJ_{ab}t_{ab})c | V | (deJ_{de}t_{de})f \rangle_{JT} $. To minimize the number of stored matrix elements, only elements with $ a\geq b \geq c, a\geq d\geq e \geq f $ are stored. The other combinations are obtained on the fly by \hyperlink{classThreeBodyME_abd4f77aa9d0981c3ad1a61c2b2c54246}{Get\+M\+E()}. The storage format is Mat\+El\mbox{[}\{a,b,c,d,e,f,J,Jab,Jde\}\mbox{]}\mbox{[}T\+\_\+index\mbox{]} = $ \langle (abJ_{ab}t_{ab})c | V | (deJ_{de}t_{de})f \rangle_{JT} $. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classThreeBodyME_a682fbbfd17bc166f16f8361190ca27d4}\label{classThreeBodyME_a682fbbfd17bc166f16f8361190ca27d4}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Access\+ME@{Access\+ME}}
+\index{Access\+ME@{Access\+ME}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Access\+M\+E()}{AccessME()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ size\+\_\+t, double $>$ $>$ Three\+Body\+M\+E\+::\+Access\+ME (\begin{DoxyParamCaption}\item[{int}]{Jab\+\_\+in,  }\item[{int}]{Jde\+\_\+in,  }\item[{int}]{J2,  }\item[{int}]{tab\+\_\+in,  }\item[{int}]{tde\+\_\+in,  }\item[{int}]{T2,  }\item[{int}]{a\+\_\+in,  }\item[{int}]{b\+\_\+in,  }\item[{int}]{c\+\_\+in,  }\item[{int}]{d\+\_\+in,  }\item[{int}]{e\+\_\+in,  }\item[{int}]{f\+\_\+in }\end{DoxyParamCaption}) const}
+
+Since the code for setting or getting matrix elements is almost identical, do all the work here to pull out a list of indices and coefficients which are needed for setting or getting. \mbox{\Hypertarget{classThreeBodyME_abd4f77aa9d0981c3ad1a61c2b2c54246}\label{classThreeBodyME_abd4f77aa9d0981c3ad1a61c2b2c54246}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Get\+ME@{Get\+ME}}
+\index{Get\+ME@{Get\+ME}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Get\+M\+E()}{GetME()}}
+{\footnotesize\ttfamily Three\+B\+M\+E\+\_\+type Three\+Body\+M\+E\+::\+Get\+ME (\begin{DoxyParamCaption}\item[{int}]{Jab\+\_\+in,  }\item[{int}]{Jde\+\_\+in,  }\item[{int}]{J2,  }\item[{int}]{tab\+\_\+in,  }\item[{int}]{tde\+\_\+in,  }\item[{int}]{T2,  }\item[{int}]{a\+\_\+in,  }\item[{int}]{b\+\_\+in,  }\item[{int}]{c\+\_\+in,  }\item[{int}]{d\+\_\+in,  }\item[{int}]{e\+\_\+in,  }\item[{int}]{f\+\_\+in }\end{DoxyParamCaption}) const}
+
+Get three body matrix element in isospin formalism $ V_{abcdef}^{J_{ab}J_{de}Jt_{ab}t_{de}T} $ (which is how they\textquotesingle{}re stored). The elements are stored with the following restrictions\+: $ a\geq b \geq c$, $ d\geq e \geq f$, $ a\geq d$. If $ a=d$ then $ b \geq e$, and if $ b=e $ then $ c \geq f $. Other orderings are obtained by recoupling on the fly. \mbox{\Hypertarget{classThreeBodyME_a366e6d2a60c1ec6187b57e80b9efc5e3}\label{classThreeBodyME_a366e6d2a60c1ec6187b57e80b9efc5e3}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Get\+M\+E\+\_\+pn@{Get\+M\+E\+\_\+pn}}
+\index{Get\+M\+E\+\_\+pn@{Get\+M\+E\+\_\+pn}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Get\+M\+E\+\_\+pn()}{GetME\_pn()}}
+{\footnotesize\ttfamily Three\+B\+M\+E\+\_\+type Three\+Body\+M\+E\+::\+Get\+M\+E\+\_\+pn (\begin{DoxyParamCaption}\item[{int}]{Jab\+\_\+in,  }\item[{int}]{Jde\+\_\+in,  }\item[{int}]{J2,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c,  }\item[{int}]{d,  }\item[{int}]{e,  }\item[{int}]{f }\end{DoxyParamCaption}) const}
+
+Get three body matrix element in proton-\/neutron formalism. \[ V_{abcdef}^{(pn)} = \sum_{t_{ab} t_{de} T} <t_a t_b | t_{ab}> <t_d t_e | t_{de}> <t_{ab} t_c | T> <t_{de} t_f| T> V_{abcdef}^{t_{ab} t_{de} T} \] \mbox{\Hypertarget{classThreeBodyME_a2e6c6bd8f5e5b4b07b74e6c643039cf7}\label{classThreeBodyME_a2e6c6bd8f5e5b4b07b74e6c643039cf7}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Key\+Hash@{Key\+Hash}}
+\index{Key\+Hash@{Key\+Hash}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Key\+Hash()}{KeyHash()}}
+{\footnotesize\ttfamily size\+\_\+t Three\+Body\+M\+E\+::\+Key\+Hash (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{a,  }\item[{size\+\_\+t}]{b,  }\item[{size\+\_\+t}]{c,  }\item[{size\+\_\+t}]{d,  }\item[{size\+\_\+t}]{e,  }\item[{size\+\_\+t}]{f }\end{DoxyParamCaption}) const}
+
+Hash function to map six indices to a single long unsigned int. Each index gets 10 bits, for a maximum of 1024 indices. If we have good isospin, this means we\textquotesingle{}re ok up to emax=43. \mbox{\Hypertarget{classThreeBodyME_ad316c3872bdd9f08e0ccc1efda8bb93b}\label{classThreeBodyME_ad316c3872bdd9f08e0ccc1efda8bb93b}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Set\+ME@{Set\+ME}}
+\index{Set\+ME@{Set\+ME}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Set\+M\+E()}{SetME()}}
+{\footnotesize\ttfamily void Three\+Body\+M\+E\+::\+Set\+ME (\begin{DoxyParamCaption}\item[{int}]{Jab\+\_\+in,  }\item[{int}]{Jde\+\_\+in,  }\item[{int}]{J2,  }\item[{int}]{tab\+\_\+in,  }\item[{int}]{tde\+\_\+in,  }\item[{int}]{T2,  }\item[{int}]{a\+\_\+in,  }\item[{int}]{b\+\_\+in,  }\item[{int}]{c\+\_\+in,  }\item[{int}]{d\+\_\+in,  }\item[{int}]{e\+\_\+in,  }\item[{int}]{f\+\_\+in,  }\item[{Three\+B\+M\+E\+\_\+type}]{V }\end{DoxyParamCaption})}
+
+Set a three body matrix element. Since only a subset of orbit orderings are stored, we need to recouple if the input ordering is different. \mbox{\Hypertarget{classThreeBodyME_a010cb75dc914b87796422d5f462d866d}\label{classThreeBodyME_a010cb75dc914b87796422d5f462d866d}} 
+\index{Three\+Body\+ME@{Three\+Body\+ME}!Sort\+Orbits@{Sort\+Orbits}}
+\index{Sort\+Orbits@{Sort\+Orbits}!Three\+Body\+ME@{Three\+Body\+ME}}
+\subsubsection{\texorpdfstring{Sort\+Orbits()}{SortOrbits()}}
+{\footnotesize\ttfamily int Three\+Body\+M\+E\+::\+Sort\+Orbits (\begin{DoxyParamCaption}\item[{int}]{a\+\_\+in,  }\item[{int}]{b\+\_\+in,  }\item[{int}]{c\+\_\+in,  }\item[{int \&}]{a,  }\item[{int \&}]{b,  }\item[{int \&}]{c }\end{DoxyParamCaption}) const}
+
+Rearrange orbits (abc) so that a$>$=b$>$=c and return an int which reflects the required reshuffling
+\begin{DoxyItemize}
+\item 0\+: (abc)\+\_\+in -\/$>$ (abc)
+\item 1\+: (bca)\+\_\+in -\/$>$ (abc)
+\item 2\+: (cab)\+\_\+in -\/$>$ (abc)
+\item 3\+: (acb)\+\_\+in -\/$>$ (abc) -- odd permutation
+\item 4\+: (bac)\+\_\+in -\/$>$ (abc) -- odd permutation
+\item 5\+: (cba)\+\_\+in -\/$>$ (abc) -- odd permutation 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Three\+Body\+M\+E.\+hh\item 
+Three\+Body\+M\+E.\+cc\end{DoxyCompactItemize}

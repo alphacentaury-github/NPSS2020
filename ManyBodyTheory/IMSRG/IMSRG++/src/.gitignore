@@ -1,0 +1,10 @@
+tmp*
+./.*.swp
+*.o
+*.so
+*.gz
+../output/*
+../input/*
+../doc/*
+../work/*
+../old_armadillo/*

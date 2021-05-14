@@ -1,0 +1,56 @@
+\hypertarget{classOrbit}{}\section{Orbit Class Reference}
+\label{classOrbit}\index{Orbit@{Orbit}}
+
+
+{\ttfamily \#include $<$Model\+Space.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOrbit_a9df0d8fc6d6dd366b7fd11be3d6a40e0}\label{classOrbit_a9df0d8fc6d6dd366b7fd11be3d6a40e0}} 
+{\bfseries Orbit} (int n, int l, int j, int t, double \hyperlink{classOrbit_a68ea77afa00c23030e1c4260ff64dcbc}{occ}, int \hyperlink{classOrbit_a75cb422d6cd5fcc04ca5e2dc2c1e1d4e}{cvq}, int index)
+\item 
+\mbox{\Hypertarget{classOrbit_acc12b8fdfccd5dc2aacbf06baa7a9d03}\label{classOrbit_acc12b8fdfccd5dc2aacbf06baa7a9d03}} 
+{\bfseries Orbit} (const \hyperlink{classOrbit}{Orbit} \&)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOrbit_a61c756b2fd626b9222fea5a2b4622eca}\label{classOrbit_a61c756b2fd626b9222fea5a2b4622eca}} 
+int {\bfseries n}
+\item 
+\mbox{\Hypertarget{classOrbit_a3b03c063df7856524db81274331d0e4b}\label{classOrbit_a3b03c063df7856524db81274331d0e4b}} 
+int {\bfseries l}
+\item 
+\mbox{\Hypertarget{classOrbit_a039f1fb20d41a2227bb61c2078e67d8b}\label{classOrbit_a039f1fb20d41a2227bb61c2078e67d8b}} 
+int {\bfseries j2}
+\item 
+\mbox{\Hypertarget{classOrbit_a9f9a4be881aa8b960b43fb3171617816}\label{classOrbit_a9f9a4be881aa8b960b43fb3171617816}} 
+int {\bfseries tz2}
+\item 
+\mbox{\Hypertarget{classOrbit_a68ea77afa00c23030e1c4260ff64dcbc}\label{classOrbit_a68ea77afa00c23030e1c4260ff64dcbc}} 
+double \hyperlink{classOrbit_a68ea77afa00c23030e1c4260ff64dcbc}{occ}
+\begin{DoxyCompactList}\small\item\em occ \+: particle=0, hole=1 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOrbit_a75cb422d6cd5fcc04ca5e2dc2c1e1d4e}\label{classOrbit_a75cb422d6cd5fcc04ca5e2dc2c1e1d4e}} 
+int \hyperlink{classOrbit_a75cb422d6cd5fcc04ca5e2dc2c1e1d4e}{cvq}
+\begin{DoxyCompactList}\small\item\em cvq \+: core=0, valence=1, qspace=2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOrbit_aee34aabfabd6d77cb0cc55f591a6493c}\label{classOrbit_aee34aabfabd6d77cb0cc55f591a6493c}} 
+int {\bfseries index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class \hyperlink{classOrbit}{Orbit} contains information of an single particle level
+
+(n,l,j2,tz2) \+: quantum numbers of a level/orbit (w/o jz2!)
+
+occ \+: =0 particle, =1 hole note that there is no jz2 value. Because the hole concept is not well defined for partially filled levels. I suppose that all levels are either fully occupied or unoccupied.
+
+cvq \+: =0 core, =1 valence, =2 qspace Represent whether this orbit corresponds to core , valence, qspace. It is not clear what is the difference between reference, hole, core yet.
+
+index \+: index assigned to the orbit each orbit is assigned to an unique index. The assignment is done when modelspace is constructed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Model\+Space.\+hh\item 
+Model\+Space.\+cc\end{DoxyCompactItemize}

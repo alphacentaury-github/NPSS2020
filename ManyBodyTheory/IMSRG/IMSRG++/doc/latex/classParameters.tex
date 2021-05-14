@@ -1,0 +1,161 @@
+\hypertarget{classParameters}{}\section{Parameters Class Reference}
+\label{classParameters}\index{Parameters@{Parameters}}
+
+
+parameters  
+
+
+
+
+{\ttfamily \#include $<$Parameters.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParameters_a4eb634bd1e0e8d43b62d987babd7515a}\label{classParameters_a4eb634bd1e0e8d43b62d987babd7515a}} 
+{\bfseries Parameters} (int, char $\ast$$\ast$)
+\item 
+\mbox{\Hypertarget{classParameters_ad38c9ca9ddec5626526c40c6af3187a8}\label{classParameters_ad38c9ca9ddec5626526c40c6af3187a8}} 
+void {\bfseries Parse\+Command\+Line\+Args} (int, char $\ast$$\ast$)
+\item 
+\mbox{\Hypertarget{classParameters_acd7805ae76afa9dac2ae245951b0e19d}\label{classParameters_acd7805ae76afa9dac2ae245951b0e19d}} 
+void {\bfseries Print\+Options} ()
+\item 
+\mbox{\Hypertarget{classParameters_a7e0197950a47edef8d8e524ac7315d17}\label{classParameters_a7e0197950a47edef8d8e524ac7315d17}} 
+string {\bfseries s} (string)
+\item 
+\mbox{\Hypertarget{classParameters_a34eef5a83a825d72f95dfc6c1ada6cfd}\label{classParameters_a34eef5a83a825d72f95dfc6c1ada6cfd}} 
+double {\bfseries d} (string)
+\item 
+\mbox{\Hypertarget{classParameters_a8f547a4ac06017398f32701d244e3934}\label{classParameters_a8f547a4ac06017398f32701d244e3934}} 
+int {\bfseries i} (string)
+\item 
+\mbox{\Hypertarget{classParameters_a69037506d5bded249e005e05ab405fa5}\label{classParameters_a69037506d5bded249e005e05ab405fa5}} 
+vector$<$ string $>$ {\bfseries v} (string)
+\item 
+\mbox{\Hypertarget{classParameters_a9f4526c645801ec2389e1024255128dd}\label{classParameters_a9f4526c645801ec2389e1024255128dd}} 
+string {\bfseries Default\+Flow\+File} ()
+\item 
+\mbox{\Hypertarget{classParameters_a1a1dc0940a2973fe8ad5add5a6348da6}\label{classParameters_a1a1dc0940a2973fe8ad5add5a6348da6}} 
+string {\bfseries Default\+Int\+File} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParameters_a30603ec32ff15d1480d90c81d15f3537}\label{classParameters_a30603ec32ff15d1480d90c81d15f3537}} 
+bool {\bfseries help\+\_\+mode}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static map$<$ string, string $>$ {\bfseries string\+\_\+par}
+\item 
+static map$<$ string, double $>$ {\bfseries double\+\_\+par}
+\item 
+static map$<$ string, int $>$ {\bfseries int\+\_\+par}
+\item 
+static map$<$ string, vector$<$ string $>$ $>$ {\bfseries vec\+\_\+par}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+parameters 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classParameters_a9ea8ecd148f69f272827ade1dd5a032d}\label{classParameters_a9ea8ecd148f69f272827ade1dd5a032d}} 
+\index{Parameters@{Parameters}!double\+\_\+par@{double\+\_\+par}}
+\index{double\+\_\+par@{double\+\_\+par}!Parameters@{Parameters}}
+\subsubsection{\texorpdfstring{double\+\_\+par}{double\_par}}
+{\footnotesize\ttfamily map$<$ string, double $>$ Parameters\+::double\+\_\+par\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{\textcolor{stringliteral}{"hw"},        20.0\},
+  \{\textcolor{stringliteral}{"smax"},      200.0\}, 
+  \{\textcolor{stringliteral}{"dsmax"},     0.5\},   
+  \{\textcolor{stringliteral}{"ds\_0"},      0.5\},   
+  \{\textcolor{stringliteral}{"domega"},        0.2\},   
+  \{\textcolor{stringliteral}{"omega\_norm\_max"},    0.25\},  
+  \{\textcolor{stringliteral}{"ode\_tolerance"}, 1e-6\},  
+  \{\textcolor{stringliteral}{"denominator\_delta"},    0\},  
+  \{\textcolor{stringliteral}{"BetaCM"},               0\},  
+  \{\textcolor{stringliteral}{"hwBetaCM"},            -1\},  
+  \{\textcolor{stringliteral}{"eta\_criterion"},     1e-6\},  
+
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classParameters_ac0e364ec60f14ef961c290b092f82163}\label{classParameters_ac0e364ec60f14ef961c290b092f82163}} 
+\index{Parameters@{Parameters}!int\+\_\+par@{int\+\_\+par}}
+\index{int\+\_\+par@{int\+\_\+par}!Parameters@{Parameters}}
+\subsubsection{\texorpdfstring{int\+\_\+par}{int\_par}}
+{\footnotesize\ttfamily map$<$ string, int $>$ Parameters\+::int\+\_\+par\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{\textcolor{stringliteral}{"A"}, -1\},    
+  \{\textcolor{stringliteral}{"e3max"},     12\},    
+  \{\textcolor{stringliteral}{"emax"},      6\},
+  \{\textcolor{stringliteral}{"lmax3"},     -1\}, 
+  \{\textcolor{stringliteral}{"nsteps"},        -1\},    
+  \{\textcolor{stringliteral}{"file2e1max"},    12\},
+  \{\textcolor{stringliteral}{"file2e2max"},    24\},
+  \{\textcolor{stringliteral}{"file2lmax"},     10\},
+  \{\textcolor{stringliteral}{"file3e1max"},    12\},
+  \{\textcolor{stringliteral}{"file3e2max"},    24\},
+  \{\textcolor{stringliteral}{"file3e3max"},    12\},
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classParameters_acc8bbf0ce45ebbaf743bb8e881fcca60}\label{classParameters_acc8bbf0ce45ebbaf743bb8e881fcca60}} 
+\index{Parameters@{Parameters}!string\+\_\+par@{string\+\_\+par}}
+\index{string\+\_\+par@{string\+\_\+par}!Parameters@{Parameters}}
+\subsubsection{\texorpdfstring{string\+\_\+par}{string\_par}}
+{\footnotesize\ttfamily map$<$ string, string $>$ Parameters\+::string\+\_\+par\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{\textcolor{stringliteral}{"2bme"},          \textcolor{stringliteral}{"none"}\},
+  \{\textcolor{stringliteral}{"3bme"},          \textcolor{stringliteral}{"none"}\},
+  \{\textcolor{stringliteral}{"core\_generator"},        \textcolor{stringliteral}{"atan"}\},    
+  \{\textcolor{stringliteral}{"valence\_generator"},     \textcolor{stringliteral}{"shell-model-atan"}\},    
+  \{\textcolor{stringliteral}{"flowfile"},          \textcolor{stringliteral}{"default"}\}, 
+  \{\textcolor{stringliteral}{"intfile"},           \textcolor{stringliteral}{"default"}\}, 
+  \{\textcolor{stringliteral}{"fmt2"},          \textcolor{stringliteral}{"me2j"}\},    
+  \{\textcolor{stringliteral}{"fmt3"},          \textcolor{stringliteral}{"me3j"}\},    
+  \{\textcolor{stringliteral}{"reference"},         \textcolor{stringliteral}{"default"}\}, 
+  \{\textcolor{stringliteral}{"valence\_space"},     \textcolor{stringliteral}{""}\},        
+  \{\textcolor{stringliteral}{"custom\_valence\_space"},      \textcolor{stringliteral}{""}\},        
+  \{\textcolor{stringliteral}{"basis"},         \textcolor{stringliteral}{"HF"}\},      
+  \{\textcolor{stringliteral}{"method"},            \textcolor{stringliteral}{"magnus"}\},  
+  \{\textcolor{stringliteral}{"denominator\_delta\_orbit"},   \textcolor{stringliteral}{"none"}\},    
+  \{\textcolor{stringliteral}{"LECs"},          \textcolor{stringliteral}{"EM2.0\_2.0"}\},   
+  \{\textcolor{stringliteral}{"scratch"},           \textcolor{stringliteral}{""}\},        
+  \{\textcolor{stringliteral}{"use\_brueckner\_bch"},          \textcolor{stringliteral}{"false"}\},  
+  \{\textcolor{stringliteral}{"valence\_file\_format"},       \textcolor{stringliteral}{"nushellx"}\},    
+  \{\textcolor{stringliteral}{"occ\_file"},          \textcolor{stringliteral}{"none"}\},    
+  \{\textcolor{stringliteral}{"goose\_tank"},        \textcolor{stringliteral}{"false"}\},   
+  \{\textcolor{stringliteral}{"write\_omega"},       \textcolor{stringliteral}{"false"}\},   
+  \{\textcolor{stringliteral}{"nucleon\_mass\_correction"},   \textcolor{stringliteral}{"false"}\},   
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classParameters_a793ffbac0c3bd5d1d9991ac2a5a7fb66}\label{classParameters_a793ffbac0c3bd5d1d9991ac2a5a7fb66}} 
+\index{Parameters@{Parameters}!vec\+\_\+par@{vec\+\_\+par}}
+\index{vec\+\_\+par@{vec\+\_\+par}!Parameters@{Parameters}}
+\subsubsection{\texorpdfstring{vec\+\_\+par}{vec\_par}}
+{\footnotesize\ttfamily map$<$ string, vector$<$ string $>$ $>$ Parameters\+::vec\+\_\+par\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+ \{\textcolor{stringliteral}{"Operators"}, \{\} \},
+ \{\textcolor{stringliteral}{"OperatorsFromFile"}, \{\} \},  
+ \{\textcolor{stringliteral}{"SPWF"},\{\} \}, 
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Parameters.\+hh\end{DoxyCompactItemize}

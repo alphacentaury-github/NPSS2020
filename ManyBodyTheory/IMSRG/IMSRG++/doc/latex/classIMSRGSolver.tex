@@ -1,0 +1,276 @@
+\hypertarget{classIMSRGSolver}{}\section{I\+M\+S\+R\+G\+Solver Class Reference}
+\label{classIMSRGSolver}\index{I\+M\+S\+R\+G\+Solver@{I\+M\+S\+R\+G\+Solver}}
+
+
+main O\+DE solver of I\+M\+S\+RG  
+
+
+
+
+{\ttfamily \#include $<$I\+M\+S\+R\+G\+Solver.\+hh$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classIMSRGSolver_1_1ODE__Monitor}{O\+D\+E\+\_\+\+Monitor}
+\begin{DoxyCompactList}\small\item\em This is used to get flow info from odeint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a675162bee60773d452ffb076a18c0bd2}\label{classIMSRGSolver_a675162bee60773d452ffb076a18c0bd2}} 
+{\bfseries I\+M\+S\+R\+G\+Solver} (\hyperlink{classOperator}{Operator} \&H\+\_\+in)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ada1bbf144e7fda4ce0e40ae1a9bfefc4}\label{classIMSRGSolver_ada1bbf144e7fda4ce0e40ae1a9bfefc4}} 
+void {\bfseries New\+Omega} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aa36481167598d318c0217bcb3d671098}\label{classIMSRGSolver_aa36481167598d318c0217bcb3d671098}} 
+void {\bfseries Set\+Hin} (\hyperlink{classOperator}{Operator} \&H\+\_\+in)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_af0f247c918c2236b021e3cf5917dba9b}\label{classIMSRGSolver_af0f247c918c2236b021e3cf5917dba9b}} 
+void {\bfseries Set\+Read\+Write} (\hyperlink{classReadWrite}{Read\+Write} \&r)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ae8fae5b0c5c3c7c19616491fa353854a}\label{classIMSRGSolver_ae8fae5b0c5c3c7c19616491fa353854a}} 
+void {\bfseries Reset} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a4f5b4c91debb484998661a7798eb438d}\label{classIMSRGSolver_a4f5b4c91debb484998661a7798eb438d}} 
+void {\bfseries Add\+Operator} (\hyperlink{classOperator}{Operator} \&Op)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ae8ca93f3b9c3a4cc152b2f2e07a03dd5}\label{classIMSRGSolver_ae8ca93f3b9c3a4cc152b2f2e07a03dd5}} 
+void {\bfseries Update\+Eta} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a2eb9b114da9b3b04e01f57ebaa2754a7}\label{classIMSRGSolver_a2eb9b114da9b3b04e01f57ebaa2754a7}} 
+void {\bfseries Set\+Method} (string m)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a7d91b6c025bb284ca1093790e701a170}\label{classIMSRGSolver_a7d91b6c025bb284ca1093790e701a170}} 
+void {\bfseries Solve} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a07a987e5fbcbd108e5865df27d709a17}\label{classIMSRGSolver_a07a987e5fbcbd108e5865df27d709a17}} 
+void {\bfseries Solve\+\_\+magnus\+\_\+euler} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a78db6a8078f65c5ef8f99508d13aa926}\label{classIMSRGSolver_a78db6a8078f65c5ef8f99508d13aa926}} 
+void {\bfseries Solve\+\_\+magnus\+\_\+modified\+\_\+euler} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aead1fa352d16ddcd7e572749768a3c58}\label{classIMSRGSolver_aead1fa352d16ddcd7e572749768a3c58}} 
+\hyperlink{classOperator}{Operator} \hyperlink{classIMSRGSolver_aead1fa352d16ddcd7e572749768a3c58}{Transform} (\hyperlink{classOperator}{Operator} \&Op\+In)
+\begin{DoxyCompactList}\small\item\em Returns $ e^{Omega} \mathcal{O} e^{-Omega} $. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIMSRGSolver_aa2475fc701ed990f1c2e982a0fd75e70}\label{classIMSRGSolver_aa2475fc701ed990f1c2e982a0fd75e70}} 
+\hyperlink{classOperator}{Operator} {\bfseries Transform} (\hyperlink{classOperator}{Operator} \&\&Op\+In)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a6e00fbe344b1853b73f422fb8d0f3b9a}\label{classIMSRGSolver_a6e00fbe344b1853b73f422fb8d0f3b9a}} 
+\hyperlink{classOperator}{Operator} \hyperlink{classIMSRGSolver_a6e00fbe344b1853b73f422fb8d0f3b9a}{Inverse\+Transform} (\hyperlink{classOperator}{Operator} \&Op\+In)
+\begin{DoxyCompactList}\small\item\em Returns $ e^{-Omega} \mathcal{O} e^{Omega} $. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIMSRGSolver_a75e0b98af302f96137e65f912794f077}\label{classIMSRGSolver_a75e0b98af302f96137e65f912794f077}} 
+\hyperlink{classOperator}{Operator} {\bfseries Get\+Omega} (int i)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a6566225ef8fdc60389955d5a4266ffdb}\label{classIMSRGSolver_a6566225ef8fdc60389955d5a4266ffdb}} 
+void {\bfseries Set\+Omega} (size\+\_\+t i, \hyperlink{classOperator}{Operator} \&om)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ad759130ed7d7e230e81758c0bce7792d}\label{classIMSRGSolver_ad759130ed7d7e230e81758c0bce7792d}} 
+size\+\_\+t {\bfseries Get\+Omega\+Size} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a7d79821eb4c269f8d096cfe912a5b996}\label{classIMSRGSolver_a7d79821eb4c269f8d096cfe912a5b996}} 
+int {\bfseries Get\+N\+Omega\+Written} ()
+\item 
+\hyperlink{classOperator}{Operator} \hyperlink{classIMSRGSolver_a7313cfb167c0daba014ea4b13f17a7e5}{Transform\+\_\+\+Partial} (\hyperlink{classOperator}{Operator} \&Op\+In, int n)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a3475c5dcf964cb623a8a921f73816ab4}\label{classIMSRGSolver_a3475c5dcf964cb623a8a921f73816ab4}} 
+\hyperlink{classOperator}{Operator} {\bfseries Transform\+\_\+\+Partial} (\hyperlink{classOperator}{Operator} \&\&Op\+In, int n)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aaa7c2d56b6347a19e87924340af922dc}\label{classIMSRGSolver_aaa7c2d56b6347a19e87924340af922dc}} 
+void {\bfseries Set\+Flow\+File} (string s)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a6de0ad4240a6c2942ca316f12e2fa6c0}\label{classIMSRGSolver_a6de0ad4240a6c2942ca316f12e2fa6c0}} 
+void {\bfseries Set\+Ds} (double d)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_af13b27df1b2720dcceb97d72f6746d5d}\label{classIMSRGSolver_af13b27df1b2720dcceb97d72f6746d5d}} 
+void {\bfseries Set\+Dsmax} (double d)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a9427ea6faa3768b77cdff8e6a6e551de}\label{classIMSRGSolver_a9427ea6faa3768b77cdff8e6a6e551de}} 
+void {\bfseries Setd\+Omega} (double d)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a951d52f2651e9a96f08aea35b86c38a9}\label{classIMSRGSolver_a951d52f2651e9a96f08aea35b86c38a9}} 
+void {\bfseries Set\+Smax} (double d)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a456d557bccadef31de84ad6fa0dd4ab2}\label{classIMSRGSolver_a456d557bccadef31de84ad6fa0dd4ab2}} 
+void {\bfseries Set\+Generator} (string g)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ade3ac5fb27b1c51cded78c88b43ff115}\label{classIMSRGSolver_ade3ac5fb27b1c51cded78c88b43ff115}} 
+void {\bfseries Set\+Omega\+Norm\+Max} (double x)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a8e6e5fb61eb1380be1e73c8bea9f1c31}\label{classIMSRGSolver_a8e6e5fb61eb1380be1e73c8bea9f1c31}} 
+void {\bfseries Set\+O\+D\+E\+Tolerance} (float x)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a3ef8306f6737a8b189ad64e95cede6a0}\label{classIMSRGSolver_a3ef8306f6737a8b189ad64e95cede6a0}} 
+void {\bfseries Set\+Eta\+Criterion} (float x)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a2d818538905870ddd3ff073a8a9e701c}\label{classIMSRGSolver_a2d818538905870ddd3ff073a8a9e701c}} 
+void {\bfseries Set\+Magnus\+Adaptive} (bool b)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a30dfd1319a04a17dc0c295a664a186d1}\label{classIMSRGSolver_a30dfd1319a04a17dc0c295a664a186d1}} 
+int {\bfseries Get\+System\+Dimension} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a7c89d669e4f020877219dc427da9dacd}\label{classIMSRGSolver_a7c89d669e4f020877219dc427da9dacd}} 
+\hyperlink{classOperator}{Operator} \& {\bfseries Get\+H\+\_\+s} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a67e05391a23d30b314edebcaa88a3783}\label{classIMSRGSolver_a67e05391a23d30b314edebcaa88a3783}} 
+\hyperlink{classOperator}{Operator} \& {\bfseries Get\+Eta} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a8ae5dfd337ea64d1ed86dbcb9998f4f8}\label{classIMSRGSolver_a8ae5dfd337ea64d1ed86dbcb9998f4f8}} 
+\hyperlink{classGenerator}{Generator} \& {\bfseries Get\+Generator} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a204f2765bc49886dde4260213fd78411}\label{classIMSRGSolver_a204f2765bc49886dde4260213fd78411}} 
+void {\bfseries Update\+Omega} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a4cf93770fe9a71ef3068603cfaba3414}\label{classIMSRGSolver_a4cf93770fe9a71ef3068603cfaba3414}} 
+void {\bfseries UpdateH} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a46d9e83fd8417419ebbfa8fd927da991}\label{classIMSRGSolver_a46d9e83fd8417419ebbfa8fd927da991}} 
+void {\bfseries Write\+Flow\+Status} (ostream \&)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a23a29b966b230c3025b21868d6e39b02}\label{classIMSRGSolver_a23a29b966b230c3025b21868d6e39b02}} 
+void {\bfseries Write\+Flow\+Status\+Header} (ostream \&)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aacfdcf9ad31406125386bae66cf7adae}\label{classIMSRGSolver_aacfdcf9ad31406125386bae66cf7adae}} 
+void {\bfseries Write\+Flow\+Status} (string)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a480bd4154faca5ec9795c3a95f348eb8}\label{classIMSRGSolver_a480bd4154faca5ec9795c3a95f348eb8}} 
+void {\bfseries Write\+Flow\+Status\+Header} (string)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ade0ba3cb00389303f4eb1e5a502ab3cf}\label{classIMSRGSolver_ade0ba3cb00389303f4eb1e5a502ab3cf}} 
+void {\bfseries Set\+Denominator\+Cutoff} (double c)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a2974135e8880dc2a1f49fc7334d97d54}\label{classIMSRGSolver_a2974135e8880dc2a1f49fc7334d97d54}} 
+void {\bfseries Set\+Denominator\+Delta} (double d)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a9f4b53972f5a4760eeffbe61493365fe}\label{classIMSRGSolver_a9f4b53972f5a4760eeffbe61493365fe}} 
+void {\bfseries Set\+Denominator\+Delta\+Index} (int i)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aaa1c52eab16f8c8ea0d817bcdd112796}\label{classIMSRGSolver_aaa1c52eab16f8c8ea0d817bcdd112796}} 
+void {\bfseries Set\+Denominator\+Delta\+Orbit} (string o)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a5dffe1773d536656e3e83a6c286a93da}\label{classIMSRGSolver_a5dffe1773d536656e3e83a6c286a93da}} 
+void {\bfseries Cleanup\+Scratch} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_abf1867f5ae1c24ceaffc3ec75ec8e64c}\label{classIMSRGSolver_abf1867f5ae1c24ceaffc3ec75ec8e64c}} 
+void {\bfseries operator()} (const deque$<$ \hyperlink{classOperator}{Operator} $>$ \&x, deque$<$ \hyperlink{classOperator}{Operator} $>$ \&dxdt, const double t)
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_af6bb68dc6d154d2a41adc680ead68d53}\label{classIMSRGSolver_af6bb68dc6d154d2a41adc680ead68d53}} 
+void {\bfseries Solve\+\_\+ode} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ab6a9dedc4b17ba6929fda6756f381a6d}\label{classIMSRGSolver_ab6a9dedc4b17ba6929fda6756f381a6d}} 
+void {\bfseries Solve\+\_\+ode\+\_\+adaptive} ()
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a8e8671ef4ad4e52e8c762aaffe8932a2}\label{classIMSRGSolver_a8e8671ef4ad4e52e8c762aaffe8932a2}} 
+void {\bfseries Solve\+\_\+ode\+\_\+magnus} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a373f94d6c4fdd76456fa572580e72be1}\label{classIMSRGSolver_a373f94d6c4fdd76456fa572580e72be1}} 
+\hyperlink{classModelSpace}{Model\+Space} $\ast$ {\bfseries modelspace}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a48df765d35734be6aea87a6b1e440edc}\label{classIMSRGSolver_a48df765d35734be6aea87a6b1e440edc}} 
+\hyperlink{classReadWrite}{Read\+Write} $\ast$ {\bfseries rw}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a2fabdfb584437295e23cad6f45bfea1c}\label{classIMSRGSolver_a2fabdfb584437295e23cad6f45bfea1c}} 
+\hyperlink{classOperator}{Operator} $\ast$ {\bfseries H\+\_\+0}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a3956b18e20691fe973f0f88937982604}\label{classIMSRGSolver_a3956b18e20691fe973f0f88937982604}} 
+deque$<$ \hyperlink{classOperator}{Operator} $>$ {\bfseries Flowing\+Ops}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a896f197103911aed8c95353554aa5b95}\label{classIMSRGSolver_a896f197103911aed8c95353554aa5b95}} 
+\hyperlink{classOperator}{Operator} {\bfseries H\+\_\+saved}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a84b8abdbe1712fef2bf3e59b1cfad441}\label{classIMSRGSolver_a84b8abdbe1712fef2bf3e59b1cfad441}} 
+\hyperlink{classOperator}{Operator} {\bfseries Eta}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a12bd2820d7371eb3977124e046438274}\label{classIMSRGSolver_a12bd2820d7371eb3977124e046438274}} 
+deque$<$ \hyperlink{classOperator}{Operator} $>$ {\bfseries Omega}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a7136f4dbd96ce2ba4fee7866f0e77110}\label{classIMSRGSolver_a7136f4dbd96ce2ba4fee7866f0e77110}} 
+\hyperlink{classGenerator}{Generator} {\bfseries generator}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a4bca889031e886ce1fff4b52ef991f9b}\label{classIMSRGSolver_a4bca889031e886ce1fff4b52ef991f9b}} 
+int {\bfseries istep}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ac8df4752824a744a3731fefdf5192629}\label{classIMSRGSolver_ac8df4752824a744a3731fefdf5192629}} 
+double {\bfseries s}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ad36974e5b663d056e6dc6ae3dcd905fc}\label{classIMSRGSolver_ad36974e5b663d056e6dc6ae3dcd905fc}} 
+double {\bfseries ds}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a8338a91de5eee8b344ed35e73131baf3}\label{classIMSRGSolver_a8338a91de5eee8b344ed35e73131baf3}} 
+double {\bfseries ds\+\_\+max}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a3319c55647e9079091bc6aedf24bf918}\label{classIMSRGSolver_a3319c55647e9079091bc6aedf24bf918}} 
+double {\bfseries smax}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ac4d83da87d5c7e981eeb53ed7185288f}\label{classIMSRGSolver_ac4d83da87d5c7e981eeb53ed7185288f}} 
+double {\bfseries norm\+\_\+domega}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ae2e684b8bc989ae7bfc3f6e9a0b9ddb5}\label{classIMSRGSolver_ae2e684b8bc989ae7bfc3f6e9a0b9ddb5}} 
+double {\bfseries omega\+\_\+norm\+\_\+max}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aadebb65737c8b99a9157f5d1d5811ebd}\label{classIMSRGSolver_aadebb65737c8b99a9157f5d1d5811ebd}} 
+double {\bfseries eta\+\_\+criterion}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_af7ed2a9c648d1b0b57f648902290b548}\label{classIMSRGSolver_af7ed2a9c648d1b0b57f648902290b548}} 
+string {\bfseries method}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a174f666c991554cafdfdd32e31e1423b}\label{classIMSRGSolver_a174f666c991554cafdfdd32e31e1423b}} 
+string {\bfseries flowfile}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a5b2d7bad004b55d1f0d0edf06f25b4da}\label{classIMSRGSolver_a5b2d7bad004b55d1f0d0edf06f25b4da}} 
+\hyperlink{classIMSRGProfiler}{I\+M\+S\+R\+G\+Profiler} {\bfseries profiler}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a9b12211dd1d6ddc2b776f53f4c77d1d8}\label{classIMSRGSolver_a9b12211dd1d6ddc2b776f53f4c77d1d8}} 
+int {\bfseries n\+\_\+omega\+\_\+written}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_ac93c3915ddf7b68282f195de80dc6060}\label{classIMSRGSolver_ac93c3915ddf7b68282f195de80dc6060}} 
+int {\bfseries max\+\_\+omega\+\_\+written}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a83d0183d7d8a358e76ebf720a0b49465}\label{classIMSRGSolver_a83d0183d7d8a358e76ebf720a0b49465}} 
+bool {\bfseries magnus\+\_\+adaptive}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a2fd6b891552522168ae4c9b14b407bcc}\label{classIMSRGSolver_a2fd6b891552522168ae4c9b14b407bcc}} 
+\hyperlink{classIMSRGSolver_1_1ODE__Monitor}{O\+D\+E\+\_\+\+Monitor} {\bfseries ode\+\_\+monitor}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aaa21ad87df530129d0a9549ff7fb5c5e}\label{classIMSRGSolver_aaa21ad87df530129d0a9549ff7fb5c5e}} 
+vector$<$ double $>$ {\bfseries times}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a50bceae55508151ebed72d64ca2e40a5}\label{classIMSRGSolver_a50bceae55508151ebed72d64ca2e40a5}} 
+vector$<$ double $>$ {\bfseries E0}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_aafa4583ba277422783257ba7532d5509}\label{classIMSRGSolver_aafa4583ba277422783257ba7532d5509}} 
+vector$<$ double $>$ {\bfseries eta1}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a8aa5efc027730bbdf6987fd3d8aba693}\label{classIMSRGSolver_a8aa5efc027730bbdf6987fd3d8aba693}} 
+vector$<$ double $>$ {\bfseries eta2}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a78b042401ae2c27a6a69fea001b03c1a}\label{classIMSRGSolver_a78b042401ae2c27a6a69fea001b03c1a}} 
+string {\bfseries ode\+\_\+mode}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_abebbf4eb6775b4c12c88323cab921b9c}\label{classIMSRGSolver_abebbf4eb6775b4c12c88323cab921b9c}} 
+float {\bfseries ode\+\_\+e\+\_\+abs}
+\item 
+\mbox{\Hypertarget{classIMSRGSolver_a5051af51a8c66b25e21620725bb2b161}\label{classIMSRGSolver_a5051af51a8c66b25e21620725bb2b161}} 
+float {\bfseries ode\+\_\+e\+\_\+rel}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+main O\+DE solver of I\+M\+S\+RG 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classIMSRGSolver_a7313cfb167c0daba014ea4b13f17a7e5}\label{classIMSRGSolver_a7313cfb167c0daba014ea4b13f17a7e5}} 
+\index{I\+M\+S\+R\+G\+Solver@{I\+M\+S\+R\+G\+Solver}!Transform\+\_\+\+Partial@{Transform\+\_\+\+Partial}}
+\index{Transform\+\_\+\+Partial@{Transform\+\_\+\+Partial}!I\+M\+S\+R\+G\+Solver@{I\+M\+S\+R\+G\+Solver}}
+\subsubsection{\texorpdfstring{Transform\+\_\+\+Partial()}{Transform\_Partial()}}
+{\footnotesize\ttfamily \hyperlink{classOperator}{Operator} I\+M\+S\+R\+G\+Solver\+::\+Transform\+\_\+\+Partial (\begin{DoxyParamCaption}\item[{\hyperlink{classOperator}{Operator} \&}]{Op\+In,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+Returns $ e^{\Omega} \mathcal{O} e^{-\Omega} $ for the $\Omega_i$s with index greater than or equal to n. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+I\+M\+S\+R\+G\+Solver.\+hh\item 
+I\+M\+S\+R\+G\+Solver.\+cc\end{DoxyCompactItemize}

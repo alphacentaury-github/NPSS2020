@@ -1,0 +1,53 @@
+\hypertarget{namespaceAngMom}{}\section{Ang\+Mom Namespace Reference}
+\label{namespaceAngMom}\index{Ang\+Mom@{Ang\+Mom}}
+
+
+Angular momentum related functions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceAngMom_a7d60974f75948035f4d3dcbc84eaa75e}\label{namespaceAngMom_a7d60974f75948035f4d3dcbc84eaa75e}} 
+int \hyperlink{namespaceAngMom_a7d60974f75948035f4d3dcbc84eaa75e}{phase} (int x)
+\begin{DoxyCompactList}\small\item\em return $(-1)^x$ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a4aeabcf56d4eeda4288b691d982bc926}\label{namespaceAngMom_a4aeabcf56d4eeda4288b691d982bc926}} 
+double \hyperlink{namespaceAngMom_a4aeabcf56d4eeda4288b691d982bc926}{Tri} (double j1, double j2, double j3)
+\begin{DoxyCompactList}\small\item\em $\Delta(abc)$ of Varshalovich book. eq 8.\+2.\+1 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a04a7eee9133f74c10f2f0cc452281a59}\label{namespaceAngMom_a04a7eee9133f74c10f2f0cc452281a59}} 
+bool \hyperlink{namespaceAngMom_a04a7eee9133f74c10f2f0cc452281a59}{Triangle} (double j1, double j2, double j3)
+\begin{DoxyCompactList}\small\item\em check triangular relation of three j\textquotesingle{}s \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a59da9456b43ed70ab90963d8571a4ebd}\label{namespaceAngMom_a59da9456b43ed70ab90963d8571a4ebd}} 
+double \hyperlink{namespaceAngMom_a59da9456b43ed70ab90963d8571a4ebd}{ThreeJ} (double j1, double j2, double j3, double m1, double m2, double m3)
+\begin{DoxyCompactList}\small\item\em 3j symbol \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a3703b9fd8a8f6bd20111ce88aeb3634a}\label{namespaceAngMom_a3703b9fd8a8f6bd20111ce88aeb3634a}} 
+double \hyperlink{namespaceAngMom_a3703b9fd8a8f6bd20111ce88aeb3634a}{CG} (double ja, double ma, double jb, double mb, double J, double M)
+\begin{DoxyCompactList}\small\item\em Clebsch-\/\+Gordan coefficients. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a6369652f8e2e35a532025b04bcfe94ae}\label{namespaceAngMom_a6369652f8e2e35a532025b04bcfe94ae}} 
+double \hyperlink{namespaceAngMom_a6369652f8e2e35a532025b04bcfe94ae}{SixJ} (double j1, double j2, double j3, double J1, double J2, double J3)
+\begin{DoxyCompactList}\small\item\em 6j symbol \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_aabee1d422e1fc4b49d61eccdeb9786cd}\label{namespaceAngMom_aabee1d422e1fc4b49d61eccdeb9786cd}} 
+double \hyperlink{namespaceAngMom_aabee1d422e1fc4b49d61eccdeb9786cd}{NineJ} (double j1, double j2, double J12, double j3, double j4, double J34, double J13, double J24, double J)
+\begin{DoxyCompactList}\small\item\em 9j symbol \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceAngMom_a651874e08e2cdb65dca72a745df7ef90}\label{namespaceAngMom_a651874e08e2cdb65dca72a745df7ef90}} 
+double \hyperlink{namespaceAngMom_a651874e08e2cdb65dca72a745df7ef90}{Norm\+NineJ} (double j1, double j2, double J12, double j3, double j4, double J34, double J13, double J24, double J)
+\begin{DoxyCompactList}\small\item\em normalized 9j symbol \end{DoxyCompactList}\item 
+double \hyperlink{namespaceAngMom_a3817ffc350f81e74b8efe074616b61b8}{Moshinsky} (int N, int L, int n, int l, int n1, int l1, int n2, int l2, int lam, double B)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Angular momentum related functions. 
+
+angular momentum related functions (cg,3j,6j, moshinsky ..) 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceAngMom_a3817ffc350f81e74b8efe074616b61b8}\label{namespaceAngMom_a3817ffc350f81e74b8efe074616b61b8}} 
+\index{Ang\+Mom@{Ang\+Mom}!Moshinsky@{Moshinsky}}
+\index{Moshinsky@{Moshinsky}!Ang\+Mom@{Ang\+Mom}}
+\subsubsection{\texorpdfstring{Moshinsky()}{Moshinsky()}}
+{\footnotesize\ttfamily double Ang\+Mom\+::\+Moshinsky (\begin{DoxyParamCaption}\item[{int}]{N,  }\item[{int}]{L,  }\item[{int}]{n,  }\item[{int}]{l,  }\item[{int}]{n1,  }\item[{int}]{l1,  }\item[{int}]{n2,  }\item[{int}]{l2,  }\item[{int}]{lam,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+Talmi-\/\+Moshinsky Bracket, using the algorthm of Buck et al. Nuc. Phys. A 600 (1996) 387-\/402 Their phase convention differs from Moshinsky\textquotesingle{}s by a factor (-\/1)$\ast$$\ast$(L+l+lam). I correct for this in order to stick to Moshinsky\textquotesingle{}s phase convention.
+
+$ \langle n l, N L; \Lambda | n_1 l_1 n_2 l_2;\Lambda\rangle $ ? what is B ? One have to check the convention ! 

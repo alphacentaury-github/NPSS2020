@@ -1,0 +1,61 @@
+\hypertarget{classKet}{}\section{Ket Class Reference}
+\label{classKet}\index{Ket@{Ket}}
+
+
+{\ttfamily \#include $<$Model\+Space.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classKet_acbf992b0310758f890a6a0ae659c1a46}\label{classKet_acbf992b0310758f890a6a0ae659c1a46}} 
+\hyperlink{classKet_acbf992b0310758f890a6a0ae659c1a46}{Ket} (\hyperlink{classOrbit}{Orbit} \&op, \hyperlink{classOrbit}{Orbit} \&oq)
+\begin{DoxyCompactList}\small\item\em constructor of ket $\vert$pq$>$ of two orbits \end{DoxyCompactList}\item 
+int \hyperlink{classKet_ac07bfbc7c7f2bdf77341ba6d54036e8e}{Phase} (int J)
+\item 
+int \hyperlink{classKet_ab0b7b429bb33880b1e1302d70d93194a}{delta\+\_\+pq} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classKet_a9210bf82629ea07996f3b895bc54ba4d}\label{classKet_a9210bf82629ea07996f3b895bc54ba4d}} 
+\hyperlink{classOrbit}{Orbit} $\ast$ {\bfseries op}
+\item 
+\mbox{\Hypertarget{classKet_aa509bf4e812f84bb4c81b00a10d9e82f}\label{classKet_aa509bf4e812f84bb4c81b00a10d9e82f}} 
+\hyperlink{classOrbit}{Orbit} $\ast$ {\bfseries oq}
+\item 
+\mbox{\Hypertarget{classKet_a3120fbd6d28583a0e06d6426e0e69c83}\label{classKet_a3120fbd6d28583a0e06d6426e0e69c83}} 
+int \hyperlink{classKet_a3120fbd6d28583a0e06d6426e0e69c83}{p}
+\begin{DoxyCompactList}\small\item\em p and q \+: index number of orbits op and oq \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classKet_afd050bca27dacccd2637266804b4d710}\label{classKet_afd050bca27dacccd2637266804b4d710}} 
+int {\bfseries q}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class \hyperlink{classKet}{Ket} represent two orbits $\vert$pq$>$
+
+contruct using op and oq (\hyperlink{classOrbit}{Orbit} p and \hyperlink{classOrbit}{Orbit} q) 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classKet_ab0b7b429bb33880b1e1302d70d93194a}\label{classKet_ab0b7b429bb33880b1e1302d70d93194a}} 
+\index{Ket@{Ket}!delta\+\_\+pq@{delta\+\_\+pq}}
+\index{delta\+\_\+pq@{delta\+\_\+pq}!Ket@{Ket}}
+\subsubsection{\texorpdfstring{delta\+\_\+pq()}{delta\_pq()}}
+{\footnotesize\ttfamily int Ket\+::delta\+\_\+pq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+same orbits or not
+
+return 1 if p==q , 0 if p/=q \mbox{\Hypertarget{classKet_ac07bfbc7c7f2bdf77341ba6d54036e8e}\label{classKet_ac07bfbc7c7f2bdf77341ba6d54036e8e}} 
+\index{Ket@{Ket}!Phase@{Phase}}
+\index{Phase@{Phase}!Ket@{Ket}}
+\subsubsection{\texorpdfstring{Phase()}{Phase()}}
+{\footnotesize\ttfamily int Ket\+::\+Phase (\begin{DoxyParamCaption}\item[{int}]{J }\end{DoxyParamCaption})}
+
+phase of ket ?
+
+return $ (-1)^{(j_p+j_q+1+J)} $ it is not clear what this phase means? seems to be an phase when orbits are exchanged... $\vert$pq$>$ and $\vert$qp$>$ Note that there is no J in \hyperlink{classKet}{Ket} itself. J is assigned for Channels. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Model\+Space.\+hh\item 
+Model\+Space.\+cc\end{DoxyCompactItemize}

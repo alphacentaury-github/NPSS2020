@@ -1,0 +1,59 @@
+\hypertarget{classIMSRGProfiler}{}\section{I\+M\+S\+R\+G\+Profiler Class Reference}
+\label{classIMSRGProfiler}\index{I\+M\+S\+R\+G\+Profiler@{I\+M\+S\+R\+G\+Profiler}}
+
+
+{\ttfamily \#include $<$I\+M\+S\+R\+G\+Profiler.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, size\+\_\+t $>$ \hyperlink{classIMSRGProfiler_a4a86bec6848acb4af9d7ea273ed74db2}{Check\+Mem} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a0a556388784109b4cab0021158330d55}\label{classIMSRGProfiler_a0a556388784109b4cab0021158330d55}} 
+std\+::map$<$ std\+::string, float $>$ {\bfseries Get\+Times} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a392fe60d4fee6ac9fdbebcfad8e7c706}\label{classIMSRGProfiler_a392fe60d4fee6ac9fdbebcfad8e7c706}} 
+void {\bfseries Print\+Times} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_acba9c1ab82539014b1def03f15f4e482}\label{classIMSRGProfiler_acba9c1ab82539014b1def03f15f4e482}} 
+void {\bfseries Print\+Counters} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a65d6a848588a1bcd74dbed0c5c2ffd39}\label{classIMSRGProfiler_a65d6a848588a1bcd74dbed0c5c2ffd39}} 
+void {\bfseries Print\+Memory} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a86120130efc761d87254117e245d677c}\label{classIMSRGProfiler_a86120130efc761d87254117e245d677c}} 
+void {\bfseries Print\+All} ()
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a943695f9c876fa41c4dd4ff92c6034d3}\label{classIMSRGProfiler_a943695f9c876fa41c4dd4ff92c6034d3}} 
+size\+\_\+t {\bfseries Max\+Mem\+Usage} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a69846573d747a471b292ecff83e37e34}\label{classIMSRGProfiler_a69846573d747a471b292ecff83e37e34}} 
+static std\+::map$<$ std\+::string, double $>$ \hyperlink{classIMSRGProfiler_a69846573d747a471b292ecff83e37e34}{timer}
+\begin{DoxyCompactList}\small\item\em For keeping timing information for various method calls. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a938be5dfc5c7d7c49a4a5a2ebc273370}\label{classIMSRGProfiler_a938be5dfc5c7d7c49a4a5a2ebc273370}} 
+static std\+::map$<$ std\+::string, int $>$ {\bfseries counter}
+\item 
+\mbox{\Hypertarget{classIMSRGProfiler_a18fe647ec85027abc51047437c0c1540}\label{classIMSRGProfiler_a18fe647ec85027abc51047437c0c1540}} 
+static float {\bfseries start\+\_\+time} = -\/1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Profiling class with all static data members. This is for keeping track of timing and memory usage, etc. \hyperlink{classIMSRGProfiler}{I\+M\+S\+R\+G\+Profiler} methods should probably not be called inside parallel blocks. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classIMSRGProfiler_a4a86bec6848acb4af9d7ea273ed74db2}\label{classIMSRGProfiler_a4a86bec6848acb4af9d7ea273ed74db2}} 
+\index{I\+M\+S\+R\+G\+Profiler@{I\+M\+S\+R\+G\+Profiler}!Check\+Mem@{Check\+Mem}}
+\index{Check\+Mem@{Check\+Mem}!I\+M\+S\+R\+G\+Profiler@{I\+M\+S\+R\+G\+Profiler}}
+\subsubsection{\texorpdfstring{Check\+Mem()}{CheckMem()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, size\+\_\+t $>$ I\+M\+S\+R\+G\+Profiler\+::\+Check\+Mem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check how much memory is being used. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+I\+M\+S\+R\+G\+Profiler.\+hh\item 
+I\+M\+S\+R\+G\+Profiler.\+cc\end{DoxyCompactItemize}

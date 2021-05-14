@@ -1,0 +1,34 @@
+class Operator
+   generic operator up to three-body, scalar or tensor.
+   let operator class object as op
+
+   op.modelspace 
+   op.ZeroBody : number 
+   op.OneBody  : matrix f(p,q)
+   op.TwoBody  : TwoBodyME object g(ki,kj) ji,kj is channel ket index 
+   op.ThreeBody 
+   op.rank_J 
+   op.rank_T
+   op.parity
+   op.particle_rank : maximum particle rank 
+   op.E2max : truncation in two-body ME \f$ e_i + e_j \leq \f$ E2max
+   op.E3max : truncation in three-body ME \f$ e_i + e_j + e_k \leq \f$ E3max
+   op.hermitian : T/F
+   op.antihermitian : T/F
+   op.nChannels : Number of two-body channels \f$ J,\pi,T_z \f$ associated with the model space
+   op.OneBodyChannels : mapping j,p,t <-> channel  
+   op.profiler 
+   
+   * construct by Jrank,Trank,parity, part_rank with modelspace 
+      for given modelspace and J_rank,Trank, parity, part_rank
+      The empty ZeroBody, OneBody, TwoBody, ThreeBody  matrix are prepared. 
+      For Hamiltonian ZeroBody is E = 0 if not normal ordered 
+                                     <ref|H|ref> if normal ordered  
+                      OneBody is (1-1/A)<1|T|2> if not normal ordered 
+                                 (1-1/A)<1|T|2> + <1a|T_rel +V_2|2a> n_a 
+                                +1/2<1 ab|V_3|2 ab> n_a n_b if normal ordered 
+                      TwoBody is <12|T_rel+V_2|34> if not normal ordered 
+                                 <12|T_rel+V_2|34>+ < 12 a|V_3|34a > n_a if normal ordered
+                      ThreeBody is < 123|V_3|456>              
+
+  * GooseTank ??  
