@@ -1,0 +1,290 @@
+
+	README for different 2- and 3-body potentials
+
+==================================================================
+
+	NOTATION
+
+------------------------------------------------------------------
+
+	V_pot 	2- or 3-body nuclear potential
+
+	H_CM	Center-of-Mass H.O. hamiltonian
+	H_rel	relative H.O. hamiltonian
+	T_rel	relative kinetic energy ( p_{ij}^2 / 2 m )
+	U_rel	relative H.O. potential (m w^2 r_{ij}^2 /2 )
+	H_rel = T_rel + U_rel
+
+	H_osc = (p_i^2 / 2 m ) + (m w^2 r_i^2 /2 )
+	      = H_CM + H_rel
+	      = H_CM + T_rel + U_rel
+	has analytic expression in MFDn (and other codes)
+ 
+Total hamiltonian	
+(schematically, modulo factors of 2/A, 1/(A-1), 1/(A-2) etc...)
+	H = T_rel + V_pot + lambda * (H_CM - 1.5*hw)
+	  = T_rel - lambda * H_rel + V_pot 
+	    + lambda * H_osc - 1.5 * lambda * hw
+	  = (1 - lambda) * H_rel + (V_pot - U_rel) 
+	    + lambda * H_osc - 1.5 * lambda * hw
+
+In case of an external field we have (not yet implemented)
+	H = H_{ext.field} + V_pot
+In case of a H.O. external field (hW) we have
+	H = H_osc(hW) + V_pot
+	  = H_osc(hW) + (H_rel - T_rel) + (V_pot - U_rel) 
+NOTE: here H_osc is the EXTERNAL FIELD H.O. hamiltonian, 
+      NOT the basis space H.O. hamiltonian!!!
+
+	H2	complete 2-body hamiltonian	
+	H3 	complete 3-body hamiltonian
+
+==================================================================
+
+	supported 2-body input interaction conventions
+
+------------------------------------------------------------------
+
+JPV format (V...._vxx...)				(default)
+
+	Vpotential_vxx = V_pot
+	Vcoul = additional V_pot for PP only
+	(additional PP, PN, and/or NN potentials possible as well)
+
+	H2 = 2 * hw * Trel / A - 2 * hw * lambda * Hrel / A
+	     + Vpotential_vxx + Vcoul_JPV
+	     + lambda * hw * (2n_a + l_a + 2n_b + l_b + 3) / (A-1)
+	     - 3 * lambda * hw / ( A * (A-1) )
+
+------------------------------------------------------------------
+
+PN LSO 2-body files (TBME...)
+(negative lamHcmPN, i.e. no column Hcm in PN input files)
+TBME files contain quantum numbers, 
+followed by T_rel, H_rel, Vcoul, Gin(1:3)
+
+	Gin(:) = V_pot(:) - 2 * hw * U_rel / A
+	       = V_pot(:) + 2 * hw * (T_rel - H_rel) / A
+	(either 1 or 3 sets; may or may not include Vcoul)
+
+	H2 = 2 * hw * (1 - lambda) * H_rel / A
+	     + Gin(:)
+	     + lambda * hw * (2n_a + l_a + 2n_b + l_b + 3) / (A-1)
+	     - 3 * lambda * hw / ( A * (A-1) )
+---
+(positive lamHcmPN) TBME files contain quantum numbers, 
+followed by T_rel, H_rel, H_CM, Vcoul, Gin(1:3),
+currently not supported in MFDn, YMMV
+
+------------------------------------------------------------------
+
+PN-EJ SRG 2-body files (TBME...)
+(negative lamHcmPN, i.e. no column Hcm in PN-EJ input files)
+TBME files contain quantum numbers, 
+followed by T_rel, H_rel, Vcoul, Gin(1:3)
+
+	Gin(:) = V_pot(:)
+	(either 1 or 3 sets; may or may not include Vcoul)
+
+	H2 = 2 * hw * T_rel / A - 2 * hw * lambda * H_rel / A
+	     + Gin(:)
+	     + lambda * hw * (2n_a + l_a + 2n_b + l_b + 3) / (A-1)
+	     - 3 * lambda * hw / ( A * (A-1) )
+---
+(positive lamHcmPN) TBME files contain quantum numbers, 
+followed by T_rel, H_rel, H_CM, Vcoul, Gin(1:3),
+currently not supported in MFDn, YMMV
+
+------------------------------------------------------------------
+
+PN LSO 3-body interaction files (v3trans...)
+
+	H3 = (H2 + V3) / (A-2)
+where
+	H2 = 2 * hw * (1 - lambda) * H_rel / A  
+	     + Vcoul
+	     + lambda * hw * (2n_a + l_a + 2n_b + l_b + 3) / (A-1)
+	     - 3 * lambda * hw / ( A * (A-1) )
+
+(with Hrel and Vcoul read in from JPV's Hrel and Vcoul files)
+
+------------------------------------------------------------------
+
+PN-EJ SRG 2- plus 3-body files (TBME... plus v3trans...)
+
+    	H3 = H2/(A-2) + V3
+where
+	H2 = 2 * hw * T_rel / A - 2 * hw * lambda * H_rel / A  
+	     + Gin(:)
+	     + lambda * hw * (2n_a + l_a + 2n_b + l_b + 3) / (A-1)
+	     - 3 * lambda * hw / ( A * (A-1) )
+
+QUESTION: Vcoul already included in Gin(:) ?
+
+Related note: Normally, the protons are the 'first class of particles'
+in MFDn, and the neutrons are the 'second class of particles'.  This
+orderering became necessary in or around June 2002, in order to
+coordinate with Petr Navratil's 3-body input.  However, when we do
+neutron drops (in an external field) with MFDn, we use only one 'class
+of particles', so the neutrons are in the first class.  If Coulomb is
+included in Gin(:), then we need some additional checks and/or
+modifications in case we're doing neutron drops!
+
+==================================================================
+
+	Valid MNOP / IPOTENTIAL combinations
+	and input variables in mfdn.dat that go with them
+
+------------------------------------------------------------------
+
+Default settings for standard / stored (available) interaction files 
+ JISP16		 MNOP= 2, IPOTENTIAL= 0
+ Minnesota	 MNOP= 2, IPOTENTIAL= 0
+ N3LO-LSO2	 MNOP= 2, IPOTENTIAL= 1 or 11 (DEFAULT: 1)
+ N3LO-LSO3	 MNOP= 3, IPOTENTIAL= 2 (or maybe 12)
+ N3LO3NF-LSO3	 MNOP= 3, IPOTENTIAL= 2 (or maybe 12)
+ N3LO-SRG2	 MNOP= 2, IPOTENTIAL= 0 or 4 or 14 (DEFAULT: 0 or 4)
+ N3LO-SRG3	 MNOP= 3, IPOTENTIAL= 3 or 13 (DEFAULT: 3)
+ N3LO3NF-SRG3	 MNOP= 3, IPOTENTIAL= 3 or 13 (DEFAULT: 3)
+
+Under development:
+ JISP-NM ?	 MNOP= 2, IPOTENTIAL= 0
+ CD-JISP ?	 MNOP= 2, IPOTENTIAL= 0 with add'l files, or 14 ?
+
+Unclear / to be done:
+ Wood-Saxon basis ??
+ Other generalized basis ??
+ 
+------------------------------------------------------------------
+
+Required input files 
+ 0				Trel_vxx, Hrel_vxx, and V_vxx...
+ 0 < IPOTENTIAL < 10		Trel_vxx, Hrel_vxx (and V_vxx...)
+     		  		plus TBME and/or v3trans
+ IPOTENTIAL > 10		no need for _vxx_ files,
+				except for TaskB--observables
+				(under development)
+ IPOTENTIAL = 1,3,4,11,12,13,14	TBME (i.e. not for IPOTENTIAL=2)
+ IPOTENTIAL = 2,3,     12,13	v3trans
+
+NOTE: For TaskB--observables, we need Trel_vxx, Hrel_vxx 
+      if we want to calculate the RMS radius and/or <H_CM>
+ 
+------------------------------------------------------------------
+
+MNOP = 2, IPOTENTIAL =  0
+expected/required input
+  # of of 2-body JPV potential files (minimally 2)
+  strength(Trel_JPV),    Trel_JPV_filename
+  lambda_JPV,            Hrel_JPV_filename
+  (strength(Vpotential), Vpotential_JPV_filename)
+  (strength(Vcoul_JPV),  Vcoul_JPV_filename)
+  (strength(Vadd'l_JPV), Vadd'l_JPV_filename)
+  ...
+
+MNOP = 2, IPOTENTIAL =  1
+as IPOTENTIAL = 0, preceeded by
+  TBME_filename
+  strength(Trel_PN), lambda_PN, strength(Gin), strength(Vcoul_PN), -1.0
+  nset, 0, max(N_{sp}=2n+l), max(N_{2-particles})
+
+MNOP = 3, IPOTENTIAL =  2
+as IPOTENTIAL = 0, preceeded by
+  strength(V3_PN), v3trans_filename
+  max(N_{2-particles}), ibinfile (selecting ascii, binary, MPI-binary)
+
+MNOP = 3, IPOTENTIAL =  3
+as IPOTENTIAL = 0, preceeded by
+  TBME_filename
+  strength(Trel_PN), lambda_PN, strength(Gin), strength(Vcoul_PN), -1.0
+  nset, 0, max(N_{sp}=2n+l), max(N_{2-particles})
+  strength(V3_PN), v3trans_filename
+  max(N_{2-particles}), ibinfile (selecting ascii, binary, MPI-binary)
+
+MNOP = 2, IPOTENTIAL =  4
+as IPOTENTIAL = 0, preceeded by
+  TBME_filename
+  strength(Trel_PN), lambda_PN, strength(Gin), strength(Vcoul_PN), -1.0
+  nset, 0, max(N_{sp}=2n+l), max(N_{2-particles})
+
+MNOP = 2, IPOTENTIAL = 11	(under development)
+as IPOTENTIAL = 1, but without IPOTENTIAL = 0 input
+
+MNOP = 3, IPOTENTIAL = 12	(under development)
+as IPOTENTIAL = 13 (yes, as 13 below, but with strength(Gin)=0)
+
+MNOP = 3, IPOTENTIAL = 13	(under development)
+as IPOTENTIAL = 3, but without IPOTENTIAL = 0 input
+
+MNOP = 2, IPOTENTIAL = 14	(under development)
+as IPOTENTIAL = 4, but without IPOTENTIAL = 0 input
+
+------------------------------------------------------------------
+
+	Default strength values etc.
+
+------------------------------------------------------------------
+
+NOTE: for a 'normal' run, we should choose (DEFAULT)
+
+      strength(Trel_JPV) + strength(Trel_PN) = 1.0
+      lambda_JPV + lambda_PN                 = lambda_Hcm
+
+-and- {
+      strength(Vpotential) 		     = 1.0
+      -or-
+      strength(Gin)			     = 1.0
+      -or-
+      no two-body potential
+      }
+
+-and-(for MNOP = 3 only)-
+      strength(V3_PN)			     = 1.0
+
+though one could 'mix and match' different potentials
+
+------------------------------------------------------------------
+
+MNOP = 2, IPOTENTIAL =  0
+  4			# of 2-body JPV potential files
+  1.0   		Trel_ipcut=10_vxx_v4
+  100.0/hw		Hrel_ipcut=10_vxx_v4
+  1.0   		V_potential_ip10_hw_vxx_r4
+  1.0   		Vcoul_ipcut=10_vxx_v4
+
+MNOP = 2, IPOTENTIAL =  1
+  TBME.int
+  0.0,  0.0,  1.0,  0.0,  -1.0
+  3,  0,  numshellmax-1,  ipcut
+  2			# of 2-body JPV potential files
+  1.0   		Trel_ipcut_vxx_v4
+  100.0/hw		Hrel_ipcut_vxx_v4
+
+MNOP = 3, IPOTENTIAL =  2
+  1.0,  v3trans.int
+  ipcut,  ibinfile= 0, 1, or 2?
+  4			# of 2-body JPV potential files
+  1.0   		Trel_ipcut_vxx_v4
+  100.0/hw		Hrel_ipcut_vxx_v4
+  0.0   		V_potential_dummy
+  1.0   		Vcoul_ipcut=10_vxx_v4
+
+MNOP = 3, IPOTENTIAL =  3
+  TBME.int
+  1.0,  100.0/hw,  1.0,  0.0,  -1.0
+  3,  0,  numshellmax-1,  ipcut
+  1.0,  v3trans.int
+  ipcut,  ibinfile= 0, 1, or 2?
+  2			# of 2-body JPV potential files
+  0.0   		Trel_ipcut_vxx_v4
+  0.0			Hrel_ipcut_vxx_v4
+
+MNOP = 2, IPOTENTIAL =  4
+  TBME.int
+  1.0,  100.0/hw,  1.0,  0.0,  -1.0
+  3,  0,  numshellmax-1,  ipcut
+  2			# of 2-body JPV potential files
+  0.0   		Trel_ipcut_vxx_v4
+  0.0			Hrel_ipcut_vxx_v4
+
+==================================================================
