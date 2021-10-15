@@ -6,6 +6,10 @@ Created on Wed Oct  6 11:21:28 2021
 
 SPE reader
   : read single particle energy files and get the self energy
+  For better low density region extrapolation,
+  change variables from (k,rho,iso) -> (k,rho_p,rho_n)
+  
+  then sigma(k, rho_p=0,rho_n->0)
 
 #list_spe = 1, 2, 2I
 #list_pn =  0, 1  (proton,neutron)
@@ -17,7 +21,6 @@ SPE reader
 """
 import numpy as np
 import matplotlib.pyplot as plt
-import glob
 from scipy.interpolate import interpn
 
 dd = "./SPE_holt/" # file path
@@ -290,18 +293,48 @@ if __name__ == '__main__':
         return V+ 1j*W
 
     #---test NM optical
-    x = np.arange(0.01,0.3,0.01)
-    y = opt_pot_NM(85, x, 0,charge=0)
     plt.figure()
-    plt.plot( x, np.real(y),label='V(delta=0)')
-    plt.plot( x, np.imag(y),label='W(delta=0)')
-    y = opt_pot_NM(85, x, 0.5,charge=1)
-    plt.plot( x, np.real(y),label='V(delta=0.5)')
-    plt.plot( x, np.imag(y),label='W(delta=0.5)')
-    plt.legend()
+    plt.title('neutron-NM optical E=85 MeV')
     plt.xlabel('rho')
     plt.ylabel('MeV')
-
+    x = np.arange(0.01,0.3,0.01)
+    y = opt_pot_NM(85, x, 0,charge=0)
+    plt.plot( x, np.real(y),label='V(delta=0)')
+    plt.plot( x, np.imag(y),label='W(delta=0)')
+    y = opt_pot_NM(85, x, 0.6,charge=1)
+    plt.plot( x, np.real(y),label='V(delta=0.6)')
+    plt.plot( x, np.imag(y),label='W(delta=0.6)')
+    plt.legend()
+        
+    #-- delta dependence plot 
+    plt.figure()
+    plt.title('neutron-NM optical E=85 MeV')
+    plt.xlabel('delta')
+    plt.ylabel('MeV')
+    x = np.arange(0,0.7,0.1)
+    y = opt_pot_NM(85, 0.01, x,charge=0)
+    plt.plot( x, np.real(y),label='V(rho=0.01)')
+    plt.plot( x, np.imag(y),label='W(rho=0.01)')
+    y = opt_pot_NM(85, 0.32, x,charge=0)
+    plt.plot( x, np.real(y),label='V(rho=0.32)')
+    plt.plot( x, np.imag(y),label='W(rho=0.32)')
+    plt.legend() 
+    
+    # energy dependence 
+    plt.figure() 
+    plt.title('neutron-NM optical delta=0')
+    plt.xlabel('E[MeV]')
+    plt.ylabel('MeV')
+    x = np.arange(0.02,4.0,0.1)**2/(2*mN/hc)*hc 
+    y = opt_pot_NM(x, 0.3, 0 ,charge=0)
+    plt.plot( x, np.real(y),label='V(rho=0.3,delta=0)')
+    plt.plot( x, np.imag(y),label='W(rho=0.3,delta=0)')
+    y = opt_pot_NM(x, 0.02, 0 ,charge=0)
+    plt.plot( x, np.real(y),label='V(rho=0.02,delta=0)')
+    plt.plot( x, np.imag(y),label='W(rho=0.02,delta=0)')
+    plt.legend() 
+    
+    
     #---optical potential for finite nuclei
     def opt_pot_LDA(E_kin,f_dens_p,f_dens_n,charge=0,r_range=[0,20,0.5]):
         """
