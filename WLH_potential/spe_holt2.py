@@ -22,13 +22,14 @@ SPE reader
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interpn
+from collections import Sequence 
 
 dd = "./SPE_holt/" # file path
 hc=197.3269 # MeV fm
 amu=931.494 #MeV
-mp=938.27
-mn=939.5653
-mN =0.5*(mp+mn) # average nucleon mass
+mp=938.27/hc #fm^-1
+mn=939.5653/hc #fm^-1
+mN =0.5*(mp+mn) # average nucleon mass fm^-1 
 
 #--Holt data grids
 iso_list = np.arange(0,0.7,0.1) # 7 values
@@ -137,7 +138,7 @@ def read_spe_file(pn,dens,iso):
     out = np.column_stack((np.ones(len(out1[:,0]))*dens*0.01,
                            np.ones(len(out1[:,0]))*iso*0.1,
                            out1[:,0],
-                           out1[:,1]-out1[:,0]**2/(2*mN/hc)*hc,
+                           out1[:,1]-out1[:,0]**2/(2*mN)*hc,
                            out2[:,1],
                            out3[:,1]
                            ) )
@@ -145,6 +146,7 @@ def read_spe_file(pn,dens,iso):
 
 def read_all_spe_file():
     # read all files and return all table as a dictionary
+    # alldat2[np][dens-index][iso-index][k-index] = [dens, iso, k, spe1,spe2,spe2I]
     alldat2={}
     alldat2[0]=[]
     alldat2[1]=[]
@@ -157,40 +159,122 @@ def read_all_spe_file():
                     out = read_spe_file(pn,dens,iso)
                     # alldat2[pn].append(out)
                     temp.append(out)
-                except:
-                    print("Error! reading speX_pn{:}_n{:}_iso{:}.dat".format(
+                except ValueError:
+                    raise ValueError("Error! reading speX_pn{:}_n{:}_iso{:}.dat".format(
                         pn,dens,iso) )
             temp2.append(temp)
-        alldat2[pn]=temp2
-    # alldat2[np][dens-index][iso-index][k-index] = [dens, iso, k, spe1,spe2,spe2I]
+        alldat2[pn]=temp2    
     return alldat2
 
+def add_derivative_spe(alldat2):
+    """
+    from given input data 
+    
+    alldat2[np][dens-index][iso-index][k-index] = [dens, iso, k, spe1,spe2,spe2I]
+    
+    add columns of derivative values 
+    
+    out[np][dens-index][iso-index][k-index] = [dens, iso, k, spe1,spe2,spe2I,dV/dk]
+    """
+    step = mom_list[1] - mom_list[0]
+    dVdk = np.zeros(len(mom_list))
+    for pn in [0,1]:
+        for dens in range(len(dens_list)):
+            for iso in range(len(iso_list)):
+                dVdk = np.zeros(len(mom_list))
+                for k in range(len(mom_list)):
+                    (rho,delta,kk,spe1,spe2,spe2i) = alldat2[pn][dens][iso][k]
+                    # compute dimensionless d(spe1+spe2)/dk 
+                    V = (spe1+spe2)
+                    if k==0 : 
+                        V_plus = (alldat2[pn][dens][iso][k+1][3]+alldat2[pn][dens][iso][k+1][4])
+                        dVdk[k] = (V_plus-V)/(step*hc)  #Careful for dimension
+                        #--alternative form--
+                        #V_2p = (alldat2[pn][dens][iso][k+2][3]+alldat2[pn][dens][iso][k+2][4])
+                        #V_p  = (alldat2[pn][dens][iso][k+1][3]+alldat2[pn][dens][iso][k+1][4])
+                        #dVdk[k] = (-0.5*V_2p+2*V_p-1.5*V)/(step*hc) 
+                    elif k== len(mom_list)-1: 
+                        V_minus = (alldat2[pn][dens][iso][k-1][3]+alldat2[pn][dens][iso][k-1][4])
+                        dVdk[k] = (V-V_minus)/(step*hc)
+                        #--alternative form--
+                        #V_2m = (alldat2[pn][dens][iso][k-2][3]+alldat2[pn][dens][iso][k-2][4])
+                        #V_m  = (alldat2[pn][dens][iso][k-1][3]+alldat2[pn][dens][iso][k-1][4])
+                        #dVdk[k] = (0.5*V_2m-2*V_m+1.5*V)/(step*hc) 
+                    else : 
+                        V_plus = (alldat2[pn][dens][iso][k+1][3]+alldat2[pn][dens][iso][k+1][4])
+                        V_minus = (alldat2[pn][dens][iso][k-1][3]+alldat2[pn][dens][iso][k-1][4])
+                        dVdk[k] = (V_plus-V_minus)/(2*step*hc)
+                alldat2[pn][dens][iso] = np.column_stack((alldat2[pn][dens][iso],dVdk ))
+    return alldat2  
+
+def read_all_spe_files():
+    alldat2 = read_all_spe_file() 
+    data = add_derivative_spe(alldat2)
+    return data 
+
+#----2021-10-18 working here 
+    
 def prepare_interp_data(alldat):
     # re-arrange data points and values for multi-dimensional interpolation
-    # To allow extrapolation to small density ->0 
-    # add sigma(rho=0,iso,mom)=0 data points.
-    # what about the iso in zero density limit?? 
-    p_data  = alldat[0]
-    n_data  = alldat[1]
+    # alldat is an output from read_all_spe_files 
+    p_data  = alldat[0] #pn=0
+    n_data  = alldat[1] #pn=1
 
+    newdat = []
     points = (dens_list, iso_list, mom_list)
+    newdat.append(points) 
     sig_p_re = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
     sig_p_im = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
     sig_n_re = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
     sig_n_im = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
-
+    dsig_p     = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
+    dsig_n     = np.zeros( (len(dens_list),len(iso_list),len(mom_list)) )
     for dens in range(len(dens_list)):
         for iso in range(len(iso_list)):
             sig_p_re[dens][iso][:] = p_data[dens][iso][:,3]+ p_data[dens][iso][:,4]
             sig_p_im[dens][iso][:] = p_data[dens][iso][:,5]
+            dsig_p[dens][iso][:] = p_data[dens][iso][:,6]
             sig_n_re[dens][iso][:] = n_data[dens][iso][:,3]+ n_data[dens][iso][:,4]
             sig_n_im[dens][iso][:] = n_data[dens][iso][:,5]
-    return (points, sig_p_re, sig_p_im, sig_n_re, sig_n_im)
+            dsig_n[dens][iso][:] = n_data[dens][iso][:,6]
+            
+    return (points, sig_p_re, sig_p_im, dsig_p, sig_n_re, sig_n_im,dsig_n)
+
+def SE_interp(rho,delta,k,mode=None,data=None):
+    """
+    self energy interpolation 
+    mode=0 : Re(Sigma_p)
+        =1 : Im(Sigma_p)
+        =2 : d/dk Re(Sigma_p)
+        =3 : Re(Sigma_n)
+        =4 : Im(Sigma_n)
+        =5 : d/dk Re(Sigma_n)
+    However, the extrapolation does not work!!
+    
+    upto here no sign change from the data. 
+    """
+    points=data[0]
+    values=data[mode+1]
+    
+    if (delta<0 and abs(delta)<=0.6 ): #negative delta case 
+        if mode in [0,1]: #proton case
+            values=data[mode+1+3]
+            delta = -delta 
+        else :  #neutron case   
+            values=data[mode+1-3]
+            delta = -delta
+    if (rho< dens_list[0]):
+        out = (interpn(points,values,(dens_list[0],delta,k))/dens_list[0]*rho )         
+    else:
+        out = interpn(points,values,(rho,delta,k)) 
+    return out 
+    
+
 #===========================================================================
 if __name__ == '__main__':
-    pn = 0
-    dens = 10 # 0.01
-    iso = 2
+    pn = 1
+    dens = 30 # 0.01
+    iso = 0
     out = read_spe_file(pn,dens,iso)
     plt.title("pn={},dens={},iso={}".format(pn,dens*0.01,iso*0.1))
     plt.plot(out[:,2],out[:,3],'.',label='LO')
@@ -201,144 +285,152 @@ if __name__ == '__main__':
     plt.ylabel('MeV')
     plt.legend()
 
-    alldat = read_all_spe_file()
-    interp_data = prepare_interp_data(alldat)
-
-    def SE_interp(rho,delta,k,mode=0,data= interp_data ):
-        """
-        interpolation of self energy
-        mode=0 : Re(Sigma_p)
-            =1 : Im(Sigma_p)
-            =2 : Re(Sigma_n)
-            =3 : Im(Sigma_n)
-        However, the extrapolation does not work!!
-        """
-        points=interp_data[0]
-        values=interp_data[mode+1]
-        #out = interpn(points,values,(rho,delta,k),bounds_error=False,fill_value=0)
-        out = interpn(points,values,(rho,delta,k),bounds_error=False)
-        #out = interpn(points,values,(rho,delta,k))
-        return out
+    alldat = read_all_spe_files()
+    data = prepare_interp_data(alldat)
 
     print('==multi-dimensional linear interpolation==')
-    kk = np.linspace(0.02,3.9,100)
-    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=0))
-    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=1))
-    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=2))
-    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=3))
+    kk = np.linspace(0.1,3.2,100)
+    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=0,data=data))
+    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=1,data=data))
+    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=2,data=data))
+    plt.plot(kk,SE_interp(dens*0.01,iso*0.1,kk,mode=3,data=data))
+    #plt.plot(kk,SE_interp(dens*0.01,-iso*0.1,kk,mode=3,data=interp_data))
     plt.legend()
 
-    def get_eff_mass(rho,delta,k,mode=0):
+    def get_eff_mass(rho,delta,k,charge=0,data=None):
         """
-        return M*/M
+        return M*/M          
         """
-        step=0.05
-        Vk_p = SE_interp(rho,delta,k+step,mode)
-        Vk_m = ( SE_interp(rho,delta,k-step,mode)*(k - step >=0)
-                +SE_interp(rho,delta,k,mode)*(k - step <0)
-               )
-        dx = 2*step*(k-step>=0)+step*(k-step < 0)
-        dVk = (Vk_p-Vk_m)/(dx)/hc #MeV.fm --> dimensionless
-        return 1./(1 + (mN/hc)/k*dVk)
+        if charge==0:
+            mode = 5 # d/dk Re Sig_n
+        elif charge==1:
+            mode = 2 # d/dk Re Sig_p        
+        dVk =  SE_interp(rho,delta,k,mode = mode,data=data)   
+        out = 1./(1 + mN/k*dVk)
+        #if (out < 0.).any() :
+        #    raise ValueError('Error: negative effective mass')
+        return out 
 
     print('==test effective mass==')
     rho = 0.3; delta = 0;
-    emass = get_eff_mass(rho,delta,kk,mode=0)
+    plt.plot(kk,SE_interp(rho,delta,kk,mode=0,data=data))
+    emass = get_eff_mass(rho,delta,kk,charge=0,data=data)
+    plt.plot(kk,emass*10)
     print(r'$\Sigma$={}'.format(emass)  )
 
-    #----test extrapolation
-    # (1) scipy.interpn cannot extrapolate except for constant value
-    # (2) gaussian process can not be used for ~9000 data points
-    # (3) neural network for extrapolation?
-    from sklearn.gaussian_process import GaussianProcessRegressor
-    from sklearn.gaussian_process.kernels import RBF, WhiteKernel
-    from sklearn.neural_network import MLPRegressor
-    X = []
-    Y = []
-    mode = 0
-    points=interp_data[0]
-    values=interp_data[mode+1]
-    for i in range(len(points[0])):
-        for j in range(len(points[1])):
-            for k in range(len(points[2])):
-                X.append([points[0][i],points[1][j],points[2][k]])
-                Y.append(values[i][j][k])
-    X_train= np.array(X)
-    Y_train= np.array(Y)
-    #kernel = 1.0 * RBF(length_scale=100.0, length_scale_bounds=(1e-2, 1e3))+ WhiteKernel(noise_level=1, noise_level_bounds=(1e-10, 1e+1))
-    #gp = GaussianProcessRegressor(kernel=kernel,alpha=0.0).fit(X, Y) # not practical
-    #regr = MLPRegressor(hidden_layer_sizes=(100,50),random_state=1, max_iter=900).fit(X, Y)
+    # #----test extrapolation
+    # # (1) scipy.interpn cannot extrapolate except for constant value
+    # # (2) gaussian process can not be used for ~9000 data points
+    # # (3) neural network for extrapolation?
+    # from sklearn.gaussian_process import GaussianProcessRegressor
+    # from sklearn.gaussian_process.kernels import RBF, WhiteKernel
+    # from sklearn.neural_network import MLPRegressor
+    # X = []
+    # Y = []
+    # mode = 0
+    # points=interp_data[0]
+    # values=interp_data[mode+1]
+    # for i in range(len(points[0])):
+        # for j in range(len(points[1])):
+            # for k in range(len(points[2])):
+                # X.append([points[0][i],points[1][j],points[2][k]])
+                # Y.append(values[i][j][k])
+    # X_train= np.array(X)
+    # Y_train= np.array(Y)
+    # #kernel = 1.0 * RBF(length_scale=100.0, length_scale_bounds=(1e-2, 1e3))+ WhiteKernel(noise_level=1, noise_level_bounds=(1e-10, 1e+1))
+    # #gp = GaussianProcessRegressor(kernel=kernel,alpha=0.0).fit(X, Y) # not practical
+    # #regr = MLPRegressor(hidden_layer_sizes=(100,50),random_state=1, max_iter=900).fit(X, Y)
 
-    #----optical potential in nuclear matter
-    def opt_pot_NM(E_kin,rho,delta,charge=0):
+    # #----optical potential in nuclear matter
+    def opt_pot_NM(E_kin,rho,delta,charge=0,data=data):
         """
-        U_{np}(E,rho,delta)=V(E,rho,delta)+ i W(E,rho,delta)
+         U_{np}(E,rho,delta)=V(E,rho,delta)+ i W(E,rho,delta)
 
-        np = 0 for proton
-           = 1 for neutron
-
-        E_kin in MeV unit
-        rho in fm^-3 unit
+        # E_kin in MeV unit
+        # rho in fm^-3 unit
+        
+        no sign change in imaginary part up to here 
         """
-        k = np.sqrt(2*mN*E_kin)/hc #fm^-1
+        k = np.sqrt(2*mN*E_kin/hc) #fm^-1
 
         if charge==1:
-            V = SE_interp(rho,delta,k,mode=0)
-            m_ratio = get_eff_mass(rho,delta,k,mode=0)
-            W = SE_interp(rho,delta,k,mode=1)*m_ratio
+            V = SE_interp(rho,delta,k,mode=0,data=data)
+            m_ratio = get_eff_mass(rho,delta,k,charge,data=data)
+            W = SE_interp(rho,delta,k,mode=1,data=data)*m_ratio
         elif charge==0:
-            V = SE_interp(rho,delta,k,mode=2)
-            m_ratio = get_eff_mass(rho,delta,k,mode=2)
-            W = SE_interp(rho,delta,k,mode=3)*m_ratio
-        return V+ 1j*W
+            V = SE_interp(rho,delta,k,mode=3,data=data)
+            m_ratio = get_eff_mass(rho,delta,k,charge,data=data)
+            W = SE_interp(rho,delta,k,mode=4,data=data)*m_ratio
+        return (V,W)
 
-    #---test NM optical
+    def opt_pot_NM2(E_kin,rho,delta,charge=None,data=None):
+        # for the case of one input is an array 
+        if isinstance(rho,(Sequence, np.ndarray)):
+            v=[];w=[];
+            for i in rho:
+                (a,b) = opt_pot_NM(E_kin,i,delta,charge,data)
+                v.append(a[0])
+                w.append(b[0])
+            return (v,w) 
+        elif isinstance(delta,(Sequence,np.ndarray)):    
+            v=[];w=[];
+            for i in delta:
+                (a,b) = opt_pot_NM(E_kin,rho,i,charge,data)
+                v.append(a[0])
+                w.append(b[0])
+            return (v,w) 
+        else: 
+            return opt_pot_NM(E_kin,rho,delta,charge,data)
+
+
+    # #---test NM optical
     plt.figure()
     plt.title('neutron-NM optical E=85 MeV')
     plt.xlabel('rho')
     plt.ylabel('MeV')
-    x = np.arange(0.01,0.3,0.01)
-    y = opt_pot_NM(85, x, 0,charge=0)
-    plt.plot( x, np.real(y),label='V(delta=0)')
-    plt.plot( x, np.imag(y),label='W(delta=0)')
-    y = opt_pot_NM(85, x, 0.6,charge=1)
-    plt.plot( x, np.real(y),label='V(delta=0.6)')
-    plt.plot( x, np.imag(y),label='W(delta=0.6)')
+    x = np.arange(0.01,0.3,0.01) #density 
+    (v,w) = opt_pot_NM2(85, x, 0,charge=0,data=data)
+    plt.plot( x, v,label='V(delta=0)')
+    plt.plot( x, w,label='W(delta=0)')
+    (v,w) = opt_pot_NM2(85, x, 0.6,charge=1,data=data)
+    plt.plot( x, v,label='V(delta=0.6)')
+    plt.plot( x, w,label='W(delta=0.6)')
     plt.legend()
         
-    #-- delta dependence plot 
+    # #-- delta dependence plot 
     plt.figure()
     plt.title('neutron-NM optical E=85 MeV')
     plt.xlabel('delta')
     plt.ylabel('MeV')
-    x = np.arange(0,0.7,0.1)
-    y = opt_pot_NM(85, 0.01, x,charge=0)
-    plt.plot( x, np.real(y),label='V(rho=0.01)')
-    plt.plot( x, np.imag(y),label='W(rho=0.01)')
-    y = opt_pot_NM(85, 0.32, x,charge=0)
-    plt.plot( x, np.real(y),label='V(rho=0.32)')
-    plt.plot( x, np.imag(y),label='W(rho=0.32)')
+    x = np.arange(0,0.7,0.1) #delta array 
+    (v,w) = opt_pot_NM2(85, 0.01, x,charge=0,data=data)
+    plt.plot( x, v,label='V(rho=0.01)')
+    plt.plot( x, w,label='W(rho=0.01)')
+    (v,w) = opt_pot_NM2(85, 0.32, x,charge=0,data=data)
+    plt.plot( x, v,label='V(rho=0.32)')
+    plt.plot( x, w,label='W(rho=0.32)')
     plt.legend() 
     
-    # energy dependence 
+    # # energy dependence 
     plt.figure() 
     plt.title('neutron-NM optical delta=0')
-    plt.xlabel('E[MeV]')
+    plt.xlabel('E [MeV]')
     plt.ylabel('MeV')
-    x = np.arange(0.02,4.0,0.1)**2/(2*mN/hc)*hc 
-    y = opt_pot_NM(x, 0.3, 0 ,charge=0)
-    plt.plot( x, np.real(y),label='V(rho=0.3,delta=0)')
-    plt.plot( x, np.imag(y),label='W(rho=0.3,delta=0)')
-    y = opt_pot_NM(x, 0.02, 0 ,charge=0)
-    plt.plot( x, np.real(y),label='V(rho=0.02,delta=0)')
-    plt.plot( x, np.imag(y),label='W(rho=0.02,delta=0)')
+    x = np.arange(0.04,3.9,0.1) # fm^-1 unit 
+    xe = x**2/(2*mN)*hc # MeV unit 
+    (v,w) = opt_pot_NM2(xe, 0.3, 0 ,charge=0,data=data)
+    plt.plot( xe, v,label='V(rho=0.3,delta=0)')
+    plt.plot( xe, w,label='W(rho=0.3,delta=0)')
+    (v,w) = opt_pot_NM2(xe, 0.02, 0 ,charge=0,data=data)
+    plt.plot( xe, v,label='V(rho=0.02,delta=0)')
+    plt.plot( xe, w,label='W(rho=0.02,delta=0)')
     plt.legend() 
     
     
-    #---optical potential for finite nuclei
-    def opt_pot_LDA(E_kin,f_dens_p,f_dens_n,charge=0,r_range=[0,20,0.5]):
+    # #---optical potential for finite nuclei
+    def opt_pot_LDA(E_kin,f_dens_p,f_dens_n,charge=0,r_range=[0,20,0.5],data=None):
         """
-        f_dens_p(r), f_dens_n(r) is an interpolating function
+         f_dens_p(r), f_dens_n(r) is an interpolating function
         """
         rmin,rmax,rstep = r_range
         R = np.arange(rmin,rmax+rstep,rstep)
@@ -347,11 +439,12 @@ if __name__ == '__main__':
             rho_p = f_dens_p(r)
             rho_n = f_dens_n(r)
             rho = rho_p + rho_n
-            rho_np = np.abs(rho_n -rho_p)*(rho_p>=1.e-10)*(rho_n>=1.e-10)
-            delta = (rho_np*(rho_np>=1.e-8)+0.0*(rho_np<1.e-8) )/rho
-            U.append( opt_pot_NM(E_kin,rho,delta,charge) )
-        return (R,U)
-    #---test with Sao-Paulo density
+            rho_np = (rho_n -rho_p)
+            delta = rho_np/rho
+            (v,w) = opt_pot_NM2(E_kin,rho,delta,charge,data)
+            U.append(v+1j*w)
+        return (R,np.array(U)) 
+    # #---test with Sao-Paulo density
     (rho_p,rho_n) = Sao_Paulo_density(40, 20)
     R=np.arange(0.,12.0,0.1)
     plt.figure()
@@ -361,9 +454,8 @@ if __name__ == '__main__':
     plt.plot(R, (rho_n(R)-rho_p(R))/(rho_n(R)+rho_p(R))*0.1,label='delta*0.1')
     plt.xlim(0,12)
     plt.legend()
-
-    (R,U) = opt_pot_LDA(85,rho_p,rho_n,charge=0,r_range=[0,12.0,0.1])
     plt.figure()
+    (R,U) = opt_pot_LDA(85,rho_p,rho_n,charge=0,r_range=[0,12.0,0.1],data=data)
     plt.plot(R,np.real(U),label='real')
     plt.plot(R,np.imag(U),label='imag')
     plt.xlim(0,12)
