@@ -22,7 +22,8 @@ SPE reader
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interpn
-from collections import Sequence 
+from scipy.special import spherical_jn
+from collections.abc import Sequence 
 
 dd = "./SPE_holt/" # file path
 hc=197.3269 # MeV fm
@@ -115,6 +116,49 @@ def Sao_Paulo_density(AP,ZP):
        rho_n = lambda r : shape_WS(r,R0=R_n,a0=a_n,V0=C_n)
        return (rho_p,rho_n)
 
+def SBT(k,r_i,w_i,f_i,L=0):
+    """
+    Compute spherical bessel transformation 
+    using quadrature r_i and weights w_i 
+    and function values at r_i 
+    
+    g(k) = \int_rmin^rmax dr j_0( k r )*f(r)  
+         => sum_i w_i* j_0(k*r_i)*f(r_i)  
+    
+    Note that r^2 factor should be included in the function f(r) 
+    """
+    jL = spherical_jn(L,k*r_i)
+    return np.sum(jL*w_i*f_i)
+
+def SBT2(k,fx,rmin=0.0,rmax=30.0,numq=70):
+    """
+    compute integral 
+    
+    g(k)=\int_rmin^rmax dr j_0(kr)*f(r) 
+    
+    by using Gauss-Legendre quadrature method 
+    
+    Parameters
+    ----------
+    k : real 
+        points of interest g(k)  
+    fx : function  
+        f(r) function  
+    rmin, rmax : real, optional
+        range of integration. The default is (0.0,30.0)
+    numq : integer, optional
+        number of quadrature. The default is 70.
+
+    Returns
+    -------
+    g(k) 
+    """
+    L=0 # at the moment, only j_0 is considered
+    r_i,w_i = gauleg(rmin,rmax,numq)
+    f_i = fx(r_i) 
+    jL = spherical_jn(L,k*r_i)
+    return np.sum(jL*w_i*f_i)
+    
 def read_spe_file(pn,dens,iso):
     # pn = 0 or 1
     # dens = 100*rho
@@ -211,8 +255,6 @@ def read_all_spe_files():
     alldat2 = read_all_spe_file() 
     data = add_derivative_spe(alldat2)
     return data 
-
-#----2021-10-18 working here 
     
 def prepare_interp_data(alldat):
     # re-arrange data points and values for multi-dimensional interpolation
@@ -425,8 +467,7 @@ if __name__ == '__main__':
     plt.plot( xe, v,label='V(rho=0.02,delta=0)')
     plt.plot( xe, w,label='W(rho=0.02,delta=0)')
     plt.legend() 
-    
-    
+        
     # #---optical potential for finite nuclei
     def opt_pot_LDA(E_kin,f_dens_p,f_dens_n,charge=0,r_range=[0,20,0.5],data=None):
         """
@@ -444,6 +485,7 @@ if __name__ == '__main__':
             (v,w) = opt_pot_NM2(E_kin,rho,delta,charge,data)
             U.append(v+1j*w)
         return (R,np.array(U)) 
+    
     # #---test with Sao-Paulo density
     (rho_p,rho_n) = Sao_Paulo_density(40, 20)
     R=np.arange(0.,12.0,0.1)
@@ -461,7 +503,61 @@ if __name__ == '__main__':
     plt.xlim(0,12)
     plt.legend()
 
+    def double_overlap(distance,e_A,frho1_p,frho1_n,R1,frho2_p,frho2_n,R2,data):
+        """
+        optical potential at distance between projectile and target
 
+        Parameters
+        ----------
+        distance : real
+            distance between projectile and target 
+        e_A : real
+            energy per nucleon of projectile
+        frho1_p : interpolating function
+            proton density distribution function in nucleus 1 
+        frho1_n : interpolating function
+            neutron density distribution function in nucleus 1
+        R1 : real
+            (solid) radius of nucleus 1 
+        frho2_p : interpolating function 
+            proton density distribution function in nucleus 2
+        frho2_n : interpolating function
+            neutron density distribution function in nucleus 2
+        R2 : real
+            (solid) radius of nucleus 1
+        data : dictionary
+            alldat = read_all_spe_files()
+            data = prepare_interp_data(alldat)
+        Returns
+        -------
+        pot_val : complex array
+            double folded optical potential value at distance
+
+        """ 
+        d = distance
+        # integration in one cap 
+        zmin = (d**2-R2**2+R1**2)/(2*d)
+        zmax = R1
+        zsum = 0.0 
+        for z in [zmin,zmax]:
+            rho_min = 0.0
+            rho_max = np.sqrt(R1**2-z**2)
+            for rho in [rho_min,rho_max]:
+                r_1 = np.sqrt(z**2+rho**2)
+                r_2 = np.sqrt( (d-z)**2+rho**2)
+                rho1p = frho1_p(r_1)
+                rho1n = frho1_n(r_1)
+                rho2p = frho2_p(r_2)
+                rho2n = frho2_n(r_2)
+                rho1 = rho1p+rho1n 
+                rho2 = rho2p+rho2n 
+                delta1 = (rho1n-rho1p)/rho1 
+                delta2 = (rho2n-rho2p)/rho2
+                #----
+                SE_interp(rho1,delta1,kk,mode=0,data=data)
+            
+        pot_val=None 
+        return pot_val 
 
 
 
