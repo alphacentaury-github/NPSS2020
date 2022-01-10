@@ -1,0 +1,13 @@
+
+ PARAMETERS FOR THE CALCULATION
+ CHANNEL: 0 - 0; ACCURACY:  .100E-09;  UPPER BOUND:  .800E+01;  INTERVALS: 20
+  NUMBER OF BASIS STATES:   10
+
+ S-MATRIX ELEMENTS FOR ANTISYMMETRIC SCATTERING
+
+            MOMENTUM K0        ABSOLUTE VALUE      PHASE
+              .2500E+01           .9990E+00       .4818E+02
+              .2625E+01           .9988E+00       .4454E+02
+              .2750E+01           .9974E+00       .4124E+02
+              .2875E+01           .1000E+01       .3915E+02
+              .3000E+01           .9649E+00       .3643E+02

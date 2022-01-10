@@ -1,0 +1,19 @@
+  1                    CHARGE NUMBER OF 3N-SYSTEM
+
+                       *************************************************
+                       *                1 : TANG-FORCE                 *
+  1                    * CENTRAL FORCE  2 : HEISS-HACKENBROICH-FORCE   *
+                       *                3 : HASEGAWA-NAGATA-FORCE      *
+                       *************************************************
+
+  1                    NUMBER OF DISTORTION CHANNELS (MAXIMUM 3)
+
+                       *********************************************
+  J    L  SBRA         *  NOTE THAT THE TOTAL SPIN IN THE KET IS   *
+  3    1    1          *  1/2. THUS, THE TOTAL ANGULAR MOMENTUM    *
+                       *  HAS TO BE J=L+1/2 OR J=L-1/2.            *
+                       *********************************************
+
+    0.95D0             PARAMETER IN THE CENTRAL FORCE
+  224.80D0  2.D0       DEPTH AND WIDTH OF THE LS-FORCE
+    0.35D0   40        STEPSIZE AND NUMBER OF MESHPOINTS (MAX . 70 )

@@ -1,0 +1,104 @@
+
+      THIS IS PROGRAM TIMORA (1989)   
+
+Nucleon mass (MeV), dr (fm), Grid points
+ 939.0  0.0400  300
+Meson masses (MeV): ms, mv, mrho
+    520.0000    783.0000    770.0000
+Coupling constants: gs^2, gv^2, grho^2, alpha
+  109.626404  190.430603   65.226196    0.091701
+Initial potential params: S(0), V(0), XR, A
+  490.000000  415.000000    3.500000    0.600000
+Convergence tolerances: Hartree, Dirac;  Field strengths: B(0), A(0)
+      0.0500      0.0050      0.0000      0.0000
+
+Level      degeneracy     Kappa    eigenvalue isospin  match radius 
+1S1/2         2.00       -1.00      -68.00        0.50        2.00
+1P3/2         4.00       -2.00        1.00        0.50        3.00
+1P1/2         2.00        1.00      -44.00        0.50        3.00
+1D5/2         6.00       -3.00      -40.00        0.50        3.00
+2S1/2         2.00       -1.00        1.00        0.50        4.00
+1D3/2         4.00        2.00        1.00        0.50        4.00
+1S1/2         2.00       -1.00      -60.00       -0.50        2.00
+1P3/2         4.00       -2.00        1.00       -0.50        3.00
+1P1/2         2.00        1.00        1.00       -0.50        3.00
+1D5/2         6.00       -3.00        1.00       -0.50        3.00
+2S1/2         2.00       -1.00        1.00       -0.50        4.00
+1D3/2         4.00        2.00        1.00       -0.50        4.00
+
+NOW WORKING ON ITERATION   1
+
+Proton rms radius =  3.3415 fm    Neutron rms radius =  3.3416 fm  
+Energy/nucleon =    -2.282 MeV
+
+NOW WORKING ON ITERATION   2
+
+Proton rms radius =  3.3984 fm    Neutron rms radius =  3.3136 fm  
+Energy/nucleon =    -7.286 MeV
+
+NOW WORKING ON ITERATION   3
+
+Proton rms radius =  3.4194 fm    Neutron rms radius =  3.3751 fm  
+Energy/nucleon =    -5.413 MeV
+
+NOW WORKING ON ITERATION   4
+
+Proton rms radius =  3.3954 fm    Neutron rms radius =  3.3331 fm  
+Energy/nucleon =    -5.756 MeV
+
+NOW WORKING ON ITERATION   5
+
+Proton rms radius =  3.3677 fm    Neutron rms radius =  3.3196 fm  
+Energy/nucleon =    -6.675 MeV
+
+NOW WORKING ON ITERATION   6
+
+Proton rms radius =  3.3874 fm    Neutron rms radius =  3.3282 fm  
+Energy/nucleon =    -6.521 MeV
+
+NOW WORKING ON ITERATION   7
+
+Proton rms radius =  3.3921 fm    Neutron rms radius =  3.3390 fm  
+Energy/nucleon =    -6.129 MeV
+
+NOW WORKING ON ITERATION   8
+
+Proton rms radius =  3.3872 fm    Neutron rms radius =  3.3311 fm  
+Energy/nucleon =    -6.218 MeV
+
+NOW WORKING ON ITERATION   9
+
+Proton rms radius =  3.3829 fm    Neutron rms radius =  3.3292 fm  
+Energy/nucleon =    -6.380 MeV
+
+NOW WORKING ON ITERATION  10
+
+Proton rms radius =  3.3867 fm    Neutron rms radius =  3.3311 fm  
+Energy/nucleon =    -6.335 MeV
+
+NOW WORKING ON ITERATION  11
+
+Proton rms radius =  3.3873 fm    Neutron rms radius =  3.3328 fm  
+Energy/nucleon =    -6.268 MeV
+
+NOW WORKING ON ITERATION  12
+
+Proton rms radius =  3.3863 fm    Neutron rms radius =  3.3313 fm  
+Energy/nucleon =    -6.290 MeV
+
+NOW WORKING ON ITERATION  13
+
+Proton rms radius =  3.3857 fm    Neutron rms radius =  3.3310 fm  
+Energy/nucleon =    -6.318 MeV
+
+NOW WORKING ON ITERATION  14
+
+Proton rms radius =  3.3864 fm    Neutron rms radius =  3.3314 fm  
+Energy/nucleon =    -6.307 MeV
+
+NOW WORKING ON ITERATION  15
+
+
+
+CONVERGED *********************************
+FORTRAN STOP

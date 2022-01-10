@@ -1,0 +1,33 @@
+0,                                              IWUNIT "FIT Z-sigma II
+ , ,                                             NGRID,RSTEP
+ , ,                                              IWR,IFPLOT 
+ , , , , ,                                       ITMAX,DABR,DABE,ITPR,EPSPR
+ , , ,                                           XODAMP,EODAMP,ADDNEW
+1,1,1,0,0,                                       IF:EX,TM,ZPE,DFMS,RHOC
+-1983.76,362.252,-104.27,11861.4,123.69,          TO,T1,T2,T3,T4  
+1.1717,0.,0.,1.7620,                              XO,X1,X2,X3
+0.25 , 1.0, , ,                                   POWER,ACOUL,PAIRFP,PAIRFN
+82,126, , ,                                       NPROT,NNEUT,NMAXP,NMAXN
+0,                                               IWUNIT "Skyrme M*"
+00,0.3,                                          NGRID,RSTEP
+-1,0,                                            IWR,IFPLOT
+80,0.0001,0.0001,4,0.0001,                        ITMAX,DABR,DABE,ITPR,EPSPR 
+0.0,40.0,0.5,                                      XODAMP,EODAMP,ADDNEW
+1,1,1,0,0, ,                                      IF:EX,TM,ZPE,DFMS,RHOC
+-2645.0,410.0,-135.0,15595.0,130.0,                TO,T1,T2,T3,T4
+0.09,0. ,0. ,0.0,                                 XO,Xi,X2,X3
+0.16666667,1.0,-1.1E11,-1.1E11,                   POWER,ACOUL,GAPP,GAPN
+50,74,00,00,                                       NPROT,NNEUT,NMAXP,NMAXN
+0,                                                 IWUNIT "Skyrme 3 II
+00,0.3,                                            NGRID,RSTEP
+-1,1,                                              IWR,IFPLOT
+80,0.00001,0.00001,4, ,                             ITMAX,DABR,DABE,ITPR,EPSPR 
+1.00,40.0,0.5,                                     XODAMP,EODAMP,ADDNEW
+1,0,0,0,0,                                            IF:EX,TM,ZPE,DFMS,RHOC
+-1128.75,395.0,-95.0,14000.0,120.0,                TO,T1,T2,T3,T4
+0.45,0. ,0. ,1.0,                                  XO,Xi,X2,X3
+1.0,1.0,0.0,0.0,                                   POWER,ACOUL,GAPP,GAPN
+08,09,03,04,                                        NPROT,NNEUT,NMAXP,NMAXN
+1,1,1,                                             WEIGHT (PROTONS)
+1,1,1,.16666667,                                    WEIGHT (NEUTRONS)
+-1,                                                 TO STOP

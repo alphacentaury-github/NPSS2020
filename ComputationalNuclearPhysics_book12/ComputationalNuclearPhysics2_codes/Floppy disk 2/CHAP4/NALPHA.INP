@@ -1,0 +1,13 @@
+  0                     CHARGE NUMBER OF THE SINGLE NUCLEON
+
+                        **********************************************
+                        *                1. TANG-FORCE               *
+  1                     * CENTRAL FORCE: 2. HEISS-HACKENBROICH-FORCE *
+                        *                3. HASEGAWA-NAGATA-FORCE    *
+                        **********************************************
+
+  3  1  1               ANGULAR MOMENTA J,L,S
+
+   0.95D0               PARAMETER of the CENTRAL FORCE
+ 224.80D0  2.000D0      DEPTH AND WIDTH OF LS-FORCE      / VO,LAM
+   0.35D0     40        STEPSIZE AND NUMBER OF MESHPOINTS (MAX. 240)

@@ -1,0 +1,8 @@
+ Parametrization option: RLF (1) or MRW (2)
+ 1
+ PS (1) or PV (2) coupling; Pauli blocking? No (0) Yes (1)
+ 2,1
+ Lab kinetic energy (MeV); Target mass number
+ 400.,40.  
+ grid spacing (fm), # grid pts, # Gauss nodes r', # nodes w or q
+ .04,300,32,32

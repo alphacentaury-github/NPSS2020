@@ -1,0 +1,8 @@
+theta0, thetamax, dtheta:
+0.3,120.,0.5
+almax, dr, rmax:
+80.,.04,12.0
+Elab, Am1, Z1, Am2, Z2, Rcou0:
+400.,1.007,1.,40.,20.,1.25
+Ipotop: (1 = read potentials, 0 = Woods-Saxon)
+1

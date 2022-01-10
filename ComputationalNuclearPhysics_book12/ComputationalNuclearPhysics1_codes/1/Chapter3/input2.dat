@@ -1,0 +1,15 @@
+ 1,  70,90,21,2                Z,N,LEV_PRINT,IN_LEV (D: , ,21,0)
+ 2,  1,0.2,                    NEPS,(EPSI(I),I=1,NEPS)
+ 3, -3,-15.,60.,15.,           NGAM,(GAMI(I),I=1,NGAM)
+ 4,  1,0.,                     NEPS4,(EPS4I(I),I=1,NEPS4)
+ 5,  -3,0.0,0.8,0.1,           NOMEGA,(OMEGA(I),I=1,NOMEGA)
+0,,,,,,,,,,,,             IN_LEV=0 stops here
+ 6,  0,3,0.                    IDEF_TYP,NVAR,FI (D:0,3,0.)
+ 7,  'nicra2.spag',1,2.        filename,IF_SPOUT,SPERANGE (D:' ',0,3)
+ 8,  'nicra160yb',1,           filename,IF_LEVSAV (D:' ',0)
+ 9,  'nicra.ener',1,10         filename,IF_TOTEOUT,ISTEP (D:' ',0,0)
+0,,,,,,,,,,,              IN_LEV=1 stops here
+10,  1,2,1,1                   IF_MEV,IF_STRUT,IF_Q2,IF_BCS (D:1,2,1,1)
+11,  1,1,2,1                   IF_DROPCALC,ISO1,ISO2,IF_ISOENEROUT (D:1,1,2,0)
+1000,  1                       IF_GO,(0=>stop for testing: only read and write)
+

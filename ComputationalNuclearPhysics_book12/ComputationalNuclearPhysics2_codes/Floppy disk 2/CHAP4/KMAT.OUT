@@ -1,0 +1,117 @@
+***  Sample Output for a Calculation of Alpha-Deuteron Scattering ***
+***  in the D-Wave with Total Angular Momentum J=3.               ***
+***  One PseudoState has been Considered.                         ***
+***  The Calculation Corresponds to the Input File KMAT.INP       ***
+***  and the File ALPHAD.INP, which Creates the Integral Kernels. ***
+
+
+ TOTAL ANG. MOMENTUM  J :  6/ 2
+
+ DISCR. STEPSIZE :    .350   NUMBER of MESHPOINTS :   40
+
+ CHANNEL :  1   ORB. ANG. MOMENTUM : 2   SPINSTAT. FACTOR :   3.00   AMUE :  1.333
+ CHANNEL :  2   ORB. ANG. MOMENTUM : 2   SPINSTAT. FACTOR :   3.00   AMUE :  1.333
+
+
+
+
+
+
+
+            *********************************************
+            * S M A T R I X   AND   S - F A K T O R S *
+            *********************************************
+
+
+ ENERGY IN CHANNEL NR. 1    :      .050000*MEV
+ ENERGY IN CHANNEL NR. 2    :    -7.635768*MEV
+
+ DETERMINANT OF HB (A * 2**R) :   -.52185E-01
+
+
+
+
+
+       ************************************************************
+
+       * SMAT(1,1)   VALUE: 1.0000000000   PHASE : 180.0000*DEG *
+
+       ************************************************************
+
+       SIG(1->1) :  .91091E+02 *B       S-FAK11 :  .12414E+06 MEV*B
+
+       DETERMINANT of SMATRIX : .10000000E+01    360.0000*DEG
+
+                    ///  UNITARITY of SMATRIX  ///
+                   HDIA : .00000E+00    NDIA : .00000E+00
+ ================================================================================
+
+ ENERGY IN CHANNEL NR. 1    :      .100000*MEV
+ ENERGY IN CHANNEL NR. 2    :    -7.585768*MEV
+
+ DETERMINANT OF HB (A * 2**R) :   -.80539E-02
+
+
+
+
+
+       ************************************************************
+
+       * SMAT(1,1)   VALUE: 1.0000000000   PHASE : 180.0000*DEG *
+
+       ************************************************************
+
+       SIG(1->1) :  .36357E+02 *B       S-FAK11 :  .49767E+04 MEV*B
+
+       DETERMINANT of SMATRIX : .10000000E+01    360.0000*DEG
+
+                    ///  UNITARITY of SMATRIX  ///
+                   HDIA : .22204E-15    NDIA : .00000E+00
+ ================================================================================
+
+ ENERGY IN CHANNEL NR. 1    :      .150000*MEV
+ ENERGY IN CHANNEL NR. 2    :    -7.535768*MEV
+
+ DETERMINANT OF HB (A * 2**R) :   -.31685E-02
+
+
+
+
+
+       ************************************************************
+
+       * SMAT(1,1)   VALUE: 1.0000000000   PHASE : 179.9999*DEG *
+
+       ************************************************************
+
+       SIG(1->1) :  .18397E+02 *B       S-FAK11 :  .10038E+04 MEV*B
+
+       DETERMINANT of SMATRIX : .10000000E+01    359.9999*DEG
+
+                    ///  UNITARITY of SMATRIX  ///
+                   HDIA : .00000E+00    NDIA : .00000E+00
+ ================================================================================
+
+ ENERGY IN CHANNEL NR. 1    :      .200000*MEV
+ ENERGY IN CHANNEL NR. 2    :    -7.485768*MEV
+
+ DETERMINANT OF HB (A * 2**R) :   -.17211E-02
+
+
+
+
+
+       ************************************************************
+
+       * SMAT(1,1)   VALUE: 1.0000000000   PHASE : 179.9998*DEG *
+
+       ************************************************************
+
+       SIG(1->1) :  .10993E+02 *B       S-FAK11 :  .36299E+03 MEV*B
+
+       DETERMINANT of SMATRIX : .10000000E+01    359.9996*DEG
+
+                    ///  UNITARITY of SMATRIX  ///
+                   HDIA : .22204E-15    NDIA : .00000E+00
+ ================================================================================
+

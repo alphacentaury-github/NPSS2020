@@ -1,0 +1,32 @@
+ 1,  70,90,21,2,               Z,N,LEV_PRINT,IN_LEV (D: , ,21,0)
+ 2,  1,0.20,                   NEPS,(EPSI(I),I=1,NEPS)
+ 3,  1,0.0,                    NGAM,(GAMI(I),I=1,NGAM)
+ 4,  1,0.0,                    NEPS4,(EPS4I(I),I=1,NEPS4)
+ 5,  -3,0.0,0.7,0.1,           NOMEGA,(OMEGA(I),I=1,NOMEGA)
+ 0,,,,,,,                 IN_LEV=0 stops here
+ 6,  2,3,0.                    IDEF_TYP,NVAR,FI (D:0,3,0.)
+ 7,  'nicra.spag',1,3.,        filename,IF_SPOUT,SPERANGE (D:' ',0,3)
+ 8,  'nicra160yb', 0,          filename,IF_LEVSAV (D:' ',0)
+ 9,  'nicra.ener',1,10,        filename,IF_TOTEOUT,ISTEP (D:' ',0,0)
+ 0,,,,,,,,,,,,,,          IN_LEV=1 stops here
+10,  1,2,1,1                   IF_MEV,IF_STRUT,IF_Q2,IF_BCS (D:1,2,1,1)
+11,  1,2,2,1                   IF_DROPCALC,ISO1,ISO2,IF_ISOENEROUT (D:1,1,2,0)
+1000,  1,,,,,,,                IF_GO,(0=>stop for testing: only read and write)
+ 0,,,,,,,,,,,,,,          IN_LEV=2 stops here
+12,  4, 8, 8,,,,,,              NUU,NMAX(pro),NMAX(neu),G0,G1,KOEFF_RANGE
+ 0,,,,,,,,,,                          (D:4,MAXN,MAXN,19.2,7.4,15)
+13,  0.120,0.00, 0.120,0.00     kappa(N=0,pro),my(N=0,pro),kappa(0,neu),my(0,n)
+14,  0.120,0.00, 0.120,0.00     kappa(N=1,pro),my...
+15,  0.105,0.00, 0.105,0.00      .
+16,  0.090,0.30, 0.090,0.25      .
+17,  0.065,0.57, 0.070,0.39      .
+18,  0.060,0.65, 0.062,0.43      .
+19,  0.054,0.69, 0.062,0.34      .
+20,  0.054,0.69, 0.062,0.26      .
+21,  0.054,0.69, 0.062,0.26      .
+22,  0.054,0.69, 0.062,0.26      .
+23,  0.054,0.69, 0.062,0.26      .
+24,  0.054,0.69, 0.062,0.26     kappa(N=11,pro),my...
+25,  0.054,0.69, 0.062,0.26     kappa(N=12,pro),my...
+
+

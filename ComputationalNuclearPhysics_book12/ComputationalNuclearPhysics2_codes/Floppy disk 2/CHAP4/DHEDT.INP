@@ -1,0 +1,20 @@
+  1                    CHARGE NUMBER OF 3-NUCLEON SYSTEM
+
+                       *************************************************
+                       *                1 : TANG-FORCE                 *
+  1                    * CENTRAL FORCE  2 : HEISS-HACKENBROICH-FORCE   *
+                       *                3 : HASEGAWA-NAGATA-FORCE      *
+                       *************************************************
+
+  1                    NUMBER OF DISTORTION CHANNELS (MAXIMUM 3)
+
+                       *************************************************
+  J    L  SBRA  SKET   * ANGULAR MOMENTA J,L,SBRA,SKET                 *
+  3    0    3     3    *                                               *
+                       *                                               *
+                       *                                               *
+                       *************************************************
+
+    1.10D0             PARAMETER OF THE CENTRAL FORCE
+  000.00D0  2.D0       DEPTH AND WIDTH OF THE LS-FORCE
+    0.35D0   40        STEPSIZE AND NUMBER OF MESHPOINTS (MAX . 70 )

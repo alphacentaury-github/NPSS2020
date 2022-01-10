@@ -1,0 +1,10 @@
+                   *********************************************
+                   *                1.              TANG-FORCE *
+ 2                 * CENTRAL FORCE: 2.Hackenbroich-HEISS-FORCE *
+                   *                3.   HASEGAWA-NAGATA-FORCE *
+                   *********************************************
+
+ 2 2 0             angular momenta J,L,S
+
+ 0.63d0           parameter in the central force
+ 0.35D0   40       stepsize and number of meshpoints (MAX. 240)
