@@ -9,6 +9,8 @@ Program to solve Brueckner equation in symmetric nuclear matter
 Following examples given in Haftel and Tabakin paper
   NPA158(1970)1 
 
+To do : instead of effective mass approximation,
+        I may use the full s.p. potential U(k). 
 """
 import numpy as np
 import matplotlib.pyplot as plt 
@@ -34,7 +36,7 @@ def leggau(n,xmin=-1,xmax=+1):
     wp=(xmax-xmin)*0.5*w 
     return xp,wp
 
-def example_pot(k,kp,alph=3.6, a=1.2):
+def example_pot(k,kp,L=0,Lp=0,alph=3.6, a=1.2):
     """
      eq.(3.15) in REF
      
@@ -68,6 +70,46 @@ def effective_2e(K,k, opt,effective_ratio=None,effective_U0=None):
        return (K**2+k**2)/effective_ratio-2.0*mN*effective_U0/hbarc**2
     else :
        raise ValueError('Error: unknown opt in effective_e')
+
+def effective_2e_U(K,q,kF,interp_U,nleg=50):
+    """
+    Input
+    ------
+    K : scalar , in fm^-1 units
+    q : arrayin fm^-1 units
+    kF: scalar, fm^-1 units 
+    interp_U: interpolation function, U(p) in MeV units
+    
+    corresponds to eq. (3.8) in REF. 
+    m*E(k,K) = m*(k^2/m+K^2/m+U(|k+K|)+U(|k-K|) )
+    
+    But, this makes denominator have angular dependence. 
+    --> to define angle averaged one 
+    one have to use eq.(12) of NPA414(1984)_Rikus
+    
+    E(k,K) = k^2/m + K^2/m + fac1/fac2 
+    
+    fac1 = \int_{-1}^1 dx Q(K,k,k_F)*(U(|K+k|+U(|K-k|))
+    fac2 = \int_{-1}^1 dx Q(K,k,k_F)
+    where Q(K,q,k_F) is angle dependent one.                                 
+    """
+    def Q(K,q,kF,x):
+        case0 = np.array(K**2+q**2+2*K*q*x > kF**2)*1.0 # |K+q|> kF
+        case1 = np.array(K**2+q**2-2*K*q*x > kF**2)*1.0 # |K-q|> kF
+        return case0*case1 
+    # fac1  
+    xx, wxx = leggau(nleg,-1.0,1.0)
+    Kplusq = np.sqrt(K**2+q**2+2*K*q*xx)
+    Kmnusq = np.sqrt(K**2+q**2-2*K*q*xx)
+    sums1 = 0.0 
+    sums2 = 0.0
+    for i in range(nleg):
+        sums1 = sums1 + wxx[i]*Q(K,q,kF,xx[i])*(interp_U(Kplusq)+interp_U(Kmnusq))
+        sums2 = sums2 + wxx[i]*Q(K,q,kF,xx[i]) 
+    out = q**2+K**2 + sums1/sums2*mN/hbarc**2    
+    return out 
+
+
 
 def av_ang_Q(K,kp,kF):
     """
@@ -183,13 +225,13 @@ def test_example_G00(kF=1.45,k0_vals=[1.015,0.725,0.435]
   for k0 in k0_vals:
     G00_0=np.array([example_G00_exact(i,k0, k0,kF
             ,effective_ratio,effective_U0
-            ,method='leggau',nleg=100) for i in K])
+            ,method='leggau',nleg=50) for i in K])
     plt.plot(K,G00_0,'*')  
     # comparison with  (3.16) and G00 from matrix inversion
-    #gg=np.array([ example_G00_invmat(i,k0,kF
-    #                  ,effective_ratio=0.8,effective_U0=80.0
-    #                  ,method='leggau',nleg=100)[-1] for i in K])  
-    #plt.plot(K,gg,'+')  
+    gg=np.array([ example_G00_invmat(i,k0,kF
+                      ,effective_ratio=0.8,effective_U0=80.0
+                      ,method='leggau',nleg=50)[-1] for i in K])  
+    plt.plot(K,gg)  
   return 
 
 def example_U(k, kF, nleg=50):
@@ -248,16 +290,17 @@ def example_U_2(k, kF,effective_ratio=0.8,effective_U0=80, nleg=50):
     integrand1=np.array([ wk_1[i]*k0_1[i]**2
                          *example_G00_exact(Kav_1[i],k0_1[i],k0_1[i],kF
                          ,effective_ratio,effective_U0
-                         ,method='leggau',nleg=200)  
+                         ,method='leggau',nleg=40)  
                          for i in np.arange(nleg)])
 
     integrand2=1./(2.0*k)*np.array([ wk_2[i]*k0_2[i]
                  *( (kF**2-k**2)/4.-k0_2[i]*(k0_2[i]-k))
                  *example_G00_exact(Kav_2[i],k0_2[i],k0_2[i],kF
                          ,effective_ratio,effective_U0
-                         ,method='leggau',nleg=200)
+                         ,method='leggau',nleg=40)
                  for i in np.arange(nleg)] )
     fac3=np.sum(integrand1)+ np.sum(integrand2)  
+    # How to update effective ratio and U0 from U(k)?? 
     return fac1*fac2*fac3 #, fac1*fac2*np.sum(integrand1), fac1*fac2*np.sum(integrand2)
 
 def test_example_U(kF,nleg=50):
@@ -274,5 +317,5 @@ def test_example_U(kF,nleg=50):
 #============================================================
 if __name__ == '__main__':
     test_example_G00(1.45) # Fig.1
-    test_example_U(1.45) # Fig.2 
+    test_example_U(1.45,nleg=50) # Fig.2 
     
