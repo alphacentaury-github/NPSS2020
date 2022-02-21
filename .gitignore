@@ -1,11 +1,8 @@
 
-.ipynb_checkpoints/ML_lecture1-checkpoint.ipynb
-.ipynb_checkpoints/ML_lecture1-checkpoint.ipynb
-.ipynb_checkpoints/ML_lecture2-checkpoint.ipynb
+.ipynb_checkpoints/*
 .ipynb_checkpoints/README-checkpoint.md
 *.pyc
+fort.*
 OpticalPotential/ML_optical/_test.in
 OpticalPotential/ML_optical/_test.out
-OpticalPotential/ML_optical/.ipynb_checkpoints/ML_lecture2-checkpoint.ipynb
-OpticalPotential/ML_optical/.ipynb_checkpoints/ML_NCSM-checkpoint.ipynb
-OpticalPotential/ML_optical/.ipynb_checkpoints/ML_lecture1-checkpoint.ipynb
+OpticalPotential/ML_optical/.ipynb_checkpoints/*

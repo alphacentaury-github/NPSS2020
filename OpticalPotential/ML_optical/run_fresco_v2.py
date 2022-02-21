@@ -47,6 +47,7 @@ import numpy as np
 import numpy.linalg as npla
 
 from subprocess import (call,Popen)
+import subprocess
 import myutil
 from myutil import read_fresco_res ,clean_comm
 
@@ -1056,7 +1057,10 @@ def run_fresco_from_input_txt(fresco_input_txt,
     fort_files = glob.glob('fort.*')    
     for i in fort_files:
         if not(i == 'fort.4'):
-            os.remove(i) 
+            try:
+                os.remove(i) 
+            except:
+                print('Error removing {} file'.format(i))
     # remove previous input/ouputs
     try:
         os.remove(fresco_input_path)    
@@ -1070,7 +1074,9 @@ def run_fresco_from_input_txt(fresco_input_txt,
     ff.close() 
     
     proc = Popen(fresco_path +" < "+fresco_input_path
-                 +" > "+fresco_output_path,shell=True)
+                 +" > "+fresco_output_path,stdout=subprocess.PIPE
+                 ,shell=True)
+    (output, err) = proc.communicate()
     proc.wait() 
     proc.terminate() 
              

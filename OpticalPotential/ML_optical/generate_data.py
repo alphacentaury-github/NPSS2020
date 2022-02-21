@@ -87,20 +87,39 @@ def elastic_run(AP,ZP,AT,ZT,Elab,V, rv, av, W, rw, aw, rc):
 #-----------------------------------------------------------------------------
 if __name__ == '__main__':    
     #main routine 
+    data={'AP':[],'ZP':[],'AT':[],'ZT':[],'Elab':[],
+          'V':[],'rv':[],'av':[],'W':[],'rw':[],'aw':[],'rc':[],
+          'theta':[],'sigma':[]}    
+    
     for AP in [1]:
         for ZP in [1]:
             for AT in [12]:
                 for ZT in [6]:
                     for Elab in [10.0,12.0]:
-                        for V in [10.0,20.0,30.0,40.0]:
-                            for rv in [1.2,1.25,1.3]:
-                                for av in [0.6,0.65,0.7]:
-                                    for W in [5.0,10.0,15.0,20.0]:
-                                        for rw in [1.2,1.25,1.3]:
+                        for V in [10.0,20.0]:
+                            for rv in [1.2,1.25]:
+                                for av in [0.6,0.65]:
+                                    for W in [5.0,10.0]:
+                                        for rw in [1.2,1.25]:
                                             for aw in [0.65]:
                                                 for rc in [1.2]:
                                                     out = elastic_run(AP,ZP,AT,ZT,Elab,V, rv, av, W, rw, aw, rc)
                                                     plt.semilogy(out[0][:,0],out[0][:,1])
+                                                    data['AP'].append(AP)
+                                                    data['ZP'].append(ZP)
+                                                    data['AT'].append(AT)
+                                                    data['ZT'].append(ZT)
+                                                    data['Elab'].append(Elab)
+                                                    data['V'].append(V)
+                                                    data['rv'].append(rv)
+                                                    data['av'].append(av)
+                                                    data['W'].append(W)
+                                                    data['rw'].append(rw)
+                                                    data['aw'].append(aw)
+                                                    data['rc'].append(rc)
+                                                    data['theta'].append(out[0][:,0])
+                                                    data['sigma'].append(out[0][:,1])
+                                                    
                                                 
     
     
