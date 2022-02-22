@@ -28,6 +28,7 @@ import myutil
 from myutil import read_fresco_res ,clean_comm
 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 import run_fresco_v2 as frun 
 
@@ -83,6 +84,87 @@ def elastic_run(AP,ZP,AT,ZT,Elab,V, rv, av, W, rw, aw, rc):
                                   fresco_input_path='_test.in',
                                   fresco_output_path='_test.out')
     return output 
+
+def prepare_NN_input(data,
+      list_of_keys=['AP','ZP','AT','ZT','Elab','V','rv','av','W','rw','aw','rc']):
+    """
+    convert the dictionary into the data frame for machine learning
+    
+    (0) choose data range 
+    (1) rearrange inputs
+    (2) rescale inputs
+    (3) randomize
+    (4) separate train set and test set (also possibly validation set)
+    
+    Parameters
+    ----------
+    data : dictionary 
+        contains keys 'AP','ZP','ZT','ZT','Elab'
+                      'V','rv','av','W','rw','aw','rc'
+                      'theta','sigma'
+    Returns
+    -------
+
+    """
+    # flatten data ... there may be a better way to do this 
+    input_dic={}
+    for keys in data.keys():
+        input_dic[keys]=[]
+    
+    num_omp = len(data['AP']) #number of omp parameter combinations
+    num_angl = len(data['theta'][0]) #number of angles for one omp combination
+    for i in range(num_omp):
+        for j in range(num_angl):
+            for keys in (list_of_keys):
+                input_dic[keys].append(data[keys][i])
+            input_dic['theta'].append(data['theta'][i][j])
+            input_dic['sigma'].append(data['sigma'][i][j])
+    # convert into data frame        
+    input_df = pd.DataFrame.from_dict(input_dic)
+    # select data 
+    input_df = input_df[ (input_df['theta']< 180) & (input_df['Elab'] > 5.0)
+                        & input_df['sigma'] > 1.e-3 ]
+    # radomize 
+    input_df = input_df.reindex(
+        np.random.permutation(input_df.index) )
+    # define train set and test set 
+    dataset = input_df 
+    train_dataset = dataset.sample(frac=0.8) #train+validation set 
+    dataset = dataset.drop(train_dataset.index) #remove trainset from data-->test set 
+    test_dataset = dataset 
+    return (train_dataset,test_dataset)
+
+def preprocess_features(data_frame):
+  """Prepares input features from California housing data set.
+
+  Args:
+    data_frame: A Pandas DataFrame expected to contain data
+  Returns:
+    A DataFrame that contains the features to be used for the model, including
+    synthetic features.
+    
+    Note: Synthetic features should be encoded here 
+  """
+  feature_choices=["N","Z"]
+  selected_features = data_frame[ feature_choices ]
+  processed_features = selected_features.copy() # to make symthetic features 
+  # Create a synthetic feature.
+  #processed_features["Asym"] =  data_frame["NZ"] / data_frame["A"]
+  return processed_features
+
+def preprocess_targets(data_frame):
+  """Prepares target features (i.e., labels) from data set.
+  Args:
+    data_frame: A Pandas DataFrame expected to contain data
+    target_feature : target feature    
+  Returns:
+    A DataFrame that contains the target feature.
+  """  
+  output_targets = pd.DataFrame()
+  # Scale the target 
+  target_feature="BE/A"
+  output_targets[target_feature] = (data_frame[target_feature]/1000.) #to MeV unit
+  return output_targets    
     
 #-----------------------------------------------------------------------------
 if __name__ == '__main__':    
@@ -90,7 +172,7 @@ if __name__ == '__main__':
     data={'AP':[],'ZP':[],'AT':[],'ZT':[],'Elab':[],
           'V':[],'rv':[],'av':[],'W':[],'rw':[],'aw':[],'rc':[],
           'theta':[],'sigma':[]}    
-    
+    #----generate data
     for AP in [1]:
         for ZP in [1]:
             for AT in [12]:
@@ -119,8 +201,12 @@ if __name__ == '__main__':
                                                     data['rc'].append(rc)
                                                     data['theta'].append(out[0][:,0])
                                                     data['sigma'].append(out[0][:,1])
-                                                    
-                                                
+    #----convert data into train/test data frame                                                 
+    (train_dataset,test_dataset) = prepare_NN_input(data)                                                
+    #train_examples = preprocess_features(train_dataset)
+    #train_labels = preprocess_targets(train_dataset)
+    #test_examples = preprocess_features(test_dataset)                                            
+    #test_labels = preprocess_targets(test_dataset)
     
     
     
