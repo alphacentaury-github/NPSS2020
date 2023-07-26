@@ -3,5 +3,7 @@ double differential cross section d^2\sigma/ dP d\Omega of projectile fragmentat
 at low energy ~ 10 A MeV. 
 For example, 40Ar projectile on 9Be target to produce 30Mg fragment at 15A MeV. 
 Notami paper and Tarasov paper are fitted around 90A MeV .  
+(According to the KOBRA plan, 40Ar 25A MeV beam would be available.) 
 
 How to get the relevant data and make a fitting formula?? 
+
