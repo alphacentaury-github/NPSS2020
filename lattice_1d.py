@@ -64,7 +64,7 @@ def get_HKin(iKin,test=False):
 
 def get_sqwell_pot(c=1,R0=3.0/a_fm,V0 = -20./cutoff):    
     # square-well-potential case 
-    print('V0={} MeV, R0={} fm'.format(V0*cutoff,R0*a_fm))
+    print('square well V0={} MeV, R0={} fm'.format(c*V0*cutoff,R0*a_fm))
     H_V = np.zeros((L,L))
     H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
     return H_V 
@@ -103,12 +103,46 @@ if __name__ == "__main__":
     print('test problem')
     test_sqwell_sol()
     
-    #-----define potential constructor 
+    #----- PMM test Problem-------------------------- 
+    #-----define Hamiltonian constructor H(c) 
     R0 = 3.0/a_fm # fm -> l.u 
-    V0 = -150.0/cutoff # MeV -> l.u 
-
+    V0 = -150.0/cutoff # MeV -> l.u  
     getHc = lambda c: get_Htot(get_sqwell_pot,c,R0,V0)
     
+    #---list of train data 
     clist = [0.1,0.2,0.3,0.5,0.6,0.7,0.8,0.9]
+    data=[]
+    for c in clist:
+        Htot = getHc(c)
+        data.append(scipy.linalg.eigvalsh(Htot)[:2])
+    data = np.array(data)
+    print(data)    
+    
+    #-----construct torch model
+    import torch 
+    import torch.nn as nn 
+    import torch.optim as optim
+    
+    class MyModule(nn.Module):
+        """
+        model of 2d PMM 
+        """
+        def __init__(self,):
+            super(MyModule,self).__init__()
+            self.var1 = torch.Variable([1.0,1.0,1.0,1.0],require_grad=True)
+            self.var2 = torch.Variable([1.0,1.0,1.0,1.0],require_grad=True)
+        def forward(self,input):
+            def mm_var(var):
+                s0 = torch.tensor( [ [1.0,0.0],[0.0,1.0]])
+                sx = torch.tensor( [ [0.0,1.0],[1.0,0.0]])
+                sy = torch.tensor( [ [0.0+0j,-1j],[1j,0.0+0j]],dtype=torch.complex64)
+                sz = torch.tensor( [ [1.0,0.0],[0.0,-1.0]])
+                return s0*var[0]+sx*var[1]+sy*var[2]+sz*var[3]
+            M1 = mm_var(self.var1)
+            M2 = mm_var(self.var2)
+            Mtot = M1 + input *M2
+            dd = torch.linalg.eigvalsh(Mtot)
+            return dd 
+    
     
     
