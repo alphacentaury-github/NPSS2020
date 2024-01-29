@@ -122,26 +122,49 @@ if __name__ == "__main__":
     import torch 
     import torch.nn as nn 
     import torch.optim as optim
+    from torch import FloatTensor
+    from torch.autograd import Variable
     
     class MyModule(nn.Module):
         """
         model of 2d PMM 
+        
+        this module input can be a tensor
+        however, it can only work for one input at a time,
+        not multiple inputs... how to change this?
         """
-        def __init__(self,):
+        def __init__(self,num_var=2,dim_var=4,pmm_dim=2):
             super(MyModule,self).__init__()
-            self.var1 = torch.Variable([1.0,1.0,1.0,1.0],require_grad=True)
-            self.var2 = torch.Variable([1.0,1.0,1.0,1.0],require_grad=True)
+            self.params = Variable(torch.randn( (num_var,dim_var))
+                                ,requires_grad=True)
+        def mm_var(self,var):
+            """    
+            """
+            sigmas= torch.tensor( [
+                     [[1.0,0.0],[0.0,1.0]],
+                     [[0.0,1.0],[1.0,0.0]],
+                     [[0.0+0j,-1j],[1j,0.0+0j]],
+                     [[1.0,0.0],[0.0,-1.0]] ]
+                     ,dtype=torch.complex64)
+            return Mv
+            
         def forward(self,input):
+            """
+            input : [ [c1],[c2],..[c_N]]
+            output: [ [e1..em],[e1..em] ...  ]
+
+            """
             def mm_var(var):
-                s0 = torch.tensor( [ [1.0,0.0],[0.0,1.0]])
-                sx = torch.tensor( [ [0.0,1.0],[1.0,0.0]])
-                sy = torch.tensor( [ [0.0+0j,-1j],[1j,0.0+0j]],dtype=torch.complex64)
-                sz = torch.tensor( [ [1.0,0.0],[0.0,-1.0]])
+                s0 = torch.tensor( )
+                sx = torch.tensor( )
+                sy = torch.tensor( ,dtype=torch.complex64)
+                sz = torch.tensor( )
                 return s0*var[0]+sx*var[1]+sy*var[2]+sz*var[3]
             M1 = mm_var(self.var1)
             M2 = mm_var(self.var2)
-            Mtot = M1 + input *M2
-            dd = torch.linalg.eigvalsh(Mtot)
+            for c in input:
+                Mtot = M1 + input *M2
+                dd = torch.linalg.eigvalsh(Mtot)
             return dd 
     
     
