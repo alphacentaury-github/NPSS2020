@@ -92,15 +92,24 @@ print('E_lattice={} MeV'.format(torch.linalg.eigvalsh(torch.Tensor(Htot))[:4]*cu
 ## Test PMM with square-well potential problem 
 
 #---prepare data
-clist = [0.1,0.2,0.3,0.5,0.6,0.7,0.8,0.9]
+#clist = [0.5,0.6,0.7,0.8,0.9,1.5]
 #clist = [0.1,0.3,0.5,0.8]
+clist = [0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,1.5]
 Hfree = get_HKin(iKin)
 R0 = 3.0/a_fm # fm -> l.u 
-V0 = -150.0/cutoff # MeV -> l.u 
+V0 = -100.0/cutoff # MeV -> l.u 
+
+def WS_pot(x,V0,R0,a):
+    return V0/(1.+np.exp((abs(x)-R0)/a))
+
+
+ 
 data=[]
 for c in clist:
     H_V = np.zeros((L,L))
-    H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0    
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
     Htot = Hfree+H_V
     data.append(torch.linalg.eigvalsh(torch.Tensor(Htot)).numpy()[:2])
 data = np.array(data)
@@ -116,7 +125,10 @@ ec_vects1=[]
 ec_mats =[]
 for c in [0.5,1.5]:
     H_V = np.zeros((L,L))
-    H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
+    
     Htot = Hfree+H_V
     #ee,vv = np.linalg.eigh(Htot)
     ee,vv = scipy.linalg.eigh(Htot)
@@ -138,7 +150,9 @@ for i in range(2):
 def EC_test0(c):
     #----prediction by EC
     H_V = np.zeros((L,L))
-    H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
     Htot = torch.Tensor(Hfree+H_V) # H(c) 
     #---construct reduced matrix and norm matrix 
     Mc = np.zeros((2,2))
@@ -153,7 +167,9 @@ def EC_test0(c):
 def EC_test1(c):
     #----prediction by EC
     H_V = np.zeros((L,L))
-    H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
     Htot = torch.Tensor(Hfree+H_V) # H(c) 
     #---construct reduced matrix and norm matrix 
     Mc = np.zeros((2,2))
@@ -164,6 +180,56 @@ def EC_test1(c):
             Nc[i,j] = np.matmul(ec_vects1[i,:],ec_vects1[j,:])
     ee,vv = scipy.linalg.eig(Mc,Nc) 
     return ee, vv
+
+def EC_both(c):
+    #----prediction by EC
+    H_V = np.zeros((L,L))
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
+    Htot = torch.Tensor(Hfree+H_V) # H(c) 
+    #---construct reduced matrix and norm matrix 
+    Mc = np.zeros((4,4))
+    Nc = np.zeros((4,4))
+    for i in range(4):
+        if i in [0,1]:
+            vL = ec_vects0[i,:]
+        else:
+            vL = ec_vects1[i-2,:]
+        for j in range(4):
+            if j in [0,1]:
+                vR = ec_vects0[j,:]
+            else:
+                vR = ec_vects1[j-2,:]
+            Mc[i,j] = np.matmul(vL,np.matmul(Htot,vR))
+            Nc[i,j] = np.matmul(vL,vR)
+    ee,vv = scipy.linalg.eig(Mc,Nc) 
+    return ee, vv, Mc, Nc 
+    
+def EC_test(c):
+    #----prediction by EC
+    H_V = np.zeros((L,L))
+    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+    VV = WS_pot(dx,V0,c*R0,1.0)
+    H_V[r,r] = VV 
+    Htot = torch.Tensor(Hfree+H_V) # H(c) 
+    #---construct reduced matrix and norm matrix 
+    Mc = np.zeros((2,2))
+    Nc = np.zeros((2,2))
+    for i in range(2):
+        if i ==0 : 
+            vL = ec_vects0[i,:]
+        else:
+            vL = ec_vects1[i,:]
+        for j in range(2):
+            if j==0:
+                vR = ec_vects0[j,:]
+            else:
+                vR = ec_vects1[j,:]
+            Mc[i,j] = np.matmul(vL,np.matmul(Htot,vR))
+            Nc[i,j] = np.matmul(vL,vR)
+    ee,vv = scipy.linalg.eig(Mc,Nc) 
+    return ee,vv,Mc,Nc
 
 ee,vv=EC_test0(1.5)
 print('EC e={}'.format(ee[1]))
@@ -177,19 +243,23 @@ sz = torch.tensor( [ [1.0,0.0],[0.0,-1.0]])
 
 var1 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
 var2 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
-optim = torch.optim.Adam([var1,var2],lr=5.e-3)
+var3 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
+# optim = torch.optim.Adam([var1,var2],lr=2.e-3)
+optim = torch.optim.Adam([var1,var2,var3],lr=2.e-3)
 #optim = torch.optim.SGD([var1,var2])
 get_loss = nn.MSELoss(reduction='sum')
 
 def mm_var(var):
     return s0*var[0]+sx*var[1]+sy*var[2]+sz*var[3]
 
-for ii in range(5000):
+for ii in range(6000):
   dd = torch.zeros_like(data_tensor)
   for i,c in enumerate(clist):
       M1 = mm_var(var1)
       M2 = mm_var(var2)
-      Mtot = M1 + c *M2
+      M3 = mm_var(var3)
+      #Mtot = M1 + c *M2
+      Mtot = M1 + c *M2 +c**2*M3
       dd[i] = torch.linalg.eigvalsh(Mtot)[:2]
     
   loss = get_loss(dd,data_tensor)
@@ -203,17 +273,20 @@ out_t=[]
 out_p=[]
 out_ec0=[]
 out_ec1=[]
-c_p = np.arange(0.05,2.5,0.1)
+c_p = np.arange(0.1,2.5,0.1)
 for c in c_p:
   H_V = np.zeros((L,L))
-  H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+  #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
+  VV = WS_pot(dx,V0,c*R0,1.0)
+  H_V[r,r] = VV 
   Htot = Hfree + H_V
   out_t.append(torch.linalg.eigvalsh(torch.Tensor(Htot)).numpy()[:2])
     
   with torch.inference_mode():
     M1 = mm_var(var1)
     M2 = mm_var(var2)
-    Mtot = M1 + c *M2
+    M3 = mm_var(var3)
+    Mtot = M1 + c *M2 +c**2*M3    
     out_p.append(torch.linalg.eigvalsh(Mtot).numpy())
   #--EC results 
   ee,vv = EC_test0(c)
@@ -224,6 +297,13 @@ out_t = np.array(out_t)
 out_p = np.array(out_p)
 out_ec0 = np.array(out_ec0)
 out_ec1 = np.array(out_ec1)
+#---------------------------------------
+out_ec_test=[]
+for c in c_p:
+    ee,vv,Mc,Nc = EC_test(c)
+    ee,vv,Mc,Nc = EC_both(c)
+    out_ec_test.append(np.sort(np.real(ee)))
+out_ec_test= np.array(out_ec_test)    
 
 #-----plot------------------------------
 plt.plot(clist,data[:,0],'g*')
@@ -234,5 +314,8 @@ plt.plot(c_p,out_p[:,0],'r',label='PMM e0' )
 plt.plot(c_p,out_p[:,1],'b',label='PMM e1' )
 plt.plot(c_p,out_ec0,'y-.',label='EC e0')
 plt.plot(c_p,out_ec1,'y-.',label='EC e1')
+plt.plot(c_p,out_ec_test[:,0],'g-.',label='EC_test e0')
+plt.plot(c_p,out_ec_test[:,1],'g-.',label='EC_test e1')
+
 plt.xlabel('c');plt.ylabel('E [l.u.]')
 plt.legend()
