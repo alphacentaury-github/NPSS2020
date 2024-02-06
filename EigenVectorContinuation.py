@@ -34,7 +34,7 @@ class EigenVectorContinuation():
         self.train_c = np.array(train_c) # training input parameters 
         self.dim_ec = len(train_c) 
         self.train_vectors =None
-        self.level_index = 0 # level to use for EC          
+        self.level_index = level_index # level to use for EC          
         
     def prepare(self,):
         eigvals = np.zeros_like(self.train_c)
@@ -64,7 +64,7 @@ class EigenVectorContinuation():
     def predict(self,c):
         H_EC, N_EC = self.get_reduced_Hamiltonian(c)
         ee, vv = scipy.linalg.eigh(H_EC,N_EC)
-        return ee[self.level_index], vv[:,self.level_index]
+        return ee[0], vv[:,0] # only ground state is correct prediction
 
 #============================================================================== 
 def random_Hermitian_variable(ndim):   

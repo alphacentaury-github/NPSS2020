@@ -17,10 +17,12 @@ from EigenVectorContinuation import *
 #-----------setup lattice----------------------------------
 hbarc = 197.3
 L = 40
+#L=12
 cutoff = 200.0 # MeV 
+#cutoff = 50.0 
 a_fm = hbarc/cutoff ;print('a = {} fm L={} fm'.format(a_fm, L*a_fm))
 mass = 938.92/cutoff #l.u.
-iKin = 0             # kinectic term option 
+iKin = 1             # kinectic term option 
 
 r = np.arange(L)
 nx = r % L
@@ -121,7 +123,9 @@ Hfree = get_HKin(iKin)
 
 def get_Htot(c):
     H_V = np.zeros((L,L))
+    #VV = WS_pot(dx,c*V0,R0,a0)
     VV = WS_pot(dx,V0,c*R0,a0)
+    #VV = WS_pot(dx,V0,R0,c*a0)
     H_V[r,r] = VV 
     Htot = Hfree+H_V
     return Htot 
@@ -168,11 +172,7 @@ ec_vects1 = np.array(ec_vects1) # ex eigen vectors at c1,c2
 # test of ground and excited states together 
 def EC_both(c):
     #----prediction by EC
-    H_V = np.zeros((L,L))
-    #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
-    VV = WS_pot(dx,V0,c*R0,a0)
-    H_V[r,r] = VV 
-    Htot = torch.Tensor(Hfree+H_V) # H(c) 
+    Htot = get_Htot(c) 
     #---construct reduced matrix and norm matrix 
     Mc = np.zeros((4,4))
     Nc = np.zeros((4,4))
@@ -202,14 +202,11 @@ sx = torch.tensor( [ [0.0,1.0],[1.0,0.0]])
 sy = torch.tensor( [ [0.0+0j,-1j],[1j,0.0+0j]],dtype=torch.complex64)
 sz = torch.tensor( [ [1.0,0.0],[0.0,-1.0]])
 
-var1 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
-var2 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
+var1 = Variable(torch.tensor([0.5,0.4,0.3,0.2]),requires_grad=True)
+var2 = Variable(torch.tensor([0.3,0.4,0.5,0.6]),requires_grad=True)
 var3 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
 var4 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
-var5 = Variable(torch.tensor([0.5,0.5,0.5,0.5]),requires_grad=True)
-
-optim = torch.optim.Adam([var1,var2],lr=2.e-3)
-get_loss = nn.MSELoss(reduction='sum')
+var0 = Variable(torch.tensor([1.0,2.0]),requires_grad=True)
 
 def mm_var(var):
     return s0*var[0]+sx*var[1]+sy*var[2]+sz*var[3]
@@ -217,89 +214,115 @@ def mm_var(var):
 def get_Mtot(c): # ansatz of PMM 
     M1 = mm_var(var1)
     M2 = mm_var(var2)
-    Mtot = M1 + M2/c 
+    M3 = mm_var(var3)
+    Mtot = M1 + M2/(c+var0[0])+M3/(c+var0[1])**2 
     return Mtot 
 
+def get_Mtot2(c):
+    Mtot= torch.zeros( (2,2),dtype=torch.complex64 )
+    def f(var):
+        return (var[0]+c*var[1])/(1+c*var[3]+c**2*var[2])
+    Mtot[0,0] = f(var1)
+    Mtot[0,1] = f(var2)+1j*f(var4)
+    Mtot[1,0] = torch.conj(Mtot[0,1])
+    Mtot[1,1] = f(var3)
+    return Mtot 
+
+#optim = torch.optim.Adam([var1,var2,var3,var0],lr=2.e-3)
+optim = torch.optim.Adam([var1,var2,var3,var4],lr=2.e-3)
+get_loss = nn.MSELoss(reduction='sum')
+
 #=====repeat as many to reduce the loss 
-for ii in range(6000):
-  dd = torch.zeros_like(data_tensor[:,0]) # use data_tensor to use both energies 
-  for i,c in enumerate(clist):
-      Mtot = get_Mtot(c)
-      dd[i] = torch.linalg.eigvalsh(Mtot)[:1] # [:2] to use both energies  
+def optimize_PMM(epochs=6000,train_data=data_tensor[:,0]):
+    ndata = train_data.shape
+    if len(ndata)> 1:
+        nd = ndata[1] 
+    else:
+        nd = 1
+    for ii in range(epochs):
+      dd = torch.zeros_like(train_data)  
+      for i,c in enumerate(clist):
+          #Mtot = get_Mtot(c)
+          Mtot = get_Mtot2(c)
+          dd[i] = torch.linalg.eigvalsh(Mtot)[:nd]   
+      loss = get_loss(dd,train_data) # gs only
+      optim.zero_grad()
+      loss.backward()
+      optim.step()
+      if ii %1000 ==0:  print('epoch={} loss={}'.format(ii,loss))
+    print('epoch={} loss={}'.format(epochs,loss))  
+    return 
+
+optimize_PMM(epochs=6000)    
+
+#===================================test=======================================
+def plot_tests(ylim=[-0.5,0.1]):
+    out_t=[]
+    out_p=[]
+    out_ec0=[]
+    out_ec1=[]
+
+    ec_mats=[] 
+    for c in c_p:
+      Htot = get_Htot(c)
+      out_t.append(torch.linalg.eigvalsh(torch.Tensor(Htot)).numpy()[:2])
+        
+      with torch.inference_mode():
+        #Mtot = get_Mtot(c)
+        Mtot = get_Mtot2(c)
+        out_p.append(torch.linalg.eigvalsh(Mtot).numpy())
+      #--EC results 
+      temp1, temp2 = ec_test0.get_reduced_Hamiltonian(c)
+      ee,vv = ec_test0.predict(c)
+      out_ec0.append(np.real(ee))
+      isqnn = scipy.linalg.fractional_matrix_power(temp2,-0.5) #sqrt(N^-1)
+      ec_mats.append( isqnn @ temp1 @ isqnn ) # Hermitian EC Hamiltonian 
+      
+      ee,vv = ec_test1.predict(c)
+      out_ec1.append(ee)
+      
+    out_t = np.array(out_t)
+    out_p = np.array(out_p)
+    out_ec0 = np.array(out_ec0)
+    out_ec1 = np.array(out_ec1)
+    #---------------------------------------
+    #tt =[]
+    #for i,c in enumerate(c_p):
+    #    tt.append(ec_mats[i][0,0])
+    #tt=np.array(tt)
+
+    ##f = lambda x, a, b,c,d,e : a*x**2+b*x+c+d/x+e/x**2
+    #f = lambda x, a, b,c,d,e : a*x**2+b*x+c+d/x
+    ##f = lambda x, b,c,d : b*x+c+d/x
+    ##f = lambda x, a, b,c : a*np.exp(-b*x)+c
+    #popt,pcov =scipy.optimize.curve_fit(f,c_p,tt)
+    #plt.plot(c_p,tt,'.',label='EC')
+    #plt.plot(c_p,f(c_p,*popt),label='fit')
+    #plt.xlabel('c');plt.ylabel(r'$M_{00}$')
+    #plt.legend()     
+    #---------------------------------------
+    #out_ec_test=[]
+    #for c in c_p:
+    #    ee,vv,Mc,Nc = EC_test(c)
+    #    #ee,vv,Mc,Nc = EC_both(c)
+    #    out_ec_test.append(np.sort(np.real(ee)))
+    #out_ec_test= np.array(out_ec_test)    
+
+    #-----plot------------------------------
+    plt.plot(clist,data[:,0],'g*')
+    plt.plot(clist,data[:,1],'g*')
+    plt.plot(c_p,out_t[:,0],'r--',label='true e0' )
+    plt.plot(c_p,out_t[:,1],'b--',label='true e1' )
+    plt.plot(c_p,out_p[:,0],'r',label='PMM e0' )
+    #plt.plot(c_p,out_p[:,1],'b',label='PMM e1' )
+    plt.plot(c_p,out_ec0,'y-.',label='EC e0')
+    plt.plot(c_p,out_ec1,'y-.',label='EC e1')
+    #plt.plot(c_p,out_ec_test[:,0],'g-.',label='EC_test e0')
+    #plt.plot(c_p,out_ec_test[:,1],'g-.',label='EC_test e1')
+
+    plt.xlabel('c');plt.ylabel('E [l.u.]')
+    plt.plot(c_p, g(c_p,*popt))
+    plt.ylim(ylim)
+    plt.legend()
     
-  loss = get_loss(dd,data_tensor[:,0]) # use data_tensor to use both energies 
-  optim.zero_grad()
-  loss.backward()
-  optim.step()
-  if ii %1000 ==0:  print('epoch={} loss={}'.format(ii,loss))
-print(loss)  
-
-out_t=[]
-out_p=[]
-out_ec0=[]
-out_ec1=[]
-
-ec_mats=[] 
-for c in c_p:
-  H_V = np.zeros((L,L))
-  #H_V[ abs(dx)< R0,abs(dx)< R0 ] = c*V0
-  VV = WS_pot(dx,V0,c*R0,a0)
-  H_V[r,r] = VV 
-  Htot = Hfree + H_V
-  out_t.append(torch.linalg.eigvalsh(torch.Tensor(Htot)).numpy()[:2])
-    
-  with torch.inference_mode():
-    Mtot = get_Mtot(c)
-    out_p.append(torch.linalg.eigvalsh(Mtot).numpy())
-  #--EC results 
-  temp1, temp2 = ec_test0.get_reduced_Hamiltonian(c)
-  ee,vv = ec_test0.predict(c)
-  out_ec0.append(np.real(ee))
-  isqnn = scipy.linalg.fractional_matrix_power(temp2,-0.5) #sqrt(N^-1)
-  ec_mats.append( isqnn @ temp1 @ isqnn ) # Hermitian EC Hamiltonian 
-  
-  ee,vv = ec_test1.predict(c)
-  out_ec1.append(ee)
-  
-out_t = np.array(out_t)
-out_p = np.array(out_p)
-out_ec0 = np.array(out_ec0)
-out_ec1 = np.array(out_ec1)
-#---------------------------------------
-#tt =[]
-#for i,c in enumerate(c_p):
-#    tt.append(ec_mats[i][0,0])
-#tt=np.array(tt)
-
-##f = lambda x, a, b,c,d,e : a*x**2+b*x+c+d/x+e/x**2
-#f = lambda x, a, b,c,d,e : a*x**2+b*x+c+d/x
-##f = lambda x, b,c,d : b*x+c+d/x
-##f = lambda x, a, b,c : a*np.exp(-b*x)+c
-#popt,pcov =scipy.optimize.curve_fit(f,c_p,tt)
-#plt.plot(c_p,tt,'.',label='EC')
-#plt.plot(c_p,f(c_p,*popt),label='fit')
-#plt.xlabel('c');plt.ylabel(r'$M_{00}$')
-#plt.legend()     
-#---------------------------------------
-#out_ec_test=[]
-#for c in c_p:
-#    ee,vv,Mc,Nc = EC_test(c)
-#    #ee,vv,Mc,Nc = EC_both(c)
-#    out_ec_test.append(np.sort(np.real(ee)))
-#out_ec_test= np.array(out_ec_test)    
-
-#-----plot------------------------------
-plt.plot(clist,data[:,0],'g*')
-plt.plot(clist,data[:,1],'g*')
-plt.plot(c_p,out_t[:,0],'r--',label='true e0' )
-plt.plot(c_p,out_t[:,1],'b--',label='true e1' )
-plt.plot(c_p,out_p[:,0],'r',label='PMM e0' )
-#plt.plot(c_p,out_p[:,1],'b',label='PMM e1' )
-plt.plot(c_p,out_ec0,'y-.',label='EC e0')
-plt.plot(c_p,out_ec1,'y-.',label='EC e1')
-#plt.plot(c_p,out_ec_test[:,0],'g-.',label='EC_test e0')
-#plt.plot(c_p,out_ec_test[:,1],'g-.',label='EC_test e1')
-
-plt.xlabel('c');plt.ylabel('E [l.u.]')
-plt.ylim([-0.5,0.1])
-plt.legend()
+plot_tests()
