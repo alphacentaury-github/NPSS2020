@@ -3,6 +3,10 @@
 Created on Fri Jan 26 15:12:00 2024
 
 @author: young
+
+(1) Solve 1-d Schringer equation in lattice 
+(2) Compare eigenvector continuation 
+        and PMM 
 """
 import numpy as np
 import torch
