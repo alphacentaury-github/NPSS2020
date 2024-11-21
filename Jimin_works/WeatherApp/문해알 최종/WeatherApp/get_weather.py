@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Nov  2 21:57:45 2024
 
 사용법 
 기본적으로 get_weather 함수를 사용한다. 
@@ -47,6 +46,7 @@ import datetime
 import pandas as pd 
 import numpy as np 
 import math
+import pickle 
 
 # 기상청 단기예보 API 엔드포인트
 url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
@@ -59,8 +59,29 @@ url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
 service_key = "nOwXe5R0tMJChLod/umArKrEfXIFv8s24EkmwbE0HTJ1aONy1Vj/xIxKUqKGYqisRWwiHncp0mqO9Ta7bK8Akg=="
 
 # 기상청 위치 정보 
-loc_data = pd.read_excel("기상청41_단기예보 조회서비스_오픈API활용가이드_격자_위경도(240715).xlsx")
+loc_data = pd.read_excel(r"기상청41_단기예보 조회서비스_오픈API활용가이드_격자_위경도(240715).xlsx")
 
+# sample_data = {
+#     "서울특별시": {
+#         "강남구": ["삼성동", "대치동", "역삼동"],
+#         "서초구": ["서초동", "반포동", "잠원동"],
+#     },
+#     "부산광역시": {
+#         "해운대구": ["우동", "중동", "좌동"],
+#         "사하구": ["하단동", "당리동", "괴정동"],
+#     },
+#     "대구광역시": {
+#         "수성구": ["범어동", "수성동", "만촌동"],
+#         "달서구": ["상인동", "월성동", "진천동"],
+#     },
+# }
+
+def extract_loc_name_dictionary():    
+    with open('loc_data.pkl','rb') as ff:
+        loc_dic = pickle.load(ff)    
+    return loc_dic     
+
+    
 def grid_from_address(city=None, district=None, subdistrict=None):
     """
     input : city, district, subdistrict 문자열 
@@ -227,7 +248,7 @@ def format_weather_template(item_list):
     list_info_text = [] 
     for key, val in zip(informations.keys(), informations.values()) :
         try:
-            template = f"""{key[0][:4]}년 {key[0][4:6]}월 {key[0][-2:]}일 {key[1][:2]}시 {key[1][2:]}분 {(int(nx), int(ny))} 지역의 날씨는 """ 
+            template = f"""{key[0][:4]}년 {key[0][4:6]}월 {key[0][-2:]}일 {key[1][:2]}시 {key[1][2:]}분  """ 
             # 맑음(1), 구름많음(3), 흐림(4)
             val_keys = val.keys()
             if 'SKY' in val_keys :
@@ -271,7 +292,8 @@ def format_weather_template(item_list):
             break  
     return informations, list_info_text     
 
-def get_weather(nx='55',ny='127',base_date='20241104',base_time='0500'):
+def get_weather(nx='55',ny='127',base_date='20241104',base_time='0500',
+                opt_print=False):
     """
     get weather from 단기예보 
     nx, ny : 위치 
@@ -317,24 +339,29 @@ def get_weather(nx='55',ny='127',base_date='20241104',base_time='0500'):
         print("API 요청 실패:", response.status_code)     
     return informations, list_info_text 
 
+def get_weather2(location_info,opt_print=False):
+    """ 
+    input location info= [city, district, subdistrict] text string
+    return today weather information 
+    """
+    #----location 
+    city, district, subdistrict = location_info 
+    nx, ny = grid_from_address(city, district, subdistrict)
+    nx = f'{nx}' ; ny = f'{ny}'; # 격자 값을 문자열로 변환 
+    #----time 
+    now = datetime.datetime.now()
+    now_date = now.strftime("%Y%m%d")  # 예: 20231102
+    now_time = now.strftime("%H00")    # 예: 1400시 
+    base_date = now_date 
+    base_time = nearest_base_time(now_time) 
+    #----weather 
+    informations, list_info_text  = get_weather(nx= nx ,ny= ny, 
+                            base_date=now_date, base_time= base_time,
+                            opt_print=opt_print)
+    return informations, list_info_text 
+
 #=============Test=============================================================
-# 주소 변환 예 
-#(1) 위도, 경도 
-nx,ny = grid_from_lat_lon(36.0,126.0)
-#(2) 시/구/동 정보 
-nx,ny = grid_from_address('서울특별시','종로구','헤화동')
-# nx,ny = grid_from_address('대전광역시','유성구','신성동')
-nx = f'{nx}' ; ny = f'{ny}'; # 격자 값을 문자열로 변환 
-
-# 최신 예보 결과 시간 (단기예보의 경우)
-now = datetime.datetime.now()
-now_date = now.strftime("%Y%m%d")  # 예: 20231102
-now_time = now.strftime("%H00")    # 예: 1400시 
-base_date = now_date 
-base_time = nearest_base_time(now_time) 
-
-# 예보 결과 가져오기 
-informations, list_info_text  = get_weather(nx= nx ,ny= ny, base_date=now_date, base_time= base_time)
-
+if __name__=='__main__':
+    informations, list_info_text = get_weather2( ['서울특별시','종로구','혜화동'],True)
 
 
