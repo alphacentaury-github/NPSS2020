@@ -36,8 +36,8 @@ button_panel.pack(fill=tk.Y, side=tk.RIGHT)
 
 frame1 = LocationSelector(container_frame)
 
-from test_graph import plot_Frame
-frame2 = plot_Frame(container_frame)
+from frame_template import your_Frame
+frame2 = your_Frame(container_frame)
 frame2.pack() 
 
 frame3 = tk.Frame(container_frame, bg="red")
