@@ -36,8 +36,9 @@ button_panel.pack(fill=tk.Y, side=tk.RIGHT)
 
 frame1 = LocationSelector(container_frame)
 
-frame2 = tk.Frame(container_frame, bg="green")
-tk.Label(frame2, text="This is Frame 2", bg="green", fg="white").pack(pady=20)
+from test_graph import plot_Frame
+frame2 = plot_Frame(container_frame)
+frame2.pack() 
 
 frame3 = tk.Frame(container_frame, bg="red")
 tk.Label(frame3, text="This is Frame 3", bg="red", fg="white").pack(pady=20)
@@ -51,3 +52,9 @@ tk.Button(button_panel, text="Show Frame 3", command=lambda: show_frame(frame3))
 show_frame(frame1)
 
 root.mainloop()
+
+#-------------------------
+
+
+
+

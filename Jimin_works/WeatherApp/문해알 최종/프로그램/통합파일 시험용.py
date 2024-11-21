@@ -97,11 +97,13 @@ def manage_wardrobe():
     # 초기화
     update_listboxes()
 
-# 메인 프로그램 UI
-root = tk.Tk()
-root.title("날씨 맞춤 옷 추천 프로그램")
-root.geometry("400x600")
 
-tk.Button(root, text="옷장 추가/삭제", command=manage_wardrobe, font=("Arial", 12)).pack(pady=10)
-
-root.mainloop()
+if __name__=='__main__':
+    # 메인 프로그램 UI
+    root = tk.Tk()
+    root.title("날씨 맞춤 옷 추천 프로그램")
+    root.geometry("400x600")
+    
+    tk.Button(root, text="옷장 추가/삭제", command=manage_wardrobe, font=("Arial", 12)).pack(pady=10)
+    
+    root.mainloop()

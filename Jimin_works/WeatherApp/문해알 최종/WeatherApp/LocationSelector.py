@@ -8,6 +8,11 @@ import tkinter as tk
 from tkinter import ttk
 import pandas as pd 
 import json 
+from tkinter import Tk, Label, PhotoImage
+import PIL.Image
+import PIL.ImageTk
+from PIL import ImageTk, Image
+
 from get_weather import get_weather2 
 from get_weather import extract_loc_name_dictionary 
 
@@ -37,7 +42,6 @@ class LocationSelector(tk.Frame):
         self.container_combo = tk.Frame(self)
         self.container_combo.pack() 
         
-        
         # 1단계: 시
         tk.Label(self.container_combo, text="시").grid(row=0, column=0, padx=10, pady=5)
         self.city_combobox = ttk.Combobox(self.container_combo, values=list(location_data.keys()), state="readonly")
@@ -61,17 +65,11 @@ class LocationSelector(tk.Frame):
         self.weather_button = tk.Button(self, text="Get Weather", command= lambda: self.show_weather())
         self.weather_button.pack() 
 
-    def show_weather(self,):
-        
-        city = self.city_combobox.get()
-        gu = self.gu_combobox.get()
-        dong = self.dong_combobox.get() 
-        informations, list_info_text = get_weather2([city,gu,dong],opt_print=False)
-        
-        self.text = tk.Label(self, text =list_info_text[0] )
-        self.text.pack() 
-        
-        return 
+        self.label2 = tk.Label(self,text='')
+        self.label2.pack()  
+        self.label3 = tk.Label(self)
+        self.label3.pack()
+
 
     def update_gu(self, event):
         city = self.city_combobox.get()
@@ -87,3 +85,22 @@ class LocationSelector(tk.Frame):
         if city and gu:
             self.dong_combobox["values"] = self.location_data[city][gu]
             self.dong_combobox.set("")
+
+    def show_weather(self,):        
+        city = self.city_combobox.get()
+        gu = self.gu_combobox.get()
+        dong = self.dong_combobox.get() 
+        informations, list_info_text = get_weather2([city,gu,dong],opt_print=False)
+        # plot weather and create image 
+        self.label2.configure(text = list_info_text[0])
+        self.img = ImageTk.PhotoImage(Image.open("test.png"))
+        self.label3.configure(image = self.img, text = list_info_text[0])  
+        self.label3.image = self.img #this is necessary to keep image reference 
+        
+        return 
+            
+if __name__=='__main__':
+    root = tk.Tk()
+    frame1 = LocationSelector(root)
+    frame1.pack()
+    tk.mainloop()            
