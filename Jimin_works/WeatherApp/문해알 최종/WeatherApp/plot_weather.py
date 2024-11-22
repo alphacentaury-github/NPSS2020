@@ -3,6 +3,10 @@
 Created on Fri Nov 22 11:23:08 2024
 
 @author: young
+
+UTF weather symbol 이용도 가능 (그림 대신)
+https://unicode-explorer.com/list/weather
+
 """
 import tkinter as tk
 from tkinter import Canvas

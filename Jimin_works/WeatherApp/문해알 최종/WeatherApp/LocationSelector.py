@@ -68,7 +68,7 @@ class LocationSelector(tk.Frame):
         self.container_plot = tk.Frame(self) 
         self.container_plot.pack() 
         
-        self.label2 = tk.Label(self,text='')
+        self.label2 = tk.Label(self,text='You can use unicode like'+u'\u2600',font=('Arial', 16, 'bold')) #unicode
         self.label2.pack()  
         self.label3 = tk.Label(self)
         self.label3.pack()
