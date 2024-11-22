@@ -245,45 +245,49 @@ def format_weather_template(item_list):
     sky_code = {1 : '맑음', 3 : '구름많음', 4 : '흐림'}
     
     #-----print------------------------------------------------------
+    
     list_info_text = [] 
     for key, val in zip(informations.keys(), informations.values()) :
         try:
-            template = f"""{key[0][:4]}년 {key[0][4:6]}월 {key[0][-2:]}일 {key[1][:2]}시 {key[1][2:]}분  """ 
+            template = f"""{key[0][:4]}년 {key[0][4:6]}월 {key[0][-2:]}일 {key[1][:2]}시 {key[1][2:]}분 , """ 
+            time_key = f"{key[0][-2:]} {key[1][:2]}:{key[1][2:]}"
+            
             # 맑음(1), 구름많음(3), 흐림(4)
             val_keys = val.keys()
             if 'SKY' in val_keys :
                 sky_temp = sky_code[int(val['SKY'])]
-                template += sky_temp + " "
+                template += sky_temp + ", "
             else: 
                 break 
-            # (초단기) 없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7)
             if 'PTY' in val_keys :
                 pty_temp = pyt_code[int(val['PTY'])]
-                template += pty_temp
+                template += pty_temp 
                 # 강수 있는 경우
                 if val['PCP'] != '강수없음' :
                     # 1시간 강수량 
                     rn1_temp = val['PCP']
-                    template += f"시간당 {rn1_temp}mm "
+                    template += f"시간당 {rn1_temp}mm ,"
+                else:
+                    template += ', '
             else:
                 break 
             # 기온
             if 'TMP' in val_keys :
                 t1h_temp = float(val['TMP'])
-                template += f" 기온 {t1h_temp}℃ "
+                template += f" 기온 {t1h_temp}℃ ,"
             else:
                 break 
             # 습도
             if 'REH' in val_keys :
                 reh_temp = float(val['REH'])
-                template += f"습도 {reh_temp}% "
+                template += f"습도 {reh_temp}% ,"
             else:
                 break 
             # 풍향/ 풍속
             if ('VEC' in val_keys) and ('WSD' in val_keys):
                 vec_temp = deg_to_dir(float(val['VEC']))
                 wsd_temp = val['WSD']
-                template += f"풍속 {vec_temp} 방향 {wsd_temp}m/s"
+                template += f"풍속 {vec_temp} 방향 {wsd_temp}m/s ,"
             else:
                 break 
             #print(template)
@@ -356,12 +360,22 @@ def get_weather2(location_info,opt_print=False):
     base_time = nearest_base_time(now_time) 
     #----weather 
     informations, list_info_text  = get_weather(nx= nx ,ny= ny, 
-                            base_date=now_date, base_time= base_time,
+                            base_date=base_date, base_time= base_time,
                             opt_print=opt_print)
+    
     return informations, list_info_text 
 
 #=============Test=============================================================
 if __name__=='__main__':
-    informations, list_info_text = get_weather2( ['서울특별시','종로구','혜화동'],True)
-
-
+    location_info = ['서울특별시','종로구','혜화동']
+    informations, list_info_text = get_weather2(location_info,False)
+    
+    #----plot graph----
+    import matplotlib as mpl
+    import matplotlib.pyplot as plt
+    import matplotlib.font_manager as fm
+    # 사용할 글꼴 정보 지정
+    # 그래프에서 마이너스 폰트 깨지는 문제에 대한 대처
+    mpl.rcParams['axes.unicode_minus'] = False
+    plt.rcParams["font.family"] = 'Malgun Gothic'
+    #-----list info text conversion-----

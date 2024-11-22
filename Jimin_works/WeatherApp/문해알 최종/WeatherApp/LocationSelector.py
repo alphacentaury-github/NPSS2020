@@ -65,6 +65,9 @@ class LocationSelector(tk.Frame):
         self.weather_button = tk.Button(self, text="Get Weather", command= lambda: self.show_weather())
         self.weather_button.pack() 
 
+        self.container_plot = tk.Frame(self) 
+        self.container_plot.pack() 
+        
         self.label2 = tk.Label(self,text='')
         self.label2.pack()  
         self.label3 = tk.Label(self)
@@ -92,14 +95,22 @@ class LocationSelector(tk.Frame):
         dong = self.dong_combobox.get() 
         informations, list_info_text = get_weather2([city,gu,dong],opt_print=False)
         # plot weather and create image 
+        import plot_weather as pw
+        #---update weather data 
+        images = pw.load_images()
+        #weather_frame = pw.create_weather_frame(self, pw.weather_data, images)
+        weather_frame = pw.create_weather_frame(self, informations, images)
+        weather_frame.pack()
+        
         self.label2.configure(text = list_info_text[0])
-        self.img = ImageTk.PhotoImage(Image.open("test.png"))
-        self.label3.configure(image = self.img, text = list_info_text[0])  
-        self.label3.image = self.img #this is necessary to keep image reference 
+        #self.img = ImageTk.PhotoImage(Image.open("test.png"))
+        #self.label3.configure(image = self.img, text = list_info_text[0])  
+        #self.label3.image = self.img #this is necessary to keep image reference 
         
         return 
             
 if __name__=='__main__':
+    informations, list_info_text = get_weather2(['대전광역시','유성구','신성동'],opt_print=False)
     root = tk.Tk()
     frame1 = LocationSelector(root)
     frame1.pack()
