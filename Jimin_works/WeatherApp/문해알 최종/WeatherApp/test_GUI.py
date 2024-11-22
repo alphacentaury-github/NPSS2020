@@ -21,7 +21,7 @@ def show_frame(frame):
 
 # 메인 창 생성
 root = tk.Tk()
-root.geometry("600x400")
+root.geometry("800x600")
 
 # 컨테이너 프레임 (내용이 바뀔 영역)
 container_frame = tk.Frame(root, bg="white")

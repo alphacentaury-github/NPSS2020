@@ -72,6 +72,9 @@ class LocationSelector(tk.Frame):
         self.label2.pack()  
         self.label3 = tk.Label(self)
         self.label3.pack()
+        
+        
+        self.show_weather() 
 
 
     def update_gu(self, event):
@@ -95,17 +98,15 @@ class LocationSelector(tk.Frame):
         dong = self.dong_combobox.get() 
         informations, list_info_text = get_weather2([city,gu,dong],opt_print=False)
         # plot weather and create image 
-        import plot_weather as pw
-        #---update weather data 
-        images = pw.load_images()
-        #weather_frame = pw.create_weather_frame(self, pw.weather_data, images)
-        weather_frame = pw.create_weather_frame(self, informations, images)
-        weather_frame.pack()
-        
-        self.label2.configure(text = list_info_text[0])
-        #self.img = ImageTk.PhotoImage(Image.open("test.png"))
-        #self.label3.configure(image = self.img, text = list_info_text[0])  
-        #self.label3.image = self.img #this is necessary to keep image reference 
+        import plot_weather2 as pw 
+        try: #destroy existing plot 
+            self.weather_frame.destroy() 
+        except: 
+            pass              
+        self.weather_frame = pw.plot_weather_Frame(self)
+        self.weather_frame.pack()
+        self.weather_frame.update_figure(informations)
+        self.label2.configure(text = list_info_text[0][14:51])
         
         return 
             
